@@ -54,7 +54,7 @@ protected:
   virtual void showEvent(QShowEvent*);
 
 signals:
-  void sendMessage(QString, RecipientList, RecipientList);
+  void sendMessage(QString, QString, RecipientList, RecipientList);
   void sendImage(QString, QString, QString, RecipientList, RecipientList);
   void sendReply(QASObject*, QString);
 
@@ -93,7 +93,7 @@ private:
   RichTextLabel* m_previewLabel;
 
   QLabel* m_pictureLabel;
-  QLineEdit* m_pictureTitle;
+  QLineEdit* m_title;
 
   QPushButton* m_cancelButton;
   QPushButton* m_sendButton;

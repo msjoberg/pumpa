@@ -636,8 +636,9 @@ void PumpApp::newNote(QASObject* obj) {
   if (!m_messageWindow) {
     m_messageWindow = new MessageWindow(m_s, &m_recipientLists, this);
     connect(m_messageWindow,
-            SIGNAL(sendMessage(QString, RecipientList, RecipientList)),
-            this, SLOT(postNote(QString, RecipientList, RecipientList)));
+            SIGNAL(sendMessage(QString, QString, RecipientList, RecipientList)),
+            this,
+            SLOT(postNote(QString, QString, RecipientList, RecipientList)));
     connect(m_messageWindow, SIGNAL(sendImage(QString, QString, QString,
                                               RecipientList, RecipientList)),
             this, SLOT(postImage(QString, QString, QString,
@@ -880,13 +881,16 @@ void PumpApp::showUserActivities() {
 
 //------------------------------------------------------------------------------
 
-void PumpApp::postNote(QString content, RecipientList to, RecipientList cc) {
+void PumpApp::postNote(QString content, QString title,
+                       RecipientList to, RecipientList cc) {
   if (content.isEmpty())
     return;
 
   QVariantMap obj;
   obj["objectType"] = "note";
   obj["content"] = addTextMarkup(content);
+  if (!title.isEmpty())
+    obj["displayName"] = title;
 
   feed("post", obj, QAS_OBJECT | QAS_REFRESH | QAS_POST, to, cc);
 }

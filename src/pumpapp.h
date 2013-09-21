@@ -73,7 +73,8 @@ private slots:
   void followDialog();
   void onLike(QASObject* obj);
   void onShare(QASObject* obj);
-  void postNote(QString note, RecipientList to, RecipientList cc);
+  void postNote(QString note, QString title,
+                RecipientList to, RecipientList cc);
   void postImage(QString msg, QString title, QString imageFile,
                  RecipientList to, RecipientList cc);
   void postReply(QASObject* replyToObj, QString content);

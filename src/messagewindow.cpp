@@ -91,8 +91,8 @@ MessageWindow::MessageWindow(const PumpaSettings* s,
   m_pictureLabel->setFocusPolicy(Qt::NoFocus);
   m_pictureLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
 
-  m_pictureTitle = new QLineEdit(this);
-  m_pictureTitle->setPlaceholderText(tr("Picture title (optional)"));
+  m_title = new QLineEdit(this);
+  m_title->setPlaceholderText(tr("Title (optional)"));
 
   m_previewLabel = new RichTextLabel(this);
   m_previewLabel->setLineWidth(1);
@@ -110,7 +110,7 @@ MessageWindow::MessageWindow(const PumpaSettings* s,
   layout->addLayout(m_addressLayout);
   layout->addLayout(m_pictureButtonLayout);
   layout->addWidget(m_pictureLabel, 0, Qt::AlignHCenter);
-  layout->addWidget(m_pictureTitle);
+  layout->addWidget(m_title);
   layout->addWidget(m_textEdit);
   layout->addWidget(m_previewLabel);
 
@@ -242,7 +242,7 @@ void MessageWindow::setDefaultRecipients(MessageRecipients* mr,
 void MessageWindow::clear() {
   m_imageFileName = "";
   m_textEdit->clear();
-  m_pictureTitle->clear();
+  m_title->clear();
   m_previewLabel->clear();
 }
 
@@ -264,10 +264,11 @@ void MessageWindow::accept() {
     RecipientList to = m_toRecipients->recipients();
     RecipientList cc = m_ccRecipients->recipients();
 
+    QString title = m_title->text();
+
     if (m_imageFileName.isEmpty()) {
-      emit sendMessage(msg, to, cc);
+      emit sendMessage(msg, title, to, cc);
     } else {
-      QString title = m_pictureTitle->text();
       emit sendImage(msg, title, m_imageFileName, to, cc);
     }
   } else {
@@ -305,7 +306,7 @@ void MessageWindow::updateAddPicture() {
     m_addPictureButton->setVisible(false);
     m_removePictureButton->setVisible(false);
     m_pictureLabel->setVisible(false);
-    m_pictureTitle->setVisible(false);
+    m_title->setVisible(false);
     m_removePictureButton->setVisible(false);
     return;
   }
@@ -321,17 +322,16 @@ void MessageWindow::updateAddPicture() {
   }
 
   m_addPictureButton->setVisible(true);
+  m_title->setVisible(true);
   if (m_imageFileName.isEmpty()) {
     m_addPictureButton->setText(tr("&Add picture"));
     m_removePictureButton->setVisible(false);
     m_pictureLabel->setVisible(false);
-    m_pictureTitle->setVisible(false);
   } else {
     m_pictureLabel->setPixmap(p);
     m_addPictureButton->setText(tr("&Change picture"));
     m_removePictureButton->setVisible(true);
     m_pictureLabel->setVisible(true);
-    m_pictureTitle->setVisible(true);
   }
 }
 
