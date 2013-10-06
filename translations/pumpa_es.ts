@@ -187,7 +187,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="577"/>
         <source>Share this %1 by %2?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Compartir %1 de %2?</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="603"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../src/messagerecipients.cpp" line="52"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
 </context>
 <context>
@@ -236,12 +236,12 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="75"/>
         <source>+ &amp;To</source>
-        <translation type="unfinished"></translation>
+        <translation>+ &amp;Para</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="78"/>
         <source>+ &amp;Cc</source>
-        <translation type="unfinished"></translation>
+        <translation>+ &amp;Cc</translation>
     </message>
     <message>
         <source>Picture title (optional)</source>
@@ -250,7 +250,7 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="95"/>
         <source>Title (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Título (opcional)</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="117"/>
@@ -270,12 +270,12 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="181"/>
         <source>Select recipient (To)</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecciona destinatario (Para)</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="187"/>
         <source>Select recipient (Cc)</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecciona destinatario (Cc)</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="214"/>
@@ -430,7 +430,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="615"/>
         <source>Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="844"/>
@@ -551,12 +551,12 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="219"/>
         <source>Public</source>
-        <translation type="unfinished">Público</translation>
+        <translation>Público</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="520"/>
         <source>Firehose</source>
-        <translation type="unfinished"></translation>
+        <translation>Manguera</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="526"/>
