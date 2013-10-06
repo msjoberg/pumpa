@@ -55,7 +55,7 @@ private slots:
   void onHasMoreClicked();
 
   void favourite();
-  void repeat();
+  void onRepeatClicked();
   void reply();
   void onFollow();
   void onFollowAuthor();
@@ -63,6 +63,9 @@ private slots:
   void onDeleteClicked();
 
 private:
+  QString typeName() const;
+  QString textExcerpt() const;
+
   bool hasValidIrtObject();
   void setText(QString text);
   void updateInfoText();

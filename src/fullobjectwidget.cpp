@@ -89,7 +89,7 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_buttonLayout->addWidget(m_followAuthorButton, 0, Qt::AlignTop);
 
   m_shareButton = new TextToolButton(this);
-  connect(m_shareButton, SIGNAL(clicked()), this, SLOT(repeat()));
+  connect(m_shareButton, SIGNAL(clicked()), this, SLOT(onRepeatClicked()));
   m_buttonLayout->addWidget(m_shareButton, 0, Qt::AlignTop);
 
   m_deleteButton = new TextToolButton(tr("delete"), this);
@@ -526,28 +526,13 @@ void FullObjectWidget::favourite() {
 
 //------------------------------------------------------------------------------
 
-void FullObjectWidget::repeat() {
-  updateShareButton(true);
-  emit share(m_object);
-}
-
-//------------------------------------------------------------------------------
-
 void FullObjectWidget::reply() {
   emit newReply(m_object);
 }
 
 //------------------------------------------------------------------------------
 
-void FullObjectWidget::onDeleteClicked() {
-  const int max_len = 40;
-  QString excerpt = ShortObjectWidget::objectExcerpt(m_object).
-    replace(QRegExp("\\s+"), " ");
-  if (excerpt.count() > max_len) {
-    excerpt.truncate(max_len-4);
-    excerpt += " ...";
-  }
-  
+QString FullObjectWidget::typeName() const {
   QString typeName = tr("post");
   QString tn = m_object->type();
   if (tn == "note")
@@ -557,14 +542,49 @@ void FullObjectWidget::onDeleteClicked() {
   else if (tn == "image")
     typeName = tr("image");
 
+  return typeName;
+}
+
+//------------------------------------------------------------------------------
+
+QString FullObjectWidget::textExcerpt() const {
+  const int max_len = 40;
+  QString excerpt = ShortObjectWidget::objectExcerpt(m_object).
+    replace(QRegExp("\\s+"), " ");
+  if (excerpt.count() > max_len) {
+    excerpt.truncate(max_len-4);
+    excerpt += " ...";
+  }
+  return excerpt.trimmed();
+}
+
+//------------------------------------------------------------------------------
+
+void FullObjectWidget::onDeleteClicked() {
   QString msg = QString(tr("Are you sure you want to delete this %1?")).
-    arg(typeName) + "\n\"" + excerpt.trimmed() + "\"";
+    arg(typeName()) + "\n\"" + textExcerpt() + "\"";
 
   int ret = QMessageBox::warning(this, CLIENT_FANCY_NAME, msg,
                                  QMessageBox::Cancel | QMessageBox::Yes,
                                  QMessageBox::Cancel);
   if (ret == QMessageBox::Yes)
     emit deleteObject(m_object);
+}
+
+//------------------------------------------------------------------------------
+
+void FullObjectWidget::onRepeatClicked() {
+  QString msg = QString(tr("Share this %1 by %2?")).
+    arg(typeName()).arg(m_author->displayNameOrWebFinger()) +
+    "\n\"" + textExcerpt() + "\"";
+
+  int ret = QMessageBox::question(this, CLIENT_FANCY_NAME, msg,
+                                  QMessageBox::Cancel | QMessageBox::Yes,
+                                  QMessageBox::Yes);
+  if (ret == QMessageBox::Yes) {
+    updateShareButton(true);
+    emit share(m_object);
+  }
 }
 
 //------------------------------------------------------------------------------
