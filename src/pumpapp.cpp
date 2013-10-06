@@ -130,6 +130,7 @@ PumpApp::PumpApp(QString settingsFile, QString locale, QWidget* parent) :
 
   m_firehoseWidget = new CollectionWidget(this, max_fh, 0);
   connectCollection(m_firehoseWidget);
+  m_firehoseWidget->hide();
 
   connect(m_tabWidget, SIGNAL(currentChanged(int)),
           this, SLOT(tabSelected(int)));
@@ -138,7 +139,7 @@ PumpApp::PumpApp(QString settingsFile, QString locale, QWidget* parent) :
   m_tabWidget->addTab(m_directMinorWidget, tr("&Mentions"));
   m_tabWidget->addTab(m_directMajorWidget, tr("&Direct"));
   m_tabWidget->addTab(m_inboxMinorWidget, tr("Mean&while"));
-  m_tabWidget->addTab(m_firehoseWidget, tr("Fi&rehose"), true, true);
+  // m_tabWidget->addTab(m_firehoseWidget, tr("Fi&rehose"), true, true);
 
   m_notifyMap->setMapping(m_inboxWidget, FEED_INBOX);
   m_notifyMap->setMapping(m_directMinorWidget, FEED_MENTIONS);
