@@ -206,10 +206,9 @@ report a bug.
 
 ## Translations
 
-Pumpa currently has a Spanish and French translation, and a German one
-has been discussed. Any new translations are most welcome, but please
-tell me first (<mats@sjoberg.fi>) so that people don't do duplicate
-work!
+Pumpa currently has Spanish, French, [Na'vi][17] and Italian
+translations. Any new translations are most welcome, but please tell
+me first (<mats@sjoberg.fi>) so that people don't do duplicate work!
 
 If you want to translate Pumpa you need to edit a .ts file.  Any TS
 translation tool is probably OK, but these instructions assume you
@@ -264,6 +263,7 @@ steps:
 
 [14]: https://qt-project.org/downloads
 [15]: http://qt-project.org/doc/qt-4.8/linguist-translators.html
+[17]: https://en.wikipedia.org/wiki/Na%27vi_language
 
 ## License
 
