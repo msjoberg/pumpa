@@ -22,12 +22,13 @@
   http://aspell.net/man-html/Through-the-C-API.html#Through-the-C-API
 **/
 
-#ifdef USE_ASPELL
-
 #ifndef _QASPELL_H_
 #define _QASPELL_H_
 
 #include <QtCore>
+
+#ifdef USE_ASPELL
+
 #include <aspell.h>
 
 class QASpell : public QObject {
@@ -37,15 +38,28 @@ public:
   ~QASpell();
 
   bool checkWord(const QString& word) const;
+  QStringList suggestions(const QString& word) const;
   static void setLocale(QString locale);
 
 protected:
   AspellConfig* spell_config;
   AspellSpeller* spell_checker;
 
+  bool checksOK() const;
+
   bool ok;
   static QString s_locale;
 };
 
-#endif /* _QASPELL_H_ */
+#else
+
+// dummy class
+class QASpell : public QObject {
+public:
+  QASpell() {}
+  ~QASpell() {}
+};
+
 #endif
+
+#endif /* _QASPELL_H_ */

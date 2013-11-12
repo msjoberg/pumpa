@@ -18,6 +18,7 @@
 */
 
 #include "messageedit.h"
+#include "pumpa_defines.h"
 
 #include <QDebug>
 #include <QScrollBar>
@@ -26,11 +27,16 @@
 //------------------------------------------------------------------------------
 
 MessageEdit::MessageEdit(QWidget* parent) : QTextEdit(parent),
-                                            m_completions(NULL)
+                                            m_completions(NULL),
+                                            m_checker(NULL)
 {
   setAcceptRichText(false);
 
-  m_highlighter = new FancyHighlighter(document());
+#ifdef USE_ASPELL
+  m_checker = new QASpell(this);
+#endif
+
+  m_highlighter = new FancyHighlighter(document(), m_checker);
 
   m_completer = new QCompleter(this);
   m_completer->setWidget(this);
@@ -152,4 +158,50 @@ void MessageEdit::focusInEvent(QFocusEvent *event) {
   if (m_completer)
     m_completer->setWidget(this);
   QTextEdit::focusInEvent(event);
+}
+
+//------------------------------------------------------------------------------
+
+void MessageEdit::contextMenuEvent(QContextMenuEvent* event) {
+  QMenu* menu = createStandardContextMenu();
+
+#ifdef USE_ASPELL
+  m_contextCursor = cursorForPosition(event->pos());
+  m_contextCursor.select(QTextCursor::WordUnderCursor);
+  QString word = m_contextCursor.selectedText();
+
+  if (!word.isEmpty() && m_checker && !m_checker->checkWord(word)) {
+    QStringList suggestions = m_checker->suggestions(word);
+    if (!suggestions.empty()) {
+      QMenu* m = menu->addMenu(tr("Spelling suggestions..."));
+      m_sMapper = new QSignalMapper(this);
+
+      connect(m_sMapper, SIGNAL(mapped(QString)),
+              this, SLOT(replaceSuggestion(QString)));
+
+      for (int i=0; i<suggestions.size() && i<MAX_SUGGESTIONS; ++i) {
+        QString sWord = suggestions[i];
+        QAction* act = m->addAction(sWord);
+        connect(act, SIGNAL(triggered()), m_sMapper, SLOT(map()));
+        m_sMapper->setMapping(act, sWord);
+      }
+    }
+  }
+#endif
+
+  menu->exec(event->globalPos());
+  delete menu;
+}
+
+//------------------------------------------------------------------------------
+
+void MessageEdit::replaceSuggestion(const QString& word) {
+  if (m_contextCursor.isNull() || word.isEmpty())
+    return;
+
+  m_contextCursor.select(QTextCursor::WordUnderCursor);
+  m_contextCursor.removeSelectedText();
+  m_contextCursor.insertText(word);
+
+  m_contextCursor = QTextCursor();
 }

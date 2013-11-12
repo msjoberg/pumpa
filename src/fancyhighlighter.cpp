@@ -23,12 +23,8 @@
 
 //------------------------------------------------------------------------------
 
-FancyHighlighter::FancyHighlighter(QTextDocument* doc) : QSyntaxHighlighter(doc) 
-{
-#ifdef USE_ASPELL
-  checker = new QASpell(this);
-#endif
-}
+FancyHighlighter::FancyHighlighter(QTextDocument* doc, QASpell* checker) : 
+  QSyntaxHighlighter(doc), m_checker(checker) {}
 
 //------------------------------------------------------------------------------
 
@@ -53,7 +49,7 @@ void FancyHighlighter::highlightBlock(const QString& text) {
     int s = index+offset;
     int l = length-offset;
 
-    if (!checker->checkWord(rxa.cap(2)))
+    if (!m_checker->checkWord(rxa.cap(2)))
       setFormat(s, l, spellErrorFormat);
     index = text.indexOf(rxa, index + length);
   }

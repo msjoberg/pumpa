@@ -76,6 +76,8 @@
 
 #define MAX_WORD_LENGTH       40
 
+#define MAX_SUGGESTIONS       10
+
 //------------------------------------------------------------------------------
 
 #endif /* _PUMPA_DEFINES_H_ */

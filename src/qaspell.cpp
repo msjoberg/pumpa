@@ -61,18 +61,47 @@ void QASpell::setLocale(QString locale) {
 
 //------------------------------------------------------------------------------
 
-bool QASpell::checkWord(const QString& word) const {
+bool QASpell::checksOK() const {
   if (!ok)
-    return true;
+    return false;
 
   if (spell_checker == NULL) {
     qDebug() << "aspell was not initialised properly!";
-    return true;
+    return false;
   }
+  return true;
+}
+
+//------------------------------------------------------------------------------
+
+bool QASpell::checkWord(const QString& word) const {
+  if (!checksOK())
+    return true;
+
   int correct = 
     aspell_speller_check(spell_checker, 
                          reinterpret_cast<const char *>(word.utf16()), -1);
   return correct;
+}
+
+//------------------------------------------------------------------------------
+
+QStringList QASpell::suggestions(const QString& word) const {
+  QStringList list;
+  if (!checksOK())
+    return list;
+
+  const AspellWordList* wl = 
+    aspell_speller_suggest(spell_checker, 
+                           reinterpret_cast<const char *>(word.utf16()), -1);
+  AspellStringEnumeration* w = aspell_word_list_elements(wl);
+  const char* cw;
+  while ((cw = aspell_string_enumeration_next(w)) != NULL) {
+    list << QString::fromUtf16(reinterpret_cast<const ushort *>(cw));
+  }
+  delete_aspell_string_enumeration(w);
+
+  return list;
 }
 
 #endif // USE_ASPELL

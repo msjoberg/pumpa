@@ -26,6 +26,7 @@
 #include <QStringListModel>
 
 #include "qasactor.h"
+#include "qaspell.h"
 #include "fancyhighlighter.h"
 
 //------------------------------------------------------------------------------
@@ -46,16 +47,22 @@ signals:
 
 protected slots:
   void insertCompletion(QString);
+  void replaceSuggestion(const QString& word);
 
 protected:
   virtual void focusInEvent(QFocusEvent *event);
   virtual void keyPressEvent(QKeyEvent* event);
+  virtual void contextMenuEvent(QContextMenuEvent* event);
   QString wordAtCursor() const;
 
   FancyHighlighter* m_highlighter;
   QCompleter* m_completer;
   QStringListModel* m_model;
   const completion_t* m_completions;
+
+  QSignalMapper* m_sMapper;
+  QASpell* m_checker;
+  QTextCursor m_contextCursor;
 };
 
 #endif

@@ -26,15 +26,12 @@
 
 class FancyHighlighter : public QSyntaxHighlighter {
 public:
-  FancyHighlighter(QTextDocument* doc);
+  FancyHighlighter(QTextDocument* doc, QASpell* checker);
 
 protected:
   void highlightBlock(const QString& text);
 
-#ifdef USE_ASPELL
-  QASpell* checker;
-#endif
-
+  QASpell* m_checker;
 };
 
 #endif /* FANCY_HIGHLIGHTER_H */
