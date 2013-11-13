@@ -168,6 +168,17 @@ void MessageEdit::contextMenuEvent(QContextMenuEvent* event) {
 #ifdef USE_ASPELL
   m_contextCursor = cursorForPosition(event->pos());
   m_contextCursor.select(QTextCursor::WordUnderCursor);
+
+
+  QTextDocument* doc = m_contextCursor.document();
+
+  QRegExp rx("[\\w']");
+  int pos = m_contextCursor.selectionEnd();
+  while (rx.exactMatch(doc->characterAt(pos))) {
+    pos++;
+    m_contextCursor.setPosition(pos, QTextCursor::KeepAnchor);
+  }
+
   QString word = m_contextCursor.selectedText();
 
   if (!word.isEmpty() && m_checker && !m_checker->checkWord(word)) {
@@ -199,7 +210,6 @@ void MessageEdit::replaceSuggestion(const QString& word) {
   if (m_contextCursor.isNull() || word.isEmpty())
     return;
 
-  m_contextCursor.select(QTextCursor::WordUnderCursor);
   m_contextCursor.removeSelectedText();
   m_contextCursor.insertText(word);
 
