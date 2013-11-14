@@ -5,10 +5,14 @@ Priority: optional
 Standards-Version: 3.9.2
 Build-Depends: debhelper (>= 9),
                libqt4-dev,
-               libqjson-dev
+               qt4-qmake,
+               libqjson-dev,
+               libaspell-dev
 Homepage: http://saz.im/software/pumpa.html
 
 Package: pumpa
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Pumpa is a simple Qt-based pump.io client.
+  Pumpa is a simple desktop client for identi.ca and other pump.io-based
+  federated social network services.
