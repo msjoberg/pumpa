@@ -360,8 +360,21 @@ void PumpApp::timelineHighlighted(int feed) {
   if ((feed & m_s->highlightFeeds()) && m_trayIcon)
     m_trayIcon->setIcon(QIcon(":/images/pumpa_glow.png"));
 
-  if (feed & m_s->popupFeeds())
-    sendNotification(CLIENT_FANCY_NAME, tr("You have new messages."));
+  if (feed & m_s->popupFeeds()) {
+    CollectionWidget* cw =
+      qobject_cast<CollectionWidget*>(m_notifyMap->mapping(feed));
+    if (cw) {
+      QString msg;
+      QList<QASAbstractObject*> ol = cw->newObjects();
+      if (ol.count() == 1) {
+        msg = ol.at(0)->description();
+      } else if (ol.count() > 1) {
+        msg = tr("You have %1 messages.").arg(ol.count());
+      }
+      if (!msg.isEmpty())
+        sendNotification(CLIENT_FANCY_NAME, msg);
+    }
+  }
 }
 
 //------------------------------------------------------------------------------

@@ -40,6 +40,7 @@ public:
   void setEndpoint(QString endpoint, QObject* parent, int asMode=-1);
 
   int count() const { return m_object_set.size(); }
+  QList<QASAbstractObject*> newObjects() { return m_newObjects; }
 
 signals:
   void highlightMe();  
@@ -81,6 +82,8 @@ protected:
   int m_purgeWait;
   int m_purgeCounter;
   int m_widgetLimit;
+
+  QList<QASAbstractObject*> m_newObjects;
 };
 
 #endif /* _ASWIDGET_H_ */

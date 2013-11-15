@@ -61,6 +61,8 @@ public:
   QString displayName() const { return m_displayName; }
   virtual QString apiLink() const;
 
+  virtual QString description() const { return content(); }
+
   QDateTime published() const { return m_published; }
 
 

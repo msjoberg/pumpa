@@ -41,6 +41,8 @@ public:
   QDateTime lastRefreshed() const { return m_lastRefreshed; }
   void lastRefreshed(QDateTime dt) { m_lastRefreshed = dt; }
 
+  virtual QString description() const { return ""; }
+
 signals:
   void changed();
   // void request(QString, int);
