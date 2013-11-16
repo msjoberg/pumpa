@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=0.7.4
+Version=0.8-beta
 Name=Pumpa
 Exec=/usr/bin/pumpa
 Icon=/usr/share/icons/hicolor/32x32/apps/pumpa.png
