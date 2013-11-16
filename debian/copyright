@@ -1,0 +1,7 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: dianara
+Source: https://gitorious.org/pumpa
+
+Files: *
+Copyright: 2013 Mats Sjöberg <mats@sjoberg.fi>
+License: GPL-3+

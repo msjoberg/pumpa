@@ -63,7 +63,6 @@ public:
 
   QDateTime published() const { return m_published; }
 
-
   void toggleLiked();
   bool liked() const { return m_liked; }
   size_t numLikes() const;
@@ -88,6 +87,8 @@ public:
   QVariantMap toJson() const;
 
   virtual bool isDeleted() const { return !m_deleted.isNull(); }
+
+  QString excerpt() const;
 
 protected:
   QString m_id;

@@ -41,8 +41,6 @@ public:
 
   QASObject* object() const { return m_object; }
 
-  static QString objectExcerpt(QASObject* obj);
-
   virtual void refreshTimeLabels() {};
 
 signals:

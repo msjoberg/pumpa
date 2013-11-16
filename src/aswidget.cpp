@@ -167,6 +167,7 @@ void ASWidget::update() {
   int li = 0; 
   int newCount = 0;
   bool older = false;
+  m_newObjects.clear();
 
   for (size_t i=0; i<m_list->size(); i++) {
     QASAbstractObject* cObj = m_list->at(i);
@@ -225,8 +226,10 @@ void ASWidget::update() {
 #endif
     }
 
-    if (doCountAsNew && !older)
+    if (!m_firstTime && doCountAsNew && !older) {
       newCount++;
+      m_newObjects.push_back(cObj);
+    }
   }
 
   if (newCount && !isVisible() && !m_firstTime)

@@ -27,6 +27,7 @@
 #include <QDebug>
 #include <QList>
 #include <QtAlgorithms>
+#include <QRegExp>
 
 //------------------------------------------------------------------------------
 
@@ -257,5 +258,21 @@ QVariantMap QASObject::toJson() const {
 
 QASActor* QASObject::asActor() {
   return qobject_cast<QASActor*>(this);
+}
+
+//------------------------------------------------------------------------------
+
+QString QASObject::excerpt() const {
+  QString text = displayName();
+  if (text.isEmpty()) {
+    text = content();
+  }
+  if (!text.isEmpty()) {
+    text.replace(QRegExp(HTML_TAG_REGEX), " ");
+  } else {
+    QString t = type();
+    text = (t == "image" ? "an " : "a ") + t;
+  }
+  return text.trimmed();
 }
 

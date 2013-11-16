@@ -549,7 +549,7 @@ QString FullObjectWidget::typeName() const {
 
 QString FullObjectWidget::textExcerpt() const {
   const int max_len = 40;
-  QString excerpt = ShortObjectWidget::objectExcerpt(m_object).
+  QString excerpt = m_object->excerpt().
     replace(QRegExp("\\s+"), " ");
   if (excerpt.count() > max_len) {
     excerpt.truncate(max_len-4);

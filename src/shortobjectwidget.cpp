@@ -97,7 +97,7 @@ void ShortObjectWidget::updateText() {
   if (!m_object)
     return;
 
-  QString content = objectExcerpt(m_object);
+  QString content = m_object->excerpt();
 
   QString text;
   QASActor* author = m_object->author();
@@ -118,16 +118,3 @@ void ShortObjectWidget::onChanged() {
 
 //------------------------------------------------------------------------------
 
-QString ShortObjectWidget::objectExcerpt(QASObject* obj) {
-  QString text = obj->displayName();
-  if (text.isEmpty()) {
-    text = obj->content();
-  }
-  if (!text.isEmpty()) {
-    text.replace(QRegExp(HTML_TAG_REGEX), " ");
-  } else {
-    QString t = obj->type();
-    text = (t == "image" ? "an " : "a ") + t;
-  }
-  return text;
-}
