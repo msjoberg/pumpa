@@ -172,7 +172,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="577"/>
         <source>Share this %1 by %2?</source>
-        <translation type="unfinished"></translation>
+        <translation>Condividi questo %1 via %2?</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="603"/>
@@ -227,7 +227,7 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="95"/>
         <source>Title (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Titolo (opzionale)</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="117"/>
@@ -408,7 +408,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="615"/>
         <source>Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="844"/>
@@ -488,7 +488,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="505"/>
         <source>&amp;About</source>
-        <translation>&amp;A proposito</translation>
+        <translation>A p&amp;roposito</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="508"/>
@@ -524,7 +524,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="520"/>
         <source>Firehose</source>
-        <translation type="unfinished"></translation>
+        <translation>Firehose</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="526"/>
