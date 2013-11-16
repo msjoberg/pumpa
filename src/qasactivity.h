@@ -69,8 +69,6 @@ public:
     return m_verb == "post" && m_object && m_object->isDeleted();
   }
 
-  virtual QString description() const { return content(); }
-
 private:
   QString m_id;
   QString m_url;

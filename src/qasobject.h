@@ -61,10 +61,7 @@ public:
   QString displayName() const { return m_displayName; }
   virtual QString apiLink() const;
 
-  virtual QString description() const { return content(); }
-
   QDateTime published() const { return m_published; }
-
 
   void toggleLiked();
   bool liked() const { return m_liked; }
@@ -90,6 +87,8 @@ public:
   QVariantMap toJson() const;
 
   virtual bool isDeleted() const { return !m_deleted.isNull(); }
+
+  QString excerpt() const;
 
 protected:
   QString m_id;

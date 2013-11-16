@@ -40,7 +40,7 @@ public:
   void setEndpoint(QString endpoint, QObject* parent, int asMode=-1);
 
   int count() const { return m_object_set.size(); }
-  QList<QASAbstractObject*> newObjects() { return m_newObjects; }
+  const QList<QASAbstractObject*>& newObjects() { return m_newObjects; }
 
 signals:
   void highlightMe();  

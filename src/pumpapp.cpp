@@ -357,23 +357,61 @@ void PumpApp::notifyMessage(QString msg) {
 //------------------------------------------------------------------------------
 
 void PumpApp::timelineHighlighted(int feed) {
-  if ((feed & m_s->highlightFeeds()) && m_trayIcon)
+  bool doTrayIcon = (feed & m_s->highlightFeeds()) && m_trayIcon;
+  bool doPopup = feed & m_s->popupFeeds();
+
+  // If we don't do any notifications don't even bother...
+  if (!doTrayIcon && !doPopup)
+    return;
+
+  // We highlight the tray icon and generate popups only on certain
+  // actions, so we first need to filter the list of new activities.
+  QList<QASActivity*> acts;
+
+  CollectionWidget* cw =
+    qobject_cast<CollectionWidget*>(m_notifyMap->mapping(feed));
+  if (!cw) // if it wasn't a regular timeline we ignore it
+    return;
+
+  // We just keep posts, i.e. new notes or comments.
+  // Other possibilities would be: follow favorite like
+  QStringList keepVerbs;
+  keepVerbs << "post";
+
+  // Filter: keep only activities that have a verb in keepVerbs
+  const QList<QASAbstractObject*>& ol = cw->newObjects();
+  for (int i=0; i<ol.count(); ++i) {
+    QASActivity* act = qobject_cast<QASActivity*>(ol.at(0));
+    if (act && keepVerbs.contains(act->verb()))
+      acts.push_back(act);
+  }
+
+  if (acts.isEmpty())
+    return;
+
+  // Highlight tray icon.
+  if (doTrayIcon)
     m_trayIcon->setIcon(QIcon(":/images/pumpa_glow.png"));
 
-  if (feed & m_s->popupFeeds()) {
-    CollectionWidget* cw =
-      qobject_cast<CollectionWidget*>(m_notifyMap->mapping(feed));
-    if (cw) {
-      QString msg;
-      QList<QASAbstractObject*> ol = cw->newObjects();
-      if (ol.count() == 1) {
-        msg = ol.at(0)->description();
-      } else if (ol.count() > 1) {
-        msg = tr("You have %1 messages.").arg(ol.count());
-      }
-      if (!msg.isEmpty())
-        sendNotification(CLIENT_FANCY_NAME, msg);
+  // Popup notifications.
+  if (doPopup) {
+    QString msg =
+      QString(tr("You have %1 new notifications.")).arg(acts.count());
+
+    // If there's only a single post activity we'll make the
+    // notification more informative.
+    QASActivity* act = acts.at(0);
+    QASObject* obj = act->object();
+    QASActor* actor = act->actor();
+    if (acts.count() == 1 && act->verb() == "post" && obj && actor) {
+      QString actorName = actor->displayNameOrWebFinger();
+      if (obj->type() == "comment")
+        msg = QString(tr("%1 commented: ")).arg(actorName);
+      else 
+        msg = QString(tr("%1 wrote: ")).arg(actorName);
+      msg += "\"" + obj->excerpt() + "\"";
     }
+    sendNotification(CLIENT_FANCY_NAME, msg);
   }
 }
 
