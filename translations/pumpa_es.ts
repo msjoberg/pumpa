@@ -200,7 +200,7 @@
     <message>
         <location filename="../src/messageedit.cpp" line="187"/>
         <source>Spelling suggestions...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sugerencias de ortografía...</translation>
     </message>
 </context>
 <context>
@@ -563,17 +563,17 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="399"/>
         <source>You have %1 new notifications.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tienes %1 notificaciones nuevas.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="409"/>
         <source>%1 commented: </source>
-        <translation type="unfinished"></translation>
+        <translation>%1 comentó: </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="411"/>
         <source>%1 wrote: </source>
-        <translation type="unfinished"></translation>
+        <translation>%1 escribió: </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="571"/>
