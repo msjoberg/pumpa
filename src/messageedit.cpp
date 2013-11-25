@@ -20,6 +20,7 @@
 #include "messageedit.h"
 #include "pumpa_defines.h"
 
+#include <QMenu>
 #include <QDebug>
 #include <QScrollBar>
 #include <QAbstractItemView>
