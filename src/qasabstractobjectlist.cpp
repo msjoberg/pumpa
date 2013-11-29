@@ -85,6 +85,9 @@ void QASAbstractObjectList::update(QVariantMap json, bool older) {
   for (int i=0; i<items_json.count(); i++) {
     QASAbstractObject* obj = getAbstractObject(items_json.at(i).toMap(),
                                                parent());
+    if (!obj)
+      continue;
+
     if (mi < m_items.size()) {
       QASAbstractObject* mObj = m_items[mi];
       if (mObj == obj) {

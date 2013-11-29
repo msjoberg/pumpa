@@ -157,7 +157,9 @@ void QASObject::update(QVariantMap json, bool ignoreLike) {
 QASObject* QASObject::getObject(QVariantMap json, QObject* parent,
                                 bool ignoreLike) {
   QString id = json["id"].toString();
-  Q_ASSERT_X(!id.isEmpty(), "getObject", serializeJsonC(json));
+
+  if (id.isEmpty())
+    return NULL;
 
   if (json["objectType"] == "person")
     return QASActor::getActor(json, parent);
