@@ -721,7 +721,7 @@ void PumpApp::fetchAll(bool all) {
   m_directMajorWidget->fetchNewer();
   m_inboxMinorWidget->fetchNewer();
 
-  if (all || tabShown(m_firehoseWidget))
+  if (tabShown(m_firehoseWidget))
     m_firehoseWidget->fetchNewer();
   if (all || tabShown(m_followersWidget))
     m_followersWidget->fetchNewer();
