@@ -30,6 +30,7 @@ The Pumpa source code includes codes and graphics from other projects:
 Oh, and "pumpa" is a Swedish word that means either "to pump" (as a
 verb) or "pumpkin" (as a noun) :-)
 
+Pumpa was mentioned on [LWN: "Searching for a pump.io client"](https://lwn.net/Articles/575691/).
 
 [1]: http://pump.io/
 [2]: https://github.com/kypeli/kQOAuth
@@ -52,43 +53,32 @@ that these are provided by third parties so I have no control over
 them, please report any problems with them to the respective
 packagers/authors.
 
-### Fedora repository
+### Fedora 
 
-[Matt Molyneaux](https://microca.st/moggers87) has created a
-repository for Fedora 19:
-
-<http://moggers.co.uk/~moggers87/repo/pumpa/>
+By [Matt Molyneaux](https://microca.st/moggers87): <http://moggers.co.uk/~moggers87/repo/pumpa/>
 
 ["Metal Biker"](https://microca.st/howcanuhavemyusername) has a Fedora
-Copr repo for Pumpa and [Dianara][18] (another excellent pump.io
-client) here:
-
-<http://sylke.altervista.org/repo/>
+Copr repo for Pumpa and [Dianara][18]: <http://sylke.altervista.org/repo/>
 
 [18]: https://jancoding.wordpress.com/category/projects/dianara/
 
+### Debian (Spanish)
+
+By [Fabián Bonetti](https://identi.ca/mamafree) configured for Spanish: <http://mamalibre.no-ip.org/>
+
+### openSUSE 
+
+By ["XRevan86"](https://microca.st/xrevan86): <http://software.opensuse.org/package/pumpa>
 
 ### Microsoft Windows
 
-[Tim Schumacher][16] has a Windows installer executable at:
-
-<http://bandenkrieg.hacked.jp/~tim/pumpa/>
+By [Tim Schumacher][16]: <http://bandenkrieg.hacked.jp/~tim/pumpa/>
 
 [16]: https://fmrl.me/0xAFFE
 
-### Debian package (Spanish)
+### Mac OS X
 
-[Fabián Bonetti](https://identi.ca/mamafree) makes a Debian package
-with Spanish configuration available on this page:
-
-<http://mamalibre.no-ip.org/>
-
-### Mac OS X build
-
-[Al aka chunder@identi.ca](https://identi.ca/chunder) has made a build
-for Mac OS X 10.8 here:
-
-<http://juu.st/pumpa/>
+By [Al aka chunder@identi.ca](https://identi.ca/chunder): <http://juu.st/pumpa/>
 
 
 ## Build dependencies
