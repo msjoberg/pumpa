@@ -74,20 +74,27 @@ QString siteUrlFixer(QString url) {
 //------------------------------------------------------------------------------
 
 QString linkifyUrls(QString text) {
-  QRegExp rx(QString("(\\s+)%1").arg(URL_REGEX_STRICT));
+  QRegExp rx(QString("(^|\\s)%1(\\s|$)").arg(URL_REGEX_STRICT));
 
-  int pos = 0;
-  while ((pos = rx.indexIn(text, pos)) != -1) {
-    int len = rx.matchedLength();
-    QString before = rx.cap(1);
-    QString url = rx.cap(2);
-    QString newText = QString("%2<a href=\"%1\">%1</a>").arg(url).
-      arg(before);
+  QStringList lines = text.split('\n');
 
-    text.replace(pos, len, newText);
-    pos += newText.count();
+  for (int i=0; i<lines.size(); ++i) {
+    QString line = lines.at(i);
+    int pos = 0;
+    while ((pos = rx.indexIn(line, pos)) != -1) {
+      int len = rx.matchedLength();
+      QString before = rx.cap(1);
+      QString url = rx.cap(2);
+      QString after = rx.cap(3);
+
+      QString newText = QString("%1<%2>%3").arg(before).arg(url).arg(after);
+
+      line.replace(pos, len, newText);
+      pos += newText.count();
+    }
+    lines[i] = line;
   }
-  return text;
+  return lines.join("\n");
 }
 
 //------------------------------------------------------------------------------
@@ -237,15 +244,18 @@ QString addTextMarkup(QString text) {
   qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
 #endif
 
-  text = markDown(text);
-
-#ifdef DEBUG_MARKUP
-  qDebug() << "\n[DEBUG] MARKUP (apply Markdown)\n" << text;
-#endif
+  // linkify plain URLs
   text = linkifyUrls(text);
 
 #ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (linkify plain URLs)\n" << text;
+#endif
+
+  // apply markdown
+  text = markDown(text);
+
+#ifdef DEBUG_MARKUP
+  qDebug() << "\n[DEBUG] MARKUP (apply Markdown)\n" << text;
 #endif
   
   return text;
