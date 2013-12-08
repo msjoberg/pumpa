@@ -194,6 +194,12 @@ void MessageWindow::onAddCc() {
 
 void MessageWindow::onAddRecipient(QASActor* actor) {
   m_toRecipients->addRecipient(actor);
+  if (m_obj != NULL) {
+    // if this is a reply the to list is hidden by default, so we need
+    // to make it visible
+    m_toRecipients->setVisible(true);
+    m_addressLayout->labelForField(m_toRecipients)->setVisible(true);
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -228,7 +234,7 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
     setDefaultRecipients(m_toRecipients, m_s->defaultToAddress());
     setDefaultRecipients(m_ccRecipients, m_s->defaultCcAddress());
   } else {
-    m_toLabel->setText(tr("Also to:"));
+    m_toLabel->setText(tr("Mentions:"));
     // a reply, we need to keep track of To/Cc of parent
     m_toRecipients->clear();
     m_ccRecipients->clear();
@@ -238,12 +244,12 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
       m_parentCc = cc->toRecipientList();
   }
 
-  m_toRecipients->setVisible(true);
-  m_addressLayout->labelForField(m_toRecipients)->setVisible(true);
+  m_toRecipients->setVisible(!isReply);
+  m_addressLayout->labelForField(m_toRecipients)->setVisible(!isReply);
   m_ccRecipients->setVisible(!isReply);
   m_addressLayout->labelForField(m_ccRecipients)->setVisible(!isReply);
 
-  m_addToButton->setVisible(true);
+  m_addToButton->setVisible(!isReply);
   m_addCcButton->setVisible(!isReply);
 
   updateAddPicture();
