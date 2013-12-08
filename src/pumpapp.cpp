@@ -238,7 +238,8 @@ void PumpApp::startPumping() {
 
 void PumpApp::connectCollection(ASWidget* w, bool highlight) {
   connect(w, SIGNAL(request(QString, int)), this, SLOT(request(QString, int)));
-  connect(w, SIGNAL(newReply(QASObject*)), this, SLOT(newNote(QASObject*)));
+  connect(w, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)),
+          this, SLOT(newNote(QASObject*, QASObjectList*, QASObjectList*)));
   connect(w, SIGNAL(linkHovered(const QString&)),
           this, SLOT(statusMessage(const QString&)));
   connect(w, SIGNAL(like(QASObject*)), this, SLOT(onLike(QASObject*)));
@@ -680,12 +681,9 @@ void PumpApp::about() {
 
 //------------------------------------------------------------------------------
 
-void PumpApp::newNote(QASObject* obj) {
-  QASObject* irtObj = NULL; 
-  if (obj)
-    irtObj = m_s->commentOnComments() ? obj : obj->inReplyTo();
-  if (irtObj)
-    obj = irtObj;
+void PumpApp::newNote(QASObject* obj, QASObjectList* to, QASObjectList* cc) {
+  if (obj && !m_s->commentOnComments() && obj->inReplyTo())
+    obj = obj->inReplyTo();
 
   if (!m_messageWindow) {
     m_messageWindow = new MessageWindow(m_s, &m_recipientLists, this);
@@ -697,12 +695,14 @@ void PumpApp::newNote(QASObject* obj) {
                                               RecipientList, RecipientList)),
             this, SLOT(postImage(QString, QString, QString,
                                  RecipientList, RecipientList)));
-    connect(m_messageWindow, SIGNAL(sendReply(QASObject*, QString)),
-            this, SLOT(postReply(QASObject*, QString)));
+    connect(m_messageWindow, SIGNAL(sendReply(QASObject*, QString,
+                                              RecipientList, RecipientList)),
+            this, SLOT(postReply(QASObject*, QString,
+                                 RecipientList, RecipientList)));
     m_messageWindow->setCompletions(&m_completions);
   }
 
-  m_messageWindow->newMessage(obj);
+  m_messageWindow->newMessage(obj, to, cc);
   m_messageWindow->show();
 }
 
@@ -1039,7 +1039,8 @@ void PumpApp::uploadProgress(qint64 bytesSent, qint64 bytesTotal) {
 
 //------------------------------------------------------------------------------
 
-void PumpApp::postReply(QASObject* replyToObj, QString content) {
+void PumpApp::postReply(QASObject* replyToObj, QString content,
+                        RecipientList to, RecipientList cc) {
   if (content.isEmpty())
     return;
 
@@ -1052,7 +1053,7 @@ void PumpApp::postReply(QASObject* replyToObj, QString content) {
   noteObj["objectType"] = replyToObj->type();
   obj["inReplyTo"] = noteObj;
 
-  feed("post", obj, QAS_ACTIVITY | QAS_REFRESH | QAS_POST);
+  feed("post", obj, QAS_ACTIVITY | QAS_REFRESH | QAS_POST, to, cc);
 }
 
 //------------------------------------------------------------------------------
@@ -1095,6 +1096,12 @@ void PumpApp::addRecipient(QVariantMap& data, QString name, RecipientList to) {
     QVariantMap rec;
     rec["objectType"] = obj->type();
     rec["id"] = obj->id();
+    if (!obj->proxyUrl().isEmpty()) {
+      QVariantMap pump_io;
+      pump_io["proxyURL"] = obj->proxyUrl();
+      rec["pump_io"] = pump_io;
+    }
+
     recList.append(rec);
   }
 

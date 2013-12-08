@@ -60,6 +60,7 @@ public:
   QString fullImageUrl() const { return m_fullImageUrl; }
   QString displayName() const { return m_displayName; }
   virtual QString apiLink() const;
+  QString proxyUrl() const { return m_proxyUrl; }
 
   QDateTime published() const { return m_published; }
 

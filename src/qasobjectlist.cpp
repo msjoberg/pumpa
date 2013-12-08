@@ -99,3 +99,12 @@ void QASObjectList::update(QVariantMap json, bool older) {
   }
   QASAbstractObjectList::update(json, older);
 }
+
+//------------------------------------------------------------------------------
+
+RecipientList QASObjectList::toRecipientList() const {
+  RecipientList rl;
+  for (size_t i=0; i<size(); ++i) 
+    rl.append(at(i));
+  return rl;
+}

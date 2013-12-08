@@ -35,7 +35,8 @@ public:
 
   virtual QASAbstractObject* asObject() const = 0;
 
-  static void connectSignals(ObjectWidgetWithSignals* ow, QWidget* w);
+  static void connectSignals(ObjectWidgetWithSignals* ow, QWidget* w,
+                             bool skipNewReply=false);
   static void disconnectSignals(ObjectWidgetWithSignals* ow, QWidget* w);
 
   virtual void refreshTimeLabels() = 0;
@@ -44,7 +45,7 @@ signals:
   void linkHovered(const QString&);
   void like(QASObject*);
   void share(QASObject*);
-  void newReply(QASObject*);
+  void newReply(QASObject*, QASObjectList*, QASObjectList*);
   void follow(QString, bool);
   void deleteObject(QASObject*);
   void request(QString, int);

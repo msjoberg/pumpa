@@ -52,17 +52,20 @@ MessageWindow::MessageWindow(const PumpaSettings* s,
   m_markupLabel->setTextInteractionFlags(Qt::TextSelectableByMouse |
                                        Qt::LinksAccessibleByMouse);
 
-  infoLayout = new QHBoxLayout;
-  infoLayout->addWidget(m_infoLabel);
-  infoLayout->addStretch();
-  infoLayout->addWidget(m_markupLabel);
+  m_infoLayout = new QHBoxLayout;
+  m_infoLayout->addWidget(m_infoLabel);
+  m_infoLayout->addStretch();
+  m_infoLayout->addWidget(m_markupLabel);
 
   m_toRecipients = new MessageRecipients(this);
   m_ccRecipients = new MessageRecipients(this);
 
+  m_toLabel = new QLabel(tr("To:"));
+  m_ccLabel = new QLabel(tr("Cc:"));
+
   m_addressLayout = new QFormLayout;
-  m_addressLayout->addRow(tr("To:"), m_toRecipients);
-  m_addressLayout->addRow(tr("Cc:"), m_ccRecipients);
+  m_addressLayout->addRow(m_toLabel, m_toRecipients);
+  m_addressLayout->addRow(m_ccLabel, m_ccRecipients);
   m_addressLayout->setContentsMargins(0, 0, 0, 0);
 
   m_addPictureButton = new TextToolButton(this);
@@ -105,14 +108,14 @@ MessageWindow::MessageWindow(const PumpaSettings* s,
   connect(m_textEdit, SIGNAL(addRecipient(QASActor*)),
           this, SLOT(onAddRecipient(QASActor*)));
 
-  layout = new QVBoxLayout;
-  layout->addLayout(infoLayout);
-  layout->addLayout(m_addressLayout);
-  layout->addLayout(m_pictureButtonLayout);
-  layout->addWidget(m_pictureLabel, 0, Qt::AlignHCenter);
-  layout->addWidget(m_title);
-  layout->addWidget(m_textEdit);
-  layout->addWidget(m_previewLabel);
+  m_layout = new QVBoxLayout;
+  m_layout->addLayout(m_infoLayout);
+  m_layout->addLayout(m_addressLayout);
+  m_layout->addLayout(m_pictureButtonLayout);
+  m_layout->addWidget(m_pictureLabel, 0, Qt::AlignHCenter);
+  m_layout->addWidget(m_title);
+  m_layout->addWidget(m_textEdit);
+  m_layout->addWidget(m_previewLabel);
 
   m_cancelButton = new QPushButton(tr("Cancel"));
   connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
@@ -124,13 +127,13 @@ MessageWindow::MessageWindow(const PumpaSettings* s,
   connect(m_sendButton, SIGNAL(clicked()), this, SLOT(accept()));
   m_sendButton->setDefault(true);
 
-  buttonLayout = new QHBoxLayout;
-  buttonLayout->addWidget(m_cancelButton);
-  buttonLayout->addWidget(m_previewButton);
-  buttonLayout->addWidget(m_sendButton);
-  layout->addLayout(buttonLayout);
+  m_buttonLayout = new QHBoxLayout;
+  m_buttonLayout->addWidget(m_cancelButton);
+  m_buttonLayout->addWidget(m_previewButton);
+  m_buttonLayout->addWidget(m_sendButton);
+  m_layout->addLayout(m_buttonLayout);
   
-  setLayout(layout);
+  setLayout(m_layout);
 
   m_textEdit->setFocus(Qt::OtherFocusReason);
 
@@ -190,15 +193,18 @@ void MessageWindow::onAddCc() {
 //------------------------------------------------------------------------------
 
 void MessageWindow::onAddRecipient(QASActor* actor) {
-  if (m_obj == NULL) // if not reply
-    m_toRecipients->addRecipient(actor);
+  m_toRecipients->addRecipient(actor);
 }
 
 //------------------------------------------------------------------------------
 
-void MessageWindow::newMessage(QASObject* obj) {
+void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
+                               QASObjectList* cc) {
   bool isReply = (obj != NULL);
   m_obj = obj;
+
+  QString title = isReply ? tr("Post a reply") : tr("Post a note");
+  setWindowTitle(QString(CLIENT_FANCY_NAME) + " - " + title);
 
   m_recipientList.clear();
   for (int i=0; i<m_rl->size(); ++i) {
@@ -211,16 +217,33 @@ void MessageWindow::newMessage(QASObject* obj) {
   for (; it != completions->constEnd(); ++it)
     addToRecipientList(it.key(), it.value());
 
-  m_infoLabel->setText(obj == NULL ? tr("Post a note") : tr("Post a reply"));
-  setDefaultRecipients(m_toRecipients, m_s->defaultToAddress());
-  setDefaultRecipients(m_ccRecipients, m_s->defaultCcAddress());
+  m_infoLabel->setText(title);
 
-  m_toRecipients->setVisible(!isReply);
-  m_addressLayout->labelForField(m_toRecipients)->setVisible(!isReply);
+  m_parentTo.clear();
+  m_parentCc.clear();
+
+  if (!isReply) {
+    m_toLabel->setText(tr("To:"));
+    // A new post, use default recipients
+    setDefaultRecipients(m_toRecipients, m_s->defaultToAddress());
+    setDefaultRecipients(m_ccRecipients, m_s->defaultCcAddress());
+  } else {
+    m_toLabel->setText(tr("Also to:"));
+    // a reply, we need to keep track of To/Cc of parent
+    m_toRecipients->clear();
+    m_ccRecipients->clear();
+    if (to)
+      m_parentTo = to->toRecipientList();
+    if (cc)
+      m_parentCc = cc->toRecipientList();
+  }
+
+  m_toRecipients->setVisible(true);
+  m_addressLayout->labelForField(m_toRecipients)->setVisible(true);
   m_ccRecipients->setVisible(!isReply);
   m_addressLayout->labelForField(m_ccRecipients)->setVisible(!isReply);
 
-  m_addToButton->setVisible(!isReply);
+  m_addToButton->setVisible(true);
   m_addCcButton->setVisible(!isReply);
 
   updateAddPicture();
@@ -272,7 +295,14 @@ void MessageWindow::accept() {
       emit sendImage(msg, title, m_imageFileName, to, cc);
     }
   } else {
-    emit sendReply(m_obj, msg);
+    RecipientList to = m_parentTo;
+    RecipientList cc = m_parentCc;
+
+    RecipientList newTo = m_toRecipients->recipients();
+    for (int i=0; i<newTo.size(); ++i)
+      to.append(newTo.at(i));
+
+    emit sendReply(m_obj, msg, to, cc);
   }
 
   QDialog::accept();

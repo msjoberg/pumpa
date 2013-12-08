@@ -50,6 +50,7 @@ public:
 
 public slots:
   virtual void onObjectChanged();
+  virtual void onReply(QASObject*, QASObjectList*, QASObjectList*);
 
 signals:
   void showContext(QASObject*);

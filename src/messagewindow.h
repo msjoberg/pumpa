@@ -46,7 +46,7 @@ public:
                 QWidget* parent=0);
   virtual void accept();
 
-  void newMessage(QASObject* obj);
+  void newMessage(QASObject* obj, QASObjectList* to, QASObjectList* cc);
   void clear();
   void setCompletions(const MessageEdit::completion_t* completions);
 
@@ -56,7 +56,7 @@ protected:
 signals:
   void sendMessage(QString, QString, RecipientList, RecipientList);
   void sendImage(QString, QString, QString, RecipientList, RecipientList);
-  void sendReply(QASObject*, QString);
+  void sendReply(QASObject*, QString, RecipientList, RecipientList);
 
 private slots:
   void onAddPicture();
@@ -70,25 +70,30 @@ private slots:
 private:
   void addRecipientWindow(MessageRecipients*, QString);
   void updateAddPicture();
+
+  // void initRecipients(MessageRecipients*, QASObjectList*, int);
   void setDefaultRecipients(MessageRecipients*, int);
   void addToRecipientList(QString, QASObject*);
 
-  QVBoxLayout* layout;
+  QVBoxLayout* m_layout;
 
   QLabel* m_infoLabel;
   QLabel* m_markupLabel;
-  QHBoxLayout* infoLayout;
+  QHBoxLayout* m_infoLayout;
 
   QFormLayout* m_addressLayout;
 
   MessageEdit* m_textEdit;
-  QHBoxLayout* buttonLayout;
+  QHBoxLayout* m_buttonLayout;
 
   QHBoxLayout* m_pictureButtonLayout;
   TextToolButton* m_addPictureButton;
   TextToolButton* m_removePictureButton;
   TextToolButton* m_addToButton;
   TextToolButton* m_addCcButton;
+
+  QLabel* m_toLabel;
+  QLabel* m_ccLabel;
 
   RichTextLabel* m_previewLabel;
 
@@ -103,6 +108,9 @@ private:
 
   MessageRecipients* m_toRecipients;
   MessageRecipients* m_ccRecipients;
+
+  RecipientList m_parentTo;
+  RecipientList m_parentCc;
 
   QMap<QString, QASObject*> m_recipientSelection;
   QStringList m_recipientList;

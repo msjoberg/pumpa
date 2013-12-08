@@ -29,7 +29,7 @@ ObjectWidgetWithSignals::ObjectWidgetWithSignals(QWidget* parent) :
 //------------------------------------------------------------------------------
 
 void ObjectWidgetWithSignals::connectSignals(ObjectWidgetWithSignals* ow, 
-                                             QWidget* w) 
+                                             QWidget* w, bool skipNewReply) 
 {
   connect(ow, SIGNAL(linkHovered(const QString&)),
           w, SIGNAL(linkHovered(const QString&)));
@@ -37,8 +37,9 @@ void ObjectWidgetWithSignals::connectSignals(ObjectWidgetWithSignals* ow,
           w, SIGNAL(like(QASObject*)));
   connect(ow, SIGNAL(share(QASObject*)),
           w, SIGNAL(share(QASObject*)));
-  connect(ow, SIGNAL(newReply(QASObject*)),
-          w, SIGNAL(newReply(QASObject*)));
+  if (!skipNewReply)
+    connect(ow, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)),
+            w, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)));
   connect(ow, SIGNAL(follow(QString, bool)),
           w, SIGNAL(follow(QString, bool)));
   connect(ow, SIGNAL(deleteObject(QASObject*)),
@@ -58,8 +59,8 @@ void ObjectWidgetWithSignals::disconnectSignals(ObjectWidgetWithSignals* ow,
              w, SIGNAL(like(QASObject*)));
   disconnect(ow, SIGNAL(share(QASObject*)),
              w, SIGNAL(share(QASObject*)));
-  disconnect(ow, SIGNAL(newReply(QASObject*)),
-             w, SIGNAL(newReply(QASObject*)));
+  disconnect(ow, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)),
+             w, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)));
   disconnect(ow, SIGNAL(follow(QString, bool)),
              w, SIGNAL(follow(QString, bool)));
   disconnect(ow, SIGNAL(deleteObject(QASObject*)),

@@ -45,7 +45,7 @@ public:
 signals:
   void highlightMe();  
   void request(QString, int);
-  void newReply(QASObject*);
+  void newReply(QASObject*, QASObjectList*, QASObjectList*);
   void linkHovered(const QString&);
   void like(QASObject*);
   void share(QASObject*);

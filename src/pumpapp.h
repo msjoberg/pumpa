@@ -77,7 +77,8 @@ private slots:
                 RecipientList to, RecipientList cc);
   void postImage(QString msg, QString title, QString imageFile,
                  RecipientList to, RecipientList cc);
-  void postReply(QASObject* replyToObj, QString content);
+  void postReply(QASObject* replyToObj, QString content,
+                 RecipientList to, RecipientList cc);
   void follow(QString acctId, bool follow);
   void onDeleteObject(QASObject* obj);
 
@@ -101,8 +102,8 @@ private slots:
   void exit();
   void about();
   void preferences();
-  void newNote(QASObject* obj = NULL);
-  // void newPicture();
+  void newNote(QASObject* obj = NULL, QASObjectList* to = NULL,
+               QASObjectList* cc = NULL);
   void reload();
   void loadOlder();
 

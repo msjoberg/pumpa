@@ -527,7 +527,7 @@ void FullObjectWidget::favourite() {
 //------------------------------------------------------------------------------
 
 void FullObjectWidget::reply() {
-  emit newReply(m_object);
+  emit newReply(m_object, NULL, NULL);
 }
 
 //------------------------------------------------------------------------------

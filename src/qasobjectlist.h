@@ -50,6 +50,8 @@ public:
 
   void isReplies(bool b) { m_isReplies = b; }
 
+  RecipientList toRecipientList() const;
+
 protected:
   virtual QASAbstractObject* getAbstractObject(QVariantMap json,
                                                QObject* parent);
