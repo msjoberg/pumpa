@@ -22,7 +22,7 @@
 
 #define CLIENT_NAME           "pumpa"
 #define CLIENT_FANCY_NAME     "Pumpa"
-#define CLIENT_VERSION        "0.8"
+#define CLIENT_VERSION        "0.8.1-dev"
 #define CLIENT_ICON           ":/images/pumpa.png"
 
 #define WEBSITE_URL           "http://saz.im/software/pumpa.html"
