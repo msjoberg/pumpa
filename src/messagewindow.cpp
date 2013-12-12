@@ -206,6 +206,10 @@ void MessageWindow::onAddRecipient(QASActor* actor) {
 
 void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
                                QASObjectList* cc) {
+  QASObject* origObj = obj;
+  if (obj && !m_s->commentOnComments() && obj->inReplyTo())
+    obj = obj->inReplyTo();
+
   bool isReply = (obj != NULL);
   m_obj = obj;
 
@@ -228,6 +232,7 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
   m_parentTo.clear();
   m_parentCc.clear();
 
+  bool hasInitialTo = false;
   if (!isReply) {
     m_toLabel->setText(tr("To:"));
     // A new post, use default recipients
@@ -238,14 +243,31 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
     // a reply, we need to keep track of To/Cc of parent
     m_toRecipients->clear();
     m_ccRecipients->clear();
+
+    // copy to/cc from post we are replying to
     if (to)
       m_parentTo = to->toRecipientList();
     if (cc)
       m_parentCc = cc->toRecipientList();
+
+    // add original post author
+    QASObject* origAuthor = obj->author();
+    if (origAuthor && !m_parentTo.contains(origAuthor)) {
+      m_parentTo.append(origAuthor);
+    }
+
+    // if this is a reply to a comment add comment author to editable
+    // To list
+    if (origObj != obj && origObj->author()) {
+      m_toRecipients->addRecipient(origObj->author());
+      hasInitialTo = true;
+    }
   }
 
-  m_toRecipients->setVisible(!isReply);
-  m_addressLayout->labelForField(m_toRecipients)->setVisible(!isReply);
+  m_toRecipients->setVisible(!isReply || hasInitialTo);
+  m_addressLayout->labelForField(m_toRecipients)->
+    setVisible(!isReply || hasInitialTo);
+
   m_ccRecipients->setVisible(!isReply);
   m_addressLayout->labelForField(m_ccRecipients)->setVisible(!isReply);
 

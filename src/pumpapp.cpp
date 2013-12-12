@@ -682,9 +682,6 @@ void PumpApp::about() {
 //------------------------------------------------------------------------------
 
 void PumpApp::newNote(QASObject* obj, QASObjectList* to, QASObjectList* cc) {
-  if (obj && !m_s->commentOnComments() && obj->inReplyTo())
-    obj = obj->inReplyTo();
-
   if (!m_messageWindow) {
     m_messageWindow = new MessageWindow(m_s, &m_recipientLists, this);
     connect(m_messageWindow,
