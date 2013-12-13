@@ -1008,15 +1008,22 @@ void PumpApp::uploadFile(QString filename) {
 
 //------------------------------------------------------------------------------
 
-void PumpApp::updatePostedImage(QVariantMap) {
-  feed("update", m_imageObject, QAS_ACTIVITY | QAS_REFRESH | QAS_POST);
+void PumpApp::updatePostedImage(QVariantMap obj) {
+  m_imageObject.unite(obj);
+
+  // Work-around for https://github.com/e14n/pump.io/issues/885
+  // Thanks to Owen Shepherd for pointing this out!
+  RecipientList to;
+  to.append(m_selfActor);
+
+  feed("update", m_imageObject, QAS_IMAGE_UPDATE, to);
 }
 
 //------------------------------------------------------------------------------
 
-void PumpApp::postImageActivity(QVariantMap obj) {
-  m_imageObject.unite(obj);
-  feed("post", m_imageObject, QAS_IMAGE_UPDATE, m_imageTo, m_imageCc);
+void PumpApp::postImageActivity(QVariantMap) {
+  feed("post", m_imageObject, QAS_ACTIVITY | QAS_REFRESH | QAS_POST,
+       m_imageTo, m_imageCc);
 }
 
 //------------------------------------------------------------------------------
@@ -1362,9 +1369,9 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     }
   } else if (sid == QAS_IMAGE_UPLOAD) {
     m_uploadDialog->hide();
-    postImageActivity(json);
-  } else if (sid == QAS_IMAGE_UPDATE) {
     updatePostedImage(json);
+  } else if (sid == QAS_IMAGE_UPDATE) {
+    postImageActivity(json);
   }
 
   if ((id & QAS_POST) && m_messageWindow)
