@@ -133,12 +133,26 @@ pump.io server will be opened in the web browser, just follow the
 instructions there. Finally a pair of codes (token, verifier) will
 appear that you need to copy & paste back into pumpa.
 
-## Markup
+## Markdown
 
 When you are posting a new note or comment you can use [Markdown
 syntax][7], with the exception that inline HTML is **not**
 allowed. This is because otherwise it would be very easy to add broken
 HTML which will be very messy...
+
+For example:
+
+- \*stars\* make the word emphasised, typically *italics*
+- \*\*double stars\*\*  strong emphasis, typically **bold**
+- surround links with < and > like so: &lt;http://example.com/&gt;
+- link text \[like this\]\(http://example.com/\)
+- a hash (#) at the start of the line makes an H1 heading, so be
+  careful with hash tags :-)
+
+Enable the Preview below the text editing window to see what the
+output will be before posting it to pump.io.
+
+For the [full Markdown syntax see John Gruber's page][7].
 
 [7]: http://daringfireball.net/projects/markdown/syntax
 

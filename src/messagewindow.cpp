@@ -49,7 +49,7 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
           this, SLOT(onMarkdownChecked(int)));
 
   m_markupLabel = new QLabel(this);
-  m_markupLabel->setText(QString("<a href=\"%2\">" + tr("[markup]") + "</a>").
+  m_markupLabel->setText(QString("<a href=\"%2\">" + tr("[help]") + "</a>").
                        arg(MARKUP_DOC_URL));
   m_markupLabel->setOpenExternalLinks(true);
   m_markupLabel->setTextInteractionFlags(Qt::TextSelectableByMouse |
