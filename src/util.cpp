@@ -256,11 +256,14 @@ QString addTextMarkup(QString text, bool useMarkdown) {
   if (useMarkdown) {
     // apply markdown
     text = markDown(text);
+  } else {
+    text.replace("\n", "<br/>");
+  }
 
 #ifdef DEBUG_MARKUP
-    qDebug() << "\n[DEBUG] MARKUP (apply Markdown)\n" << text;
+  qDebug() << "\n[DEBUG] MARKUP (apply "
+           << (useMarkdown?"Markdown":"text conversion") <<  ")\n" << text;
 #endif
-  }
 
   return text;
 }
