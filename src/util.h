@@ -27,7 +27,7 @@
 //------------------------------------------------------------------------------
 
 #define URL_REGEX "((https?://|(https?://)?www.)[^\\s\"]+\\.[^\\s\"<]+[^\\s\\.\\,\\!\\?\"<])"
-#define URL_REGEX_STRICT "(https?://[^\\s\"]+\\.[^\\s\"<]+[^\\s\\.\\,\\!\\?\"<])"
+#define URL_REGEX_STRICT "(https?://[^\\s\"]+\\.[^\\s\"<]+[^\\s\\.\\,\\!\\?\\)\"<])"
 #define MD_NOGO_ITEMS "\\*`_"
 #define MD_PAIR_REGEX "%1([^\\s%3][^%3]*[^\\s%3]|[^\\s%3])%2"
 #define HTML_TAG_REGEX "<([^>]+)>"

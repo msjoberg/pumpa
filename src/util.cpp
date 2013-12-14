@@ -74,7 +74,7 @@ QString siteUrlFixer(QString url) {
 //------------------------------------------------------------------------------
 
 QString linkifyUrls(QString text, bool useMarkdown) {
-  QRegExp rx(QString("(^|\\s)%1([\\s\\.\\,\\!\\?]|$)").arg(URL_REGEX_STRICT));
+  QRegExp rx(QString("(^|\\s)%1([\\s\\.\\,\\!\\?\\)]|$)").arg(URL_REGEX_STRICT));
 
   QStringList lines = text.split('\n');
 
