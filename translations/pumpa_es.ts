@@ -198,7 +198,7 @@
 <context>
     <name>MessageEdit</name>
     <message>
-        <location filename="../src/messageedit.cpp" line="188"/>
+        <location filename="../src/messageedit.cpp" line="191"/>
         <source>Spelling suggestions...</source>
         <translation>Sugerencias de ortografía...</translation>
     </message>
@@ -226,28 +226,28 @@
         <translation type="obsolete">Seguidores</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="67"/>
-        <location filename="../src/messagewindow.cpp" line="254"/>
+        <location filename="../src/messagewindow.cpp" line="68"/>
+        <location filename="../src/messagewindow.cpp" line="255"/>
         <source>To:</source>
         <translation>Para:</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="68"/>
+        <location filename="../src/messagewindow.cpp" line="69"/>
         <source>Cc:</source>
         <translation>Cc:</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="78"/>
+        <location filename="../src/messagewindow.cpp" line="79"/>
         <source>&amp;Remove picture</source>
         <translation>Borra&amp;r imagen</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="82"/>
+        <location filename="../src/messagewindow.cpp" line="83"/>
         <source>+ &amp;To</source>
         <translation>+ &amp;Para</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="85"/>
+        <location filename="../src/messagewindow.cpp" line="86"/>
         <source>+ &amp;Cc</source>
         <translation>+ &amp;Cc</translation>
     </message>
@@ -256,82 +256,87 @@
         <translation type="obsolete">Título de la imagen (opcional)</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="52"/>
+        <location filename="../src/messagewindow.cpp" line="48"/>
+        <source>Use Markdown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/messagewindow.cpp" line="53"/>
         <source>[help]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="102"/>
+        <location filename="../src/messagewindow.cpp" line="103"/>
         <source>Title (optional)</source>
         <translation>Título (opcional)</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="124"/>
+        <location filename="../src/messagewindow.cpp" line="125"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="127"/>
+        <location filename="../src/messagewindow.cpp" line="128"/>
         <source>Preview</source>
         <translation>Previsualizar</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="130"/>
+        <location filename="../src/messagewindow.cpp" line="131"/>
         <source>Send message</source>
         <translation>Enviar mensaje</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="199"/>
+        <location filename="../src/messagewindow.cpp" line="200"/>
         <source>Select recipient (To)</source>
         <translation>Selecciona destinatario (Para)</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="205"/>
+        <location filename="../src/messagewindow.cpp" line="206"/>
         <source>Select recipient (Cc)</source>
         <translation>Selecciona destinatario (Cc)</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="231"/>
+        <location filename="../src/messagewindow.cpp" line="232"/>
         <source>Post a note</source>
         <translation>Publicar una nota</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="231"/>
+        <location filename="../src/messagewindow.cpp" line="232"/>
         <source>Post a reply</source>
         <translation>Publicar una respuesta</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="259"/>
+        <location filename="../src/messagewindow.cpp" line="260"/>
         <source>Mentions:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="360"/>
+        <location filename="../src/messagewindow.cpp" line="361"/>
         <source>Select Image</source>
         <translation>Seleccionar imagen</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="361"/>
+        <location filename="../src/messagewindow.cpp" line="362"/>
         <source>Image files (*.png *.jpg *.jpeg *.gif);;All files (*.*)</source>
         <translation>Archivos de imagen (*.png *.jpg *.jpeg *.gif);;Todos los archivos (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="393"/>
+        <location filename="../src/messagewindow.cpp" line="394"/>
         <source>Sorry!</source>
         <translation>¡Lo siento!</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="394"/>
+        <location filename="../src/messagewindow.cpp" line="395"/>
         <source>That file didn&apos;t appear to be an image.</source>
         <translation>Ese archivo no parece una imagen.</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="402"/>
+        <location filename="../src/messagewindow.cpp" line="403"/>
         <source>&amp;Add picture</source>
         <translation>&amp;Agregar imagen</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="407"/>
+        <location filename="../src/messagewindow.cpp" line="408"/>
         <source>&amp;Change picture</source>
         <translation>&amp;Cambiar imagen</translation>
     </message>

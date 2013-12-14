@@ -45,7 +45,7 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
 
   m_infoLabel = new QLabel(this);
 
-  m_markdownCheckBox = new QCheckBox("Use Markdown", this);
+  m_markdownCheckBox = new QCheckBox(tr("Use Markdown"), this);
   connect(m_markdownCheckBox, SIGNAL(stateChanged(int)),
           this, SLOT(onMarkdownChecked(int)));
 
