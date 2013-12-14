@@ -31,8 +31,7 @@ const int max_picture_size = 160;
 
 //------------------------------------------------------------------------------
 
-MessageWindow::MessageWindow(const PumpaSettings* s,
-                             const RecipientList* rl,
+MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
                              QWidget* parent) :
   QDialog(parent),
   m_addressLayout(NULL),
@@ -45,6 +44,10 @@ MessageWindow::MessageWindow(const PumpaSettings* s,
 
   m_infoLabel = new QLabel(this);
 
+  m_markdownCheckBox = new QCheckBox("Use Markdown", this);
+  connect(m_markdownCheckBox, SIGNAL(stateChanged(int)),
+          this, SLOT(onMarkdownChecked(int)));
+
   m_markupLabel = new QLabel(this);
   m_markupLabel->setText(QString("<a href=\"%2\">" + tr("[markup]") + "</a>").
                        arg(MARKUP_DOC_URL));
@@ -55,6 +58,7 @@ MessageWindow::MessageWindow(const PumpaSettings* s,
   m_infoLayout = new QHBoxLayout;
   m_infoLayout->addWidget(m_infoLabel);
   m_infoLayout->addStretch();
+  m_infoLayout->addWidget(m_markdownCheckBox);
   m_infoLayout->addWidget(m_markupLabel);
 
   m_toRecipients = new MessageRecipients(this);
@@ -144,6 +148,17 @@ MessageWindow::MessageWindow(const PumpaSettings* s,
 
 //------------------------------------------------------------------------------
 
+void MessageWindow::onMarkdownChecked(int state) {
+  if (state == Qt::Unchecked) {
+    m_s->useMarkdown(false);
+  } else {
+    m_s->useMarkdown(true);
+  }
+  updatePreview();
+}
+
+//------------------------------------------------------------------------------
+
 void MessageWindow::setCompletions(const MessageEdit::completion_t*
                                    completions) {
   if (m_textEdit) 
@@ -215,6 +230,8 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
 
   QString title = isReply ? tr("Post a reply") : tr("Post a note");
   setWindowTitle(QString(CLIENT_FANCY_NAME) + " - " + title);
+
+  m_markdownCheckBox->setChecked(m_s->useMarkdown());
 
   m_recipientList.clear();
   for (int i=0; i<m_rl->size(); ++i) {
@@ -397,7 +414,8 @@ void MessageWindow::updateAddPicture() {
 
 void MessageWindow::updatePreview() {
   if (m_previewLabel->isVisible()) 
-    m_previewLabel->setText(addTextMarkup(m_textEdit->toPlainText()));
+    m_previewLabel->setText(addTextMarkup(m_textEdit->toPlainText(),
+                                          m_s->useMarkdown()));
 }
 
 //------------------------------------------------------------------------------

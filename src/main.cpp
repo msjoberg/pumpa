@@ -39,7 +39,7 @@ int testMarkup(QString str) {
       "url on line http://saz.im and http://foo.bar\n"
       "http://saz.im\n\n"
       "with underlines: http://saz.im/foo_bar_baz.html ...\n";
-  addTextMarkup(str);
+  addTextMarkup(str, true);
   return 0;
 }
 

@@ -32,6 +32,8 @@ PumpaSettings::PumpaSettings(QString filename, QObject* parent) :
   else
     m_s = new QSettings(filename, QSettings::IniFormat, this);
 
+  m_firstStart = !QFile(m_s->fileName()).exists();
+
   QFile::setPermissions(m_s->fileName(),
                         QFile::ReadOwner | QFile::WriteOwner);
 }

@@ -75,7 +75,7 @@ template <class T> void deleteMap(QMap<QString, T>& map) {
 
 void checkMemory(QString desc="");
 
-QString addTextMarkup(QString content);
+QString addTextMarkup(QString content, bool useMarkdown);
 
 //------------------------------------------------------------------------------
 

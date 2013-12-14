@@ -53,6 +53,12 @@ PumpApp::PumpApp(QString settingsFile, QString locale, QWidget* parent) :
   resize(m_s->size());
   move(m_s->pos());
 
+  // for old users set use_markdown=true, false for new installs
+  if (!m_s->firstStart() && !m_s->contains("General/use_markdown")) {
+    qDebug() << "Setting Markdown on by default for old users.";
+    m_s->useMarkdown(true);
+  }
+
   m_settingsDialog = new PumpaSettingsDialog(m_s, this);
   connect(m_settingsDialog, SIGNAL(newAccount()),
           this, SLOT(launchOAuthWizard()));
@@ -939,7 +945,7 @@ void PumpApp::postNote(QString content, QString title,
 
   QVariantMap obj;
   obj["objectType"] = "note";
-  obj["content"] = addTextMarkup(content);
+  obj["content"] = addTextMarkup(content, m_s->useMarkdown());
   if (!title.isEmpty())
     obj["displayName"] = title;
 
@@ -954,7 +960,7 @@ void PumpApp::postImage(QString msg,
                         RecipientList to,
                         RecipientList cc) {
   m_imageObject.clear();
-  m_imageObject["content"] = addTextMarkup(msg);
+  m_imageObject["content"] = addTextMarkup(msg, m_s->useMarkdown());
   m_imageObject["displayName"] = title;
 
   m_imageTo = to;
@@ -1050,7 +1056,7 @@ void PumpApp::postReply(QASObject* replyToObj, QString content,
 
   QVariantMap obj;
   obj["objectType"] = "comment";
-  obj["content"] = addTextMarkup(content);
+  obj["content"] = addTextMarkup(content, m_s->useMarkdown());
 
   QVariantMap noteObj;
   noteObj["id"] = replyToObj->id();

@@ -73,7 +73,7 @@ QString siteUrlFixer(QString url) {
 
 //------------------------------------------------------------------------------
 
-QString linkifyUrls(QString text) {
+QString linkifyUrls(QString text, bool useMarkdown) {
   QRegExp rx(QString("(^|\\s)%1([\\s\\.\\,\\!\\?]|$)").arg(URL_REGEX_STRICT));
 
   QStringList lines = text.split('\n');
@@ -87,7 +87,9 @@ QString linkifyUrls(QString text) {
       QString url = rx.cap(2);
       QString after = rx.cap(3);
 
-      QString newText = QString("%1<%2>%3").arg(before).arg(url).arg(after);
+      QString newText = useMarkdown ?
+        QString("%1<%2>%3").arg(before).arg(url).arg(after) :
+        QString("%1<a href=\"%2\">%2</a>%3").arg(before).arg(url).arg(after);
 
       line.replace(pos, len, newText);
       pos += newText.count();
@@ -215,7 +217,7 @@ void checkMemory(QString desc) {
 
 //------------------------------------------------------------------------------
 
-QString addTextMarkup(QString text) {
+QString addTextMarkup(QString text, bool useMarkdown) {
   QString oldText = text;
 
 #ifdef DEBUG_MARKUP
@@ -245,19 +247,21 @@ QString addTextMarkup(QString text) {
 #endif
 
   // linkify plain URLs
-  text = linkifyUrls(text);
+  text = linkifyUrls(text, useMarkdown);
 
 #ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (linkify plain URLs)\n" << text;
 #endif
 
-  // apply markdown
-  text = markDown(text);
+  if (useMarkdown) {
+    // apply markdown
+    text = markDown(text);
 
 #ifdef DEBUG_MARKUP
-  qDebug() << "\n[DEBUG] MARKUP (apply Markdown)\n" << text;
+    qDebug() << "\n[DEBUG] MARKUP (apply Markdown)\n" << text;
 #endif
-  
+  }
+
   return text;
 }
 

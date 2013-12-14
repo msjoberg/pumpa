@@ -34,6 +34,10 @@ class PumpaSettings : public QObject {
 public:
   PumpaSettings(QString filename="", QObject* parent=0);
 
+  bool firstStart() const { return m_firstStart; }
+
+  bool contains(QString key) const { return m_s->contains(key); }
+
   // getters
   QString siteUrl() const;
   QString userName() const { 
@@ -83,6 +87,10 @@ public:
     return getValue("comment_on_comments", false).toBool();
   }
 
+  bool useMarkdown() const {
+    return getValue("use_markdown", false).toBool();
+  }
+
   QString linkColor() const { return getValue("link_color", "").toString(); }
 
   QString firehoseUrl() const { 
@@ -125,6 +133,8 @@ public:
 
   void commentOnComments(bool b) { setValue("comment_on_comments", b); }
 
+  void useMarkdown(bool b) { setValue("use_markdown", b); }
+
 signals:
   void trayIconChanged();
 
@@ -134,6 +144,8 @@ private:
   void setValue(QString name, QVariant value, QString group="General");
 
   void readSettings();
+
+  bool m_firstStart;
 
   QSettings* m_s;
 };

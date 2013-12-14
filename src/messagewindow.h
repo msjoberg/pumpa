@@ -42,8 +42,7 @@ class MessageWindow : public QDialog {
   Q_OBJECT
 
 public:
-  MessageWindow(const PumpaSettings* s, const RecipientList* rl,
-                QWidget* parent=0);
+  MessageWindow(PumpaSettings* s, const RecipientList* rl, QWidget* parent=0);
   virtual void accept();
 
   void newMessage(QASObject* obj, QASObjectList* to, QASObjectList* cc);
@@ -66,6 +65,7 @@ private slots:
   void onAddRecipient(QASActor*);
   void onAddTo();
   void onAddCc();
+  void onMarkdownChecked(int);
 
 private:
   void addRecipientWindow(MessageRecipients*, QString);
@@ -80,6 +80,8 @@ private:
   QLabel* m_infoLabel;
   QLabel* m_markupLabel;
   QHBoxLayout* m_infoLayout;
+
+  QCheckBox* m_markdownCheckBox;
 
   QFormLayout* m_addressLayout;
 
@@ -116,7 +118,7 @@ private:
   QStringList m_recipientList;
 
   QASObject* m_obj;
-  const PumpaSettings* m_s;
+  PumpaSettings* m_s;
   const RecipientList* m_rl;
 };
 
