@@ -19,6 +19,7 @@
 
 #include "messagewindow.h"
 #include "pumpa_defines.h"
+#include "pumpasettings.h"
 #include "util.h"
 
 #include <QFileDialog>
@@ -106,7 +107,7 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
   m_previewLabel->setFrameStyle(QFrame::Box);
   m_previewLabel->hide();
 
-  m_textEdit = new MessageEdit(this);
+  m_textEdit = new MessageEdit(m_s, this);
   connect(m_textEdit, SIGNAL(ready()), this, SLOT(accept()));
   connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(updatePreview()));
   connect(m_textEdit, SIGNAL(addRecipient(QASActor*)),

@@ -27,9 +27,11 @@
 
 //------------------------------------------------------------------------------
 
-MessageEdit::MessageEdit(QWidget* parent) : QTextEdit(parent),
-                                            m_completions(NULL),
-                                            m_checker(NULL)
+MessageEdit::MessageEdit(const PumpaSettings* s, QWidget* parent) : 
+  QTextEdit(parent),
+  m_completions(NULL),
+  m_checker(NULL),
+  m_s(s)
 {
   setAcceptRichText(false);
 
@@ -135,9 +137,10 @@ void MessageEdit::insertCompletion(QString completion) {
   tc.deletePreviousChar();
 
   QASActor* actor = m_completions->value(completion);
-  QString newText = QString("[%1](%2)").arg(actor->displayName()).
-    arg(actor->url());
-  tc.insertText(newText);
+  QString newText = m_s->useMarkdown() ?
+    QString("[@%1](%2)").arg(actor->displayNameOrWebFinger()).arg(actor->url()):
+    QString("@%1").arg(actor->displayNameOrWebFinger());
+  tc.insertText(newText + " ");
   setTextCursor(tc);
 
   emit addRecipient(actor);

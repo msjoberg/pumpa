@@ -28,13 +28,14 @@
 #include "qasactor.h"
 #include "qaspell.h"
 #include "fancyhighlighter.h"
+#include "pumpasettings.h"
 
 //------------------------------------------------------------------------------
 
 class MessageEdit : public QTextEdit {
   Q_OBJECT
 public:
-  MessageEdit(QWidget* parent=0);
+  MessageEdit(const PumpaSettings* s, QWidget* parent=0);
 
   typedef QMap<QString, QASActor*> completion_t;
   void setCompletions(const completion_t* completions);
@@ -63,6 +64,8 @@ protected:
   QSignalMapper* m_sMapper;
   QASpell* m_checker;
   QTextCursor m_contextCursor;
+
+  const PumpaSettings* m_s;
 };
 
 #endif
