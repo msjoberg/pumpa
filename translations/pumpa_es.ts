@@ -258,7 +258,7 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="52"/>
         <source>[help]</source>
-        <translation type="unfinished"></translation>
+        <translation>[ayuda]</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="102"/>
@@ -303,7 +303,7 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="259"/>
         <source>Mentions:</source>
-        <translation type="unfinished"></translation>
+        <translation>Menciones:</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="360"/>
