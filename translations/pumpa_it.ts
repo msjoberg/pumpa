@@ -235,12 +235,12 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="48"/>
         <source>Use Markdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa Markdown</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="53"/>
         <source>[help]</source>
-        <translation type="unfinished"></translation>
+        <translation>[aiuto]</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="103"/>
@@ -285,7 +285,7 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="260"/>
         <source>Mentions:</source>
-        <translation type="unfinished"></translation>
+        <translation>Menzioni:</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="361"/>
