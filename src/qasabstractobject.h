@@ -52,18 +52,22 @@ protected:
 
   static qint64 sortIntByDateTime(QDateTime dt);
 
+public:
   static void updateVar(QVariantMap, QString&, QString, bool&);
   static void updateVar(QVariantMap, bool&, QString, bool&);
+  static void updateVar(QVariantMap, double&, QString, bool&);
   static void updateVar(QVariantMap, qulonglong&, QString, bool&,
                         bool ignoreDecrease=false);
   static void updateVar(QVariantMap, QDateTime&, QString, bool&);
   static void updateVar(QVariantMap, QString&, QString, QString, bool&);
   static void updateVar(QVariantMap, bool&, QString, QString, bool&);
+  static void updateVar(QVariantMap, double&, QString, QString, bool&);
   static void updateVar(QVariantMap, QString&, QString, QString, QString,
                         bool&);
   static void addVar(QVariantMap&, QString, QString);
   static void updateUrlOrProxy(QVariantMap, QString&, bool&);
 
+protected:
   QDateTime m_lastRefreshed;
   int m_asType;
 };

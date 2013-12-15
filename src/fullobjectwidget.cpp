@@ -286,9 +286,14 @@ void FullObjectWidget::updateInfoText() {
         arg(author->displayName()).
         arg(author->url()) + " " + QString(tr("at %1")).arg(infoStr);
 
-    QString locName = m_object->locationName();
-    if (!locName.isEmpty())
-      infoStr += " (" + locName + ")";
+    QASLocation* loc = m_object->location();
+    if (!loc->isEmpty()) {
+      QString locInfo = loc->displayName();
+      if (loc->hasPosition())
+        locInfo = QString("<a href=\"%2\">%1</a>").arg(locInfo).
+          arg(loc->osmURL(10));
+      infoStr += " @ " + locInfo;
+    }
   }
   m_infoLabel->setText(infoStr + ".");
 }

@@ -89,6 +89,16 @@ void QASAbstractObject::updateVar(QVariantMap obj, bool& var, QString name,
 
 //------------------------------------------------------------------------------
 
+void QASAbstractObject::updateVar(QVariantMap obj, double& var, QString name,
+                                  bool& changed) {
+  bool oldVar = var;
+  if (obj.contains(name))
+    var = obj[name].toDouble();
+  if (oldVar != var) changed = true;
+}
+
+//------------------------------------------------------------------------------
+
 void QASAbstractObject::updateVar(QVariantMap obj, qulonglong& var,
                                   QString name, bool& changed,
                                   bool ignoreDecrease) {
@@ -120,6 +130,14 @@ void QASAbstractObject::updateVar(QVariantMap obj, QString& var, QString name1,
 //------------------------------------------------------------------------------
 
 void QASAbstractObject::updateVar(QVariantMap obj, bool& var, QString name1,
+                                  QString name2, bool& changed) {
+  if (obj.contains(name1))
+    updateVar(obj[name1].toMap(), var, name2, changed);
+}
+
+//------------------------------------------------------------------------------
+
+void QASAbstractObject::updateVar(QVariantMap obj, double& var, QString name1,
                                   QString name2, bool& changed) {
   if (obj.contains(name1))
     updateVar(obj[name1].toMap(), var, name2, changed);

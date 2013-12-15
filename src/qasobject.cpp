@@ -63,6 +63,37 @@ int QASObject::connections() const {
 
 //------------------------------------------------------------------------------
 
+QASLocation::QASLocation(QObject* parent) :
+  QObject(parent),
+  m_hasPosition(true) {}
+
+//------------------------------------------------------------------------------
+
+void QASLocation::update(QVariantMap json) {
+  bool ch;
+  QASAbstractObject::updateVar(json, m_displayName, "displayName", ch);
+
+  if (json.contains("position"))
+    updatePosition(json["position"].toMap());
+  else
+    updatePosition(json);
+}  
+
+//------------------------------------------------------------------------------
+
+void QASLocation::updatePosition(QVariantMap json) {
+  if (json.contains("latitude") && json.contains("longitude")) {
+    m_hasPosition = true;
+    bool ch;
+    QASAbstractObject::updateVar(json, m_longitude, "longitude", ch);
+    QASAbstractObject::updateVar(json, m_latitude, "latitude", ch);
+  } else {
+    m_hasPosition = false;
+  }
+}
+
+//------------------------------------------------------------------------------
+
 QASObject::QASObject(QString id, QObject* parent) :
   QASAbstractObject(QAS_OBJECT, parent),
   m_id(id),
@@ -77,6 +108,7 @@ QASObject::QASObject(QString id, QObject* parent) :
 #ifdef DEBUG_QAS
   qDebug() << "new Object" << m_id;
 #endif
+  m_location = new QASLocation(this);
 }
 
 //------------------------------------------------------------------------------
@@ -110,8 +142,9 @@ void QASObject::update(QVariantMap json, bool ignoreLike) {
   updateVar(json, m_apiLink, "links", "self", "href", ch);  
   updateVar(json, m_proxyUrl, "pump_io", "proxyURL", ch);
 
-  updateVar(json, m_locationName, "location", "displayName", ch);
-
+  if (json.contains("location"))
+    m_location->update(json["location"].toMap());
+ 
   if (json.contains("inReplyTo")) {
     m_inReplyTo = QASObject::getObject(json["inReplyTo"].toMap(), parent());
     //connectSignals(m_inReplyTo, true, true);

@@ -28,6 +28,37 @@ class QASObjectList;
 
 //------------------------------------------------------------------------------
 
+class QASLocation : public QObject {
+  Q_OBJECT
+
+public:
+  QASLocation(QObject* parent);
+
+  bool isEmpty() const { return m_displayName.isEmpty(); }
+  void update(QVariantMap json);
+
+  QString osmURL(int level) const { 
+    return QString("http://www.openstreetmap.org/#map=%1/%2/%3").
+      arg(level).arg(m_latitude).arg(m_longitude);
+  }
+
+  bool hasPosition() const { return m_hasPosition; }
+  double latitude() const { return m_latitude; }
+  double longitude() const { return m_longitude; }
+  QString displayName() const { return m_displayName; }
+
+private:
+  void updatePosition(QVariantMap json);
+
+  double m_latitude;
+  double m_longitude;
+  QString m_displayName;
+
+  bool m_hasPosition;
+};
+
+//------------------------------------------------------------------------------
+
 class QASObject : public QASAbstractObject {
   Q_OBJECT
 
@@ -61,7 +92,7 @@ public:
   QString displayName() const { return m_displayName; }
   virtual QString apiLink() const;
   QString proxyUrl() const { return m_proxyUrl; }
-  QString locationName() const { return m_locationName; }
+  QASLocation* location() const { return m_location; }
 
   QDateTime published() const { return m_published; }
 
@@ -104,11 +135,12 @@ protected:
   QString m_displayName;
   QString m_apiLink;
   QString m_proxyUrl;
-  QString m_locationName;
 
   QDateTime m_published;
   QDateTime m_updated;
   QDateTime m_deleted;
+
+  QASLocation* m_location;
 
   QASObject* m_inReplyTo;
   QASActor* m_author;
