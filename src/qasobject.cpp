@@ -110,6 +110,8 @@ void QASObject::update(QVariantMap json, bool ignoreLike) {
   updateVar(json, m_apiLink, "links", "self", "href", ch);  
   updateVar(json, m_proxyUrl, "pump_io", "proxyURL", ch);
 
+  updateVar(json, m_locationName, "location", "displayName", ch);
+
   if (json.contains("inReplyTo")) {
     m_inReplyTo = QASObject::getObject(json["inReplyTo"].toMap(), parent());
     //connectSignals(m_inReplyTo, true, true);

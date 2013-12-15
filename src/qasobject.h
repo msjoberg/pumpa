@@ -61,6 +61,7 @@ public:
   QString displayName() const { return m_displayName; }
   virtual QString apiLink() const;
   QString proxyUrl() const { return m_proxyUrl; }
+  QString locationName() const { return m_locationName; }
 
   QDateTime published() const { return m_published; }
 
@@ -103,6 +104,7 @@ protected:
   QString m_displayName;
   QString m_apiLink;
   QString m_proxyUrl;
+  QString m_locationName;
 
   QDateTime m_published;
   QDateTime m_updated;

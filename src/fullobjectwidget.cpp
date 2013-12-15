@@ -274,7 +274,7 @@ void FullObjectWidget::updateInfoText() {
     
     QString location = m_actor->location();
     if (!location.isEmpty())
-      infoStr += " " + QString(tr("at %1")).arg(location) + " ";
+      infoStr += " " + QString(tr("at %1")).arg(location);
   } else {
     infoStr = QString("<a href=\"%2\">%1</a>").
       arg(relativeFuzzyTime(m_object->published())).
@@ -284,9 +284,13 @@ void FullObjectWidget::updateInfoText() {
     if (author)
       infoStr = QString("<a href=\"%2\">%1</a>").
         arg(author->displayName()).
-        arg(author->url()) + " " + QString(tr("at %1")).arg(infoStr) + " ";
+        arg(author->url()) + " " + QString(tr("at %1")).arg(infoStr);
+
+    QString locName = m_object->locationName();
+    if (!locName.isEmpty())
+      infoStr += " (" + locName + ")";
   }
-  m_infoLabel->setText(infoStr);
+  m_infoLabel->setText(infoStr + ".");
 }
 
 //------------------------------------------------------------------------------
