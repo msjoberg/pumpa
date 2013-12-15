@@ -136,7 +136,7 @@ void ActivityWidget::updateText() {
   if (!generatorName.isEmpty() && (verb != "share"))
     text += QString(tr(" via %1")).arg(generatorName);
 
-  if (verb == "post" && (objType == "note" || objType == "image")) {
+  if (verb == "post") {
     if (m_activity->hasTo())
       text += " " + tr("To:") +" " + recipientsToString(m_activity->to());
     

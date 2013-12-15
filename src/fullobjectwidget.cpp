@@ -186,7 +186,7 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
             this, SLOT(updateFollowAuthorButton()));
   
   m_commentable = objType == "note" || objType == "comment" ||
-    objType == "image";
+    objType == "image" || objType == "video";
   if (m_commentable) {
     m_favourButton->setVisible(true);
     m_followAuthorButton->setVisible(true);
