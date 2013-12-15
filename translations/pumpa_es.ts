@@ -258,7 +258,7 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="48"/>
         <source>Use Markdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Usar Markdown</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="53"/>
