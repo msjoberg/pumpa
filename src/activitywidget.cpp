@@ -137,11 +137,13 @@ void ActivityWidget::updateText() {
     text += QString(tr(" via %1")).arg(generatorName);
 
   if (verb == "post") {
-    if (m_activity->hasTo())
-      text += " " + tr("To:") +" " + recipientsToString(m_activity->to());
+    QString toStr = recipientsToString(m_activity->to());
+    QString ccStr = recipientsToString(m_activity->cc());
+    if (!toStr.isEmpty())
+      text += " " + tr("To:") +" " + toStr;
     
-    if (m_activity->hasCc())
-      text += " " + tr("CC:") + " " + recipientsToString(m_activity->cc());
+    if (!ccStr.isEmpty())
+      text += " " + tr("CC:") + " " + ccStr;
   }
 
   m_textLabel->setText(text);
@@ -162,6 +164,9 @@ QString ActivityWidget::recipientsToString(QASObjectList* rec) {
     } else {
       QString name = r->displayName();
       QString url = r->url();
+
+      if (name.isEmpty())
+        continue;
 
       if (url.isEmpty())
         ret << name;
