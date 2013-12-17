@@ -1,5 +1,5 @@
-pumpa (0.8) UNRELEASED; urgency=low
+pumpa (0.8.1) UNRELEASED; urgency=low
 
-  * Initial release.
+  * Initial Release. (Closes: #nnnn)  <nnnn is the bug number of your ITP>
 
- -- Mats Sjöberg <mats@sjoberg.fi>  Mon, 18 Nov 2013 21:51:31 +0200
+ -- Mats Sjöberg <mats@sjoberg.fi>  Mon, 16 Dec 2013 21:45:26 +0200
