@@ -127,7 +127,7 @@ OAuthSecondPage::OAuthSecondPage(QWidget* parent) : QWizardPage(parent) {
                   "to your pump.io account you need to grant Pumpa access via "
                   "the web page. Pumpa will open the web page for you - just "
                   "follow the instructions and copy &amp; paste the "
-                  "<b>verifier</b> text string back into the field below. (The"
+                  "<b>verifier</b> text string back into the field below. (The "
                   "token should be automatically pre-filled.)"),
                this);
   infoLabel->setWordWrap(true);
