@@ -671,7 +671,7 @@ void PumpApp::about() {
   QString mainText = 
     QString("<p><b>%1 %2</b> - %3<br/><a href=\"%4\">%4</a><br/>"
             + tr("Copyright &copy; 2013 Mats Sj&ouml;berg")
-            + " - <a href=\"https://pio.saz.im/sazius\">sazius@pio.saz.im</a>."
+            + " - <a href=\"https://pump.saz.im/sazius\">sazius@pump.saz.im</a>."
             "</p>"
             + tr("<p>Report bugs and feature requests at "
                  "<a href=\"%5\">%5</a>.</p>"))
