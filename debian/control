@@ -9,12 +9,14 @@ Build-Depends: debhelper (>= 9),
                libaspell-dev
 Standards-Version: 3.9.3
 Homepage: http://saz.im/software/pumpa.html
-Vcs-Git: git@gitorious.org:pumpa/pumpa.git
+Vcs-Git: git://git@gitorious.org:pumpa/pumpa.git
 Vcs-Browser: https://gitorious.org/pumpa/pumpa
 
 Package: pumpa
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Pumpa is a simple desktop client for pump.io.
- Pumpa is a simple Qt desktop client for identi.ca and other
- pump.io-based federated social network services.
+Description: simple desktop client for pump.io, the distributed social network 
+ Pumpa is a simple Qt-based desktop client for identi.ca and other
+ pump.io-based distributed social network services.  Pumpa offers
+ several improvements over using the web interface, such as better
+ notifications and the ability to @reply particular users.
