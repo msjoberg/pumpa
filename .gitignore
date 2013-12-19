@@ -16,4 +16,9 @@ Makefile.Release
 object_script.pumpa.Debug
 object_script.pumpa.Release
 /debian/files
-/debian/pumpa*
+/debian/pumpa.debhelper.log
+/debian/pumpa.postinst.debhelper
+/debian/pumpa.postrm.debhelper
+/debian/pumpa.substvars
+/debian/pumpa/DEBIAN/
+/debian/pumpa/usr/
