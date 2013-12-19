@@ -1,5 +1,5 @@
-pumpa (0.8.1) UNRELEASED; urgency=low
+pumpa (0.8.1) unstable; urgency=low
 
-  * Initial Release. (Closes: #1234)
+  * Initial release. (Closes: #732653)
 
- -- Mats Sjöberg <mats@sjoberg.fi>  Mon, 16 Dec 2013 21:45:26 +0200
+ -- Mats Sjöberg <mats@sjoberg.fi>  Fri, 20 Dec 2013 00:10:06 +0200
