@@ -830,9 +830,10 @@ void PumpApp::testUserAndFollow(QString username, QString server) {
     arg(server).arg(username);
   // https://io.saz.im/.well-known/webfinger?resource=sazius@saz.im
 
-  QNetworkRequest rec(QUrl("http://" + fingerUrl));
+  QNetworkRequest rec(QUrl("https://" + fingerUrl));
   QNetworkReply* reply = m_nam->head(rec);
   connect(reply, SIGNAL(finished()), this, SLOT(userTestDoneAndFollow()));
+  qDebug() << "testUserAndFollow" << fingerUrl;
   
   // isn't this an ugly yet fancy hack? :-)
   reply->setProperty("pumpa_redirects", 0);
@@ -844,16 +845,32 @@ void PumpApp::userTestDoneAndFollow() {
   QString error;
 
   QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+  QUrl url = reply->url();
+
 #ifdef QT5
-  QUrlQuery replyQuery(reply->url().query());
+  QUrlQuery replyQuery(url.query());
   QString userId = replyQuery.queryItemValue("resource");
 #else
-  QString userId = reply->url().queryItemValue("resource");
+  QString userId = url.queryItemValue("resource");
 #endif
-  if (reply->error() != QNetworkReply::NoError)
-    return errorBox(tr("Invalid user: ") + userId);
 
   int redirs = reply->property("pumpa_redirects").toInt();
+#ifdef DEBUG_NET
+  qDebug() << "userTestDoneAndFollow" << url << redirs;
+#endif
+
+  if (reply->error() != QNetworkReply::NoError) {
+    if (redirs == 0) {
+      url.setScheme("http");
+      QNetworkRequest rec(url);
+      QNetworkReply* r = m_nam->head(rec);
+      r->setProperty("pumpa_redirects", ++redirs);
+      connect(r, SIGNAL(finished()), this, SLOT(userTestDoneAndFollow()));
+      return;
+    } else {
+      return errorBox(tr("Invalid user: ") + userId);
+    }
+  }
 
   QUrl loc = reply->header(QNetworkRequest::LocationHeader).toUrl();
   if (loc.isValid()) {
