@@ -642,11 +642,11 @@ QString FullObjectWidget::processText(QString old_text, bool getImages) {
 
   // Shorten links that are too long, this is OK, since you can still
   // click the link.
-  QRegExp rxa("<a\\s[^>]*href=([^>\\s]+)[^>]*>([^<]*)</a>");
+  QRegExp rxa("<a\\s[^>]*href=([^>]+)[^>]*>([^<]*)</a>");
   pos = 0;
   while ((pos = rxa.indexIn(text, pos)) != -1) {
     int len = rxa.matchedLength();
-    QString url = rxa.cap(1);
+    QString url = rxa.cap(1).trimmed();
     QString linkText = rxa.cap(2);
 
     if ((linkText.startsWith("http://") || linkText.startsWith("https://")) &&
