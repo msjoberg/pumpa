@@ -91,6 +91,8 @@ public:
     return getValue("use_markdown", false).toBool();
   }
 
+  QString locale() const { return getValue("locale", ""). toString(); }
+
   QString linkColor() const { return getValue("link_color", "").toString(); }
 
   QString firehoseUrl() const { 

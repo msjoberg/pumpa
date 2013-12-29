@@ -32,9 +32,10 @@
 
 //------------------------------------------------------------------------------
 
-PumpApp::PumpApp(QString settingsFile, QString locale, QWidget* parent) : 
+PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) : 
   QMainWindow(parent),
   m_nextRequestId(0),
+  m_s(settings),
   m_contextWidget(NULL),
   m_isLoading(false),
   m_wiz(NULL),
@@ -49,7 +50,6 @@ PumpApp::PumpApp(QString settingsFile, QString locale, QWidget* parent) :
   QASpell::setLocale(m_locale);
 #endif
 
-  m_s = new PumpaSettings(settingsFile, this);
   resize(m_s->size());
   move(m_s->pos());
 

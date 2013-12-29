@@ -56,7 +56,7 @@ class PumpApp : public QMainWindow {
   Q_OBJECT
 
 public:
-  PumpApp(QString settingsFile="", QString locale="", QWidget* parent=0);
+  PumpApp(PumpaSettings* settings, QString locale="", QWidget* parent=0);
   virtual ~PumpApp();                            
 
 signals:

@@ -25,6 +25,7 @@
 #include "pumpapp.h"
 #include "util.h"
 #include "pumpa_defines.h"
+#include "pumpasettings.h"
 
 #include <QTranslator>
 #include <QLocale>
@@ -105,6 +106,11 @@ int main(int argc, char** argv) {
       return 0;
     }
   }
+  PumpaSettings settings(settingsFile);
+  QString sLocale = settings.locale();
+  if (!sLocale.isEmpty())
+    locale = sLocale;
+
   qDebug() << "Using locale" << locale;
 
   QTranslator qtTranslator;
@@ -120,6 +126,6 @@ int main(int argc, char** argv) {
   if (ok) 
     qDebug() << "Successfully loaded translation";
 
-  PumpApp papp(settingsFile, locale);
+  PumpApp papp(&settings, locale);
   return app.exec();
 }
