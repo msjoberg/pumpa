@@ -1,4 +1,4 @@
-# Pumpa v0.8.1
+# Pumpa v0.8.2
 
 Greetings, fellow pumpkins!
 
@@ -275,6 +275,11 @@ steps:
   can always force Pumpa to pick the right one, e.g. for Spanish:
 
       ./pumpa -l es
+
+  Or add this under the `[%General]` section in the configuration
+  file:
+
+    locale=es
 
 
 [14]: https://qt-project.org/downloads
