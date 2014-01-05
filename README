@@ -43,15 +43,19 @@ Pumpa was mentioned on [LWN: "Searching for a pump.io client"](https://lwn.net/A
 
 ## Installing
 
-At this point most people keep up with the git repository and compile
-Pumpa themselves (for instructions how to do this, see the next two
-sections).  Once Pumpa development stabilises a bit, hopefully
-packages for different platforms will appear.
+Pumpa is packaged in [Debian sid
+(unstable)](http://packages.debian.org/sid/pumpa) and [Ubuntu
+trusty](http://packages.ubuntu.com/trusty/pumpa), so if you are using
+one of those, you can simply install it with your favourite package
+manager or by typing (as root or using `sudo`):
 
-Below are some packages or installers for different platforms.  Note
-that these are provided by third parties so I have no control over
-them, please report any problems with them to the respective
-packagers/authors.
+    apt-get install pumpa
+
+In addition, some third parties have provided packages or installers
+for other platforms listed below. Please note, that I have no control
+over these, so please report any problems with them to the respective
+packagers/authors.  Alternatively you can download the source code and
+compile it yourself, it's pretty easy (see the following sections).
 
 ### Fedora 
 
