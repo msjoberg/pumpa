@@ -95,7 +95,9 @@ void QASActivity::update(QVariantMap json) {
 
 QASActivity* QASActivity::getActivity(QVariantMap json, QObject* parent) {
   QString id = json["id"].toString();
-  Q_ASSERT_X(!id.isEmpty(), "getActivity", serializeJsonC(json));
+
+  if (id.isEmpty())
+    return NULL;
 
   QASActivity* act = s_activities.contains(id) ? s_activities[id] :
     new QASActivity(id, parent);
