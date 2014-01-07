@@ -124,7 +124,8 @@ TRANSLATIONS = \
 	translations/pumpa_fr.ts \
 	translations/pumpa_nvi.ts \
 	translations/pumpa_en.ts \
-	translations/pumpa_it.ts
+	translations/pumpa_it.ts \
+	translations/pumpa_de.ts
 
 
 ######################################################################
