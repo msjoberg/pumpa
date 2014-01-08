@@ -359,9 +359,9 @@ void FullObjectWidget::updateFollowAuthorButton(bool /*wait*/) {
 
   m_followAuthorButton->setVisible(true);
 
-  QString text = (m_author->followed() ? tr("stop following") : tr("follow"))
-    + " ";
-  text += m_author->preferredUsername();
+  QString text = QString(m_author->followed() ? 
+                         tr("stop following %1") : tr("follow %1")).
+    arg(m_author->preferredUsername());
 
   m_followAuthorButton->setText(text);
 }
@@ -610,8 +610,8 @@ void FullObjectWidget::onFollow() {
 void FullObjectWidget::onFollowAuthor() {
   bool doFollow = !m_author->followed();
   if (!doFollow) {
-    QString msg = tr("Are you sure you want to stop following") + " " +
-      m_author->displayNameOrWebFinger();
+    QString msg = QString(tr("Are you sure you want to stop following %1?")).
+      arg(m_author->displayNameOrWebFinger());
     int ret = QMessageBox::warning(this, CLIENT_FANCY_NAME, msg,
                                    QMessageBox::Cancel | QMessageBox::Yes,
                                    QMessageBox::Cancel);

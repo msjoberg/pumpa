@@ -91,15 +91,23 @@
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="345"/>
-        <location filename="../src/fullobjectwidget.cpp" line="362"/>
         <source>stop following</source>
         <translation>arrêter de suivre</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="346"/>
-        <location filename="../src/fullobjectwidget.cpp" line="362"/>
         <source>follow</source>
         <translation>suivre</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="363"/>
+        <source>stop following %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="363"/>
+        <source>follow %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="404"/>
@@ -121,6 +129,11 @@
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="613"/>
+        <source>Are you sure you want to stop following %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="408"/>
@@ -185,9 +198,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="613"/>
         <source>Are you sure you want to stop following</source>
-        <translation>Êtes vous sûr de vouloir arrêter de suivre</translation>
+        <translation type="obsolete">Êtes vous sûr de vouloir arrêter de suivre</translation>
     </message>
 </context>
 <context>

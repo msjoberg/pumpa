@@ -91,14 +91,22 @@
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="345"/>
-        <location filename="../src/fullobjectwidget.cpp" line="362"/>
         <source>stop following</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="346"/>
-        <location filename="../src/fullobjectwidget.cpp" line="362"/>
         <source>follow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="363"/>
+        <source>stop following %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="363"/>
+        <source>follow %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -123,6 +131,11 @@
             <numerusform>and one other person</numerusform>
             <numerusform>and %n other persons</numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="613"/>
+        <source>Are you sure you want to stop following %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>%Ln persons shared this.</source>
@@ -172,11 +185,6 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="587"/>
         <source>Share this %1 by %2?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="613"/>
-        <source>Are you sure you want to stop following</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

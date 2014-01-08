@@ -91,16 +91,24 @@
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="345"/>
-        <location filename="../src/fullobjectwidget.cpp" line="362"/>
         <source>stop following</source>
         <translatorcomment>enfolge ist nicht das schönste Wort. Allerdings steht hinter dem stop following direkt der Nickname als z.B. &quot;stop following evan&quot;</translatorcomment>
         <translation>entfolge</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="346"/>
-        <location filename="../src/fullobjectwidget.cpp" line="362"/>
         <source>follow</source>
         <translation>folge</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="363"/>
+        <source>stop following %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="363"/>
+        <source>follow %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="404"/>
@@ -124,6 +132,11 @@
             <numerusform>und %Ln weitere Person</numerusform>
             <numerusform>und %Ln weiteren Personen</numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="613"/>
+        <source>Are you sure you want to stop following %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>%Ln persons shared this.</source>
@@ -176,9 +189,8 @@
         <translation>Teile %1 von %2?</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="613"/>
         <source>Are you sure you want to stop following</source>
-        <translation>Sind Sie sicher, dass Sie dem Benutzer nicht mehr folgen wollen</translation>
+        <translation type="obsolete">Sind Sie sicher, dass Sie dem Benutzer nicht mehr folgen wollen</translation>
     </message>
 </context>
 <context>
@@ -321,8 +333,8 @@
     <message>
         <location filename="../src/oauthwizard.cpp" line="46"/>
         <source>&lt;p&gt;In order to use pump.io you need to first register an account with a pump.io server. If you haven&apos;t done this yet you can do it now by trying out one of the existing public servers: &lt;br /&gt;&lt;a href=&quot;http://pump.io/tryit.html&quot;&gt;http://pump.io/tryit.html&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;When you are done enter your new pump.io account id below in the form of &lt;b&gt;username@servername&lt;/b&gt;.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Um pump.io nutzen zu können, benöitgen Sie einen Account auf einem pump.io-Server. Wenn Sie noch keinen Account besitzen, können Sie sich einfach an einem der öffentlichen pump.io-Server unter folgendem Link registrieren:&lt;/p&gt;
-&lt;a href=&quot;http://pump.io/tryit.html&quot;&gt;http://pump.io/tryit.html&lt;/a&gt;&lt;p&gt;Wenn Sie einen Account erstellt haben, tragen Sie einfach Ihre Account-ID in dem Format &lt;b&gt;benutzername@servername&lt;/b&gt; in dem unten angezeigten Feld ein.&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;Um pump.io nutzen zu können, benötigen Sie einen Account auf einem pump.io-Server. Wenn Sie noch keinen Account besitzen, können Sie sich einfach an einem der öffentlichen pump.io-Server unter folgendem Link registrieren:&lt;/p&gt;
+&lt;a href=&quot;http://pump.io/tryit.html&quot;&gt;http://pump.io/tryit.html&lt;/a&gt;&lt;p&gt;Wenn Sie einen Account erstellt haben oder bereits ein pump.io-Konto besitzen, tragen Sie Ihre Account-ID in dem Format &lt;b&gt;benutzername@servername&lt;/b&gt; in dem unten angezeigten Feld ein.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/oauthwizard.cpp" line="65"/>
@@ -346,7 +358,7 @@
     <message>
         <location filename="../src/oauthwizard.cpp" line="126"/>
         <source>In order for Pumpa to be able to read and post new messages to your pump.io account you need to grant Pumpa access via the web page. Pumpa will open the web page for you - just follow the instructions and copy &amp;amp; paste the &lt;b&gt;verifier&lt;/b&gt; text string back into the field below. (The token should be automatically pre-filled.)</source>
-        <translation>Damit Pumpa in der Lage ist, neue Nachrichten zu lesen und zu verfassen, müssen Sie Pumpa den Zugriff auf Ihren pump.io-Account gestatten. Pumpa wird dazu eine Webseite des pump.io-Servers aufrufen deren Anweisungen Sie einfach folgen. Um den Anmeldevorgang abzuschließen, kopieren Sie den &lt;b&gt;Verifier&lt;/b&gt; in das obere Feld. (Der Token sollte von Pumpa automatisch ausgefüllt werden, sobald sich die Webseite öffenet)</translation>
+        <translation>Damit Pumpa neue Nachrichten lesen und verfassen kann, müssen Sie den Zugriff auf Ihren pump.io-Account gestatten. Pumpa wird dazu eine Webseite des pump.io-Servers aufrufen, deren Anweisungen Sie folgen. Um den Anmeldevorgang abzuschließen, kopieren Sie den &lt;b&gt;Verifier&lt;/b&gt; in das obere Feld. (Der Token sollte von Pumpa automatisch ausgefüllt werden, sobald sich die Webseite öffenet)</translation>
     </message>
     <message>
         <location filename="../src/oauthwizard.cpp" line="136"/>
@@ -405,7 +417,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="144"/>
         <source>&amp;Inbox</source>
-        <translation type="unfinished">&amp;Nachrichten</translation>
+        <translation>&amp;Nachrichten</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="145"/>
@@ -415,12 +427,12 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="146"/>
         <source>&amp;Direct</source>
-        <translation type="unfinished">&amp;Posteingang</translation>
+        <translation>&amp;Posteingang</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="147"/>
         <source>Mean&amp;while</source>
-        <translation type="unfinished">Ne&amp;uigkeiten</translation>
+        <translation>N&amp;euigkeiten</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="673"/>
@@ -455,12 +467,12 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="543"/>
         <source>E&amp;xit</source>
-        <translation>Exit</translation>
+        <translation>E&amp;xit</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="544"/>
         <source>Ctrl+Q</source>
-        <translation></translation>
+        <translation>Strg+X</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="547"/>
@@ -470,32 +482,32 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="550"/>
         <source>&amp;Reload timeline</source>
-        <translation>Beiträge neu laden</translation>
+        <translation>Beit&amp;räge neu laden</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="551"/>
         <source>Ctrl+R</source>
-        <translation></translation>
+        <translation>Strg+R</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="555"/>
         <source>Load older in timeline</source>
-        <translation>Ältere Beiträge laden</translation>
+        <translation>Ältere Beiträge &amp;laden</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="556"/>
         <source>Ctrl+O</source>
-        <translation></translation>
+        <translation>Strg+L</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="559"/>
         <source>F&amp;ollow an account</source>
-        <translation>Nutzer folgen</translation>
+        <translation>Nutzer &amp;folgen</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="560"/>
         <source>Ctrl+L</source>
-        <translation></translation>
+        <translation>Strg+F</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="563"/>
@@ -505,22 +517,22 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="566"/>
         <source>About &amp;Qt</source>
-        <translation>Über &amp;Qt</translation>
+        <translation>Über Qt</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="569"/>
         <source>New &amp;Note</source>
-        <translation>Neue Mitteilung</translation>
+        <translation>&amp;Neue Mitteilung</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="570"/>
         <source>Ctrl+N</source>
-        <translation></translation>
+        <translation>Strg+N</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="574"/>
         <source>Ctrl+D</source>
-        <translation></translation>
+        <translation>Strg+D</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="231"/>
