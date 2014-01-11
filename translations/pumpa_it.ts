@@ -102,12 +102,12 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="363"/>
         <source>stop following %1</source>
-        <translation type="unfinished"></translation>
+        <translation>smette di seguire %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="363"/>
         <source>follow %1</source>
-        <translation type="unfinished"></translation>
+        <translation>segue %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="404"/>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="613"/>
         <source>Are you sure you want to stop following %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sei sicuro di voler smettere di seguire %1</translation>
     </message>
     <message numerus="yes">
         <source>%Ln persons shared this.</source>
