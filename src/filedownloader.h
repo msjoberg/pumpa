@@ -23,6 +23,7 @@
 #include <QtCore>
 #include <QtNetwork>
 #include <QPixmap>
+#include <QMovie>
 
 #include "QtKOAuth"
 
@@ -43,7 +44,10 @@ public:
   bool ready() const { return !m_cachedFile.isEmpty(); }
   QString fileName() const;
   QString fileName(QString defaultImage) const;
+
+  bool supportsAnimation() const;
   QPixmap pixmap(QString defaultImage=":/images/broken_image.png") const;
+  QMovie* movie(QString defaultImage=":/images/broken_image.png");
 
   static QString getCacheDir() { return m_cacheDir; }
   

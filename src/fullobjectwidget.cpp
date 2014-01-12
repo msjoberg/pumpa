@@ -372,7 +372,15 @@ void FullObjectWidget::updateImage() {
   FileDownloader* fd = FileDownloader::get(m_imageUrl, true);
   connect(fd, SIGNAL(fileReady()), this, SLOT(updateImage()),
           Qt::UniqueConnection);
-  m_imageLabel->setPixmap(fd->pixmap(":/images/broken_image.png"));
+
+  if (fd->ready() && fd->supportsAnimation()) {
+    QMovie* mov = fd->movie();
+    m_imageLabel->setMovie(mov);
+    qDebug() << "Animated GIF" << fd->fileName();
+    mov->start();
+  } else {
+    m_imageLabel->setPixmap(fd->pixmap(":/images/broken_image.png"));
+  }
 }    
 
 //------------------------------------------------------------------------------
