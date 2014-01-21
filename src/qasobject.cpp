@@ -141,6 +141,8 @@ void QASObject::update(QVariantMap json, bool ignoreLike) {
 
   updateVar(json, m_apiLink, "links", "self", "href", ch);  
   updateVar(json, m_proxyUrl, "pump_io", "proxyURL", ch);
+  updateVar(json, m_streamUrl, "stream", "url", ch);
+  updateVar(json, m_streamUrlProxy, "stream", "pump_io", "proxyURL", ch);
 
   if (json.contains("location"))
     m_location->update(json["location"].toMap());

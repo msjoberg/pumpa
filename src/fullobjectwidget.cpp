@@ -67,6 +67,11 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_imageLabel->setCursor(Qt::PointingHandCursor);
   m_contentLayout->addWidget(m_imageLabel);
 
+  m_streamLabel = new RichTextLabel(this);
+  connect(m_streamLabel, SIGNAL(linkHovered(const QString&)),
+          this,  SIGNAL(linkHovered(const QString&)));
+  m_contentLayout->addWidget(m_streamLabel, 0, Qt::AlignTop);
+
   m_textLabel = new RichTextLabel(this);
   connect(m_textLabel, SIGNAL(linkHovered(const QString&)),
           this,  SIGNAL(linkHovered(const QString&)));
@@ -178,6 +183,15 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
     updateImage();
   } else {
     m_imageLabel->setVisible(false);
+  }
+
+  if (!m_object->streamUrl().isEmpty()) {
+    m_streamLabel->setVisible(true);
+    m_streamLabel->setText(QString("<b>Media:</b> <a href=\"%1\">%2</a>").
+                           arg(m_object->streamUrl(),
+                               m_object->type()));
+  } else {
+    m_streamLabel->setVisible(false);
   }
 
   m_author = m_object->author();
@@ -372,7 +386,15 @@ void FullObjectWidget::updateImage() {
   FileDownloader* fd = FileDownloader::get(m_imageUrl, true);
   connect(fd, SIGNAL(fileReady()), this, SLOT(updateImage()),
           Qt::UniqueConnection);
-  m_imageLabel->setPixmap(fd->pixmap(":/images/broken_image.png"));
+
+  if (fd->ready() && fd->supportsAnimation()) {
+    QMovie* mov = fd->movie();
+    m_imageLabel->setMovie(mov);
+    qDebug() << "Animated GIF" << fd->fileName();
+    mov->start();
+  } else {
+    m_imageLabel->setPixmap(fd->pixmap(":/images/broken_image.png"));
+  }
 }    
 
 //------------------------------------------------------------------------------

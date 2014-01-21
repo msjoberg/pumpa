@@ -160,6 +160,26 @@ QPixmap FileDownloader::pixmap(QString defaultImage) const {
 
 //------------------------------------------------------------------------------
 
+QMovie* FileDownloader::movie(QString defaultImage) {
+  QString fn = fileName(defaultImage);
+  QMovie* mov = new QMovie(fn, QByteArray(), this);
+  mov->setCacheMode(QMovie::CacheAll);  
+  return mov;
+}
+
+//------------------------------------------------------------------------------
+
+bool FileDownloader::supportsAnimation() const {
+  if (!ready())
+    return false;
+
+  QString fn = fileName();
+  QImageReader r(fn);
+  return r.supportsAnimation();
+}
+
+//------------------------------------------------------------------------------
+
 void FileDownloader::onSslErrors(QNetworkReply* reply,
                                  const QList<QSslError>&) {
   reply->ignoreSslErrors();

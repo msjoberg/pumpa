@@ -75,7 +75,8 @@ void ShortObjectWidget::changeObject(QASAbstractObject* obj) {
 
   static QSet<QString> expandableTypes;
   if (expandableTypes.isEmpty())
-    expandableTypes << "person" << "note" << "comment" << "image" << "video";
+    expandableTypes << "person" << "note" << "comment" << "image" << "video"
+                    << "audio";
 
   m_moreButton->setVisible(expandableTypes.contains(m_object->type()));
 

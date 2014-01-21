@@ -93,6 +93,9 @@ public:
   virtual QString apiLink() const;
   QString proxyUrl() const { return m_proxyUrl; }
   QASLocation* location() const { return m_location; }
+  QString streamUrl(bool orig=false) const {
+    return m_streamUrlProxy.isEmpty() || orig ? m_streamUrl : m_streamUrlProxy; 
+  }
 
   QDateTime published() const { return m_published; }
 
@@ -135,6 +138,8 @@ protected:
   QString m_displayName;
   QString m_apiLink;
   QString m_proxyUrl;
+  QString m_streamUrl;
+  QString m_streamUrlProxy;
 
   QDateTime m_published;
   QDateTime m_updated;

@@ -92,6 +92,7 @@ private:
   RichTextLabel* m_textLabel;
   ImageLabel* m_imageLabel;
   ActorWidget* m_actorWidget;
+  RichTextLabel* m_streamLabel;
 
   RichTextLabel* m_infoLabel;
   RichTextLabel* m_likesLabel;
