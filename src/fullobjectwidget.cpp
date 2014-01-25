@@ -59,7 +59,9 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_contentLayout = new QVBoxLayout;
   m_contentLayout->setContentsMargins(0, 0, 0, 0);
 
-  m_titleLabel = new QLabel(this); 
+  m_titleLabel = new RichTextLabel(this); 
+  connect(m_titleLabel, SIGNAL(linkHovered(const QString&)),
+          this,  SIGNAL(linkHovered(const QString&)));
   m_contentLayout->addWidget(m_titleLabel);
 
   m_imageLabel = new ImageLabel(this);
