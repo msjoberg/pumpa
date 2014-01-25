@@ -177,5 +177,9 @@ void QASAbstractObject::updateUrlOrProxy(QVariantMap obj, QString& var,
 //------------------------------------------------------------------------------
 
 qint64 QASAbstractObject::sortIntByDateTime(QDateTime dt) {
+#if QT_VERSION >= 0x040700
   return dt.toMSecsSinceEpoch();
+#else
+  return dt.toTime_t();
+#endif
 }
