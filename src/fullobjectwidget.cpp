@@ -170,6 +170,7 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
     setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
   } else {
     setLineWidth(0);
+    setFrameStyle(QFrame::NoFrame | QFrame::Plain);
   }
 
   if (!m_object->displayName().isEmpty()) {
