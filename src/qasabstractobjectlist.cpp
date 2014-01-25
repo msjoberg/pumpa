@@ -74,32 +74,24 @@ void QASAbstractObjectList::update(QVariantMap json, bool older) {
     updateVar(json, m_prevLink, "links", "prev", "href", dummy);
   }
 
-  // We assume that collections come in as newest first, so we add
-  // items starting from the top going downwards. Or if older=true
-  // starting from the end and going downwards (appending).
+  // Items need to be processed chronologically.  We assume that
+  // collections come in as newest first, so we need to start
+  // processing them from the end.
 
   // Start adding from the top or bottom, depending on value of older.
   int mi = older ? m_items.size() : 0;
 
   QVariantList items_json = json["items"].toList();
-  for (int i=0; i<items_json.count(); i++) {
+  for (int i=items_json.count()-1; i>=0; --i) {
     QASAbstractObject* obj = getAbstractObject(items_json.at(i).toMap(),
                                                parent());
     if (!obj)
       continue;
 
-    if (mi < m_items.size()) {
-      QASAbstractObject* mObj = m_items[mi];
-      if (mObj == obj) {
-        mi++;
-        continue;
-      }
-    }
-
     if (m_item_set.contains(obj))
       continue;
 
-    m_items.insert(mi++, obj);
+    m_items.insert(mi, obj);
     m_item_set.insert(obj);
     // connectSignals(obj, false, true);
 
