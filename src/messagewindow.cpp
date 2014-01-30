@@ -100,7 +100,9 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
   m_pictureLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
 
   m_title = new QLineEdit(this);
+#if QT_VERSION >= 0x040700
   m_title->setPlaceholderText(tr("Title (optional)"));
+#endif
 
   m_previewLabel = new RichTextLabel(this);
   m_previewLabel->setLineWidth(1);
