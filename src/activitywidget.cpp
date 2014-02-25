@@ -43,12 +43,7 @@ ActivityWidget::ActivityWidget(QASActivity* a, QWidget* parent) :
   //  m_objectWidget = makeObjectWidgetAndConnect(obj, !fullObject);
 
   m_objectWidget = new ObjectWidget(NULL, this);
-  ObjectWidgetWithSignals::connectSignals(m_objectWidget, this, true);
-
-  connect(m_objectWidget,
-          SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)),
-          this,
-          SLOT(onReply(QASObject*, QASObjectList*, QASObjectList*)));
+  ObjectWidgetWithSignals::connectSignals(m_objectWidget, this);
 
   connect(m_objectWidget, SIGNAL(showContext(QASObject*)),
           this, SIGNAL(showContext(QASObject*)));
@@ -107,15 +102,6 @@ void ActivityWidget::changeObject(QASAbstractObject* aObj) {
 
 void ActivityWidget::onObjectChanged() {
   updateText();
-}
-
-//------------------------------------------------------------------------------
-
-void ActivityWidget::onReply(QASObject* obj, QASObjectList*, QASObjectList*) {
-  QASObjectList* to = m_activity ? m_activity->to() : NULL;
-  QASObjectList* cc = m_activity ? m_activity->cc() : NULL;
-
-  emit newReply(obj, to, cc);
 }
 
 //------------------------------------------------------------------------------

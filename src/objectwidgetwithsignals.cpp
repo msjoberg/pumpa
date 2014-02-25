@@ -29,7 +29,7 @@ ObjectWidgetWithSignals::ObjectWidgetWithSignals(QWidget* parent) :
 //------------------------------------------------------------------------------
 
 void ObjectWidgetWithSignals::connectSignals(ObjectWidgetWithSignals* ow, 
-                                             QWidget* w, bool skipNewReply) 
+                                             QWidget* w)
 {
   connect(ow, SIGNAL(linkHovered(const QString&)),
           w, SIGNAL(linkHovered(const QString&)));
@@ -37,9 +37,8 @@ void ObjectWidgetWithSignals::connectSignals(ObjectWidgetWithSignals* ow,
           w, SIGNAL(like(QASObject*)));
   connect(ow, SIGNAL(share(QASObject*)),
           w, SIGNAL(share(QASObject*)));
-  if (!skipNewReply)
-    connect(ow, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)),
-            w, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)));
+  connect(ow, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)),
+          w, SIGNAL(newReply(QASObject*, QASObjectList*, QASObjectList*)));
   connect(ow, SIGNAL(follow(QString, bool)),
           w, SIGNAL(follow(QString, bool)));
   connect(ow, SIGNAL(deleteObject(QASObject*)),

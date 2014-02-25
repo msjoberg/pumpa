@@ -35,8 +35,8 @@ public:
 
   virtual QASAbstractObject* asObject() const = 0;
 
-  static void connectSignals(ObjectWidgetWithSignals* ow, QWidget* w,
-                             bool skipNewReply=false);
+  static void connectSignals(ObjectWidgetWithSignals* ow, QWidget* w);
+
   static void disconnectSignals(ObjectWidgetWithSignals* ow, QWidget* w);
 
   virtual void refreshTimeLabels() = 0;

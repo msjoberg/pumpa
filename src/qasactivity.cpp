@@ -66,6 +66,7 @@ void QASActivity::update(QVariantMap json) {
     //connectSignals(m_object);
     if (!m_object->author())
       m_object->setAuthor(m_actor);
+    m_object->setPostingActivity(this);
   }
 
   updateVar(json, m_published, "published", ch);

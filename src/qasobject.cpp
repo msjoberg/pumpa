@@ -103,7 +103,8 @@ QASObject::QASObject(QString id, QObject* parent) :
   m_author(NULL),
   m_replies(NULL),
   m_likes(NULL),
-  m_shares(NULL)
+  m_shares(NULL),
+  m_postingActivity(NULL)
 {
 #ifdef DEBUG_QAS
   qDebug() << "new Object" << m_id;

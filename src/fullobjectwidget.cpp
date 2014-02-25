@@ -562,7 +562,14 @@ void FullObjectWidget::favourite() {
 //------------------------------------------------------------------------------
 
 void FullObjectWidget::reply() {
-  emit newReply(m_object, NULL, NULL);
+  QASActivity* act = m_object->postingActivity();
+  if (act == NULL && hasValidIrtObject())
+    act = m_object->inReplyTo()->postingActivity();
+
+  QASObjectList* to = act ? act->to() : NULL;
+  QASObjectList* cc = act ? act->cc() : NULL;
+
+  emit newReply(m_object, to, cc);
 }
 
 //------------------------------------------------------------------------------
