@@ -32,6 +32,7 @@
 #include <QSystemTrayIcon>
 #include <QProgressDialog>
 #include <QMovie>
+#include <QSslError>
 
 #ifdef USE_DBUS
 #include <QDBusInterface>
@@ -63,6 +64,8 @@ signals:
   void userAuthorizationStarted();
                     
 private slots:
+  void onSslErrors(QNetworkReply*, QList<QSslError>);
+
   void userTestDoneAndFollow();
 
   void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
@@ -219,8 +222,7 @@ private:
 
   QAction* m_debugAction;
 
-  KQOAuthManager *oaManager;
-  // KQOAuthRequest *oaRequest;
+  KQOAuthManager *m_oam;
 
   TabWidget* m_tabWidget;
   CollectionWidget* m_inboxWidget;

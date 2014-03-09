@@ -61,9 +61,9 @@ QString markDown(QString text) {
 
 //------------------------------------------------------------------------------
 
-QString siteUrlFixer(QString url) {
+QString siteUrlFixer(QString url, bool useSsl) {
   if (!url.startsWith("http://") && !url.startsWith("https://"))
-    url = "https://" + url;
+    url = (useSsl ? "https://" : "http://") + url;
 
   if (url.endsWith('/'))
     url.chop(1);

@@ -77,10 +77,14 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   }
 
   m_nam = new QNetworkAccessManager(this);
+  connect(m_nam, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)), 
+          this, SLOT(onSslErrors(QNetworkReply*, QList<QSslError>)));
 
-  oaManager = new KQOAuthManager(this);
-  connect(oaManager, SIGNAL(authorizedRequestReady(QByteArray, int)),
+  m_oam = new KQOAuthManager(this);
+  connect(m_oam, SIGNAL(authorizedRequestReady(QByteArray, int)),
           this, SLOT(onAuthorizedRequestReady(QByteArray, int)));
+  connect(m_oam, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)), 
+          this, SLOT(onSslErrors(QNetworkReply*, QList<QSslError>)));
 
   createActions();
   createMenu();
@@ -185,7 +189,7 @@ PumpApp::~PumpApp() {
 
 void PumpApp::launchOAuthWizard() {
   if (!m_wiz) {
-    m_wiz = new OAuthWizard(m_nam, this);
+    m_wiz = new OAuthWizard(m_nam, m_oam, this);
     connect(m_wiz, SIGNAL(clientRegistered(QString, QString, QString, QString)),
             this, SLOT(onClientRegistered(QString, QString, QString, QString)));
     connect(m_wiz, SIGNAL(accessTokenReceived(QString, QString)),
@@ -195,6 +199,49 @@ void PumpApp::launchOAuthWizard() {
   }
   m_wiz->restart();
   m_wiz->show();
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
+  if (m_s->ignoreSslErrors()) {
+    reply->ignoreSslErrors();
+    return;
+  }
+
+  QString infoText;
+  for (int i=0; i<errors.size(); i++) {
+    infoText += "SSL Error: " + errors[i].errorString() + ".\n";
+  }
+  infoText += 
+    QString(tr("\n%1 is unable to verify the identity of the server. "
+            "This error could mean that someone is trying to impersonate the "
+            "server, or that the server's administrator has made an error.\n")).
+    arg(CLIENT_FANCY_NAME);
+
+  QString detailText;
+  QSslCertificate cert = errors[0].certificate();
+  if (!cert.isNull()) {
+    detailText = "SSL Server certificate.\n"
+      "Issued to: " + cert.subjectInfo(QSslCertificate::CommonName) + "\n"
+      "Issued by: " + cert.issuerInfo(QSslCertificate::CommonName) + "\n"
+      "Effective: " + cert.effectiveDate().toString() + "\n"
+      "Expires: " + cert.expiryDate().toString() + "\n"
+      "MD5 digest: " + cert.digest().toHex() + "\n";
+  }
+
+  QMessageBox msgBox;
+  msgBox.setText("<b>Untrusted SSL connection!</b>");
+  msgBox.setIcon(QMessageBox::Critical);
+  msgBox.setInformativeText(infoText);
+  if (!detailText.isEmpty())
+    msgBox.setDetailedText(detailText);
+  msgBox.setStandardButtons(QMessageBox::Abort);
+  msgBox.setDefaultButton(QMessageBox::Abort);
+
+  msgBox.exec();
+
+  QApplication::quit();
 }
 
 //------------------------------------------------------------------------------
@@ -1248,9 +1295,9 @@ QNetworkReply* PumpApp::executeRequest(KQOAuthRequest* request,
   }
 
   m_requestMap.insert(id, qMakePair(request, response_id));
-  oaManager->executeAuthorizedRequest(request, id);
+  m_oam->executeAuthorizedRequest(request, id);
 
-  return oaManager->getReply(request);
+  return m_oam->getReply(request);
 }
 
 //------------------------------------------------------------------------------
@@ -1274,7 +1321,7 @@ void PumpApp::followActor(QASActor* actor, bool doFollow) {
 //------------------------------------------------------------------------------
 
 void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
-  KQOAuthManager::KQOAuthError lastError = oaManager->lastError();
+  KQOAuthManager::KQOAuthError lastError = m_oam->lastError();
 
   QPair<KQOAuthRequest*, int> rp = m_requestMap.take(rid);
   KQOAuthRequest* request = rp.first;
@@ -1317,7 +1364,7 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
       qDebug() << "[WARNING] unable to fetch context for object.";
     } else {
       errorMessage(QString(tr("Network or authorisation error [%1/%2] %3.")).
-                   arg(oaManager->lastError()).arg(id).arg(reqUrl));
+                   arg(m_oam->lastError()).arg(id).arg(reqUrl));
     }
 #ifdef DEBUG_NET
     qDebug() << "[ERROR]" << response;

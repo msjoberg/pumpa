@@ -37,7 +37,7 @@
 /*
   Fixes site url, removes extra / from end, adds https:// if missing.
 */
-QString siteUrlFixer(QString url);
+QString siteUrlFixer(QString url, bool useSsl=true);
 
 /* 
    Finds things that look like URLs and changes them into a href

@@ -70,7 +70,8 @@ class OAuthWizard : public QWizard {
 Q_OBJECT
 
 public:
-  OAuthWizard(QNetworkAccessManager* nam, QWidget* parent=0);
+  OAuthWizard(QNetworkAccessManager* nam, KQOAuthManager* oam,
+              QWidget* parent=0);
 
 signals:
   void clientRegistered(QString, QString, QString, QString);
