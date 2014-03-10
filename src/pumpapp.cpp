@@ -211,7 +211,7 @@ void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
 
   QString infoText;
   for (int i=0; i<errors.size(); i++) {
-    infoText += tr("SSL Error: " + errors[i].errorString() + ".\n");
+    infoText += tr("SSL Error: ") + errors[i].errorString() + ".\n";
   }
   infoText += 
     QString(tr("\n%1 is unable to verify the identity of the server. "
@@ -222,11 +222,11 @@ void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
   QString detailText;
   QSslCertificate cert = errors[0].certificate();
   if (!cert.isNull()) {
-    detailText = tr("SSL Server certificate.\n")
-      tr("Issued to: ") + cert.subjectInfo(QSslCertificate::CommonName) + "\n"
-      tr("Issued by: ") + cert.issuerInfo(QSslCertificate::CommonName) + "\n"
-      tr("Effective: ") + cert.effectiveDate().toString() + "\n"
-      tr("Expires: ") + cert.expiryDate().toString() + "\n"
+    detailText = tr("SSL Server certificate.\n") +
+      tr("Issued to: ") + cert.subjectInfo(QSslCertificate::CommonName) + "\n" +
+      tr("Issued by: ") + cert.issuerInfo(QSslCertificate::CommonName) + "\n" +
+      tr("Effective: ") + cert.effectiveDate().toString() + "\n" +
+      tr("Expires: ") + cert.expiryDate().toString() + "\n" +
       tr("MD5 digest: ") + cert.digest().toHex() + "\n";
   }
 
