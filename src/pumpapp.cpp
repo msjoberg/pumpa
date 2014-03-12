@@ -773,6 +773,10 @@ void PumpApp::fetchAll(bool all) {
 
   if (tabShown(m_firehoseWidget))
     m_firehoseWidget->fetchNewer();
+  if (tabShown(m_contextWidget))
+    m_contextWidget->fetchNewer();
+
+  // These will be reloaded even if not shown, if all=true
   if (all || tabShown(m_followersWidget))
     m_followersWidget->fetchNewer();
   if (all || tabShown(m_followingWidget))
@@ -875,7 +879,6 @@ void PumpApp::followDialog() {
 void PumpApp::testUserAndFollow(QString username, QString server) {
   QString fingerUrl = QString("%1/.well-known/webfinger?resource=%2@%1").
     arg(server).arg(username);
-  // https://io.saz.im/.well-known/webfinger?resource=sazius@saz.im
 
   QNetworkRequest rec(QUrl("https://" + fingerUrl));
   QNetworkReply* reply = m_nam->head(rec);
