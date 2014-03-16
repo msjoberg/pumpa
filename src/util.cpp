@@ -217,12 +217,8 @@ void checkMemory(QString desc) {
 
 //------------------------------------------------------------------------------
 
-QString addTextMarkup(QString text, bool useMarkdown) {
-  QString oldText = text;
-
-#ifdef DEBUG_MARKUP
-  qDebug() << "\n[DEBUG] MARKUP\n" << text;
-#endif
+QString removeHtml(QString origText) {
+  QString text = origText;
 
   // Remove any inline HTML tags
   // text.replace(QRegExp(HTML_TAG_REGEX), "&lt;\\1&gt;");
@@ -241,6 +237,19 @@ QString addTextMarkup(QString text, bool useMarkdown) {
       pos += newText.length();
     }
   }
+  return text;
+}
+
+//------------------------------------------------------------------------------
+
+QString addTextMarkup(QString text, bool useMarkdown) {
+  QString oldText = text;
+
+#ifdef DEBUG_MARKUP
+  qDebug() << "\n[DEBUG] MARKUP\n" << text;
+#endif
+
+  text = removeHtml(text);
 
 #ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
@@ -270,3 +279,8 @@ QString addTextMarkup(QString text, bool useMarkdown) {
 
 //------------------------------------------------------------------------------
 
+QString processTitle(QString text) {
+  text = removeHtml(text);
+  text.replace("\n", " ");
+  return text;
+}

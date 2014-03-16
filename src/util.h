@@ -77,6 +77,8 @@ void checkMemory(QString desc="");
 
 QString addTextMarkup(QString content, bool useMarkdown);
 
+QString processTitle(QString text);
+
 //------------------------------------------------------------------------------
 
 #endif /* _UTIL_H_ */

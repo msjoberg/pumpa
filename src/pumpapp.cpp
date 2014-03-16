@@ -1014,7 +1014,7 @@ void PumpApp::postNote(QString content, QString title,
   obj["objectType"] = "note";
   obj["content"] = addTextMarkup(content, m_s->useMarkdown());
   if (!title.isEmpty())
-    obj["displayName"] = title;
+    obj["displayName"] = processTitle(title);
 
   feed("post", obj, QAS_OBJECT | QAS_REFRESH | QAS_POST, to, cc);
 }
@@ -1028,7 +1028,7 @@ void PumpApp::postImage(QString msg,
                         RecipientList cc) {
   m_imageObject.clear();
   m_imageObject["content"] = addTextMarkup(msg, m_s->useMarkdown());
-  m_imageObject["displayName"] = title;
+  m_imageObject["displayName"] = processTitle(title);
 
   m_imageTo = to;
   m_imageCc = cc;
