@@ -103,12 +103,12 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="380"/>
         <source>stop following %1</source>
-        <translation type="unfinished"></translation>
+        <translation>dejar de seguir a %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="380"/>
         <source>follow %1</source>
-        <translation type="unfinished"></translation>
+        <translation>seguir a %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="429"/>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="645"/>
         <source>Are you sure you want to stop following %1?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Seguro que deseas dejar de seguir a %1?</translation>
     </message>
     <message>
         <source>likes this.</source>
@@ -373,7 +373,7 @@
     <message>
         <location filename="../src/oauthwizard.cpp" line="75"/>
         <source>Use secure connection (recommended)</source>
-        <translation type="unfinished"></translation>
+        <translation>Usar conexión segura (recomendado)</translation>
     </message>
     <message>
         <location filename="../src/oauthwizard.cpp" line="85"/>
@@ -391,7 +391,7 @@
     <message>
         <location filename="../src/oauthwizard.cpp" line="135"/>
         <source>In order for Pumpa to be able to read and post new messages to your pump.io account you need to grant Pumpa access via the web page. Pumpa will open the web page for you - just follow the instructions and copy &amp;amp; paste the &lt;b&gt;verifier&lt;/b&gt; text string back into the field below. (The token should be automatically pre-filled.)</source>
-        <translation>Para que Pumpa pueda leer y enviar mensajes en tu cuenta de pump.io, necesitas proporcionar acceso a Pumpa a través del sitio web. Pumpa abrirá la página web para tí: simplemente sigue las instrucciones y copia y pega el texto &lt;b&gt;verificador&lt;/b&gt; en el campo de más abajo. (El &apos;token&apos; debería rellenarse automáticamente).</translation>
+        <translation>Para que Pumpa pueda leer y enviar mensajes en tu cuenta de pump.io, necesitas proporcionar acceso a Pumpa a través del sitio web. Pumpa abrirá la página web para tí: simplemente sigue las instrucciones y copia y pega el texto &lt;b&gt;verificador&lt;/b&gt; en el campo de más abajo. (El &apos;token&apos; debería rellenarse automáticamente.)</translation>
     </message>
     <message>
         <location filename="../src/oauthwizard.cpp" line="145"/>
@@ -590,50 +590,50 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="214"/>
         <source>SSL Error: </source>
-        <translation type="unfinished"></translation>
+        <translation>Error SSL:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="217"/>
         <source>
 %1 is unable to verify the identity of the server. This error could mean that someone is trying to impersonate the server, or that the server&apos;s administrator has made an error.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>%1 no puede verificar la identidad del servidor. Este error puede significar que alguien está tratando de suplantar al servidor, o que el administrador del servidor ha cometido un error.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="225"/>
         <source>SSL Server certificate.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Certificado SSL del servidor.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="226"/>
         <source>Issued to: </source>
-        <translation type="unfinished"></translation>
+        <translation>Emitido para:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="227"/>
         <source>Issued by: </source>
-        <translation type="unfinished"></translation>
+        <translation>Emitido por:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="228"/>
         <source>Effective: </source>
-        <translation type="unfinished"></translation>
+        <translation>Validez:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="229"/>
         <source>Expires: </source>
-        <translation type="unfinished"></translation>
+        <translation>Caduca el:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="230"/>
         <source>MD5 digest: </source>
-        <translation type="unfinished"></translation>
+        <translation>Huella digital MD5:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="234"/>
         <source>&lt;b&gt;Untrusted SSL connection!&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;¡Conexión SSL no confiable!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="272"/>
@@ -927,8 +927,8 @@
         <location filename="../src/util.cpp" line="149"/>
         <source>%n minute(s) ago</source>
         <translation>
-            <numerusform>hace %n minuto.</numerusform>
-            <numerusform>hace %n minutos.</numerusform>
+            <numerusform>hace %n minuto</numerusform>
+            <numerusform>hace %n minutos</numerusform>
         </translation>
     </message>
     <message numerus="yes">
