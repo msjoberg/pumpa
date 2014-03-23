@@ -1331,11 +1331,11 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
   int id = rp.second;
   QString reqUrl = request->requestEndpoint().toString();
 
-#ifdef DEBUG_NET
+#ifdef DEBUG_NET_MOAR
   qDebug() << "[DEBUG] request done [" << rid << id << "]" << reqUrl
            << response.count() << "bytes";
 #endif
-#ifdef DEBUG_NET_MOAR
+#ifdef DEBUG_NET_EVEN_MOAR
   qDebug() << response;
 #endif
 
