@@ -4,22 +4,22 @@
 <context>
     <name>ActivityWidget</name>
     <message>
-        <location filename="../src/activitywidget.cpp" line="123"/>
+        <location filename="../src/activitywidget.cpp" line="113"/>
         <source> via %1</source>
         <translation> vía %1</translation>
     </message>
     <message>
-        <location filename="../src/activitywidget.cpp" line="129"/>
+        <location filename="../src/activitywidget.cpp" line="119"/>
         <source>To:</source>
         <translation>Para:</translation>
     </message>
     <message>
-        <location filename="../src/activitywidget.cpp" line="132"/>
+        <location filename="../src/activitywidget.cpp" line="122"/>
         <source>CC:</source>
         <translation>CC:</translation>
     </message>
     <message>
-        <location filename="../src/activitywidget.cpp" line="149"/>
+        <location filename="../src/activitywidget.cpp" line="139"/>
         <source>Public</source>
         <translation>Público</translation>
     </message>
@@ -59,64 +59,64 @@
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="106"/>
-        <location filename="../src/fullobjectwidget.cpp" line="583"/>
+        <location filename="../src/fullobjectwidget.cpp" line="589"/>
         <source>comment</source>
         <translation>comentar</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="260"/>
+        <location filename="../src/fullobjectwidget.cpp" line="266"/>
         <source>[No description]</source>
         <translation>[Sin descripción]</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="295"/>
-        <location filename="../src/fullobjectwidget.cpp" line="305"/>
+        <location filename="../src/fullobjectwidget.cpp" line="301"/>
+        <location filename="../src/fullobjectwidget.cpp" line="311"/>
         <source>at %1</source>
         <oldsource>at</oldsource>
         <translation>en %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="325"/>
+        <location filename="../src/fullobjectwidget.cpp" line="331"/>
         <source>unlike</source>
         <translation>no me gusta</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="325"/>
+        <location filename="../src/fullobjectwidget.cpp" line="331"/>
         <source>like</source>
         <translation>me gusta</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="337"/>
+        <location filename="../src/fullobjectwidget.cpp" line="343"/>
         <source>share</source>
         <translation>compartir</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="362"/>
+        <location filename="../src/fullobjectwidget.cpp" line="368"/>
         <source>stop following</source>
         <translation>dejar de seguir a</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="363"/>
+        <location filename="../src/fullobjectwidget.cpp" line="369"/>
         <source>follow</source>
         <translation>seguir a</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="380"/>
+        <location filename="../src/fullobjectwidget.cpp" line="386"/>
         <source>stop following %1</source>
         <translation>dejar de seguir a %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="380"/>
+        <location filename="../src/fullobjectwidget.cpp" line="386"/>
         <source>follow %1</source>
         <translation>seguir a %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="429"/>
+        <location filename="../src/fullobjectwidget.cpp" line="435"/>
         <source>You like this.</source>
         <translation>Te gusta esto.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="462"/>
+        <location filename="../src/fullobjectwidget.cpp" line="468"/>
         <source>and %Ln other person(s)</source>
         <translation>
             <numerusform>y %n persona más</numerusform>
@@ -124,7 +124,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="466"/>
+        <location filename="../src/fullobjectwidget.cpp" line="472"/>
         <source>%Ln person(s) shared this.</source>
         <translation>
             <numerusform>%n persona compartió esto.</numerusform>
@@ -132,7 +132,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="645"/>
+        <location filename="../src/fullobjectwidget.cpp" line="651"/>
         <source>Are you sure you want to stop following %1?</source>
         <translation>¿Seguro que deseas dejar de seguir a %1?</translation>
     </message>
@@ -141,13 +141,13 @@
         <translation type="obsolete">marcó «me gusta».</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="433"/>
+        <location filename="../src/fullobjectwidget.cpp" line="439"/>
         <source>%1 like this.</source>
         <oldsource>like this.</oldsource>
         <translation>A %1 les gusta.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="431"/>
+        <location filename="../src/fullobjectwidget.cpp" line="437"/>
         <source>%1 likes this.</source>
         <translation>A %1 le gusta esto.</translation>
     </message>
@@ -160,7 +160,7 @@
         <translation type="obsolete">y %1 personas más</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="463"/>
+        <location filename="../src/fullobjectwidget.cpp" line="469"/>
         <source>shared this.</source>
         <translation>compartió/compartieron esto.</translation>
     </message>
@@ -173,32 +173,32 @@
         <translation type="obsolete">%1 personas compartieron esto.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="535"/>
+        <location filename="../src/fullobjectwidget.cpp" line="541"/>
         <source>Show all %1 replies</source>
         <translation>Mostrar todas las %1 respuestas</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="578"/>
+        <location filename="../src/fullobjectwidget.cpp" line="584"/>
         <source>post</source>
         <translation>la publicación</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="581"/>
+        <location filename="../src/fullobjectwidget.cpp" line="587"/>
         <source>note</source>
         <translation>la nota</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="585"/>
+        <location filename="../src/fullobjectwidget.cpp" line="591"/>
         <source>image</source>
         <translation>la imagen</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="606"/>
+        <location filename="../src/fullobjectwidget.cpp" line="612"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation>¿Estás seguro de que quieres borrar %1?</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="619"/>
+        <location filename="../src/fullobjectwidget.cpp" line="625"/>
         <source>Share this %1 by %2?</source>
         <translation>¿Compartir %1 de %2?</translation>
     </message>
@@ -435,12 +435,12 @@
 <context>
     <name>ObjectWidget</name>
     <message>
-        <location filename="../src/objectwidget.cpp" line="154"/>
+        <location filename="../src/objectwidget.cpp" line="170"/>
         <source>Re: </source>
         <translation>Re:</translation>
     </message>
     <message>
-        <location filename="../src/objectwidget.cpp" line="155"/>
+        <location filename="../src/objectwidget.cpp" line="171"/>
         <source>show context</source>
         <translation>mostrar contexto</translation>
     </message>
@@ -448,42 +448,42 @@
 <context>
     <name>PumpApp</name>
     <message>
-        <location filename="../src/pumpapp.cpp" line="148"/>
+        <location filename="../src/pumpapp.cpp" line="153"/>
         <source>&amp;Inbox</source>
         <translation>Bandeja de &amp;entrada</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="149"/>
+        <location filename="../src/pumpapp.cpp" line="154"/>
         <source>&amp;Mentions</source>
         <translation>&amp;Menciones</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="150"/>
+        <location filename="../src/pumpapp.cpp" line="155"/>
         <source>&amp;Direct</source>
         <translation>&amp;Directos</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="151"/>
+        <location filename="../src/pumpapp.cpp" line="156"/>
         <source>Mean&amp;while</source>
         <translation>Mientras &amp;tanto</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="720"/>
+        <location filename="../src/pumpapp.cpp" line="763"/>
         <source>Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg</source>
         <translation>Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="962"/>
+        <location filename="../src/pumpapp.cpp" line="1025"/>
         <source>Fi&amp;rehose</source>
         <translation>Mangue&amp;ra</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="971"/>
+        <location filename="../src/pumpapp.cpp" line="1034"/>
         <source>&amp;Followers</source>
         <translation>&amp;Seguidores</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="980"/>
+        <location filename="../src/pumpapp.cpp" line="1043"/>
         <source>F&amp;ollowing</source>
         <translation>S&amp;iguiendo</translation>
     </message>
@@ -492,211 +492,211 @@
         <translation type="obsolete">Tienes nuevos mensajes.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="518"/>
+        <location filename="../src/pumpapp.cpp" line="561"/>
         <source>Error: </source>
         <translation>Error:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="577"/>
+        <location filename="../src/pumpapp.cpp" line="620"/>
         <source>%1 &amp;Window</source>
         <translation>%1 &amp;Ventana</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="577"/>
+        <location filename="../src/pumpapp.cpp" line="620"/>
         <source>Hide</source>
         <translation>Ocultar</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="577"/>
+        <location filename="../src/pumpapp.cpp" line="620"/>
         <source>Show</source>
         <translation>Mostrar</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="590"/>
+        <location filename="../src/pumpapp.cpp" line="633"/>
         <source>E&amp;xit</source>
         <translation>&amp;Salir</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="591"/>
+        <location filename="../src/pumpapp.cpp" line="634"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="594"/>
+        <location filename="../src/pumpapp.cpp" line="637"/>
         <source>Preferences</source>
         <translation>Preferencias</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="597"/>
+        <location filename="../src/pumpapp.cpp" line="640"/>
         <source>&amp;Reload timeline</source>
         <translation>&amp;Recargar línea temporal</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="598"/>
+        <location filename="../src/pumpapp.cpp" line="641"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="602"/>
+        <location filename="../src/pumpapp.cpp" line="645"/>
         <source>Load older in timeline</source>
         <translation>Cargar antiguos en línea temporal</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="603"/>
+        <location filename="../src/pumpapp.cpp" line="646"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="606"/>
+        <location filename="../src/pumpapp.cpp" line="649"/>
         <source>F&amp;ollow an account</source>
         <translation>Segu&amp;ir una cuenta</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="607"/>
+        <location filename="../src/pumpapp.cpp" line="650"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="610"/>
+        <location filename="../src/pumpapp.cpp" line="653"/>
         <source>&amp;About</source>
         <translation>&amp;Acerca de</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="613"/>
+        <location filename="../src/pumpapp.cpp" line="656"/>
         <source>About &amp;Qt</source>
         <translation>Acerca de &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="616"/>
+        <location filename="../src/pumpapp.cpp" line="659"/>
         <source>New &amp;Note</source>
         <translation>Nueva &amp;Nota</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="617"/>
+        <location filename="../src/pumpapp.cpp" line="660"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="621"/>
+        <location filename="../src/pumpapp.cpp" line="664"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="278"/>
-        <location filename="../src/pumpapp.cpp" line="628"/>
+        <location filename="../src/pumpapp.cpp" line="301"/>
+        <location filename="../src/pumpapp.cpp" line="671"/>
         <source>Followers</source>
         <translation>Seguidores</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="214"/>
+        <location filename="../src/pumpapp.cpp" line="237"/>
         <source>SSL Error: </source>
         <translation>Error SSL:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="217"/>
+        <location filename="../src/pumpapp.cpp" line="240"/>
         <source>
 %1 is unable to verify the identity of the server. This error could mean that someone is trying to impersonate the server, or that the server&apos;s administrator has made an error.
 </source>
         <translation>%1 no puede verificar la identidad del servidor. Este error puede significar que alguien está tratando de suplantar al servidor, o que el administrador del servidor ha cometido un error.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="225"/>
+        <location filename="../src/pumpapp.cpp" line="248"/>
         <source>SSL Server certificate.
 </source>
         <translation>Certificado SSL del servidor.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="226"/>
+        <location filename="../src/pumpapp.cpp" line="249"/>
         <source>Issued to: </source>
         <translation>Emitido para:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="227"/>
+        <location filename="../src/pumpapp.cpp" line="250"/>
         <source>Issued by: </source>
         <translation>Emitido por:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="228"/>
+        <location filename="../src/pumpapp.cpp" line="251"/>
         <source>Effective: </source>
         <translation>Validez:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="229"/>
+        <location filename="../src/pumpapp.cpp" line="252"/>
         <source>Expires: </source>
         <translation>Caduca el:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="230"/>
+        <location filename="../src/pumpapp.cpp" line="253"/>
         <source>MD5 digest: </source>
         <translation>Huella digital MD5:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="234"/>
+        <location filename="../src/pumpapp.cpp" line="257"/>
         <source>&lt;b&gt;Untrusted SSL connection!&lt;/b&gt;</source>
         <translation>&lt;b&gt;¡Conexión SSL no confiable!&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="272"/>
+        <location filename="../src/pumpapp.cpp" line="295"/>
         <source>Public</source>
         <translation>Público</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="453"/>
+        <location filename="../src/pumpapp.cpp" line="476"/>
         <source>You have %1 new notifications.</source>
         <translation>Tienes %1 notificaciones nuevas.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="463"/>
+        <location filename="../src/pumpapp.cpp" line="486"/>
         <source>%1 commented: </source>
         <translation>%1 comentó: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="465"/>
+        <location filename="../src/pumpapp.cpp" line="488"/>
         <source>%1 wrote: </source>
         <translation>%1 escribió: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="625"/>
+        <location filename="../src/pumpapp.cpp" line="668"/>
         <source>Firehose</source>
         <translation>Manguera</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="631"/>
+        <location filename="../src/pumpapp.cpp" line="674"/>
         <source>Following</source>
         <translation>Siguiendo</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="634"/>
+        <location filename="../src/pumpapp.cpp" line="677"/>
         <source>Favorites</source>
         <translation>Favoritos</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="638"/>
+        <location filename="../src/pumpapp.cpp" line="681"/>
         <source>Activities</source>
         <translation>Actividades</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="649"/>
+        <location filename="../src/pumpapp.cpp" line="692"/>
         <source>&amp;Pumpa</source>
         <translation>&amp;Pumpa</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="661"/>
+        <location filename="../src/pumpapp.cpp" line="704"/>
         <source>&amp;Tabs</source>
         <translation>Pes&amp;tañas</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="669"/>
+        <location filename="../src/pumpapp.cpp" line="712"/>
         <source>&amp;Help</source>
         <translation>&amp;Ayuda</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="691"/>
+        <location filename="../src/pumpapp.cpp" line="734"/>
         <source>&lt;p&gt;Pumpa is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.&lt;/p&gt;&lt;p&gt;Pumpa is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.&lt;/p&gt;&lt;p&gt;You should have received a copy of the GNU General Public License along with Pumpa.  If not, see &lt;a href=&quot;http://www.gnu.org/licenses/&quot;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Pumpa es software libre: puedes distribuirlo y/o modificarlo bajo los términos de la licencia GNU General Public License tal y como está publicada por la Free Software Foundation, ya sea en la versión 3 de la Licencia, o, si optas por ello, cualquier otra versión posterior.&lt;/p&gt;&lt;p&gt;Pumpa se distribuye con la esperanza de que resulte útil, pero SIN GARANTÍA ALGUNA, ni siquiera la garantía que implica su COMERCIABILIDAD o ADECUIDAD PARA UN PROPÓSITO PARTICULAR. Vea la licencia GNU General Public License para más detalles.&lt;/p&gt;&lt;p&gt;Debería haber recibido una copia de la licencia GNU General Public License junto con Pumpa. Si no es así, vea &lt;a href=&quot;http://www.gnu.org/licenses/&quot;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="704"/>
+        <location filename="../src/pumpapp.cpp" line="747"/>
         <source>&lt;p&gt;The &lt;a href=&quot;https://github.com/kypeli/kQOAuth&quot;&gt;kQOAuth library&lt;/a&gt; is copyrighted by &lt;a href=&quot;http://www.johanpaul.com/&quot;&gt;Johan Paul&lt;/a&gt; and licensed under LGPL 2.1.&lt;/p&gt;&lt;p&gt;The &lt;a href=&quot;https://github.com/vmg/sundown&quot;&gt;sundown Markdown library&lt;/a&gt; is copyrighted by Natacha Port&amp;eacute;, Vicent Marti and others, and &lt;a href=&quot;https://github.com/vmg/sundown#license&quot;&gt;permissively licensed&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;The Pumpa logo was &lt;a href=&quot;http://opengameart.org/content/fruit-and-veggie-inventory&quot;&gt;created by Joshua Taylor&lt;/a&gt; for the &lt;a href=&quot;http://lpc.opengameart.org/&quot;&gt;Liberated Pixel Cup&lt;/a&gt;.The logo is copyrighted by the artist and is dual licensed under the CC-BY-SA 3.0 license and the GNU GPL 3.0.</source>
         <translation>&lt;p&gt;La &lt;a href=&quot;https://github.com/kypeli/kQOAuth&quot;&gt;biblioteca kQOAuth&lt;/a&gt; está bajo derechos de autor de &lt;a href=&quot;http://www.johanpaul.com/&quot;&gt;Johan Paul&lt;/a&gt; y licenciada bajo LGPL 2.1.&lt;/p&gt;&lt;p&gt;La &lt;a href=&quot;https://github.com/vmg/sundown&quot;&gt;biblioteca de Markdown sundown&lt;/a&gt; está bajo derechos de autor de  Natacha Port&amp;eacute;, Vicent Marti y otros, y tiene &lt;a href=&quot;https://github.com/vmg/sundown#license&quot;&gt;licencia permisiva&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;El logo de Pumpa fue &lt;a href=&quot;http://opengameart.org/content/fruit-and-veggie-inventory&quot;&gt;creado por Joshua Taylor&lt;/a&gt; para &lt;a href=&quot;http://lpc.opengameart.org/&quot;&gt;Liberated Pixel Cup&lt;/a&gt;. El logo tiene derechos de autor del artista y está licenciado dualmente bajo la licencia CC-BY-SA 3.0 y la licencia GNU GPL 3.0.</translation>
     </message>
@@ -705,87 +705,87 @@
         <translation type="obsolete">Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="723"/>
+        <location filename="../src/pumpapp.cpp" line="766"/>
         <source>&lt;p&gt;Report bugs and feature requests at &lt;a href=&quot;%5&quot;&gt;%5&lt;/a&gt;.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Informes de error y solicitudes de características en &lt;a href=&quot;%5&quot;&gt;%5&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="727"/>
+        <location filename="../src/pumpapp.cpp" line="770"/>
         <source>A simple Qt-based pump.io client.</source>
         <translation>Un cliente pump.io sencillo basado en Qt.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="731"/>
+        <location filename="../src/pumpapp.cpp" line="774"/>
         <source>About %1</source>
         <translation>Acerca de %1</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="799"/>
+        <location filename="../src/pumpapp.cpp" line="863"/>
         <source>Site not configured yet!</source>
         <translation>¡Sitio aún no configurado!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="849"/>
+        <location filename="../src/pumpapp.cpp" line="913"/>
         <source>Follow pump.io user</source>
         <translation>Seguir a un usuario pump.io</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="850"/>
+        <location filename="../src/pumpapp.cpp" line="914"/>
         <source>Enter webfinger ID of person to follow: </source>
         <translation>Introduce el webfinger ID de la persona a seguir:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="860"/>
+        <location filename="../src/pumpapp.cpp" line="924"/>
         <source>Sorry, that doesn&apos;t even look like a webfinger ID!</source>
         <translation>¡Lo siento, eso no parece un webfinger ID!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="865"/>
+        <location filename="../src/pumpapp.cpp" line="929"/>
         <source>Sorry, you are already following that person!</source>
         <translation>Lo siento, ¡ya sigues a esa persona!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="918"/>
+        <location filename="../src/pumpapp.cpp" line="981"/>
         <source>Invalid user: </source>
         <translation>Usuario no válido:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="925"/>
+        <location filename="../src/pumpapp.cpp" line="988"/>
         <source>Invalid user (cannot check site): </source>
         <translation>Usuario no válido (no se puede comprobar el sitio):</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="952"/>
+        <location filename="../src/pumpapp.cpp" line="1015"/>
         <source>&amp;Context</source>
         <translation>&amp;Contexto</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="989"/>
+        <location filename="../src/pumpapp.cpp" line="1052"/>
         <source>F&amp;avorites</source>
         <translation>F&amp;avoritos</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="998"/>
+        <location filename="../src/pumpapp.cpp" line="1061"/>
         <source>A&amp;ctivities</source>
         <translation>A&amp;ctividades</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1282"/>
+        <location filename="../src/pumpapp.cpp" line="1345"/>
         <source>Loading ...</source>
         <translation>Cargando ...</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1343"/>
+        <location filename="../src/pumpapp.cpp" line="1406"/>
         <source>Ready!</source>
         <translation>¡Listo!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1361"/>
+        <location filename="../src/pumpapp.cpp" line="1424"/>
         <source>Unable to post message!</source>
         <translation>¡No se ha podido publicar el mensaje!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1366"/>
+        <location filename="../src/pumpapp.cpp" line="1429"/>
         <source>Network or authorisation error [%1/%2] %3.</source>
         <translation>Error de red o de autorización [%1/%2] %3.</translation>
     </message>
@@ -794,12 +794,12 @@
         <translation type="obsolete">Error de red o de autorización [%1/%2].</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1414"/>
+        <location filename="../src/pumpapp.cpp" line="1456"/>
         <source>Successfully followed </source>
         <translation>Siguiendo correctamente a </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1415"/>
+        <location filename="../src/pumpapp.cpp" line="1457"/>
         <source>Successfully unfollowed </source>
         <translation>Dejaste correctamente de seguir a </translation>
     </message>

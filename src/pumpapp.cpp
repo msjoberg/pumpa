@@ -208,6 +208,24 @@ void PumpApp::launchOAuthWizard() {
 
 //------------------------------------------------------------------------------
 
+QString certSubjectInfo(const QSslCertificate& cert) {
+#ifdef QT5
+  return cert.subjectInfo(QSslCertificate::CommonName).join(" ");
+#else
+  return cert.subjectInfo(QSslCertificate::CommonName);
+#endif
+}
+
+QString certIssuerInfo(const QSslCertificate& cert) {
+#ifdef QT5
+  return cert.issuerInfo(QSslCertificate::CommonName).join(" ");
+#else
+  return cert.issuerInfo(QSslCertificate::CommonName);
+#endif
+}
+
+//------------------------------------------------------------------------------
+
 void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
   if (m_s->ignoreSslErrors()) {
     reply->ignoreSslErrors();
@@ -228,8 +246,8 @@ void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
   QSslCertificate cert = errors[0].certificate();
   if (!cert.isNull()) {
     detailText = tr("SSL Server certificate.\n") +
-      tr("Issued to: ") + cert.subjectInfo(QSslCertificate::CommonName) + "\n" +
-      tr("Issued by: ") + cert.issuerInfo(QSslCertificate::CommonName) + "\n" +
+      tr("Issued to: ") + certSubjectInfo(cert) + "\n" +
+      tr("Issued by: ") + certIssuerInfo(cert) + "\n" +
       tr("Effective: ") + cert.effectiveDate().toString() + "\n" +
       tr("Expires: ") + cert.expiryDate().toString() + "\n" +
       tr("MD5 digest: ") + cert.digest().toHex() + "\n";
