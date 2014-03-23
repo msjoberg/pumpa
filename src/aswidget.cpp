@@ -175,16 +175,24 @@ void ASWidget::update() {
     if (cObj->isDeleted())
       continue;
 
+#ifdef DEBUG_TIMELINE
+    qDebug() << "UPDATE: m_list" << i << cObj->apiLink();
+#endif
+
     QASAbstractObject* wObj = objectAt(li);
     if (wObj == cObj) {
       li++;
       older = true;
+#ifdef DEBUG_TIMELINE
+        qDebug() << "UPDATE EXISTS1";
+#endif
       continue;
     }
 
     if (m_object_set.contains(cObj)) {
-      // qDebug() << "[WARNING]" << cObj->apiLink() << "in wrong order in list"
-      //          << m_list->url();
+#ifdef DEBUG_TIMELINE
+      qDebug() << "UPDATE EXISTS2";
+#endif
       continue;
     }
     m_object_set.insert(cObj);
@@ -211,7 +219,10 @@ void ASWidget::update() {
       m_object_set.remove(obj);
       m_list->removeObject(obj);
 
-      ow->changeObject(cObj);
+#ifdef DEBUG_TIMELINE
+      qDebug() << "UPDATE INSERTED AT" << li << "REUSE";
+#endif
+      changeWidgetObject(ow, cObj);
       m_itemLayout->insertWidget(li++, ow);
 
       doCountAsNew = countAsNew(cObj);
@@ -219,6 +230,10 @@ void ASWidget::update() {
       ObjectWidgetWithSignals* ow = createWidget(cObj);
       doCountAsNew = countAsNew(cObj);
       ObjectWidgetWithSignals::connectSignals(ow, this);
+
+#ifdef DEBUG_TIMELINE
+      qDebug() << "UPDATE INSERTED AT" << li << "NEW";
+#endif
       m_itemLayout->insertWidget(li++, ow);
       
 #ifdef DEBUG_WIDGETS
