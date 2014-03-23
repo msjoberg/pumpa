@@ -80,6 +80,12 @@ void ASWidget::setEndpoint(QString endpoint, QObject* parent, int asMode) {
 
 //------------------------------------------------------------------------------
 
+void ASWidget::refresh() {
+  emit request(m_list->url(), m_asMode | QAS_NEWER);
+}
+
+//------------------------------------------------------------------------------
+
 void ASWidget::fetchNewer() {
   emit request(m_list->prevLink(), m_asMode | QAS_NEWER);
 }
@@ -281,7 +287,7 @@ void ASWidget::refreshObject(QASAbstractObject* obj) {
   QDateTime lr = obj->lastRefreshed();
 
   if (lr.isNull() || lr.secsTo(now) > 10) {
-    emit request(obj->apiLink(), obj->asType());
     obj->lastRefreshed(now);
+    emit request(obj->apiLink(), obj->asType());
   }
 }

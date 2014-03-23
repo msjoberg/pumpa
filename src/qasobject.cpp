@@ -162,7 +162,8 @@ void QASObject::update(QVariantMap json, bool ignoreLike) {
     QVariantMap repliesMap = json["replies"].toMap();
 
     // don't replace a list with an empty one...
-    if (repliesMap["items"].toList().size()) {
+    size_t rs = repliesMap["items"].toList().size();
+    if (!m_replies || rs>0) {
       m_replies = QASObjectList::getObjectList(repliesMap, parent());
       m_replies->isReplies(true);
       // connectSignals(m_replies);

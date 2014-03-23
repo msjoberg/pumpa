@@ -767,6 +767,7 @@ void PumpApp::reload() {
 
 void PumpApp::fetchAll(bool all) {
   m_inboxWidget->fetchNewer();
+  m_inboxWidget->refresh();
   m_directMinorWidget->fetchNewer();
   m_directMajorWidget->fetchNewer();
   m_inboxMinorWidget->fetchNewer();
