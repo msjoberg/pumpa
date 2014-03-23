@@ -91,11 +91,55 @@ CollectionWidget::createWidget(QASAbstractObject* aObj) {
     return NULL;
   }
 
-  ActivityWidget* aw = new ActivityWidget(act, this);
+  ActivityWidget* aw = new ActivityWidget(act, isFullObject(act), this);
   connect(aw, SIGNAL(showContext(QASObject*)),
           this, SIGNAL(showContext(QASObject*)));
 
+  // Add new object to shown objects set
+  QASObject* obj = act->object();
+  if (obj)
+    m_objects_shown.insert(obj);
+
   return aw;
+}
+
+//------------------------------------------------------------------------------
+
+void CollectionWidget::changeWidgetObject(ObjectWidgetWithSignals* ow,
+                                          QASAbstractObject* aObj) {
+  QASActivity* act = qobject_cast<QASActivity*>(aObj);
+  ActivityWidget* aw = qobject_cast<ActivityWidget*>(ow);
+  if (!act || !aw) {
+    if (!act)
+      qDebug() << "[ERROR] CollectionWidget::changeWidgetObject, bad object";
+    if (!aw)
+      qDebug() << "[ERROR] CollectionWidget::changeWidgetObject, bad widget";
+    return ASWidget::changeWidgetObject(ow, aObj);
+  }
+
+  aw->changeObject(act, isFullObject(act));
+
+  // Remove old object from shown objects set
+  QASActivity* oldAct = aw->activity();
+  QASObject* oldObj = oldAct->object();
+  if (oldObj)
+    m_objects_shown.remove(oldObj);
+
+  // Add new object to shown objects set
+  QASObject* obj = act->object();
+  if (obj)
+    m_objects_shown.insert(obj);
+}
+
+//------------------------------------------------------------------------------
+
+bool CollectionWidget::isFullObject(QASActivity* act) {
+  QString verb = act->verb();
+  QASObject* obj = act->object();
+  bool objAlreadyShown = obj && m_objects_shown.contains(obj);
+
+  return (verb == "post" ||
+          (verb == "share" && !objAlreadyShown));
 }
 
 //------------------------------------------------------------------------------

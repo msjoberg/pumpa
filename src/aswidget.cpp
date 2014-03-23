@@ -239,6 +239,13 @@ void ASWidget::update() {
 
 //------------------------------------------------------------------------------
 
+void ASWidget::changeWidgetObject(ObjectWidgetWithSignals* ow,
+                                  QASAbstractObject* obj) {
+  ow->changeObject(obj);
+}
+
+//------------------------------------------------------------------------------
+
 ObjectWidgetWithSignals* ASWidget::createWidget(QASAbstractObject*) {
   return NULL;
 }

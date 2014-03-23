@@ -48,6 +48,9 @@ public:
 
   virtual void refreshTimeLabels();
 
+signals:
+  void lessClicked();
+
 private slots:
   void onChanged();
   void updateImage();
@@ -106,6 +109,8 @@ private:
   TextToolButton* m_followButton;
   TextToolButton* m_followAuthorButton;
   TextToolButton* m_deleteButton;
+
+  TextToolButton* m_lessButton;
 
   QVBoxLayout* m_contentLayout;
   QHBoxLayout* m_buttonLayout;

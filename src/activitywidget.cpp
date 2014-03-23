@@ -25,7 +25,8 @@
 
 //------------------------------------------------------------------------------
 
-ActivityWidget::ActivityWidget(QASActivity* a, QWidget* parent) :
+ActivityWidget::ActivityWidget(QASActivity* a, bool fullObject,
+                               QWidget* parent) :
   ObjectWidgetWithSignals(parent),
   m_objectWidget(NULL),
   m_activity(NULL)
@@ -38,10 +39,6 @@ ActivityWidget::ActivityWidget(QASActivity* a, QWidget* parent) :
   connect(m_textLabel, SIGNAL(linkHovered(const QString&)),
           this,  SIGNAL(linkHovered(const QString&)));
 
-  // if (!obj->content().isEmpty() || !obj->displayName().isEmpty()
-  //     || (objType == "image" && !obj->imageUrl().isEmpty()))
-  //  m_objectWidget = makeObjectWidgetAndConnect(obj, !fullObject);
-
   m_objectWidget = new ObjectWidget(NULL, this);
   ObjectWidgetWithSignals::connectSignals(m_objectWidget, this);
 
@@ -52,15 +49,10 @@ ActivityWidget::ActivityWidget(QASActivity* a, QWidget* parent) :
   layout->setContentsMargins(0, 0, 0, 0);
   layout->addWidget(m_textLabel, 0, Qt::AlignTop);
 
-  // if (m_objectWidget)
   layout->addWidget(m_objectWidget, 0, Qt::AlignTop);
   layout->addWidget(new QLabel("<hr />"));
 
-  changeObject(a);
-
-  // QASActor* actor = m_activity->actor();
-  // if (QASActivity::isLikeVerb(verb) && actor && !actor->isYou())
-  //   refreshObject(obj);
+  changeObject(a, fullObject);
 
   setLayout(layout);
 }
@@ -75,7 +67,7 @@ ActivityWidget::~ActivityWidget() {
 
 //------------------------------------------------------------------------------
 
-void ActivityWidget::changeObject(QASAbstractObject* aObj) {
+void ActivityWidget::changeObject(QASAbstractObject* aObj, bool fullObject) {
   m_activity = qobject_cast<QASActivity*>(aObj);
 
   if (!m_activity)
@@ -85,8 +77,6 @@ void ActivityWidget::changeObject(QASAbstractObject* aObj) {
   QASObject* obj = m_activity->object();
   QString objType = obj->type();
 
-  bool fullObject = (verb == "post");
-  
   m_objectWidget->changeObject(obj, fullObject);
 
   bool objectVisible = !obj->content().isEmpty() ||
@@ -163,18 +153,3 @@ QString ActivityWidget::recipientsToString(QASObjectList* rec) {
 
   return ret.join(", ");
 }
-
-//------------------------------------------------------------------------------
-
-// ObjectWidget* ActivityWidget::makeObjectWidgetAndConnect(QASObject* obj) {
-//   ObjectWidget* ow = new ObjectWidget(obj, this);
-
-//   ObjectWidgetWithSignals::connectSignals(ow, this);
-//   connect(ow, SIGNAL(showContext(QASObject*)),
-//           this, SIGNAL(showContext(QASObject*)));
-
-//   // connect(obj, SIGNAL(changed()), this, SLOT(onObjectChanged()),
-//   //         Qt::UniqueConnection);
-
-//   return ow;
-// }

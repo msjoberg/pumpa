@@ -123,10 +123,14 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   // avatar image.
   m_actorWidget = new ActorWidget(NULL, this);
 
+  m_lessButton = new TextToolButton("-", this);
+  connect(m_lessButton, SIGNAL(clicked()), this, SIGNAL(lessClicked()));
+
   QHBoxLayout* acrossLayout = new QHBoxLayout;
   acrossLayout->setSpacing(10);
   acrossLayout->addWidget(m_actorWidget, 0, Qt::AlignTop);
   acrossLayout->addLayout(rightLayout);
+  acrossLayout->addWidget(m_lessButton, 0, Qt::AlignTop);
 
   changeObject(obj);
   setSizePolicy(QSizePolicy::Ignored, QSizePolicy::MinimumExpanding);
@@ -168,9 +172,11 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
   if (objType == "comment") {
     setLineWidth(1);
     setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
+    m_lessButton->setVisible(false);
   } else {
     setLineWidth(0);
     setFrameStyle(QFrame::NoFrame | QFrame::Plain);
+    m_lessButton->setVisible(true);
   }
 
   if (!m_object->displayName().isEmpty()) {

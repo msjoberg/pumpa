@@ -49,10 +49,12 @@ public:
 
 signals:
   void moreClicked();
+  void lessClicked();
   void showContext(QASObject*);
                           
 private slots:
   void showMore();
+  void showLess();
   void onChanged();
   void updateContextLabel();
   void onShowContext();

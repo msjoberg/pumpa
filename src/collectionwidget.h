@@ -42,10 +42,15 @@ protected:
   void updateLoadOlderButton(bool wait=false);
   virtual QASAbstractObjectList* initList(QString endpoint, QObject* parent);
   virtual ObjectWidgetWithSignals* createWidget(QASAbstractObject* aObj);
+  virtual void changeWidgetObject(ObjectWidgetWithSignals*, QASAbstractObject*);
   virtual bool countAsNew(QASAbstractObject* aObj);
   virtual void clear();
 
+  bool isFullObject(QASActivity*);
+
+private:
   QPushButton* m_loadOlderButton;
+  QSet<QASObject*> m_objects_shown;
 };
 
 #endif /* _COLLECTIONWIDGET_H_ */
