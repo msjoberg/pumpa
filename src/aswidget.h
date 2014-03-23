@@ -39,13 +39,17 @@ public:
   virtual void fetchOlder();
   void refresh();
   void setEndpoint(QString endpoint, QObject* parent, int asMode=-1);
+  QString url() const { return m_list->url(); }
 
   int count() const { return m_object_set.size(); }
   const QList<QASAbstractObject*>& newObjects() { return m_newObjects; }
-  bool hasObject(QASAbstractObject* obj) { return m_object_set.contains(obj); }
+  virtual bool hasObject(QASAbstractObject* obj) { 
+    return m_object_set.contains(obj);
+  }
 
 signals:
   void highlightMe();  
+  void hasNewObjects();
   void request(QString, int);
   void newReply(QASObject*, QASObjectList*, QASObjectList*);
   void linkHovered(const QString&);

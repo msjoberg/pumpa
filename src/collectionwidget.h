@@ -32,7 +32,7 @@ class CollectionWidget : public ASWidget {
 public:
   CollectionWidget(QWidget* parent, int widgetLimit=-1, int purgeWait=10);
 
-  // virtual void fetchNewer();
+  virtual bool hasObject(QASAbstractObject* obj);
 
 protected slots:
   virtual void update();

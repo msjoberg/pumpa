@@ -43,6 +43,7 @@ void ContextWidget::setObject(QASObject* obj) {
           Qt::UniqueConnection);
 
   ObjectWidget* ow = new ObjectWidget(m_object, this);
+  ow->disableLessButton();
   ObjectWidgetWithSignals::connectSignals(ow, this);
   connect(ow, SIGNAL(showContext(QASObject*)),
           this, SIGNAL(showContext(QASObject*)));

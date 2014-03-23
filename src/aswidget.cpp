@@ -253,6 +253,9 @@ void ASWidget::update() {
     }
   }
 
+  if (newCount && !m_firstTime)
+    emit hasNewObjects();
+
   if (newCount && !isVisible() && !m_firstTime)
     emit highlightMe();
   m_firstTime = false;

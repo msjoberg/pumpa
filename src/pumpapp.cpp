@@ -142,6 +142,11 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   connectCollection(m_firehoseWidget);
   m_firehoseWidget->hide();
 
+  connect(m_inboxMinorWidget, SIGNAL(hasNewObjects()),
+          this, SLOT(onNewMinorObjects()));
+  connect(m_directMinorWidget, SIGNAL(hasNewObjects()),
+          this, SLOT(onNewMinorObjects()));
+
   connect(m_tabWidget, SIGNAL(currentChanged(int)),
           this, SLOT(tabSelected(int)));
 
@@ -471,6 +476,26 @@ void PumpApp::timelineHighlighted(int feed) {
 
 //------------------------------------------------------------------------------
 
+void PumpApp::onNewMinorObjects() {
+  CollectionWidget* cw = qobject_cast<CollectionWidget*>(sender());
+  if (!cw)
+    return;
+
+  const QList<QASAbstractObject*>& newObjects = cw->newObjects();
+  cw->url();
+
+  for (int i=0; i<newObjects.size(); ++i) {
+    QASActivity* act = qobject_cast<QASActivity*>(newObjects.at(i));
+    if (act && act->object() && act->object()->inReplyTo()) {
+      QASObject* irtObj = act->object()->inReplyTo();
+      if (irtObj->url().isEmpty() || isShown(irtObj))
+        refreshObject(irtObj);
+    }
+  }
+}
+
+//------------------------------------------------------------------------------
+
 void PumpApp::resetNotifications() {
   if (m_trayIcon)
     m_trayIcon->setIcon(QIcon(CLIENT_ICON));
@@ -795,6 +820,22 @@ void PumpApp::loadOlder() {
     qobject_cast<ASWidget*>(m_tabWidget->currentWidget());
   if (cw)
     cw->fetchOlder();
+}
+
+//------------------------------------------------------------------------------
+
+bool PumpApp::isShown(QASAbstractObject* obj) {
+  return m_inboxWidget->hasObject(obj) ||
+    m_directMinorWidget->hasObject(obj) ||
+    m_directMajorWidget->hasObject(obj) ||
+    m_inboxMinorWidget->hasObject(obj) ||
+    (tabShown(m_firehoseWidget) && m_firehoseWidget->hasObject(obj)) ||
+    (tabShown(m_contextWidget) && m_contextWidget->hasObject(obj)) ||
+    (tabShown(m_followersWidget) && m_followersWidget->hasObject(obj)) ||
+    (tabShown(m_followingWidget) && m_followingWidget->hasObject(obj)) ||
+    (tabShown(m_favouritesWidget) && m_favouritesWidget->hasObject(obj)) ||
+    (tabShown(m_userActivitiesWidget) && 
+     m_userActivitiesWidget->hasObject(obj));
 }
 
 //------------------------------------------------------------------------------
@@ -1381,28 +1422,7 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     return;
 
   if (sid == QAS_COLLECTION) {
-    QASCollection* coll = QASCollection::getCollection(json, this, id);
-    if (coll) {
-      bool checkFollows = (id & QAS_FOLLOW);
-
-      for (size_t i=0; i<coll->size(); ++i) {
-        QASActivity* activity = coll->at(i);
-        QASObject* obj = activity->object();
-
-        if (obj) {
-          QASObject* irtObj = obj->inReplyTo();
-          if (irtObj && irtObj->url().isEmpty())
-            refreshObject(irtObj);
-        }
-
-        if (checkFollows) {
-          QASActor* actor = activity->actor();
-          if (activity->verb() == "post" && actor &&
-              actor->followedJson() && !actor->followed()) 
-            followActor(actor);
-        }
-      }
-    }
+    QASCollection::getCollection(json, this, id);
   } else if (sid == QAS_ACTIVITY) {
     QASActivity* act = QASActivity::getActivity(json, this);
     QASObject* obj = act->object();

@@ -144,6 +144,14 @@ bool CollectionWidget::isFullObject(QASActivity* act) {
 
 //------------------------------------------------------------------------------
 
+bool CollectionWidget::hasObject(QASAbstractObject* aObj) {
+  QASObject* obj = qobject_cast<QASObject*>(aObj);
+  return (m_object_set.contains(aObj) ||
+          (obj && m_objects_shown.contains(obj)));
+}
+
+//------------------------------------------------------------------------------
+
 bool CollectionWidget::countAsNew(QASAbstractObject* aObj) {
   QASActivity* act = qobject_cast<QASActivity*>(aObj);
   if (!act)

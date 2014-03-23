@@ -192,3 +192,10 @@ void ObjectWidget::refreshTimeLabels() {
   if (m_shortObjectWidget)
     m_shortObjectWidget->refreshTimeLabels();
 }
+
+//------------------------------------------------------------------------------
+
+void ObjectWidget::disableLessButton() {
+  if (!m_short)
+    m_objectWidget->disableLessButton();
+}

@@ -72,6 +72,7 @@ private slots:
   void updateTrayIcon();
   void toggleVisible();
   void timelineHighlighted(int);
+  void onNewMinorObjects();
 
   void followDialog();
   void onLike(QASObject* obj);
@@ -136,6 +137,8 @@ protected:
 
 private:
   bool tabShown(ASWidget* aw) const;
+
+  bool isShown(QASAbstractObject* obj);
 
   KQOAuthRequest* initRequest(QString endpoint,
                               KQOAuthRequest::RequestHttpMethod method);

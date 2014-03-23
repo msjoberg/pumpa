@@ -47,6 +47,7 @@ public:
   virtual QASAbstractObject* asObject() const { return object(); }
 
   virtual void refreshTimeLabels();
+  void disableLessButton();
 
 signals:
   void lessClicked();

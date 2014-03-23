@@ -783,3 +783,9 @@ void FullObjectWidget::refreshTimeLabels() {
     }
   }
 }
+
+//------------------------------------------------------------------------------
+
+void FullObjectWidget::disableLessButton() {
+  m_lessButton->setVisible(false);
+}
