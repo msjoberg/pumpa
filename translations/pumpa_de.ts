@@ -47,7 +47,7 @@
     <message>
         <location filename="../src/filedownloader.cpp" line="214"/>
         <source>Could not open file %1 for writing: </source>
-        <translation>Datei %1 konnte nicht zum Schreiben geöffnet werden: </translation>
+        <translation>Datei %1 konnte zum Schreiben nicht geöffnet werden: </translation>
     </message>
 </context>
 <context>
@@ -72,7 +72,7 @@
         <location filename="../src/fullobjectwidget.cpp" line="301"/>
         <location filename="../src/fullobjectwidget.cpp" line="311"/>
         <source>at %1</source>
-        <translation>%1</translation>
+        <translation>@ %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="331"/>
@@ -103,12 +103,12 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="386"/>
         <source>stop following %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 nicht mehr folgen</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="386"/>
         <source>follow %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 folgen</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="435"/>
@@ -136,7 +136,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="651"/>
         <source>Are you sure you want to stop following %1?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sind Sie sicher, dass Sie %1 nicht mehr folgen wollen?</translation>
     </message>
     <message numerus="yes">
         <source>%Ln persons shared this.</source>
@@ -186,7 +186,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="625"/>
         <source>Share this %1 by %2?</source>
-        <translation>Teile %1 von %2?</translation>
+        <translation>%1 von %2 teilen?</translation>
     </message>
     <message>
         <source>Are you sure you want to stop following</source>
@@ -240,12 +240,12 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="83"/>
         <source>+ &amp;To</source>
-        <translation>+ To</translation>
+        <translation>+ &amp;To</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="86"/>
         <source>+ &amp;Cc</source>
-        <translation>+ Cc</translation>
+        <translation>+ &amp;Cc</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="104"/>
@@ -344,7 +344,7 @@
     <message>
         <location filename="../src/oauthwizard.cpp" line="75"/>
         <source>Use secure connection (recommended)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sichere Verbindung verwenden (empfohlen)</translation>
     </message>
     <message>
         <location filename="../src/oauthwizard.cpp" line="85"/>
@@ -414,7 +414,7 @@
     <message>
         <location filename="../src/objectwidget.cpp" line="171"/>
         <source>show context</source>
-        <translation>Zusammenhang zeigen</translation>
+        <translation>Kontext zeigen</translation>
     </message>
 </context>
 <context>
@@ -548,50 +548,51 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="237"/>
         <source>SSL Error: </source>
-        <translation type="unfinished"></translation>
+        <translation>SSL Fehler: </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="240"/>
         <source>
 %1 is unable to verify the identity of the server. This error could mean that someone is trying to impersonate the server, or that the server&apos;s administrator has made an error.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+%1 ist nicht in der Lage, die Identität des Servers zu überprüfen. Dieser Fehler könnte bedeuten, dass jemand versucht sich als dieser Server auszugeben, oder dass der Server-Administrator einen Fehler gemacht hat.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="248"/>
         <source>SSL Server certificate.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>SSL Server Zertifkat.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="249"/>
         <source>Issued to: </source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgestellt für: </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="250"/>
         <source>Issued by: </source>
-        <translation type="unfinished"></translation>
+        <translation>Herausgegeben von:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="251"/>
         <source>Effective: </source>
-        <translation type="unfinished"></translation>
+        <translation>Effektiv: </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="252"/>
         <source>Expires: </source>
-        <translation type="unfinished"></translation>
+        <translation>Gültig bis: </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="253"/>
         <source>MD5 digest: </source>
-        <translation type="unfinished"></translation>
+        <translation>MD5-Digest: </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="257"/>
         <source>&lt;b&gt;Untrusted SSL connection!&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Nicht vertrauenswürdige SSL-Verbindung!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="295"/>
