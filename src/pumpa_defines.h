@@ -27,7 +27,7 @@
 
 #define WEBSITE_URL           "http://saz.im/software/pumpa.html"
 #define MARKUP_DOC_URL        "http://saz.im/software/pumpa.html#markdown"
-#define BUGTRACKER_URL        "https://bugs.saz.im/pumpa"
+#define BUGTRACKER_URL        "https://gitorious.org/projects/pumpa/issues"
 
 #define IMAGE_MAX_WIDTH       320
 #define IMAGE_MAX_HEIGHT      320
