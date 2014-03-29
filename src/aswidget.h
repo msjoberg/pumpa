@@ -36,7 +36,7 @@ public:
   ASWidget(QWidget* parent, int widgetLimit=-1, int purgeWait=10);
   virtual void refreshTimeLabels();
   virtual void fetchNewer();
-  virtual void fetchOlder();
+  virtual void fetchOlder(int count=-1);
   void refresh();
   void setEndpoint(QString endpoint, QObject* parent, int asMode=-1);
   QString url() const { return m_list->url(); }

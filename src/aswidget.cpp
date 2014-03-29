@@ -92,11 +92,14 @@ void ASWidget::fetchNewer() {
 
 //------------------------------------------------------------------------------
 
-void ASWidget::fetchOlder() {
+void ASWidget::fetchOlder(int count) {
   m_purgeCounter = m_purgeWait;
   QString nextLink = m_list->nextLink();
-  if (!nextLink.isEmpty())
+  if (!nextLink.isEmpty()) {
+    if (count != -1)
+      nextLink += QString("&count=%1").arg(count);
     emit request(nextLink, m_asMode | QAS_OLDER);
+  }
 }
 
 //------------------------------------------------------------------------------
