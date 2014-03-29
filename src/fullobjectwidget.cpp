@@ -169,7 +169,7 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
 
   connect(m_object, SIGNAL(changed()), this, SLOT(onChanged()));
 
-  if (objType == "comment") {
+  if (objType == "comment" || objType == "person") {
     setLineWidth(1);
     setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
     m_lessButton->setVisible(false);
