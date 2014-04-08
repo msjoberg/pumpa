@@ -77,10 +77,14 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   }
 
   m_nam = new QNetworkAccessManager(this);
+  connect(m_nam, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)), 
+          this, SLOT(onSslErrors(QNetworkReply*, QList<QSslError>)));
 
-  oaManager = new KQOAuthManager(this);
-  connect(oaManager, SIGNAL(authorizedRequestReady(QByteArray, int)),
+  m_oam = new KQOAuthManager(this);
+  connect(m_oam, SIGNAL(authorizedRequestReady(QByteArray, int)),
           this, SLOT(onAuthorizedRequestReady(QByteArray, int)));
+  connect(m_oam, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)), 
+          this, SLOT(onSslErrors(QNetworkReply*, QList<QSslError>)));
 
   createActions();
   createMenu();
@@ -138,6 +142,11 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   connectCollection(m_firehoseWidget);
   m_firehoseWidget->hide();
 
+  connect(m_inboxMinorWidget, SIGNAL(hasNewObjects()),
+          this, SLOT(onNewMinorObjects()));
+  connect(m_directMinorWidget, SIGNAL(hasNewObjects()),
+          this, SLOT(onNewMinorObjects()));
+
   connect(m_tabWidget, SIGNAL(currentChanged(int)),
           this, SLOT(tabSelected(int)));
 
@@ -185,7 +194,7 @@ PumpApp::~PumpApp() {
 
 void PumpApp::launchOAuthWizard() {
   if (!m_wiz) {
-    m_wiz = new OAuthWizard(m_nam, this);
+    m_wiz = new OAuthWizard(m_nam, m_oam, this);
     connect(m_wiz, SIGNAL(clientRegistered(QString, QString, QString, QString)),
             this, SLOT(onClientRegistered(QString, QString, QString, QString)));
     connect(m_wiz, SIGNAL(accessTokenReceived(QString, QString)),
@@ -195,6 +204,67 @@ void PumpApp::launchOAuthWizard() {
   }
   m_wiz->restart();
   m_wiz->show();
+}
+
+//------------------------------------------------------------------------------
+
+QString certSubjectInfo(const QSslCertificate& cert) {
+#ifdef QT5
+  return cert.subjectInfo(QSslCertificate::CommonName).join(" ");
+#else
+  return cert.subjectInfo(QSslCertificate::CommonName);
+#endif
+}
+
+QString certIssuerInfo(const QSslCertificate& cert) {
+#ifdef QT5
+  return cert.issuerInfo(QSslCertificate::CommonName).join(" ");
+#else
+  return cert.issuerInfo(QSslCertificate::CommonName);
+#endif
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
+  if (m_s->ignoreSslErrors()) {
+    reply->ignoreSslErrors();
+    return;
+  }
+
+  QString infoText;
+  for (int i=0; i<errors.size(); i++) {
+    infoText += tr("SSL Error: ") + errors[i].errorString() + ".\n";
+  }
+  infoText += 
+    QString(tr("\n%1 is unable to verify the identity of the server. "
+            "This error could mean that someone is trying to impersonate the "
+            "server, or that the server's administrator has made an error.\n")).
+    arg(CLIENT_FANCY_NAME);
+
+  QString detailText;
+  QSslCertificate cert = errors[0].certificate();
+  if (!cert.isNull()) {
+    detailText = tr("SSL Server certificate.\n") +
+      tr("Issued to: ") + certSubjectInfo(cert) + "\n" +
+      tr("Issued by: ") + certIssuerInfo(cert) + "\n" +
+      tr("Effective: ") + cert.effectiveDate().toString() + "\n" +
+      tr("Expires: ") + cert.expiryDate().toString() + "\n" +
+      tr("MD5 digest: ") + cert.digest().toHex() + "\n";
+  }
+
+  QMessageBox msgBox;
+  msgBox.setText(tr("<b>Untrusted SSL connection!</b>"));
+  msgBox.setIcon(QMessageBox::Critical);
+  msgBox.setInformativeText(infoText);
+  if (!detailText.isEmpty())
+    msgBox.setDetailedText(detailText);
+  msgBox.setStandardButtons(QMessageBox::Abort);
+  msgBox.setDefaultButton(QMessageBox::Abort);
+
+  msgBox.exec();
+
+  QApplication::quit();
 }
 
 //------------------------------------------------------------------------------
@@ -419,6 +489,26 @@ void PumpApp::timelineHighlighted(int feed) {
       msg += "\"" + obj->excerpt() + "\"";
     }
     sendNotification(CLIENT_FANCY_NAME, msg);
+  }
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::onNewMinorObjects() {
+  CollectionWidget* cw = qobject_cast<CollectionWidget*>(sender());
+  if (!cw)
+    return;
+
+  const QList<QASAbstractObject*>& newObjects = cw->newObjects();
+  cw->url();
+
+  for (int i=0; i<newObjects.size(); ++i) {
+    QASActivity* act = qobject_cast<QASActivity*>(newObjects.at(i));
+    if (act && act->object() && act->object()->inReplyTo()) {
+      QASObject* irtObj = act->object()->inReplyTo();
+      if (irtObj->url().isEmpty() || isShown(irtObj))
+        refreshObject(irtObj);
+    }
   }
 }
 
@@ -720,12 +810,17 @@ void PumpApp::reload() {
 
 void PumpApp::fetchAll(bool all) {
   m_inboxWidget->fetchNewer();
+  m_inboxWidget->refresh();
   m_directMinorWidget->fetchNewer();
   m_directMajorWidget->fetchNewer();
   m_inboxMinorWidget->fetchNewer();
 
   if (tabShown(m_firehoseWidget))
     m_firehoseWidget->fetchNewer();
+  if (tabShown(m_contextWidget))
+    m_contextWidget->fetchNewer();
+
+  // These will be reloaded even if not shown, if all=true
   if (all || tabShown(m_followersWidget))
     m_followersWidget->fetchNewer();
   if (all || tabShown(m_followingWidget))
@@ -743,6 +838,22 @@ void PumpApp::loadOlder() {
     qobject_cast<ASWidget*>(m_tabWidget->currentWidget());
   if (cw)
     cw->fetchOlder();
+}
+
+//------------------------------------------------------------------------------
+
+bool PumpApp::isShown(QASAbstractObject* obj) {
+  return m_inboxWidget->hasObject(obj) ||
+    m_directMinorWidget->hasObject(obj) ||
+    m_directMajorWidget->hasObject(obj) ||
+    m_inboxMinorWidget->hasObject(obj) ||
+    (tabShown(m_firehoseWidget) && m_firehoseWidget->hasObject(obj)) ||
+    (tabShown(m_contextWidget) && m_contextWidget->hasObject(obj)) ||
+    (tabShown(m_followersWidget) && m_followersWidget->hasObject(obj)) ||
+    (tabShown(m_followingWidget) && m_followingWidget->hasObject(obj)) ||
+    (tabShown(m_favouritesWidget) && m_favouritesWidget->hasObject(obj)) ||
+    (tabShown(m_userActivitiesWidget) && 
+     m_userActivitiesWidget->hasObject(obj));
 }
 
 //------------------------------------------------------------------------------
@@ -828,7 +939,6 @@ void PumpApp::followDialog() {
 void PumpApp::testUserAndFollow(QString username, QString server) {
   QString fingerUrl = QString("%1/.well-known/webfinger?resource=%2@%1").
     arg(server).arg(username);
-  // https://io.saz.im/.well-known/webfinger?resource=sazius@saz.im
 
   QNetworkRequest rec(QUrl("https://" + fingerUrl));
   QNetworkReply* reply = m_nam->head(rec);
@@ -964,7 +1074,7 @@ void PumpApp::postNote(QString content, QString title,
   obj["objectType"] = "note";
   obj["content"] = addTextMarkup(content, m_s->useMarkdown());
   if (!title.isEmpty())
-    obj["displayName"] = title;
+    obj["displayName"] = processTitle(title);
 
   feed("post", obj, QAS_OBJECT | QAS_REFRESH | QAS_POST, to, cc);
 }
@@ -978,7 +1088,7 @@ void PumpApp::postImage(QString msg,
                         RecipientList cc) {
   m_imageObject.clear();
   m_imageObject["content"] = addTextMarkup(msg, m_s->useMarkdown());
-  m_imageObject["displayName"] = title;
+  m_imageObject["displayName"] = processTitle(title);
 
   m_imageTo = to;
   m_imageCc = cc;
@@ -1248,9 +1358,9 @@ QNetworkReply* PumpApp::executeRequest(KQOAuthRequest* request,
   }
 
   m_requestMap.insert(id, qMakePair(request, response_id));
-  oaManager->executeAuthorizedRequest(request, id);
+  m_oam->executeAuthorizedRequest(request, id);
 
-  return oaManager->getReply(request);
+  return m_oam->getReply(request);
 }
 
 //------------------------------------------------------------------------------
@@ -1274,18 +1384,18 @@ void PumpApp::followActor(QASActor* actor, bool doFollow) {
 //------------------------------------------------------------------------------
 
 void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
-  KQOAuthManager::KQOAuthError lastError = oaManager->lastError();
+  KQOAuthManager::KQOAuthError lastError = m_oam->lastError();
 
   QPair<KQOAuthRequest*, int> rp = m_requestMap.take(rid);
   KQOAuthRequest* request = rp.first;
   int id = rp.second;
   QString reqUrl = request->requestEndpoint().toString();
 
-#ifdef DEBUG_NET
+#ifdef DEBUG_NET_MOAR
   qDebug() << "[DEBUG] request done [" << rid << id << "]" << reqUrl
            << response.count() << "bytes";
 #endif
-#ifdef DEBUG_NET_MOAR
+#ifdef DEBUG_NET_EVEN_MOAR
   qDebug() << response;
 #endif
 
@@ -1317,7 +1427,7 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
       qDebug() << "[WARNING] unable to fetch context for object.";
     } else {
       errorMessage(QString(tr("Network or authorisation error [%1/%2] %3.")).
-                   arg(oaManager->lastError()).arg(id).arg(reqUrl));
+                   arg(m_oam->lastError()).arg(id).arg(reqUrl));
     }
 #ifdef DEBUG_NET
     qDebug() << "[ERROR]" << response;
@@ -1330,28 +1440,7 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     return;
 
   if (sid == QAS_COLLECTION) {
-    QASCollection* coll = QASCollection::getCollection(json, this, id);
-    if (coll) {
-      bool checkFollows = (id & QAS_FOLLOW);
-
-      for (size_t i=0; i<coll->size(); ++i) {
-        QASActivity* activity = coll->at(i);
-        QASObject* obj = activity->object();
-
-        if (obj) {
-          QASObject* irtObj = obj->inReplyTo();
-          if (irtObj && irtObj->url().isEmpty())
-            refreshObject(irtObj);
-        }
-
-        if (checkFollows) {
-          QASActor* actor = activity->actor();
-          if (activity->verb() == "post" && actor &&
-              actor->followedJson() && !actor->followed()) 
-            followActor(actor);
-        }
-      }
-    }
+    QASCollection::getCollection(json, this, id);
   } else if (sid == QAS_ACTIVITY) {
     QASActivity* act = QASActivity::getActivity(json, this);
     QASObject* obj = act->object();

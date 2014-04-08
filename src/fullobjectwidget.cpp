@@ -123,10 +123,14 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   // avatar image.
   m_actorWidget = new ActorWidget(NULL, this);
 
+  m_lessButton = new TextToolButton("-", this);
+  connect(m_lessButton, SIGNAL(clicked()), this, SIGNAL(lessClicked()));
+
   QHBoxLayout* acrossLayout = new QHBoxLayout;
   acrossLayout->setSpacing(10);
   acrossLayout->addWidget(m_actorWidget, 0, Qt::AlignTop);
   acrossLayout->addLayout(rightLayout);
+  acrossLayout->addWidget(m_lessButton, 0, Qt::AlignTop);
 
   changeObject(obj);
   setSizePolicy(QSizePolicy::Ignored, QSizePolicy::MinimumExpanding);
@@ -165,12 +169,14 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
 
   connect(m_object, SIGNAL(changed()), this, SLOT(onChanged()));
 
-  if (objType == "comment") {
+  if (objType == "comment" || objType == "person") {
     setLineWidth(1);
     setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
+    m_lessButton->setVisible(false);
   } else {
     setLineWidth(0);
     setFrameStyle(QFrame::NoFrame | QFrame::Plain);
+    m_lessButton->setVisible(true);
   }
 
   if (!m_object->displayName().isEmpty()) {
@@ -562,7 +568,14 @@ void FullObjectWidget::favourite() {
 //------------------------------------------------------------------------------
 
 void FullObjectWidget::reply() {
-  emit newReply(m_object, NULL, NULL);
+  QASActivity* act = m_object->postingActivity();
+  if (act == NULL && hasValidIrtObject())
+    act = m_object->inReplyTo()->postingActivity();
+
+  QASObjectList* to = act ? act->to() : NULL;
+  QASObjectList* cc = act ? act->cc() : NULL;
+
+  emit newReply(m_object, to, cc);
 }
 
 //------------------------------------------------------------------------------
@@ -769,4 +782,10 @@ void FullObjectWidget::refreshTimeLabels() {
         ow->refreshTimeLabels();
     }
   }
+}
+
+//------------------------------------------------------------------------------
+
+void FullObjectWidget::disableLessButton() {
+  m_lessButton->setVisible(false);
 }

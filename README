@@ -1,4 +1,4 @@
-# Pumpa v0.8.2
+# Pumpa v0.8.3
 
 Greetings, fellow pumpkins!
 
@@ -9,7 +9,7 @@ Please report any bugs or feature requests to [the bug tracker][13].
 If that doesn't work for some reason, you can always contact me via
 e-mail: <mats@sjoberg.fi>.
 
-The Pumpa source code includes codes and graphics from other projects:
+The Pumpa source code includes codes and graphics from other people:
 
 - The [kQOAuth library][2] is copyrighted by [Johan Paul][3] and
   licensed under LGPL 2.1.
@@ -27,6 +27,10 @@ The Pumpa source code includes codes and graphics from other projects:
 - [Tim Schumacher][16] contributed several improvements and installer
   code for Microsoft Windows systems.
 
+- Spanish translation by [Laura Arjona](https://identi.ca/larjona),
+  Italian by ["Metal Biker"](https://microca.st/howcanuhavemyusername)
+  and German by [Mathias Gebbe](https://pumpity.net/matzeihnsein)
+
 Oh, and "pumpa" is a Swedish word that means either "to pump" (as a
 verb) or "pumpkin" (as a noun) :-)
 
@@ -39,12 +43,12 @@ Pumpa was mentioned on [LWN: "Searching for a pump.io client"](https://lwn.net/A
 [5]: http://lpc.opengameart.org/
 [8]: https://github.com/vmg/sundown
 [9]: https://github.com/vmg/sundown#license
-[13]: https://bugs.saz.im/pumpa
+[13]: https://gitorious.org/projects/pumpa/issues
 
 ## Installing
 
-Pumpa is packaged in [Debian sid
-(unstable)](http://packages.debian.org/sid/pumpa) and [Ubuntu
+Pumpa is packaged in [Debian jessie and
+sid](https://packages.debian.org/search?keywords=pumpa) and [Ubuntu
 trusty](http://packages.ubuntu.com/trusty/pumpa), so if you are using
 one of those, you can simply install it with your favourite package
 manager or by typing (as root or using `sudo`):

@@ -22,12 +22,12 @@
 
 #define CLIENT_NAME           "pumpa"
 #define CLIENT_FANCY_NAME     "Pumpa"
-#define CLIENT_VERSION        "0.8.2"
+#define CLIENT_VERSION        "0.8.3"
 #define CLIENT_ICON           ":/images/pumpa.png"
 
 #define WEBSITE_URL           "http://saz.im/software/pumpa.html"
 #define MARKUP_DOC_URL        "http://saz.im/software/pumpa.html#markdown"
-#define BUGTRACKER_URL        "https://bugs.saz.im/pumpa"
+#define BUGTRACKER_URL        "https://gitorious.org/projects/pumpa/issues"
 
 #define IMAGE_MAX_WIDTH       320
 #define IMAGE_MAX_HEIGHT      320

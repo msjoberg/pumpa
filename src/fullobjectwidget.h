@@ -47,6 +47,10 @@ public:
   virtual QASAbstractObject* asObject() const { return object(); }
 
   virtual void refreshTimeLabels();
+  void disableLessButton();
+
+signals:
+  void lessClicked();
 
 private slots:
   void onChanged();
@@ -106,6 +110,8 @@ private:
   TextToolButton* m_followButton;
   TextToolButton* m_followAuthorButton;
   TextToolButton* m_deleteButton;
+
+  TextToolButton* m_lessButton;
 
   QVBoxLayout* m_contentLayout;
   QHBoxLayout* m_buttonLayout;

@@ -1,3 +1,15 @@
+pumpa (0.8.3-1) unstable; urgency=low
+
+  * Added German translation.
+  * Preliminary support for animated GIFs. (Closes: #734494)
+  * Fixed bug where replies in context view would only go to original author.
+  * Validate SSL certificate on every connection. Don't fall back to non-SSL.
+  * Ability to minimise posts in stream.
+  * Improvements to fetching replies from people not being followed.
+  * Various minor bug fixes.
+
+ -- Mats Sjöberg <mats@sjoberg.fi>  Sun, 23 Mar 2014 20:37:45 +0200
+
 pumpa (0.8.2-1) unstable; urgency=low
 
   * Initial release. (Closes: #732653)

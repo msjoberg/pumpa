@@ -46,13 +46,16 @@ public:
   virtual QASAbstractObject* asObject() const { return object(); }
 
   virtual void refreshTimeLabels();
+  void disableLessButton();
 
 signals:
   void moreClicked();
+  void lessClicked();
   void showContext(QASObject*);
                           
 private slots:
   void showMore();
+  void showLess();
   void onChanged();
   void updateContextLabel();
   void onShowContext();

@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QMultiMap>
 #include <QNetworkReply>
+#include <QSslError>
 
 #include "kqoauthrequest.h"
 
@@ -174,6 +175,8 @@ Q_SIGNALS:
     void authorizedRequestDone();
 
     void errorMessage(QString);
+
+    void sslErrors(QNetworkReply*, QList<QSslError>);
 
 private Q_SLOTS:
     void onRequestReplyReceived( QNetworkReply *reply );

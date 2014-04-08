@@ -41,7 +41,6 @@ KQOAuthManagerPrivate::KQOAuthManagerPrivate(KQOAuthManager *parent) :
     networkManager(new QNetworkAccessManager),
     managerUserSet(false)
 {
-
 }
 
 KQOAuthManagerPrivate::~KQOAuthManagerPrivate() {
@@ -209,7 +208,13 @@ void KQOAuthManager::executeRequest(KQOAuthRequest *request) {
     networkRequest.setRawHeader("Authorization", authHeader);
 
     connect(d->networkManager, SIGNAL(finished(QNetworkReply *)),
-            this, SLOT(onRequestReplyReceived(QNetworkReply *)), Qt::UniqueConnection);
+            this, SLOT(onRequestReplyReceived(QNetworkReply *)),
+            Qt::UniqueConnection);
+    connect(d->networkManager, 
+            SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)),
+            this, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)),
+            Qt::UniqueConnection);
+
     disconnect(d->networkManager, SIGNAL(finished(QNetworkReply *)),
             this, SLOT(onAuthorizedRequestReplyReceived(QNetworkReply *)));
 
@@ -314,8 +319,15 @@ void KQOAuthManager::executeAuthorizedRequest(KQOAuthRequest *request, int id) {
 
     disconnect(d->networkManager, SIGNAL(finished(QNetworkReply *)),
             this, SLOT(onRequestReplyReceived(QNetworkReply *)));
+
+    connect(d->networkManager, 
+            SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)),
+            this, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)),
+            Qt::UniqueConnection);
+
     connect(d->networkManager, SIGNAL(finished(QNetworkReply *)),
-            this, SLOT(onAuthorizedRequestReplyReceived(QNetworkReply*)), Qt::UniqueConnection);
+            this, SLOT(onAuthorizedRequestReplyReceived(QNetworkReply*)), 
+            Qt::UniqueConnection);
 
     QNetworkReply *reply = NULL;
     if (request->httpMethod() == KQOAuthRequest::GET) {

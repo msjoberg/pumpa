@@ -32,6 +32,8 @@ public:
   ContextWidget(QWidget* parent);
 
   void setObject(QASObject* obj);
+  
+  virtual void fetchNewer();
 
 protected:
   virtual void update();

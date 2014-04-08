@@ -32,6 +32,7 @@
 #include <QSystemTrayIcon>
 #include <QProgressDialog>
 #include <QMovie>
+#include <QSslError>
 
 #ifdef USE_DBUS
 #include <QDBusInterface>
@@ -63,12 +64,15 @@ signals:
   void userAuthorizationStarted();
                     
 private slots:
+  void onSslErrors(QNetworkReply*, QList<QSslError>);
+
   void userTestDoneAndFollow();
 
   void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
   void updateTrayIcon();
   void toggleVisible();
   void timelineHighlighted(int);
+  void onNewMinorObjects();
 
   void followDialog();
   void onLike(QASObject* obj);
@@ -133,6 +137,8 @@ protected:
 
 private:
   bool tabShown(ASWidget* aw) const;
+
+  bool isShown(QASAbstractObject* obj);
 
   KQOAuthRequest* initRequest(QString endpoint,
                               KQOAuthRequest::RequestHttpMethod method);
@@ -219,8 +225,7 @@ private:
 
   QAction* m_debugAction;
 
-  KQOAuthManager *oaManager;
-  // KQOAuthRequest *oaRequest;
+  KQOAuthManager *m_oam;
 
   TabWidget* m_tabWidget;
   CollectionWidget* m_inboxWidget;

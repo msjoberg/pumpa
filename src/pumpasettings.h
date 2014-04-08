@@ -91,6 +91,10 @@ public:
     return getValue("use_markdown", false).toBool();
   }
 
+  bool ignoreSslErrors() const {
+    return getValue("ignore_ssl_errors", false).toBool();
+  }
+
   QString locale() const { return getValue("locale", ""). toString(); }
 
   QString linkColor() const { return getValue("link_color", "").toString(); }
@@ -136,6 +140,8 @@ public:
   void commentOnComments(bool b) { setValue("comment_on_comments", b); }
 
   void useMarkdown(bool b) { setValue("use_markdown", b); }
+
+  void ignoreSslErrors(bool b) { setValue("ignore_ssl_errors", b); }
 
 signals:
   void trayIconChanged();

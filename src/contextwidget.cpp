@@ -35,12 +35,15 @@ ContextWidget::ContextWidget(QWidget* parent) :
 
 void ContextWidget::setObject(QASObject* obj) {
   clear();
+
+  m_asMode = QAS_OBJECT;
   
   m_object = obj;
   connect(m_object, SIGNAL(changed()), this, SLOT(update()),
           Qt::UniqueConnection);
 
   ObjectWidget* ow = new ObjectWidget(m_object, this);
+  ow->disableLessButton();
   ObjectWidgetWithSignals::connectSignals(ow, this);
   connect(ow, SIGNAL(showContext(QASObject*)),
           this, SIGNAL(showContext(QASObject*)));
@@ -53,6 +56,13 @@ void ContextWidget::setObject(QASObject* obj) {
 
   updateNumReplies();
   m_firstTime = false;
+}
+
+//------------------------------------------------------------------------------
+
+void ContextWidget::fetchNewer() {
+  if (m_object)
+    emit request(m_object->urlOrProxy(), m_asMode | QAS_NEWER);
 }
 
 //------------------------------------------------------------------------------

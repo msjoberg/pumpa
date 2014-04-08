@@ -18,13 +18,16 @@
 */
 
 #include <QDebug>
-#include <QLineEdit>
-#include <QVBoxLayout>
 #include <QRegExp>
-#include <QNetworkRequest>
-#include <QNetworkReply>
-#include <QVariantMap>
+#include <QLineEdit>
+#include <QCheckBox>
 #include <QByteArray>
+#include <QVBoxLayout>
+#include <QMessageBox>
+#include <QVariantMap>
+#include <QApplication>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 
 #include "pumpa_defines.h"
 #include "oauthwizard.h"
@@ -68,10 +71,16 @@ OAuthFirstPage::OAuthFirstPage(QWidget* parent) :
   connect(accountIdEdit, SIGNAL(textEdited(const QString&)),
           this, SIGNAL(completeChanged()));
 
+  QCheckBox* sslCheckBox =
+    new QCheckBox(tr("Use secure connection (recommended)"), this);
+  sslCheckBox->setChecked(true);
+
   layout->addWidget(accountIdLabel);
   layout->addWidget(accountIdEdit);
+  layout->addWidget(sslCheckBox);
 
   registerField("accountId*", accountIdEdit);
+  registerField("useSsl*", sslCheckBox);
 
   setButtonText(QWizard::CommitButton, tr("Next"));
   setCommitPage(true);
@@ -166,13 +175,14 @@ bool OAuthSecondPage::validatePage() {
 
 //------------------------------------------------------------------------------
 
-OAuthWizard::OAuthWizard(QNetworkAccessManager* nam, QWidget* parent) :
+OAuthWizard::OAuthWizard(QNetworkAccessManager* nam, KQOAuthManager* oam,
+                         QWidget* parent) :
   QWizard(parent),
+  m_oam(oam),
   m_nam(nam)
 {
   setWindowTitle(CLIENT_FANCY_NAME);
 
-  m_oam = new KQOAuthManager(this);
   m_oar = new KQOAuthRequest(this);
 
   p1 = new OAuthFirstPage(this);
@@ -205,7 +215,7 @@ void OAuthWizard::errorMessage(QString msg) {
 
 void OAuthWizard::onFirstPageCommitted(QString username, QString server) {
   m_username = username;
-  m_server = siteUrlFixer(server);
+  m_server = siteUrlFixer(server, field("useSsl").toBool());
   m_clientRegTryCount = 0;
   registerOAuthClient();
 }
@@ -244,11 +254,7 @@ void OAuthWizard::registerOAuthClient() {
 void OAuthWizard::onOAuthClientRegDone() {
   QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
   if (reply->error() != QNetworkReply::NoError) {
-    if (m_clientRegTryCount == 1 && m_server.startsWith("https://")) {
-      m_server.replace("https://", "http://");
-      registerOAuthClient();
-    } else
-      errorMessage(tr("Network error: ") + reply->errorString());
+    errorMessage(tr("Network error: ") + reply->errorString());
     return;
   }
 

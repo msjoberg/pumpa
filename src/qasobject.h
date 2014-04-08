@@ -25,6 +25,7 @@
 class QASActor;
 class QASActorList;
 class QASObjectList;
+class QASActivity;
 
 //------------------------------------------------------------------------------
 
@@ -92,6 +93,10 @@ public:
   QString displayName() const { return m_displayName; }
   virtual QString apiLink() const;
   QString proxyUrl() const { return m_proxyUrl; }
+  QString urlOrProxy() const {
+    return m_proxyUrl.isEmpty() ? m_url : m_proxyUrl; 
+  }
+
   QASLocation* location() const { return m_location; }
   QString streamUrl(bool orig=false) const {
     return m_streamUrlProxy.isEmpty() || orig ? m_streamUrl : m_streamUrlProxy; 
@@ -126,6 +131,9 @@ public:
 
   QString excerpt() const;
 
+  QASActivity* postingActivity() const { return m_postingActivity; }
+  void setPostingActivity(QASActivity* a) { m_postingActivity = a; }
+
 protected:
   QString m_id;
   QString m_content;
@@ -152,6 +160,8 @@ protected:
   QASObjectList* m_replies;
   QASActorList* m_likes;
   QASActorList* m_shares;
+
+  QASActivity* m_postingActivity;
 
   static QMap<QString, QASObject*> s_objects;
 };

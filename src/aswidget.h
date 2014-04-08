@@ -36,14 +36,20 @@ public:
   ASWidget(QWidget* parent, int widgetLimit=-1, int purgeWait=10);
   virtual void refreshTimeLabels();
   virtual void fetchNewer();
-  virtual void fetchOlder();
+  virtual void fetchOlder(int count=-1);
+  void refresh();
   void setEndpoint(QString endpoint, QObject* parent, int asMode=-1);
+  QString url() const { return m_list->url(); }
 
   int count() const { return m_object_set.size(); }
   const QList<QASAbstractObject*>& newObjects() { return m_newObjects; }
+  virtual bool hasObject(QASAbstractObject* obj) { 
+    return m_object_set.contains(obj);
+  }
 
 signals:
   void highlightMe();  
+  void hasNewObjects();
   void request(QString, int);
   void newReply(QASObject*, QASObjectList*, QASObjectList*);
   void linkHovered(const QString&);
@@ -61,7 +67,8 @@ protected:
 
   QASAbstractObject* objectAt(int idx);
   ObjectWidgetWithSignals* widgetAt(int idx);
-  virtual ObjectWidgetWithSignals* createWidget(QASAbstractObject* aObj);
+  virtual ObjectWidgetWithSignals* createWidget(QASAbstractObject*);
+  virtual void changeWidgetObject(ObjectWidgetWithSignals*, QASAbstractObject*);
   virtual bool countAsNew(QASAbstractObject*) { return true; }
 
   void keyPressEvent(QKeyEvent* event);

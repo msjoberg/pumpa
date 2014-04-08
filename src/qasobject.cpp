@@ -103,7 +103,8 @@ QASObject::QASObject(QString id, QObject* parent) :
   m_author(NULL),
   m_replies(NULL),
   m_likes(NULL),
-  m_shares(NULL)
+  m_shares(NULL),
+  m_postingActivity(NULL)
 {
 #ifdef DEBUG_QAS
   qDebug() << "new Object" << m_id;
@@ -161,7 +162,8 @@ void QASObject::update(QVariantMap json, bool ignoreLike) {
     QVariantMap repliesMap = json["replies"].toMap();
 
     // don't replace a list with an empty one...
-    if (repliesMap["items"].toList().size()) {
+    size_t rs = repliesMap["items"].toList().size();
+    if (!m_replies || rs>0) {
       m_replies = QASObjectList::getObjectList(repliesMap, parent());
       m_replies->isReplies(true);
       // connectSignals(m_replies);

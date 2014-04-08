@@ -57,6 +57,8 @@ ObjectWidget::ObjectWidget(QASObject* obj, QWidget* parent) :
 
   m_objectWidget = new FullObjectWidget(m_object, this);
   ObjectWidgetWithSignals::connectSignals(m_objectWidget, this);
+  connect(m_objectWidget, SIGNAL(lessClicked()),
+          this, SLOT(showLess()));
   m_layout->addWidget(m_objectWidget);
 
   m_shortObjectWidget = new ShortObjectWidget(m_object, this);
@@ -140,6 +142,20 @@ void ObjectWidget::showMore() {
   
 //------------------------------------------------------------------------------
 
+void ObjectWidget::showLess() {
+  if (m_short || !m_objectWidget)
+    return;
+
+  m_short = true;
+  m_objectWidget->setVisible(false);
+  m_shortObjectWidget->setVisible(true);
+  m_contextLabel->setVisible(false);
+  m_contextButton->setVisible(false);
+  emit lessClicked();
+}
+  
+//------------------------------------------------------------------------------
+
 void ObjectWidget::onChanged() {
   setVisible(!m_object->url().isEmpty() && !m_object->isDeleted());
 }
@@ -175,4 +191,11 @@ void ObjectWidget::refreshTimeLabels() {
     m_objectWidget->refreshTimeLabels();
   if (m_shortObjectWidget)
     m_shortObjectWidget->refreshTimeLabels();
+}
+
+//------------------------------------------------------------------------------
+
+void ObjectWidget::disableLessButton() {
+  if (!m_short)
+    m_objectWidget->disableLessButton();
 }

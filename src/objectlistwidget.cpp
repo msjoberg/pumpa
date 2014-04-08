@@ -41,7 +41,7 @@ QASAbstractObjectList* ObjectListWidget::initList(QString endpoint,
 
 void ObjectListWidget::update() {
   ASWidget::update();
-  fetchOlder();
+  fetchOlder(200);
 }
 
 //------------------------------------------------------------------------------
