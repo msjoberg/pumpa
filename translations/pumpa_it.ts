@@ -133,15 +133,10 @@
         </translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../src/fullobjectwidget.cpp" line="613"/>
-        <source>Are you sure you want to stop following %1</source>
-        <translation>Sei sicuro di voler smettere di seguire %1</translation>
-=======
         <location filename="../src/fullobjectwidget.cpp" line="651"/>
         <source>Are you sure you want to stop following %1?</source>
-        <translation type="unfinished"></translation>
->>>>>>> 8a219ca113bfca02d7907f935300d298929269b6
+        <translation>Sei sicuro di voler smettere di seguire %1?</translation>
     </message>
     <message numerus="yes">
         <source>%Ln persons shared this.</source>
@@ -357,7 +352,7 @@
     <message>
         <location filename="../src/oauthwizard.cpp" line="75"/>
         <source>Use secure connection (recommended)</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa connessione sicura (raccomandato)</translation>
     </message>
     <message>
         <location filename="../src/oauthwizard.cpp" line="85"/>
@@ -564,50 +559,51 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="237"/>
         <source>SSL Error: </source>
-        <translation type="unfinished"></translation>
+        <translation>Errore SSL: </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="240"/>
         <source>
 %1 is unable to verify the identity of the server. This error could mean that someone is trying to impersonate the server, or that the server&apos;s administrator has made an error.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>
+%1 non è in grado di verificare l&apos;identità del server. Questo errore può significare che qualcuno sta provando a sostituire l&apos;identità del server, o che l&apos;amministratore del server ha commesso qualche errore.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="248"/>
         <source>SSL Server certificate.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Certificato Server SSL.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="249"/>
         <source>Issued to: </source>
-        <translation type="unfinished"></translation>
+        <translation>Rilasciato a:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="250"/>
         <source>Issued by: </source>
-        <translation type="unfinished"></translation>
+        <translation>Rilasciato da:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="251"/>
         <source>Effective: </source>
-        <translation type="unfinished"></translation>
+        <translation>Effettivo:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="252"/>
         <source>Expires: </source>
-        <translation type="unfinished"></translation>
+        <translation>Scade:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="253"/>
         <source>MD5 digest: </source>
-        <translation type="unfinished"></translation>
+        <translation>Digest MD5:</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="257"/>
         <source>&lt;b&gt;Untrusted SSL connection!&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Connessione SSL non sicura!&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="295"/>
