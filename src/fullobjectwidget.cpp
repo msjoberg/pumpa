@@ -673,6 +673,7 @@ QString FullObjectWidget::processText(QString old_text, bool getImages) {
     s_allowedTags << "pre";
     s_allowedTags << "a";
     s_allowedTags << "img";
+    s_allowedTags << "table" << "tr" << "td" << "th" << "thead" << "tbody";
   }
   
   QString text = old_text.trimmed();
