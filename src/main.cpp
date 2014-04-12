@@ -39,7 +39,8 @@ int testMarkup(QString str) {
     str = "markdowned [url](http://saz.im)\n\n"
       "url on line http://saz.im and http://foo.bar\n"
       "http://saz.im\n\n"
-      "with underlines: http://saz.im/foo_bar_baz.html ...\n";
+      "with underlines: http://saz.im/foo_bar_baz.html ...\n"
+      "<b>bold</b> and <i>broken html\n";
   addTextMarkup(str, true);
   return 0;
 }

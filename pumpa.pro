@@ -77,6 +77,12 @@ exists( /usr/include/aspell.h ) {
   DEFINES += USE_ASPELL
 }
 
+exists( /usr/include/tidy/tidy.h ) {
+  message("Using tidy")
+  LIBS += -ltidy
+  DEFINES += USE_TIDY
+}
+
 # Optionally use etags
 exists( /usr/bin/etags ) {
   message("Using etags")

@@ -35,6 +35,11 @@
 #include "sundown/html.h"
 #include "sundown/buffer.h"
 
+#ifdef USE_TIDY
+#include <tidy/tidy.h>
+#include <tidy/buffio.h>
+#endif
+
 //------------------------------------------------------------------------------
 
 QString markDown(QString text) {
@@ -242,6 +247,53 @@ QString removeHtml(QString origText) {
 
 //------------------------------------------------------------------------------
 
+QString tidyHtml(QString str, bool& ok) {
+  QString res = str;
+  ok = false;
+
+#ifdef USE_TIDY
+  TidyDoc tdoc = tidyCreate();
+  TidyBuffer output = {0, 0, 0, 0, 0};
+  TidyBuffer errbuf = {0, 0, 0, 0, 0};
+
+  bool configOk = 
+    tidyOptSetBool(tdoc, TidyXhtmlOut, yes) && 
+    tidyOptSetBool(tdoc, TidyForceOutput, yes) &&
+    tidyOptSetBool(tdoc, TidyMark, no) &&
+    tidyOptSetInt(tdoc, TidyBodyOnly, yes) &&
+    tidyOptSetInt(tdoc, TidyDoctypeMode, TidyDoctypeOmit);
+    
+  if (configOk &&
+      (tidySetErrorBuffer(tdoc, &errbuf) >= 0) &&
+      (tidyParseString(tdoc, str.toAscii().data()) >= 0) &&
+      (tidyCleanAndRepair(tdoc) >= 0) &&
+      (tidyRunDiagnostics(tdoc) >= 0) &&
+      (tidySaveBuffer(tdoc, &output) >= 0) &&
+      (output.bp != 0 && output.size > 0)) {
+    res = QString::fromUtf8((char*)output.bp, output.size);
+
+    ok = true;
+  }
+
+#ifdef DEBUG_MARKUP
+  if (errbuf.size > 0) {
+    QString errStr =  QString::fromUtf8((char*)errbuf.bp, errbuf.size);
+    qDebug() << "\n[DEBUG] MARKUP, libtidy errors and warnings:\n" << errStr;
+  }
+#endif
+
+  if (output.bp != 0)
+    tidyBufFree(&output);
+  if (errbuf.bp != 0)
+    tidyBufFree(&errbuf);
+  tidyRelease(tdoc);
+#endif
+
+  return res;
+}
+
+//------------------------------------------------------------------------------
+
 QString addTextMarkup(QString text, bool useMarkdown) {
   QString oldText = text;
 
@@ -249,7 +301,15 @@ QString addTextMarkup(QString text, bool useMarkdown) {
   qDebug() << "\n[DEBUG] MARKUP\n" << text;
 #endif
 
-  text = removeHtml(text);
+  bool tidyOk = false;
+  text = tidyHtml(text, tidyOk);
+  
+  if (!tidyOk) {
+#ifdef USE_TIDY
+    qDebug() << "\n[DEBUG] MARKUP libtidy failed, removing HTML instead.\n";
+#endif
+    text = removeHtml(text);
+  }
 
 #ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
