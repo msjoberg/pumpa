@@ -301,18 +301,11 @@ QString addTextMarkup(QString text, bool useMarkdown) {
   qDebug() << "\n[DEBUG] MARKUP\n" << text;
 #endif
 
-  bool tidyOk = false;
-  text = tidyHtml(text, tidyOk);
-  
-  if (!tidyOk) {
-#ifdef USE_TIDY
-    qDebug() << "\n[DEBUG] MARKUP libtidy failed, removing HTML instead.\n";
-#endif
-    text = removeHtml(text);
-  }
-
-#ifdef DEBUG_MARKUP
+#ifndef USE_TIDY
+  text = removeHtml(text);
+# ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
+# endif
 #endif
 
   // linkify plain URLs
@@ -332,6 +325,16 @@ QString addTextMarkup(QString text, bool useMarkdown) {
 #ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (apply "
            << (useMarkdown?"Markdown":"text conversion") <<  ")\n" << text;
+#endif
+
+#ifdef USE_TIDY
+  bool tidyOk = false;
+  text = tidyHtml(text, tidyOk);
+
+# ifdef DEBUG_MARKUP
+  qDebug() << "\n[DEBUG] MARKUP (libtidy)\n" << text;
+# endif
+
 #endif
 
   return text;
