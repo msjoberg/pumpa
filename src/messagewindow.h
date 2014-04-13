@@ -72,7 +72,7 @@ private:
   void addRecipientWindow(MessageRecipients*, QString);
   void updateAddPicture();
 
-  // void initRecipients(MessageRecipients*, QASObjectList*, int);
+  void copyRecipients(MessageRecipients*, QASObjectList*);
   void setDefaultRecipients(MessageRecipients*, int);
   void addToRecipientList(QString, QASObject*);
 
@@ -111,9 +111,6 @@ private:
 
   MessageRecipients* m_toRecipients;
   MessageRecipients* m_ccRecipients;
-
-  RecipientList m_parentTo;
-  RecipientList m_parentCc;
 
   QMap<QString, QASObject*> m_recipientSelection;
   QStringList m_recipientList;

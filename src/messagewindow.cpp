@@ -212,12 +212,6 @@ void MessageWindow::onAddCc() {
 
 void MessageWindow::onAddRecipient(QASActor* actor) {
   m_toRecipients->addRecipient(actor);
-  if (m_obj != NULL) {
-    // if this is a reply the to list is hidden by default, so we need
-    // to make it visible
-    m_toRecipients->setVisible(true);
-    m_addressLayout->labelForField(m_toRecipients)->setVisible(true);
-  }
 }
 
 //------------------------------------------------------------------------------
@@ -249,52 +243,47 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
 
   m_infoLabel->setText(title);
 
-  m_parentTo.clear();
-  m_parentCc.clear();
-
-  bool hasInitialTo = false;
   if (!isReply) {
-    m_toLabel->setText(tr("To:"));
     // A new post, use default recipients
     setDefaultRecipients(m_toRecipients, m_s->defaultToAddress());
     setDefaultRecipients(m_ccRecipients, m_s->defaultCcAddress());
   } else {
-    m_toLabel->setText(tr("Mentions:"));
-    // a reply, we need to keep track of To/Cc of parent
-    m_toRecipients->clear();
-    m_ccRecipients->clear();
+    // For a reply, copy recipients from parent
+    copyRecipients(m_toRecipients, to);
+    copyRecipients(m_ccRecipients, cc);
 
-    // copy to/cc from post we are replying to
-    if (to)
-      m_parentTo = to->toRecipientList();
-    if (cc)
-      m_parentCc = cc->toRecipientList();
+    // add original post author to recipients
+    if (obj->author())
+      m_toRecipients->addRecipient(obj->author());
 
-    // add original post author
-    QASObject* origAuthor = obj->author();
-    if (origAuthor && !m_parentTo.contains(origAuthor)) {
-      m_parentTo.append(origAuthor);
-    }
-
-    // if this is a reply to a comment add comment author to editable
-    // To list
-    if (origObj != obj && origObj->author()) {
+    // if this is a reply to a comment add comment author to
+    // recipients as well
+    if (origObj != obj && origObj->author())
       m_toRecipients->addRecipient(origObj->author());
-      hasInitialTo = true;
-    }
   }
+  
+  // m_toRecipients->setVisible(!isReply || hasInitialTo);
+  // m_addressLayout->labelForField(m_toRecipients)->
+  //   setVisible(!isReply || hasInitialTo);
 
-  m_toRecipients->setVisible(!isReply || hasInitialTo);
-  m_addressLayout->labelForField(m_toRecipients)->
-    setVisible(!isReply || hasInitialTo);
+  // m_ccRecipients->setVisible(!isReply);
+  // m_addressLayout->labelForField(m_ccRecipients)->setVisible(!isReply);
 
-  m_ccRecipients->setVisible(!isReply);
-  m_addressLayout->labelForField(m_ccRecipients)->setVisible(!isReply);
-
-  m_addToButton->setVisible(!isReply);
-  m_addCcButton->setVisible(!isReply);
+  // m_addToButton->setVisible(!isReply);
+  // m_addCcButton->setVisible(!isReply);
 
   updateAddPicture();
+}
+
+//------------------------------------------------------------------------------
+
+void MessageWindow::copyRecipients(MessageRecipients* mr, QASObjectList* ol) {
+  mr->clear();
+  if (ol) {
+    RecipientList rl = ol->toRecipientList();
+    for (int i=0; i<rl.size(); ++i)
+      mr->addRecipient(rl[i]);
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -331,10 +320,10 @@ void MessageWindow::accept() {
   m_textEdit->hideCompletion();
   QString msg = m_textEdit->toPlainText();
 
-  if (m_obj == NULL) {
-    RecipientList to = m_toRecipients->recipients();
-    RecipientList cc = m_ccRecipients->recipients();
+  RecipientList to = m_toRecipients->recipients();
+  RecipientList cc = m_ccRecipients->recipients();
 
+  if (m_obj == NULL) {
     QString title = m_title->text();
 
     if (m_imageFileName.isEmpty()) {
@@ -343,13 +332,6 @@ void MessageWindow::accept() {
       emit sendImage(msg, title, m_imageFileName, to, cc);
     }
   } else {
-    RecipientList to = m_parentTo;
-    RecipientList cc = m_parentCc;
-
-    RecipientList newTo = m_toRecipients->recipients();
-    for (int i=0; i<newTo.size(); ++i)
-      to.append(newTo.at(i));
-
     emit sendReply(m_obj, msg, to, cc);
   }
 
