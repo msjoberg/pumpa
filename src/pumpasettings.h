@@ -105,7 +105,7 @@ public:
   }
 
   int maxTimelineItems() const {
-    return getValue("max_timeline_items", 80).toInt();
+    return getValue("max_timeline_items", 40).toInt();
   }
 
   int maxFirehoseItems() const {
