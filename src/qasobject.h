@@ -78,7 +78,9 @@ public:
   static QASObject* getObject(QString id) { 
     return s_objects.contains(id) ? s_objects[id] : NULL;
   }
-  virtual void update(QVariantMap json, bool ignoreLike=false);
+
+  virtual void update(QVariantMap json, bool ignoreLike);
+  virtual void update(QVariantMap json) { update(json, false); }
 
   QASActor* asActor();
 
