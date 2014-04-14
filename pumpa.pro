@@ -77,7 +77,7 @@ exists( /usr/include/aspell.h ) {
   DEFINES += USE_ASPELL
 }
 
-exists( /usr/include/tidy/tidy.h ) {
+!macx:exists( /usr/include/tidy/tidy.h ) {
   message("Using tidy")
   LIBS += -ltidy
   DEFINES += USE_TIDY
