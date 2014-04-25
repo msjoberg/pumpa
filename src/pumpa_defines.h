@@ -72,6 +72,8 @@
 #define QAS_UNFOLLOW     (1 << 13)
 #define QAS_POST         (1 << 14)
 
+#define QAS_UPDATE_ONLY  (1 << 15)
+
 //------------------------------------------------------------------------------
 
 #define MAX_WORD_LENGTH       40

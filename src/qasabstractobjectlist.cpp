@@ -37,7 +37,8 @@ QASAbstractObjectList::QASAbstractObjectList(int asType, QString url,
 
 //------------------------------------------------------------------------------
 
-void QASAbstractObjectList::update(QVariantMap json, bool older) {
+void QASAbstractObjectList::update(QVariantMap json, bool older,
+                                   bool updateOnly) {
 #ifdef DEBUG_QAS
   qDebug() << "updating AbstractObjectList" << m_url;
 #endif
@@ -63,15 +64,17 @@ void QASAbstractObjectList::update(QVariantMap json, bool older) {
   //
   // And a special case is when we load it the first time, then both
   // next and prev links should be updated.
-  
-  if (older || m_firstTime) {
-    m_nextLink = ""; // it's left as empty if it doesn't exist in the
-                     // json
-    updateVar(json, m_nextLink, "links", "next", "href", dummy);
-  } 
-  if (!older || m_firstTime) {
-    // updateVar doesn't touch it if it is empty in the json
-    updateVar(json, m_prevLink, "links", "prev", "href", dummy);
+
+  if (!updateOnly) {  
+    if (older || m_firstTime) {
+      m_nextLink = ""; // it's left as empty if it doesn't exist in the
+                       // json
+      updateVar(json, m_nextLink, "links", "next", "href", dummy);
+    } 
+    if (!older || m_firstTime) {
+      // updateVar doesn't touch it if it is empty in the json
+      updateVar(json, m_prevLink, "links", "prev", "href", dummy);
+    }
   }
 
   // Items need to be processed chronologically.  We assume that
@@ -85,10 +88,8 @@ void QASAbstractObjectList::update(QVariantMap json, bool older) {
   for (int i=items_json.count()-1; i>=0; --i) {
     QASAbstractObject* obj = getAbstractObject(items_json.at(i).toMap(),
                                                parent());
-    if (!obj)
-      continue;
 
-    if (m_item_set.contains(obj))
+    if (!obj || updateOnly || m_item_set.contains(obj))
       continue;
 
     m_items.insert(mi, obj);

@@ -60,7 +60,7 @@ QASCollection* QASCollection::getCollection(QVariantMap json, QObject* parent,
     new QASCollection(url, parent);
   s_collections.insert(url, coll);
 
-  coll->update(json, id & QAS_OLDER);
+  coll->update(json, id & QAS_OLDER, id & QAS_UPDATE_ONLY);
   return coll;
 }
 

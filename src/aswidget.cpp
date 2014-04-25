@@ -81,7 +81,7 @@ void ASWidget::setEndpoint(QString endpoint, QObject* parent, int asMode) {
 //------------------------------------------------------------------------------
 
 void ASWidget::refresh() {
-  emit request(m_list->url(), m_asMode | QAS_NEWER);
+  emit request(m_list->url(), m_asMode | QAS_UPDATE_ONLY);
 }
 
 //------------------------------------------------------------------------------
