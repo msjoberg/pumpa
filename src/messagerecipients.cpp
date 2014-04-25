@@ -54,7 +54,7 @@ void MessageRecipients::addRecipient(QASObject* obj) {
   m_buttonMapper->setMapping(button, obj);
 
   m_list.append(obj);
-  int row = m_list.size()-1;
+  int row = m_layout->rowCount();
   m_layout->addWidget(label, row, 0);
   m_layout->addWidget(button, row, 1);
 
@@ -64,6 +64,7 @@ void MessageRecipients::addRecipient(QASObject* obj) {
 //------------------------------------------------------------------------------
 
 void MessageRecipients::removeRecipient(QASObject* obj) {
+  size_t oldRowCount = m_layout->rowCount();
   QPair<QLabel*, QToolButton*> widgets = m_widgets[obj];
   m_layout->removeWidget(widgets.first);
   m_layout->removeWidget(widgets.second);
