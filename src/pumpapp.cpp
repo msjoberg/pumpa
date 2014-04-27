@@ -52,6 +52,7 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
 
   resize(m_s->size());
   move(m_s->pos());
+  QASActor::setHiddenAuthors(m_s->hideAuthors());
 
   // for old users set use_markdown=true, false for new installs
   if (!m_s->firstStart() && !m_s->contains("General/use_markdown")) {
@@ -188,6 +189,7 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
 PumpApp::~PumpApp() {
   m_s->size(size());
   m_s->pos(pos());
+  m_s->hideAuthors(QASActor::getHiddenAuthors());
 }
 
 //------------------------------------------------------------------------------

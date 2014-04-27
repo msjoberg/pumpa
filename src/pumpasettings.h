@@ -25,6 +25,7 @@
 #include <QSettings>
 #include <QSize>
 #include <QPoint>
+#include <QStringList>
 
 #include "pumpa_defines.h"
 
@@ -112,6 +113,10 @@ public:
     return getValue("max_timeline_items", 40).toInt();
   }
 
+  QStringList hideAuthors() const {
+    return getValue("minimise_authors", QStringList()).toStringList();
+  }
+
   // setters
   void siteUrl(QString s) { setValue("site_url", s, "Account"); }
   void userName(QString s) { setValue("username", s, "Account"); }
@@ -142,6 +147,8 @@ public:
   void useMarkdown(bool b) { setValue("use_markdown", b); }
 
   void ignoreSslErrors(bool b) { setValue("ignore_ssl_errors", b); }
+
+  void hideAuthors(QStringList sl) { setValue("minimise_authors", sl); }
 
 signals:
   void trayIconChanged();

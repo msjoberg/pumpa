@@ -20,6 +20,8 @@
 #ifndef _FULLOBJECTWIDGET_H_
 #define _FULLOBJECTWIDGET_H_
 
+#include <QMenu>
+#include <QAction>
 #include <QLabel>
 #include <QWidget>
 #include <QVBoxLayout>
@@ -63,6 +65,7 @@ private slots:
   void reply();
   void onFollow();
   void onFollowAuthor();
+  void onHideAuthor();
   void updateFollowAuthorButton(bool wait = false);
   void onDeleteClicked();
 
@@ -108,8 +111,12 @@ private:
   TextToolButton* m_shareButton;
   TextToolButton* m_commentButton;
   TextToolButton* m_followButton;
-  TextToolButton* m_followAuthorButton;
   TextToolButton* m_deleteButton;
+  TextToolButton* m_menuButton;
+
+  QMenu* m_menu;
+  QAction* m_followAction;
+  QAction* m_hideAuthorAction;
 
   TextToolButton* m_lessButton;
 

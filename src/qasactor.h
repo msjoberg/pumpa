@@ -22,6 +22,9 @@
 
 #include "qasobject.h"
 
+#include <QSet>
+#include <QStringList>
+
 //------------------------------------------------------------------------------
 
 class QASActor : public QASObject {
@@ -49,6 +52,11 @@ public:
   void setFollowed(bool b);
   QString summary() const { return m_summary; }
   QString location() const { return m_location; }
+  bool isHidden() const;
+  void setHidden(bool b);
+
+  static void setHiddenAuthors(QStringList sl);
+  static QStringList getHiddenAuthors() { return s_hiddenAuthors.toList(); }
 
 private:
   bool m_followed;
@@ -61,6 +69,7 @@ private:
   QString m_preferredUsername;
 
   static QMap<QString, QASActor*> s_actors;
+  static QSet<QString> s_hiddenAuthors;
 };
 
 #endif /* _QASACTOR_H_ */

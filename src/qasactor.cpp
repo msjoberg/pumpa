@@ -27,6 +27,7 @@
 //------------------------------------------------------------------------------
 
 QMap<QString, QASActor*> QASActor::s_actors;
+QSet<QString> QASActor::s_hiddenAuthors;
 
 void QASActor::clearCache() { deleteMap<QASActor*>(s_actors); }
 
@@ -116,3 +117,23 @@ QString QASActor::displayNameOrWebFinger() const {
   return displayName();
 }
 
+//------------------------------------------------------------------------------
+
+bool QASActor::isHidden() const {
+  return s_hiddenAuthors.contains(m_id);
+}
+
+//------------------------------------------------------------------------------
+
+void QASActor::setHidden(bool b) {
+  if (b)
+    s_hiddenAuthors.insert(m_id);
+  else
+    s_hiddenAuthors.remove(m_id);
+}
+
+//------------------------------------------------------------------------------
+
+void QASActor::setHiddenAuthors(QStringList sl) { 
+  s_hiddenAuthors = sl.toSet(); 
+}

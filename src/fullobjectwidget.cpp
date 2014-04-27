@@ -43,8 +43,11 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_shareButton(NULL),
   m_commentButton(NULL),
   m_followButton(NULL),
-  m_followAuthorButton(NULL),
   m_deleteButton(NULL),
+  m_menuButton(NULL),
+  m_menu(NULL),
+  m_followAction(NULL),
+  m_hideAuthorAction(NULL),
   m_object(NULL),
   m_actor(NULL),
   m_author(NULL),
@@ -90,11 +93,6 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   connect(m_favourButton, SIGNAL(clicked()), this, SLOT(favourite()));
   m_buttonLayout->addWidget(m_favourButton, 0, Qt::AlignTop);
 
-  m_followAuthorButton = new TextToolButton(this);
-  connect(m_followAuthorButton, SIGNAL(clicked()),
-          this, SLOT(onFollowAuthor()));
-  m_buttonLayout->addWidget(m_followAuthorButton, 0, Qt::AlignTop);
-
   m_shareButton = new TextToolButton(this);
   connect(m_shareButton, SIGNAL(clicked()), this, SLOT(onRepeatClicked()));
   m_buttonLayout->addWidget(m_shareButton, 0, Qt::AlignTop);
@@ -110,6 +108,19 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_followButton = new TextToolButton(this);
   connect(m_followButton, SIGNAL(clicked()), this, SLOT(onFollow()));
   m_buttonLayout->addWidget(m_followButton, 0, Qt::AlignTop);
+
+  m_menu = new QMenu(this);
+  m_followAction = new QAction(this);
+  connect(m_followAction, SIGNAL(triggered()), this, SLOT(onFollowAuthor()));
+  m_menu->addAction(m_followAction);
+  m_hideAuthorAction = new QAction(this);
+  connect(m_hideAuthorAction, SIGNAL(triggered()), this, SLOT(onHideAuthor()));
+  m_menu->addAction(m_hideAuthorAction);
+
+  m_menuButton = new TextToolButton("", this);
+  m_menuButton->setPopupMode(QToolButton::InstantPopup);
+  m_menuButton->setMenu(m_menu);
+  m_buttonLayout->addWidget(m_menuButton, 0, Qt::AlignTop);
 
   m_buttonLayout->addStretch();
 
@@ -218,13 +229,15 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
   m_commentable = objType != "person";
   if (m_commentable) {
     m_favourButton->setVisible(true);
-    m_followAuthorButton->setVisible(true);
+    // m_followAuthorButton->setVisible(true);
+    m_menuButton->setVisible(true);
     m_shareButton->setVisible(true);
     m_deleteButton->setVisible(m_author && m_author->isYou());
     m_commentButton->setVisible(true);
   } else {
     m_favourButton->setVisible(false);
-    m_followAuthorButton->setVisible(false);
+    // m_followAuthorButton->setVisible(false);
+    m_menuButton->setVisible(false);
     m_shareButton->setVisible(false);
     m_deleteButton->setVisible(false);
     m_commentButton->setVisible(false);
@@ -377,21 +390,24 @@ void FullObjectWidget::updateFollowButton(bool /*wait*/) {
 //------------------------------------------------------------------------------
 
 void FullObjectWidget::updateFollowAuthorButton(bool /*wait*/) {
-  if (!m_followAuthorButton)
+  if (!m_menuButton)
     return;
   
   if (!m_author || !isFollowable(m_author)) {
-    m_followAuthorButton->setVisible(false);
+    m_menuButton->setVisible(false);
     return;
   }
 
-  m_followAuthorButton->setVisible(true);
+  m_menuButton->setVisible(true);
 
-  QString text = QString(m_author->followed() ? 
-                         tr("stop following %1") : tr("follow %1")).
-    arg(m_author->preferredUsername());
+  m_followAction->setText(m_author->followed() ? tr("stop following") : 
+                          tr("follow"));
+  
+  m_hideAuthorAction->setText(m_author->isHidden() ? 
+                              tr("stop minimising posts") :
+                              tr("auto-minimise posts"));
 
-  m_followAuthorButton->setText(text);
+  m_menuButton->setText(m_author->preferredUsername());
 }
 
 //------------------------------------------------------------------------------
@@ -666,6 +682,18 @@ void FullObjectWidget::onFollowAuthor() {
   if (isFollowable(m_author))
     emit follow(m_author->id(), doFollow);
 }
+
+//------------------------------------------------------------------------------
+
+void FullObjectWidget::onHideAuthor() {
+  bool doHide = !m_author->isHidden();
+  m_author->setHidden(doHide);
+
+  updateFollowAuthorButton(false);
+  if (doHide)
+    emit lessClicked();
+}
+
 
 //------------------------------------------------------------------------------
 
