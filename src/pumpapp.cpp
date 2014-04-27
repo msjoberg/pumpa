@@ -625,6 +625,8 @@ QString PumpApp::showHideText(bool visible) {
 void PumpApp::toggleVisible() {
   setVisible(!isVisible());
   m_showHideAction->setText(showHideText());
+  if (isVisible())
+    activateWindow();
 }
 
 //------------------------------------------------------------------------------

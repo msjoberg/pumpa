@@ -64,7 +64,6 @@ void MessageRecipients::addRecipient(QASObject* obj) {
 //------------------------------------------------------------------------------
 
 void MessageRecipients::removeRecipient(QASObject* obj) {
-  size_t oldRowCount = m_layout->rowCount();
   QPair<QLabel*, QToolButton*> widgets = m_widgets[obj];
   m_layout->removeWidget(widgets.first);
   m_layout->removeWidget(widgets.second);
