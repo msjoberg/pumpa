@@ -145,6 +145,9 @@ void QASObject::update(QVariantMap json, bool ignoreLike) {
   updateVar(json, m_streamUrl, "stream", "url", ch);
   updateVar(json, m_streamUrlProxy, "stream", "pump_io", "proxyURL", ch);
 
+  updateVar(json, m_fileUrl, "fileUrl", ch);
+  updateVar(json, m_mimeType, "mimeType", ch);
+
   if (json.contains("location"))
     m_location->update(json["location"].toMap());
  

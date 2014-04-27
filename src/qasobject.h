@@ -98,6 +98,8 @@ public:
   QString urlOrProxy() const {
     return m_proxyUrl.isEmpty() ? m_url : m_proxyUrl; 
   }
+  QString fileUrl() const { return m_fileUrl; }
+  QString mimeType() const { return m_mimeType; }
 
   QASLocation* location() const { return m_location; }
   QString streamUrl(bool orig=false) const {
@@ -150,6 +152,8 @@ protected:
   QString m_proxyUrl;
   QString m_streamUrl;
   QString m_streamUrlProxy;
+  QString m_fileUrl;
+  QString m_mimeType;
 
   QDateTime m_published;
   QDateTime m_updated;

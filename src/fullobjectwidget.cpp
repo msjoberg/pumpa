@@ -199,6 +199,11 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
     m_streamLabel->setText(QString("<b>Media:</b> <a href=\"%1\">%2</a>").
                            arg(m_object->streamUrl(),
                                m_object->type()));
+  } else if (objType == "file" && !m_object->fileUrl().isEmpty()) {
+    m_streamLabel->setVisible(true);
+    m_streamLabel->setText(QString("<b>File:</b> <a href=\"%1\">%2</a>").
+                           arg(m_object->fileUrl(),
+                               m_object->mimeType()));
   } else {
     m_streamLabel->setVisible(false);
   }
