@@ -101,14 +101,6 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   connect(m_deleteButton, SIGNAL(clicked()), this, SLOT(onDeleteClicked()));
   m_buttonLayout->addWidget(m_deleteButton, 0, Qt::AlignTop);
 
-  m_commentButton = new TextToolButton(tr("comment"), this);
-  connect(m_commentButton, SIGNAL(clicked()), this, SLOT(reply()));
-  m_buttonLayout->addWidget(m_commentButton, 0, Qt::AlignTop);
-
-  m_followButton = new TextToolButton(this);
-  connect(m_followButton, SIGNAL(clicked()), this, SLOT(onFollow()));
-  m_buttonLayout->addWidget(m_followButton, 0, Qt::AlignTop);
-
   m_menu = new QMenu(this);
   m_followAction = new QAction(this);
   connect(m_followAction, SIGNAL(triggered()), this, SLOT(onFollowAuthor()));
@@ -121,6 +113,14 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_menuButton->setPopupMode(QToolButton::InstantPopup);
   m_menuButton->setMenu(m_menu);
   m_buttonLayout->addWidget(m_menuButton, 0, Qt::AlignTop);
+
+  m_commentButton = new TextToolButton(tr("comment"), this);
+  connect(m_commentButton, SIGNAL(clicked()), this, SLOT(reply()));
+  m_buttonLayout->addWidget(m_commentButton, 0, Qt::AlignTop);
+
+  m_followButton = new TextToolButton(this);
+  connect(m_followButton, SIGNAL(clicked()), this, SLOT(onFollow()));
+  m_buttonLayout->addWidget(m_followButton, 0, Qt::AlignTop);
 
   m_buttonLayout->addStretch();
 
