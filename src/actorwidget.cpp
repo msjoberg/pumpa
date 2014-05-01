@@ -32,7 +32,7 @@ ActorWidget::ActorWidget(QASActor* a, QWidget* parent, bool small) :
 #endif
   int max_size = small ? 32 : 64;
 
-  setStyleSheet("QToolButton { border: none };");
+  setStyleSheet("QToolButton { border: none };"
                 "QToolButton:hover { border: none };"
                 "QToolButton:pressed { border: none }");
   setIconSize(QSize(max_size, max_size));
