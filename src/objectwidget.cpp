@@ -62,6 +62,8 @@ ObjectWidget::ObjectWidget(QASObject* obj, QWidget* parent) :
   m_layout->addWidget(m_objectWidget);
 
   m_shortObjectWidget = new ShortObjectWidget(m_object, this);
+  connect(m_shortObjectWidget, SIGNAL(follow(QString, bool)),
+          this, SIGNAL(follow(QString, bool)));
   connect(m_shortObjectWidget, SIGNAL(moreClicked()),
           this, SLOT(showMore()));
   m_layout->addWidget(m_shortObjectWidget);
@@ -137,6 +139,9 @@ void ObjectWidget::showMore() {
     m_contextLabel->setVisible(true);
     m_contextButton->setVisible(true);
   }
+  
+  m_objectWidget->updateMenu();
+
   emit moreClicked();
 }
   
@@ -151,6 +156,9 @@ void ObjectWidget::showLess() {
   m_shortObjectWidget->setVisible(true);
   m_contextLabel->setVisible(false);
   m_contextButton->setVisible(false);
+  
+  m_shortObjectWidget->updateMenu();
+
   emit lessClicked();
 }
   

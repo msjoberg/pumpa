@@ -20,19 +20,35 @@
 #include "actorwidget.h"
 #include "filedownloader.h"
 
+#include <QMessageBox>
+
 //------------------------------------------------------------------------------
 
 ActorWidget::ActorWidget(QASActor* a, QWidget* parent, bool small) :
-  QLabel(parent), m_actor(a)
+  QToolButton(parent), m_actor(a)
 {
 #ifdef DEBUG_WIDGETS
   qDebug() << "Creating ActorWidget" << (m_actor ? m_actor->id() : "NULL");
 #endif
   int max_size = small ? 32 : 64;
 
-  setScaledContents(true);
-  setMaximumSize(max_size, max_size);
+  setStyleSheet("QToolButton { border: none };");
+                "QToolButton:hover { border: none };"
+                "QToolButton:pressed { border: none }");
+  setIconSize(QSize(max_size, max_size));
   setFocusPolicy(Qt::NoFocus);
+  setPopupMode(QToolButton::InstantPopup);
+
+  m_menu = new QMenu(this);
+  m_menuTitleAction = new QAction(this);
+
+  m_followAction = new QAction(this);
+  connect(m_followAction, SIGNAL(triggered()), this, SLOT(onFollowAuthor()));
+
+  m_hideAuthorAction = new QAction(this);
+  connect(m_hideAuthorAction, SIGNAL(triggered()), this, SLOT(onHideAuthor()));
+
+  createMenu();
 
   onImageChanged();
 }
@@ -53,6 +69,7 @@ void ActorWidget::setActor(QASActor* a) {
 
   m_actor = a;
   onImageChanged();
+  createMenu();
 }
 
 //------------------------------------------------------------------------------
@@ -66,12 +83,80 @@ void ActorWidget::onImageChanged() {
 
 void ActorWidget::updatePixmap() {
   if (m_url.isEmpty()) {
-    setPixmap(QPixmap(":/images/default.png"));
+    setIcon(QIcon(":/images/default.png"));
     return;
   }
 
   FileDownloader* fd = FileDownloader::get(m_url, true);
   connect(fd, SIGNAL(fileReady()), this, SLOT(updatePixmap()),
           Qt::UniqueConnection);
-  setPixmap(fd->pixmap(":/images/default.png"));
+  setIcon(QIcon(fd->pixmap(":/images/default.png")));
 }
+
+//------------------------------------------------------------------------------
+
+void ActorWidget::createMenu() {
+  if (!m_actor || m_actor->isYou()) {
+    setMenu(NULL);
+    return;
+  } 
+
+  m_menuTitleAction->setText(m_actor->displayName());
+
+  m_menu->clear();
+  m_menu->addAction(m_menuTitleAction);
+  m_menu->addSeparator();
+  m_menu->addAction(m_followAction);
+
+  m_menu->addAction(m_hideAuthorAction);
+  
+  updateMenu();
+
+  setMenu(m_menu);
+}
+
+//------------------------------------------------------------------------------
+
+void ActorWidget::updateMenu() {
+  if (!m_actor)
+    return;
+
+  m_followAction->setText(m_actor->followed() ? tr("stop following") : 
+                          tr("follow"));
+  m_hideAuthorAction->setText(m_actor->isHidden() ? 
+                              tr("stop minimising posts") :
+                              tr("auto-minimise posts"));
+}
+
+//------------------------------------------------------------------------------
+
+void ActorWidget::onFollowAuthor() {
+  bool doFollow = !m_actor->followed();
+  if (!doFollow) {
+    QString msg = QString(tr("Are you sure you want to stop following %1?")).
+      arg(m_actor->displayNameOrWebFinger());
+    int ret = QMessageBox::warning(this, CLIENT_FANCY_NAME, msg,
+                                   QMessageBox::Cancel | QMessageBox::Yes,
+                                   QMessageBox::Cancel);
+    if (ret != QMessageBox::Yes)
+      return;
+  }
+
+  updateMenu();
+  if (!m_actor->isYou())
+    emit follow(m_actor->id(), doFollow);
+}
+
+//------------------------------------------------------------------------------
+
+void ActorWidget::onHideAuthor() {
+  bool doHide = !m_actor->isHidden();
+  m_actor->setHidden(doHide);
+
+  updateMenu();
+  if (doHide)
+    emit lessClicked();
+  else
+    emit moreClicked();
+}
+

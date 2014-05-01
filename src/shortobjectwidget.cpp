@@ -35,6 +35,9 @@ ShortObjectWidget::ShortObjectWidget(QASObject* obj, QWidget* parent) :
   m_textLabel = new RichTextLabel(this, true);
 
   m_actorWidget = new ActorWidget(NULL, this, true);
+  connect(m_actorWidget, SIGNAL(follow(QString, bool)),
+          this, SIGNAL(follow(QString, bool)));
+  connect(m_actorWidget, SIGNAL(moreClicked()), this, SIGNAL(moreClicked()));
 
   m_moreButton = new TextToolButton("+", this);
   connect(m_moreButton, SIGNAL(clicked()), this, SIGNAL(moreClicked()));
@@ -71,7 +74,18 @@ void ShortObjectWidget::changeObject(QASAbstractObject* obj) {
 
   connect(m_object, SIGNAL(changed()), this, SLOT(onChanged()));
 
-  updateAvatar();
+  if (m_actor != NULL) 
+    disconnect(m_actor, SIGNAL(changed()),
+              m_actorWidget, SLOT(updateMenu()));
+
+  QASActor* m_actor = m_object->asActor();
+  if (!m_actor) {
+    m_actor = m_object->author();
+    if (m_actor)
+      connect(m_actor, SIGNAL(changed()),
+              m_actorWidget, SLOT(updateMenu()));
+  }
+  m_actorWidget->setActor(m_actor);
 
   static QSet<QString> expandableTypes;
   if (expandableTypes.isEmpty())
@@ -81,15 +95,6 @@ void ShortObjectWidget::changeObject(QASAbstractObject* obj) {
   m_moreButton->setVisible(expandableTypes.contains(m_object->type()));
 
   updateText();
-}
-
-//------------------------------------------------------------------------------
-
-void ShortObjectWidget::updateAvatar() {
-  QASActor* m_actor = m_object->asActor();
-  if (!m_actor)
-    m_actor = m_object->author();
-  m_actorWidget->setActor(m_actor);
 }
 
 //------------------------------------------------------------------------------
@@ -113,8 +118,8 @@ void ShortObjectWidget::updateText() {
 //------------------------------------------------------------------------------
 
 void ShortObjectWidget::onChanged() {
-  updateAvatar();
   updateText();
+  m_actorWidget->updateMenu();
 }
 
 //------------------------------------------------------------------------------

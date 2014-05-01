@@ -44,10 +44,6 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_commentButton(NULL),
   m_followButton(NULL),
   m_deleteButton(NULL),
-  m_menuButton(NULL),
-  m_menu(NULL),
-  m_followAction(NULL),
-  m_hideAuthorAction(NULL),
   m_object(NULL),
   m_actor(NULL),
   m_author(NULL),
@@ -101,19 +97,6 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   connect(m_deleteButton, SIGNAL(clicked()), this, SLOT(onDeleteClicked()));
   m_buttonLayout->addWidget(m_deleteButton, 0, Qt::AlignTop);
 
-  m_menu = new QMenu(this);
-  m_followAction = new QAction(this);
-  connect(m_followAction, SIGNAL(triggered()), this, SLOT(onFollowAuthor()));
-  m_menu->addAction(m_followAction);
-  m_hideAuthorAction = new QAction(this);
-  connect(m_hideAuthorAction, SIGNAL(triggered()), this, SLOT(onHideAuthor()));
-  m_menu->addAction(m_hideAuthorAction);
-
-  m_menuButton = new TextToolButton("", this);
-  m_menuButton->setPopupMode(QToolButton::InstantPopup);
-  m_menuButton->setMenu(m_menu);
-  m_buttonLayout->addWidget(m_menuButton, 0, Qt::AlignTop);
-
   m_commentButton = new TextToolButton(tr("comment"), this);
   connect(m_commentButton, SIGNAL(clicked()), this, SLOT(reply()));
   m_buttonLayout->addWidget(m_commentButton, 0, Qt::AlignTop);
@@ -133,6 +116,9 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   // If this object is not an actor itself, show the author in the
   // avatar image.
   m_actorWidget = new ActorWidget(NULL, this);
+  connect(m_actorWidget, SIGNAL(follow(QString, bool)),
+          this, SIGNAL(follow(QString, bool)));
+  connect(m_actorWidget, SIGNAL(lessClicked()), this, SIGNAL(lessClicked()));
 
   m_lessButton = new TextToolButton("-", this);
   connect(m_lessButton, SIGNAL(clicked()), this, SIGNAL(lessClicked()));
@@ -164,7 +150,7 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
     disconnect(m_object, SIGNAL(changed()), this, SLOT(onChanged()));
     if (m_author)
       disconnect(m_author, SIGNAL(changed()),
-                 this, SLOT(updateFollowAuthorButton()));
+                 m_actorWidget, SLOT(updateMenu()));
     QASObjectList* ol = m_object->replies();
     if (ol)
       disconnect(ol, SIGNAL(changed()), this, SLOT(onChanged()));
@@ -222,22 +208,18 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
   m_author = m_object->author();
   if (m_author)
     connect(m_author, SIGNAL(changed()),
-            this, SLOT(updateFollowAuthorButton()));
+            m_actorWidget, SLOT(updateMenu()));
 
   // m_commentable = objType == "note" || objType == "comment" ||
   //   objType == "image" || objType == "video";
   m_commentable = objType != "person";
   if (m_commentable) {
     m_favourButton->setVisible(true);
-    // m_followAuthorButton->setVisible(true);
-    m_menuButton->setVisible(true);
     m_shareButton->setVisible(true);
     m_deleteButton->setVisible(m_author && m_author->isYou());
     m_commentButton->setVisible(true);
   } else {
     m_favourButton->setVisible(false);
-    // m_followAuthorButton->setVisible(false);
-    m_menuButton->setVisible(false);
     m_shareButton->setVisible(false);
     m_deleteButton->setVisible(false);
     m_commentButton->setVisible(false);
@@ -275,7 +257,7 @@ void FullObjectWidget::onChanged() {
                               (m_object->type() != "comment" ||
                                hasValidIrtObject()));
   updateFollowButton();
-  updateFollowAuthorButton();
+  m_actorWidget->updateMenu();
 
   QString text = m_object->content();
   if (m_actor) {
@@ -385,29 +367,6 @@ void FullObjectWidget::updateFollowButton(bool /*wait*/) {
   m_followButton->setVisible(true);
   m_followButton->setText(m_actor->followed() ? tr("stop following") :
                           tr("follow"));
-}
-
-//------------------------------------------------------------------------------
-
-void FullObjectWidget::updateFollowAuthorButton(bool /*wait*/) {
-  if (!m_menuButton)
-    return;
-  
-  if (!m_author || !isFollowable(m_author)) {
-    m_menuButton->setVisible(false);
-    return;
-  }
-
-  m_menuButton->setVisible(true);
-
-  m_followAction->setText(m_author->followed() ? tr("stop following") : 
-                          tr("follow"));
-  
-  m_hideAuthorAction->setText(m_author->isHidden() ? 
-                              tr("stop minimising posts") :
-                              tr("auto-minimise posts"));
-
-  m_menuButton->setText(m_author->preferredUsername());
 }
 
 //------------------------------------------------------------------------------
@@ -663,37 +622,6 @@ void FullObjectWidget::onFollow() {
   if (isFollowable(m_actor))
     emit follow(m_actor->id(), !m_actor->followed());
 }
-
-//------------------------------------------------------------------------------
-
-void FullObjectWidget::onFollowAuthor() {
-  bool doFollow = !m_author->followed();
-  if (!doFollow) {
-    QString msg = QString(tr("Are you sure you want to stop following %1?")).
-      arg(m_author->displayNameOrWebFinger());
-    int ret = QMessageBox::warning(this, CLIENT_FANCY_NAME, msg,
-                                   QMessageBox::Cancel | QMessageBox::Yes,
-                                   QMessageBox::Cancel);
-    if (ret != QMessageBox::Yes)
-      return;
-  }
-
-  updateFollowAuthorButton(true);
-  if (isFollowable(m_author))
-    emit follow(m_author->id(), doFollow);
-}
-
-//------------------------------------------------------------------------------
-
-void FullObjectWidget::onHideAuthor() {
-  bool doHide = !m_author->isHidden();
-  m_author->setHidden(doHide);
-
-  updateFollowAuthorButton(false);
-  if (doHide)
-    emit lessClicked();
-}
-
 
 //------------------------------------------------------------------------------
 

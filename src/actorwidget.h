@@ -21,14 +21,16 @@
 #define _ACTORWIDGET_H_
 
 #include <QWidget>
-#include <QLabel>
+#include <QToolButton>
 #include <QMouseEvent>
+#include <QMenu>
+#include <QAction>
 
 #include "qactivitystreams.h"
 
 //------------------------------------------------------------------------------
 
-class ActorWidget : public QLabel {
+class ActorWidget : public QToolButton {
   Q_OBJECT
 public:
   ActorWidget(QASActor* a, QWidget* parent = 0, bool small=false);
@@ -36,14 +38,31 @@ public:
 
   void setActor(QASActor* a);
 
+signals:
+  void follow(QString, bool);
+  void lessClicked();
+  void moreClicked();
+
 public slots:
   void onImageChanged();
   void updatePixmap();
+  void updateMenu();
+
+private slots:
+  void onFollowAuthor();
+  void onHideAuthor();
 
 private:
+  void createMenu();
+
   QASActor* m_actor;
   QString m_url;
   QString m_localFile;
+
+  QMenu* m_menu;
+  QAction* m_menuTitleAction;
+  QAction* m_followAction;
+  QAction* m_hideAuthorAction;
 };
 
 #endif /* _ACTORWIDGET_H_ */

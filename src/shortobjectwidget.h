@@ -43,7 +43,13 @@ public:
 
   virtual void refreshTimeLabels() {};
 
+  void updateMenu() {
+    if (m_actorWidget)
+      m_actorWidget->updateMenu();
+  }
+
 signals:
+  void follow(QString, bool);
   void moreClicked();
 
 private slots:
@@ -51,7 +57,6 @@ private slots:
 
 private:
   void updateText();
-  void updateAvatar();
 
   TextToolButton* m_moreButton;
   RichTextLabel* m_textLabel;

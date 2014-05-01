@@ -51,6 +51,11 @@ public:
   virtual void refreshTimeLabels();
   void disableLessButton();
 
+  void updateMenu() {
+    if (m_actorWidget)
+      m_actorWidget->updateMenu();
+  }
+
 signals:
   void lessClicked();
 
@@ -64,9 +69,6 @@ private slots:
   void onRepeatClicked();
   void reply();
   void onFollow();
-  void onFollowAuthor();
-  void onHideAuthor();
-  void updateFollowAuthorButton(bool wait = false);
   void onDeleteClicked();
 
 private:
@@ -112,11 +114,6 @@ private:
   TextToolButton* m_commentButton;
   TextToolButton* m_followButton;
   TextToolButton* m_deleteButton;
-  TextToolButton* m_menuButton;
-
-  QMenu* m_menu;
-  QAction* m_followAction;
-  QAction* m_hideAuthorAction;
 
   TextToolButton* m_lessButton;
 
