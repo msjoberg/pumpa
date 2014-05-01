@@ -265,7 +265,7 @@ QString tidyHtml(QString str, bool& ok) {
     
   if (configOk &&
       (tidySetErrorBuffer(tdoc, &errbuf) >= 0) &&
-      (tidyParseString(tdoc, str.toAscii().data()) >= 0) &&
+      (tidyParseString(tdoc, str.toLatin1().data()) >= 0) &&
       (tidyCleanAndRepair(tdoc) >= 0) &&
       (tidyRunDiagnostics(tdoc) >= 0) &&
       (tidySaveBuffer(tdoc, &output) >= 0) &&
