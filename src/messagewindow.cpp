@@ -253,24 +253,14 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
     copyRecipients(m_ccRecipients, cc);
 
     // add original post author to recipients
-    if (obj->author())
+    if (obj->author() && !obj->author()->isYou())
       m_toRecipients->addRecipient(obj->author());
 
     // if this is a reply to a comment add comment author to
     // recipients as well
-    if (origObj != obj && origObj->author())
+    if (origObj != obj && origObj->author() && !origObj->author()->isYou())
       m_toRecipients->addRecipient(origObj->author());
   }
-  
-  // m_toRecipients->setVisible(!isReply || hasInitialTo);
-  // m_addressLayout->labelForField(m_toRecipients)->
-  //   setVisible(!isReply || hasInitialTo);
-
-  // m_ccRecipients->setVisible(!isReply);
-  // m_addressLayout->labelForField(m_ccRecipients)->setVisible(!isReply);
-
-  // m_addToButton->setVisible(!isReply);
-  // m_addCcButton->setVisible(!isReply);
 
   updateAddPicture();
 }
@@ -281,8 +271,13 @@ void MessageWindow::copyRecipients(MessageRecipients* mr, QASObjectList* ol) {
   mr->clear();
   if (ol) {
     RecipientList rl = ol->toRecipientList();
-    for (int i=0; i<rl.size(); ++i)
-      mr->addRecipient(rl[i]);
+    for (int i=0; i<rl.size(); ++i) {
+      QASActor* actor = rl[i]->asActor();
+      bool isYou = actor && actor->isYou();
+      
+      if (!isYou)
+        mr->addRecipient(rl[i]);
+    }
   }
 }
 
