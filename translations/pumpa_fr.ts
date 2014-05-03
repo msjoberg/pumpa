@@ -25,6 +25,34 @@
     </message>
 </context>
 <context>
+    <name>ActorWidget</name>
+    <message>
+        <location filename="../src/actorwidget.cpp" line="124"/>
+        <source>stop following</source>
+        <translation type="unfinished">arrêter de suivre</translation>
+    </message>
+    <message>
+        <location filename="../src/actorwidget.cpp" line="125"/>
+        <source>follow</source>
+        <translation type="unfinished">suivre</translation>
+    </message>
+    <message>
+        <location filename="../src/actorwidget.cpp" line="127"/>
+        <source>stop minimising posts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/actorwidget.cpp" line="128"/>
+        <source>auto-minimise posts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/actorwidget.cpp" line="136"/>
+        <source>Are you sure you want to stop following %1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CollectionWidget</name>
     <message>
         <location filename="../src/collectionwidget.cpp" line="69"/>
@@ -53,61 +81,59 @@
 <context>
     <name>FullObjectWidget</name>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="100"/>
+        <location filename="../src/fullobjectwidget.cpp" line="96"/>
         <source>delete</source>
         <translation>supprimer</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="104"/>
-        <location filename="../src/fullobjectwidget.cpp" line="610"/>
+        <location filename="../src/fullobjectwidget.cpp" line="100"/>
+        <location filename="../src/fullobjectwidget.cpp" line="569"/>
         <source>comment</source>
         <translation>commenter</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="284"/>
+        <location filename="../src/fullobjectwidget.cpp" line="266"/>
         <source>[No description]</source>
         <translation>[Pas de déscription]</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="319"/>
-        <location filename="../src/fullobjectwidget.cpp" line="329"/>
+        <location filename="../src/fullobjectwidget.cpp" line="301"/>
+        <location filename="../src/fullobjectwidget.cpp" line="311"/>
         <source>at %1</source>
         <translation>à %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="349"/>
+        <location filename="../src/fullobjectwidget.cpp" line="331"/>
         <source>unlike</source>
         <translation>ne plus aimer</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="349"/>
+        <location filename="../src/fullobjectwidget.cpp" line="331"/>
         <source>like</source>
         <translation>aimer</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="361"/>
+        <location filename="../src/fullobjectwidget.cpp" line="343"/>
         <source>share</source>
         <translation>partager</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="386"/>
-        <location filename="../src/fullobjectwidget.cpp" line="403"/>
+        <location filename="../src/fullobjectwidget.cpp" line="368"/>
         <source>stop following</source>
         <translation>arrêter de suivre</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="387"/>
-        <location filename="../src/fullobjectwidget.cpp" line="404"/>
+        <location filename="../src/fullobjectwidget.cpp" line="369"/>
         <source>follow</source>
         <translation>suivre</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="456"/>
+        <location filename="../src/fullobjectwidget.cpp" line="415"/>
         <source>You like this.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="489"/>
+        <location filename="../src/fullobjectwidget.cpp" line="448"/>
         <source>and %Ln other person(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -115,7 +141,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="493"/>
+        <location filename="../src/fullobjectwidget.cpp" line="452"/>
         <source>%Ln person(s) shared this.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -123,28 +149,13 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="672"/>
-        <source>Are you sure you want to stop following %1?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="460"/>
+        <location filename="../src/fullobjectwidget.cpp" line="419"/>
         <source>%1 like this.</source>
         <translatorcomment>aime ou aiment ? comment faire la disctinction entre likes-&gt;onlyYou() et nl &gt; 1 ?</translatorcomment>
         <translation type="unfinished">%1 aime.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="407"/>
-        <source>stop minimising posts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="408"/>
-        <source>auto-minimise posts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="458"/>
+        <location filename="../src/fullobjectwidget.cpp" line="417"/>
         <source>%1 likes this.</source>
         <translation type="unfinished">%1 aime.</translation>
     </message>
@@ -157,7 +168,7 @@
         <translation type="obsolete">et %1 autres personnes</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="490"/>
+        <location filename="../src/fullobjectwidget.cpp" line="449"/>
         <source>shared this.</source>
         <translation>a partagé ceci.</translation>
     </message>
@@ -170,32 +181,32 @@
         <translation type="obsolete">%1 personnes ont partagé ceci.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="562"/>
+        <location filename="../src/fullobjectwidget.cpp" line="521"/>
         <source>Show all %1 replies</source>
         <translation>Afficher les %1 réponses</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="605"/>
+        <location filename="../src/fullobjectwidget.cpp" line="564"/>
         <source>post</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="608"/>
+        <location filename="../src/fullobjectwidget.cpp" line="567"/>
         <source>note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="612"/>
+        <location filename="../src/fullobjectwidget.cpp" line="571"/>
         <source>image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="633"/>
+        <location filename="../src/fullobjectwidget.cpp" line="592"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation>Êtes vous sûr de vouloir supprimer ce %1 ?</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="646"/>
+        <location filename="../src/fullobjectwidget.cpp" line="605"/>
         <source>Share this %1 by %2?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -314,32 +325,32 @@
         <translation>Écrire une réponse</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="345"/>
+        <location filename="../src/messagewindow.cpp" line="340"/>
         <source>Select Image</source>
         <translation>Choisir une image</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="346"/>
+        <location filename="../src/messagewindow.cpp" line="341"/>
         <source>Image files (*.png *.jpg *.jpeg *.gif);;All files (*.*)</source>
         <translation>Fichers images (*.png *.jpg *.jpeg *.gif);;Tous les fichiers (*.*) </translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="378"/>
+        <location filename="../src/messagewindow.cpp" line="373"/>
         <source>Sorry!</source>
         <translation>Désolé!</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="379"/>
+        <location filename="../src/messagewindow.cpp" line="374"/>
         <source>That file didn&apos;t appear to be an image.</source>
         <translation>Ce fichier ne semble pas être une image.</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="387"/>
+        <location filename="../src/messagewindow.cpp" line="382"/>
         <source>&amp;Add picture</source>
         <translation>&amp;Ajouter une image</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="392"/>
+        <location filename="../src/messagewindow.cpp" line="387"/>
         <source>&amp;Change picture</source>
         <translation>&amp;Changer d&apos;image</translation>
     </message>
@@ -431,12 +442,12 @@
 <context>
     <name>ObjectWidget</name>
     <message>
-        <location filename="../src/objectwidget.cpp" line="170"/>
+        <location filename="../src/objectwidget.cpp" line="178"/>
         <source>Re: </source>
         <translation>Re:</translation>
     </message>
     <message>
-        <location filename="../src/objectwidget.cpp" line="171"/>
+        <location filename="../src/objectwidget.cpp" line="179"/>
         <source>show context</source>
         <translation>afficher le contexte</translation>
     </message>
