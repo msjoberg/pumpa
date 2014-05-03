@@ -25,6 +25,7 @@
 #include <QTabBar>
 #include <QTabWidget>
 #include <QSignalMapper>
+#include <QKeyEvent>
 
 class TabWidget : public QTabWidget {
   Q_OBJECT
@@ -44,6 +45,8 @@ protected slots:
   void closeTab(int index);
 
 protected:
+  virtual void keyPressEvent(QKeyEvent* event);
+
   void addHighlightConnection(QWidget* page, int index);
   QSignalMapper* sMap;
   QSet<int> okToClose;

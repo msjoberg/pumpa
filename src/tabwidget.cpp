@@ -86,3 +86,14 @@ void TabWidget::addHighlightConnection(QWidget* page, int index) {
   connect(page, SIGNAL(highlightMe()), sMap, SLOT(map()));
 }
 
+//------------------------------------------------------------------------------
+
+void TabWidget::keyPressEvent(QKeyEvent* event) {
+  int keyn = event->key() - Qt::Key_0;
+  if ((event->modifiers() == Qt::AltModifier) && // alt
+      (keyn >= 1 && keyn <= 9 && keyn <= count())) { // + 0 .. 9
+    setCurrentIndex(keyn-1);
+  } else {
+    QTabWidget::keyPressEvent(event);
+  }
+}
