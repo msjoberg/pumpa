@@ -33,7 +33,7 @@ protected:
   QASObjectList(QString url, QObject* parent);
 
 public:
-  virtual void update(QVariantMap json, bool older);
+  virtual void update(QVariantMap json, bool older, bool updateOnly=false);
 
   static void clearCache();
 

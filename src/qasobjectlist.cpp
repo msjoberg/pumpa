@@ -92,7 +92,7 @@ QASObjectList* QASObjectList::getObjectList(QVariantList json, QObject* parent,
 
 //------------------------------------------------------------------------------
 
-void QASObjectList::update(QVariantMap json, bool older) {
+void QASObjectList::update(QVariantMap json, bool older, bool) {
   // if (m_isReplies && json.contains("items")) {
   //   m_item_set.clear();
   //   m_items.clear();
