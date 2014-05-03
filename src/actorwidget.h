@@ -51,6 +51,7 @@ public slots:
 private slots:
   void onFollowAuthor();
   void onHideAuthor();
+  void onMenuTitle();
 
 private:
   void createMenu();

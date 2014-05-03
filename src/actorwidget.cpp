@@ -21,6 +21,7 @@
 #include "filedownloader.h"
 
 #include <QMessageBox>
+#include <QDesktopServices>
 
 //------------------------------------------------------------------------------
 
@@ -41,6 +42,7 @@ ActorWidget::ActorWidget(QASActor* a, QWidget* parent, bool small) :
 
   m_menu = new QMenu(this);
   m_menuTitleAction = new QAction(this);
+  connect(m_menuTitleAction, SIGNAL(triggered()), this, SLOT(onMenuTitle()));
 
   m_followAction = new QAction(this);
   connect(m_followAction, SIGNAL(triggered()), this, SLOT(onFollowAuthor()));
@@ -160,3 +162,9 @@ void ActorWidget::onHideAuthor() {
     emit moreClicked();
 }
 
+//------------------------------------------------------------------------------
+
+void ActorWidget::onMenuTitle() {
+  if (m_actor && !m_actor->url().isEmpty())
+    QDesktopServices::openUrl(m_actor->url());
+}
