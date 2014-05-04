@@ -56,6 +56,8 @@ public:
       m_actorWidget->updateMenu();
   }
 
+  void setActivity(QASActivity* a) { m_activity = a; }
+
 signals:
   void lessClicked();
 
@@ -127,6 +129,8 @@ private:
 
   QList<QASObject*> m_repliesList;
   QSet<QString> m_repliesMap;
+
+  QASActivity* m_activity;
 
   bool m_childWidget;
   bool m_commentable;

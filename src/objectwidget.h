@@ -48,6 +48,10 @@ public:
   virtual void refreshTimeLabels();
   void disableLessButton();
 
+  void setActivity(QASActivity* a) { 
+    if (m_objectWidget) m_objectWidget->setActivity(a);
+  }
+
 signals:
   void moreClicked();
   void lessClicked();
@@ -70,6 +74,8 @@ private:
   QHBoxLayout* m_topLayout;
   QASObject* m_object;
   QASObject* m_irtObject;
+
+  QASActivity* m_activity;
 
   bool m_short;
 };

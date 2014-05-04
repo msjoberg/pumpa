@@ -78,6 +78,7 @@ void ActivityWidget::changeObject(QASAbstractObject* aObj, bool fullObject) {
   QString objType = obj->type();
 
   m_objectWidget->changeObject(obj, fullObject);
+  m_objectWidget->setActivity(m_activity);
 
   bool objectVisible = !obj->content().isEmpty() ||
     !obj->displayName().isEmpty()

@@ -47,6 +47,7 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_object(NULL),
   m_actor(NULL),
   m_author(NULL),
+  m_activity(NULL),
   m_childWidget(childWidget)
 {
 #ifdef DEBUG_WIDGETS
@@ -548,12 +549,14 @@ void FullObjectWidget::favourite() {
 //------------------------------------------------------------------------------
 
 void FullObjectWidget::reply() {
-  QASActivity* act = m_object->postingActivity();
+  QASActivity* act = m_activity;
+  if (act == NULL) 
+    act = m_object->postingActivity();
   if (act == NULL && hasValidIrtObject())
     act = m_object->inReplyTo()->postingActivity();
 
-  QASObjectList* to = act ? act->to() : NULL;
-  QASObjectList* cc = act ? act->cc() : NULL;
+  QASObjectList* to = act && act->hasTo() ? act->to() : NULL;
+  QASObjectList* cc = act && act->hasCc() ? act->cc() : NULL;
 
   emit newReply(m_object, to, cc);
 }
