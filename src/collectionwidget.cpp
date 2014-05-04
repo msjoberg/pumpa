@@ -49,7 +49,6 @@ void CollectionWidget::clear() {
   connect(m_loadOlderButton, SIGNAL(clicked()),
           this, SLOT(onLoadOlderClicked()));
   m_loadOlderButton->setVisible(false);
-  m_itemLayout->addWidget(m_loadOlderButton);
 }
 
 //------------------------------------------------------------------------------
@@ -64,6 +63,7 @@ void CollectionWidget::onLoadOlderClicked() {
 void CollectionWidget::updateLoadOlderButton(bool wait) {
   if (!m_list->size() || m_list->nextLink().isEmpty()) {
     m_loadOlderButton->setVisible(false);
+    m_itemLayout->removeWidget(m_loadOlderButton);
     return;
   }
   QString text = tr("Load older");
@@ -72,6 +72,7 @@ void CollectionWidget::updateLoadOlderButton(bool wait) {
 
   m_loadOlderButton->setText(text);
   m_loadOlderButton->setVisible(true);
+  m_itemLayout->addWidget(m_loadOlderButton);
 }
 
 //------------------------------------------------------------------------------
