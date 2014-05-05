@@ -33,12 +33,14 @@ ActorWidget::ActorWidget(QASActor* a, QWidget* parent, bool small) :
 #endif
   int max_size = small ? 32 : 64;
 
-  setStyleSheet("QToolButton { border: none };"
-                "QToolButton:hover { border: none };"
-                "QToolButton:pressed { border: none }");
+  setStyleSheet("QToolButton::menu-indicator { "
+                "subcontrol-origin: padding; "
+                "subcontrol-position: bottom right; "
+                "}");
   setIconSize(QSize(max_size, max_size));
   setFocusPolicy(Qt::NoFocus);
   setPopupMode(QToolButton::InstantPopup);
+  setAutoRaise(true);
 
   m_menu = new QMenu(this);
   m_menuTitleAction = new QAction(this);
@@ -98,17 +100,20 @@ void ActorWidget::updatePixmap() {
 //------------------------------------------------------------------------------
 
 void ActorWidget::createMenu() {
-  if (!m_actor || m_actor->isYou()) {
+  if (!m_actor) {
     setMenu(NULL);
     return;
   } 
+  
+  bool isYou = m_actor->isYou();
 
   m_menuTitleAction->setText(m_actor->displayName());
-
   m_menu->clear();
   m_menu->addAction(m_menuTitleAction);
   m_menu->addSeparator();
-  m_menu->addAction(m_followAction);
+
+  if (!isYou)
+    m_menu->addAction(m_followAction);
 
   m_menu->addAction(m_hideAuthorAction);
   
