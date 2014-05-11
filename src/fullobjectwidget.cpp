@@ -634,7 +634,7 @@ QString FullObjectWidget::processText(QString old_text, bool getImages) {
       << "br" << "p" << "b" << "i" << "blockquote" << "div" << "abbr"
       << "code" << "h1" << "h2" << "h3" << "h4" << "h5"
       << "em" << "ol" << "li" << "ul" << "hr" << "strong" << "u";
-    s_allowedTags << "pre";
+    s_allowedTags << "pre" << "s";
     s_allowedTags << "a";
     s_allowedTags << "img";
     s_allowedTags << "table" << "tr" << "td" << "th" << "thead" << "tbody";
