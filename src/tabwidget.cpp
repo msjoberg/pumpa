@@ -1,6 +1,6 @@
 /*
   Copyright 2013 Mats Sjöberg
-  
+
   This file is part of the Pumpa programme.
 
   Pumpa is free software: you can redistribute it and/or modify it
@@ -34,7 +34,7 @@ TabWidget::TabWidget(QWidget* parent) : QTabWidget(parent) {
 
 //------------------------------------------------------------------------------
 
-int TabWidget::addTab(QWidget* page, const QString& label, 
+int TabWidget::addTab(QWidget* page, const QString& label,
                       bool highlight, bool closable) {
   int index = QTabWidget::addTab(page, label);
 
@@ -90,7 +90,7 @@ void TabWidget::addHighlightConnection(QWidget* page, int index) {
 
 void TabWidget::keyPressEvent(QKeyEvent* event) {
   int keyn = event->key() - Qt::Key_0;
-  if ((event->modifiers() == Qt::AltModifier) && // alt
+  if ((event->modifiers() & Qt::AltModifier) && // alt
       (keyn >= 1 && keyn <= 9 && keyn <= count())) { // + 0 .. 9
     setCurrentIndex(keyn-1);
   } else {
