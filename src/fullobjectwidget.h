@@ -54,6 +54,7 @@ public:
   void updateMenu() {
     if (m_actorWidget)
       m_actorWidget->updateMenu();
+    updateFollowAuthorButton();
   }
 
   void setActivity(QASActivity* a) { m_activity = a; }
@@ -71,6 +72,8 @@ private slots:
   void onRepeatClicked();
   void reply();
   void onFollow();
+  void onFollowAuthor();
+  void updateFollowAuthorButton(bool wait = false);
   void onDeleteClicked();
 
 private:
@@ -115,6 +118,7 @@ private:
   TextToolButton* m_shareButton;
   TextToolButton* m_commentButton;
   TextToolButton* m_followButton;
+  TextToolButton* m_followAuthorButton;
   TextToolButton* m_deleteButton;
 
   TextToolButton* m_lessButton;
