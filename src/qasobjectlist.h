@@ -48,6 +48,8 @@ public:
     return qobject_cast<QASObject*>(QASAbstractObjectList::at(i));
   }
 
+  bool containsYou() const;
+
   void isReplies(bool b) { m_isReplies = b; }
 
   RecipientList toRecipientList() const;

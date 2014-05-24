@@ -108,3 +108,14 @@ RecipientList QASObjectList::toRecipientList() const {
     rl.append(at(i));
   return rl;
 }
+
+//------------------------------------------------------------------------------
+
+bool QASObjectList::containsYou() const {
+  for (size_t i=0; i<size(); ++i) {
+    QASActor* actor = at(i)->asActor();
+    if (actor && actor->isYou())
+      return true;
+  }
+  return false;
+}
