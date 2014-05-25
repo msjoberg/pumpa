@@ -29,27 +29,27 @@
     <message>
         <location filename="../src/actorwidget.cpp" line="131"/>
         <source>stop following</source>
-        <translation type="unfinished">dejar de seguir a</translation>
+        <translation>dejar de seguir</translation>
     </message>
     <message>
         <location filename="../src/actorwidget.cpp" line="132"/>
         <source>follow</source>
-        <translation type="unfinished">seguir a</translation>
+        <translation>seguir</translation>
     </message>
     <message>
         <location filename="../src/actorwidget.cpp" line="134"/>
         <source>stop minimising posts</source>
-        <translation type="unfinished"></translation>
+        <translation>dejar de minimizar envíos</translation>
     </message>
     <message>
         <location filename="../src/actorwidget.cpp" line="135"/>
         <source>auto-minimise posts</source>
-        <translation type="unfinished"></translation>
+        <translation>auto-minimizar envíos</translation>
     </message>
     <message>
         <location filename="../src/actorwidget.cpp" line="143"/>
         <source>Are you sure you want to stop following %1?</source>
-        <translation type="unfinished">¿Seguro que deseas dejar de seguir a %1?</translation>
+        <translation>¿Seguro que deseas dejar de seguir a %1?</translation>
     </message>
 </context>
 <context>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="401"/>
         <source>follow %1</source>
-        <translation type="unfinished">seguir a %1</translation>
+        <translation>seguir a %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="448"/>
