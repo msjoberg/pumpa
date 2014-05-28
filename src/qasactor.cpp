@@ -130,6 +130,7 @@ void QASActor::setHidden(bool b) {
     s_hiddenAuthors.insert(m_id);
   else
     s_hiddenAuthors.remove(m_id);
+  emit changed();
 }
 
 //------------------------------------------------------------------------------
