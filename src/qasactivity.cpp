@@ -73,7 +73,7 @@ void QASActivity::update(QVariantMap json) {
   updateVar(json, m_updated, "updated", ch);
   updateVar(json, m_generatorName, "generator", "displayName", ch);
 
-  if (m_verb == "post" && m_object && m_object->inReplyTo())
+  if (m_object && m_object->inReplyTo())
     m_object->inReplyTo()->addReply(m_object);
 
   if (isLikeVerb(m_verb) && m_object && m_actor) 
