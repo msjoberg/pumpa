@@ -106,11 +106,11 @@ public:
   }
 
   int maxTimelineItems() const {
-    return getValue("max_timeline_items", 20).toInt();
+    return getValue("max_timeline_items", 30).toInt();
   }
 
   int maxFirehoseItems() const {
-    return getValue("max_timeline_items", 20).toInt();
+    return getValue("max_timeline_items", 30).toInt();
   }
 
   QStringList hideAuthors() const {
