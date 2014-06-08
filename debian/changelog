@@ -1,6 +1,7 @@
 pumpa (0.8.4-1) unstable; urgency=low
 
-  * Avatar-menu with new auto-minimise feature that automatically collapses posts of e.g. noisy users.
+  * Avatar-menu with new auto-minimise feature that automatically
+    collapses posts of e.g. noisy users.
   * To/Cc now editable on replies.
   * Inline HTML now allowed using libtidy.
   * Updated German, Spanish, Italian and Na'vi translations.
