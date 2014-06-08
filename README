@@ -1,4 +1,4 @@
-# Pumpa v0.9-dev
+# Pumpa v0.8.4
 
 Greetings, fellow pumpkins!
 
@@ -148,9 +148,8 @@ appear that you need to copy & paste back into pumpa.
 ## Markdown
 
 When you are posting a new note or comment you can use [Markdown
-syntax][7], with the exception that inline HTML is **not**
-allowed. This is because otherwise it would be very easy to add broken
-HTML which will be very messy...
+syntax][7]. Since Pumpa version v0.8.4 inline HTML is also allowed as
+in standard Markdown.
 
 For example:
 
@@ -296,7 +295,7 @@ steps:
 
 ## License
 
-Copyright 2013 Mats Sj&ouml;berg <mats@sjoberg.fi>.
+Copyright 2014 Mats Sj&ouml;berg <mats@sjoberg.fi>.
 
 All of the source code of Pumpa is licensed under the GPLv3.
 
