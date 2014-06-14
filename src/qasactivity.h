@@ -46,6 +46,8 @@ public:
   QString content() const { return m_content; }
   QString generatorName() const { return m_generatorName; }
 
+  bool skipNotify() const;
+
   qint64 sortInt() const { return sortIntByDateTime(m_updated); }
 
   QASObject* object() const { return m_object; }

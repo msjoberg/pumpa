@@ -474,15 +474,23 @@ void PumpApp::timelineHighlighted(int feed) {
 
   // Popup notifications.
   if (doPopup) {
+    int actsCount = 0;
+    for (int i=0; i<acts.size(); i++)
+      if (!acts.at(i)->skipNotify())
+	actsCount++;
+
+    if (actsCount == 0)
+      return;
+
     QString msg =
-      QString(tr("You have %1 new notifications.")).arg(acts.count());
+      QString(tr("You have %1 new notifications.")).arg(actsCount);
 
     // If there's only a single post activity we'll make the
     // notification more informative.
     QASActivity* act = acts.at(0);
     QASObject* obj = act->object();
     QASActor* actor = act->actor();
-    if (acts.count() == 1 && act->verb() == "post" && obj && actor) {
+    if (actsCount == 1 && act->verb() == "post" && obj && actor) {
       QString actorName = actor->displayNameOrWebFinger();
       if (obj->type() == "comment")
         msg = QString(tr("%1 commented: ")).arg(actorName);

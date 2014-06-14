@@ -120,3 +120,9 @@ bool QASActivity::hasCc() const {
   return m_cc && m_cc->size(); 
 }
 
+
+//------------------------------------------------------------------------------
+
+bool QASActivity::skipNotify() const {
+  return generatorName() == "pumpbridge";
+}

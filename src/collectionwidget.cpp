@@ -139,8 +139,9 @@ bool CollectionWidget::isFullObject(QASActivity* act) {
   QASObject* obj = act->object();
   bool objAlreadyShown = obj && m_objects_shown.contains(obj);
   QASActor* actor = act->actor();
-  bool directedAtYou = (act->to() && act->to()->containsYou()) ||
-    (act->cc() && act->cc()->containsYou());
+  bool directedAtYou = ((act->to() && act->to()->containsYou()) ||
+			(act->cc() && act->cc()->containsYou())) &&
+    !act->skipNotify();
   bool hiddenActor = actor && actor->isHidden();
 
   return (!(hiddenActor && !directedAtYou) &&
