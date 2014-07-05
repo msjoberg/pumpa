@@ -228,6 +228,8 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
   QString title = isReply ? tr("Post a reply") : tr("Post a note");
   setWindowTitle(QString(CLIENT_FANCY_NAME) + " - " + title);
 
+  m_sendButton->setText(isReply ? tr("Send comment") : tr("Send post"));
+
   m_markdownCheckBox->setChecked(m_s->useMarkdown());
 
   m_recipientList.clear();
