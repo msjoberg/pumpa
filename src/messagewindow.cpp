@@ -277,7 +277,7 @@ void MessageWindow::copyRecipients(MessageRecipients* mr, QASObjectList* ol) {
       QASActor* actor = rl[i]->asActor();
       bool isYou = actor && actor->isYou();
       
-      if (!isYou)
+      if (!isYou && !rl[i]->type().isEmpty())
         mr->addRecipient(rl[i]);
     }
   }
