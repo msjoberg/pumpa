@@ -103,6 +103,8 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
 #if QT_VERSION >= 0x040700
   m_title->setPlaceholderText(tr("Title (optional)"));
 #endif
+  connect(m_title, SIGNAL(textChanged(const QString&)),
+	  this, SLOT(updatePreview()));
 
   m_previewLabel = new RichTextLabel(this);
   m_previewLabel->setLineWidth(1);
@@ -395,9 +397,14 @@ void MessageWindow::updateAddPicture() {
 //------------------------------------------------------------------------------
 
 void MessageWindow::updatePreview() {
-  if (m_previewLabel->isVisible()) 
-    m_previewLabel->setText(addTextMarkup(m_textEdit->toPlainText(),
-                                          m_s->useMarkdown()));
+  if (m_previewLabel->isVisible()) {
+    QString previewText = addTextMarkup(m_textEdit->toPlainText(),
+					m_s->useMarkdown());
+    QString titleText = m_title->text();
+    if (!titleText.isEmpty())
+      previewText = "<b>" + m_title->text() + "</b></p>" + previewText;
+    m_previewLabel->setText(previewText);
+  }
 }
 
 //------------------------------------------------------------------------------
