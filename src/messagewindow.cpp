@@ -108,8 +108,8 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
 
   m_previewLabel = new RichTextLabel(this);
   m_previewLabel->setLineWidth(1);
+  m_previewLabel->setFocusPolicy(Qt::NoFocus);
   m_previewLabel->setFrameStyle(QFrame::Box);
-  m_previewLabel->hide();
 
   m_textEdit = new MessageEdit(m_s, this);
   connect(m_textEdit, SIGNAL(ready()), this, SLOT(accept()));
@@ -126,13 +126,13 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
   m_layout->addWidget(m_textEdit);
   m_layout->addWidget(m_previewLabel);
 
-  m_cancelButton = new QPushButton(tr("Cancel"));
+  m_cancelButton = new QPushButton(tr("Ca&ncel"));
   connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 
-  m_previewButton = new QPushButton(tr("Preview"));
+  m_previewButton = new QPushButton(tr("&Preview"));
   connect(m_previewButton, SIGNAL(clicked()), this, SLOT(togglePreview()));
   
-  m_sendButton = new QPushButton(tr("Send message"));
+  m_sendButton = new QPushButton(tr("&Send message"));
   connect(m_sendButton, SIGNAL(clicked()), this, SLOT(accept()));
   m_sendButton->setDefault(true);
 
@@ -230,9 +230,12 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
   QString title = isReply ? tr("Post a reply") : tr("Post a note");
   setWindowTitle(QString(CLIENT_FANCY_NAME) + " - " + title);
 
-  m_sendButton->setText(isReply ? tr("Send comment") : tr("Send post"));
+  m_sendButton->setText(isReply ? tr("&Send comment") : tr("&Send post"));
 
   m_markdownCheckBox->setChecked(m_s->useMarkdown());
+
+  m_previewLabel->setVisible(m_s->showPreview());
+  updatePreview();
 
   m_recipientList.clear();
   for (int i=0; i<m_rl->size(); ++i) {
@@ -302,7 +305,7 @@ void MessageWindow::clear() {
   m_imageFileName = "";
   m_textEdit->clear();
   m_title->clear();
-  m_previewLabel->clear();
+  m_previewLabel->setText("");
 }
 
 //------------------------------------------------------------------------------
@@ -410,6 +413,9 @@ void MessageWindow::updatePreview() {
 //------------------------------------------------------------------------------
 
 void MessageWindow::togglePreview() {
-  m_previewLabel->setVisible(!m_previewLabel->isVisible());
+  bool visible = !m_previewLabel->isVisible();
+  m_previewLabel->setVisible(visible);
+  m_s->showPreview(visible);
   updatePreview();
+  m_textEdit->setFocus(Qt::OtherFocusReason);
 }
