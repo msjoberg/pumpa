@@ -222,20 +222,6 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
     connect(m_author, SIGNAL(changed()),
             this, SLOT(updateFollowAuthorButton()));
   }
-  // m_commentable = objType == "note" || objType == "comment" ||
-  //   objType == "image" || objType == "video";
-  m_commentable = objType != "person";
-  if (m_commentable) {
-    m_favourButton->setVisible(true);
-    m_shareButton->setVisible(true);
-    m_deleteButton->setVisible(m_author && m_author->isYou());
-    m_commentButton->setVisible(true);
-  } else {
-    m_favourButton->setVisible(false);
-    m_shareButton->setVisible(false);
-    m_deleteButton->setVisible(false);
-    m_commentButton->setVisible(false);
-  }
   
   updateFollowAuthorButton();
   //m_followAuthorButton->setVisible(m_commentable && notFollowingFOO);
@@ -262,6 +248,19 @@ bool FullObjectWidget::hasValidIrtObject() {
 void FullObjectWidget::onChanged() {
   if (!m_object)
     return;
+
+  m_commentable = m_object->type() != "person" && !m_object->isDeleted();
+  if (m_commentable) {
+    m_favourButton->setVisible(true);
+    m_shareButton->setVisible(true);
+    m_deleteButton->setVisible(m_author && m_author->isYou());
+    m_commentButton->setVisible(true);
+  } else {
+    m_favourButton->setVisible(false);
+    m_shareButton->setVisible(false);
+    m_deleteButton->setVisible(false);
+    m_commentButton->setVisible(false);
+  }
 
   updateLikes();
   updateShares();
@@ -525,7 +524,7 @@ void FullObjectWidget::addObjectList(QASObjectList* ol) {
            m_repliesList[i]->sortInt() < sortInt)
       i++;
 
-    if (m_repliesMap.contains(replyId))
+    if (m_repliesMap.contains(replyId) || replyObj->isDeleted())
       continue;
 
     if (i < m_repliesList.size() && m_repliesList[i]->id() == replyId)

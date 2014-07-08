@@ -92,7 +92,8 @@ void ShortObjectWidget::changeObject(QASAbstractObject* obj) {
     expandableTypes << "person" << "note" << "comment" << "image" << "video"
                     << "audio";
 
-  m_moreButton->setVisible(expandableTypes.contains(m_object->type()));
+  m_moreButton->setVisible(expandableTypes.contains(m_object->type())
+			   && !m_object->isDeleted());
 
   updateText();
 }

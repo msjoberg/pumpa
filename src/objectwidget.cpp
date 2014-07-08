@@ -165,7 +165,7 @@ void ObjectWidget::showLess() {
 //------------------------------------------------------------------------------
 
 void ObjectWidget::onChanged() {
-  setVisible(!m_object->url().isEmpty() && !m_object->isDeleted());
+  setVisible(!m_object->url().isEmpty());
 }
 
 //------------------------------------------------------------------------------

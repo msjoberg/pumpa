@@ -306,7 +306,22 @@ QASActor* QASObject::asActor() {
 
 //------------------------------------------------------------------------------
 
+QString QASObject::deletedText() const {
+  return "<i>[Deleted " + deleted().toString() + "]</i>";
+}
+
+//------------------------------------------------------------------------------
+
+QString QASObject::content() const {
+  return isDeleted() ? deletedText() : m_content;
+}
+
+//------------------------------------------------------------------------------
+
 QString QASObject::excerpt() const {
+  if (isDeleted())
+    return deletedText();
+
   QString text = displayName();
   if (text.isEmpty()) {
     text = content();

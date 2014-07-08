@@ -87,7 +87,7 @@ public:
   qint64 sortInt() const { return sortIntByDateTime(m_updated); }
   
   QString id() const { return m_id; }
-  QString content() const { return m_content; }
+  QString content() const;
   QString type() const { return m_objectType; }
   QString url() const { return m_url; }
   QString imageUrl() const { return m_imageUrl; }
@@ -132,6 +132,7 @@ public:
   QVariantMap toJson() const;
 
   virtual bool isDeleted() const { return !m_deleted.isNull(); }
+  QDateTime deleted() const { return m_deleted; }
 
   QString excerpt() const;
 
@@ -139,6 +140,8 @@ public:
   void setPostingActivity(QASActivity* a) { m_postingActivity = a; }
 
 protected:
+  QString deletedText() const;
+
   QString m_id;
   QString m_content;
   bool m_liked;

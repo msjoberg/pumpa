@@ -82,7 +82,8 @@ void ActivityWidget::changeObject(QASAbstractObject* aObj, bool fullObject) {
 
   bool objectVisible = !obj->content().isEmpty() ||
     !obj->displayName().isEmpty()
-    || (objType == "image" && !obj->imageUrl().isEmpty());
+    || (objType == "image" && !obj->imageUrl().isEmpty())
+    || obj->isDeleted();
 
   m_objectWidget->setVisible(objectVisible);
 
