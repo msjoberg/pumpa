@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 9),
                libaspell-dev,
                libtidy-dev
 Standards-Version: 3.9.5
-Homepage: http://saz.im/software/pumpa.html
+Homepage: http://sjoberg.fi/software/pumpa.html
 Vcs-Git: git://git@gitorious.org:pumpa/pumpa.git
 Vcs-Browser: https://gitorious.org/pumpa/pumpa
 
