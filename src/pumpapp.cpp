@@ -110,6 +110,7 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   int max_fh = m_s->maxFirehoseItems();
 
   m_tabWidget = new TabWidget(this);
+  m_tabWidget->setFocusPolicy(Qt::NoFocus);
 
   m_inboxWidget = new CollectionWidget(this, max_tl);
   connectCollection(m_inboxWidget);
