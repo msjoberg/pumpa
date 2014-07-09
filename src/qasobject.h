@@ -132,7 +132,7 @@ public:
   QVariantMap toJson() const;
 
   virtual bool isDeleted() const { return !m_deleted.isNull(); }
-  QDateTime deleted() const { return m_deleted; }
+  QDateTime deletedDate() const { return m_deleted; }
 
   QString excerpt() const;
 

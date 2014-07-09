@@ -307,7 +307,8 @@ QASActor* QASObject::asActor() {
 //------------------------------------------------------------------------------
 
 QString QASObject::deletedText() const {
-  return "<i>[Deleted " + deleted().toString() + "]</i>";
+  return "<i>[" + QString(tr("Deleted %1")).arg(deletedDate().toString()) + 
+    "]</i>";
 }
 
 //------------------------------------------------------------------------------
