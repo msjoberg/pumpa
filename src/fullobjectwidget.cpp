@@ -507,28 +507,31 @@ void FullObjectWidget::addObjectList(QASObjectList* ol) {
     For now we sort by time, or more accurately by whatever number the
     QASObject::sortInt() returns. Higher number is newer, goes further
     down the list.
-  
-    Comments' lists returned by the pump API are with newest at the
-    top, so we start from the end, and can assume that the next one is
-    always newer.
-  */
+    */
 
-  int i = 0; // index into m_repliesList
   for (size_t j=0; j<ol->size(); j++) {
     QASObject* replyObj = ol->at(ol->size()-j-1);
     QString replyId = replyObj->id();
     qint64 sortInt = replyObj->sortInt();
 
+    // skip existing or deleted items
+    if (m_repliesMap.contains(replyId) || replyObj->isDeleted())
+      continue;
+
+    // Find position (this could be done faster, but probably not
+    // worth the trouble, since there won't be thousands of replies
+    // :-)
+
+    int i = 0; // index into m_repliesList
     while (i < m_repliesList.size() &&
            m_repliesList[i]->id() != replyId &&
            m_repliesList[i]->sortInt() < sortInt)
       i++;
-
-    if (m_repliesMap.contains(replyId) || replyObj->isDeleted())
+    
+    if (i < m_repliesList.size() && m_repliesList[i]->id() == replyId) {
+      qDebug() << "ERROR: addObjectList: item not in replies map!!";
       continue;
-
-    if (i < m_repliesList.size() && m_repliesList[i]->id() == replyId)
-      continue;
+    }
 
     FullObjectWidget* ow = new FullObjectWidget(replyObj, this, true);
     ObjectWidgetWithSignals::connectSignals(ow, this);
