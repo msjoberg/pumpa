@@ -145,7 +145,7 @@ bool CollectionWidget::isFullObject(QASActivity* act) {
   bool hiddenActor = actor && actor->isHidden();
 
   return (!(hiddenActor && !directedAtYou) &&
-          !objAlreadyShown);
+          ((verb == "post" || verb == "share") && !objAlreadyShown));
 }
 
 //------------------------------------------------------------------------------
