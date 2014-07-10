@@ -366,6 +366,7 @@ bool PumpApp::haveOAuth() {
 void PumpApp::tabSelected(int index) {
   m_tabWidget->deHighlightTab(index);
   resetNotifications();
+  m_closeTabAction->setEnabled(m_tabWidget->closable(index));
 }
 
 //------------------------------------------------------------------------------
@@ -678,6 +679,11 @@ void PumpApp::createActions() {
   connect(m_debugAction, SIGNAL(triggered()), this, SLOT(debugAction()));
   addAction(m_debugAction);
   
+  m_closeTabAction = new QAction("Close tab", this);
+  m_closeTabAction->setShortcut(tr("Ctrl+W"));
+  connect(m_closeTabAction, SIGNAL(triggered()), this, SLOT(closeTab()));
+  m_closeTabAction->setEnabled(false);
+
   m_firehoseAction = new QAction(tr("Firehose"), this);
   connect(m_firehoseAction, SIGNAL(triggered()), this, SLOT(showFirehose()));
 
@@ -720,6 +726,7 @@ void PumpApp::createMenu() {
   m_tabsMenu->addAction(m_followersAction);
   m_tabsMenu->addAction(m_followingAction);
   m_tabsMenu->addAction(m_firehoseAction);
+  m_tabsMenu->addAction(m_closeTabAction);
   menuBar()->addMenu(m_tabsMenu);
 
   helpMenu = new QMenu(tr("&Help"), this);
@@ -1030,6 +1037,12 @@ void PumpApp::onShowContext(QASObject* obj) {
 
   m_contextWidget->setObject(obj);
   m_tabWidget->setCurrentWidget(m_contextWidget);
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::closeTab() {
+  m_tabWidget->closeCurrentTab();
 }
 
 //------------------------------------------------------------------------------

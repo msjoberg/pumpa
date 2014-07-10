@@ -122,6 +122,7 @@ private slots:
   void showFavourites();
   void showUserActivities();
   void showFirehose();
+  void closeTab();
 
 protected:
   void timerEvent(QTimerEvent*);
@@ -221,6 +222,7 @@ private:
   QAction* m_favouritesAction;
   QAction* m_userActivitiesAction;
   QAction* m_firehoseAction;
+  QAction* m_closeTabAction;
   QMenu* m_tabsMenu;
 
   QAction* m_debugAction;

@@ -36,6 +36,10 @@ public:
   int addTab(QWidget* page, const QString& label, bool highlight=true,
              bool closable=false);
 
+  bool closable(int index) const { return m_okToClose.contains(index); }
+  
+  void closeCurrentTab();
+
 public slots:
   void highlightTab(int index=-1);
 
@@ -48,8 +52,9 @@ protected:
   virtual void keyPressEvent(QKeyEvent* event);
 
   void addHighlightConnection(QWidget* page, int index);
-  QSignalMapper* sMap;
-  QSet<int> okToClose;
+
+  QSignalMapper* m_sMap;
+  QSet<int> m_okToClose;
 };
 
 #endif
