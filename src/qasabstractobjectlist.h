@@ -60,6 +60,8 @@ public:
     return m_item_set.contains(obj);
   }
 
+  bool firstTime() const { return m_firstTime; }
+
 protected:
   virtual QASAbstractObject* getAbstractObject(QVariantMap json,
                                                QObject* parent) = 0;

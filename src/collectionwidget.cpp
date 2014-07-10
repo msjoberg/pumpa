@@ -61,7 +61,7 @@ void CollectionWidget::onLoadOlderClicked() {
 //------------------------------------------------------------------------------
 
 void CollectionWidget::updateLoadOlderButton(bool wait) {
-  if (!m_list->size() || m_list->nextLink().isEmpty()) {
+  if (m_list->nextLink().isEmpty()) {
     m_loadOlderButton->setVisible(false);
     m_itemLayout->removeWidget(m_loadOlderButton);
     return;

@@ -47,6 +47,8 @@ public:
     return m_object_set.contains(obj);
   }
 
+  bool linksInitialised() const { return !m_list->firstTime(); }
+
 signals:
   void highlightMe();  
   void hasNewObjects();
