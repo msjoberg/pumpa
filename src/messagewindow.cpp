@@ -140,7 +140,6 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
   m_previewArea->setWidget(m_previewLabel);
 
   m_previewArea->setWidgetResizable(true);
-  m_previewArea->setMinimumHeight(m_previewLabel->sizeHint().height()+2);
 
   m_splitter = new QSplitter(Qt::Vertical, this);
   m_splitter->addWidget(m_textEdit);
@@ -439,10 +438,6 @@ void MessageWindow::updatePreview() {
     if (!titleText.isEmpty())
       previewText = "<p><b>" + m_title->text() + "</b></p>" + previewText;
     m_previewLabel->setText(previewText);
-
-    int a_msh = m_previewArea->minimumSizeHint().height();
-    int l_sh = m_previewLabel->sizeHint().height()+2;
-    m_previewArea->setMinimumHeight(l_sh < a_msh ? l_sh : a_msh);
   }
 }
 
