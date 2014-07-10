@@ -61,7 +61,7 @@ QString markDown(QString text) {
   QString ret = QString::fromUtf8((char*)ob->data, ob->size);
   bufrelease(ob);
 
-  return ret;
+  return ret.trimmed();
 }
 
 //------------------------------------------------------------------------------
@@ -289,7 +289,7 @@ QString tidyHtml(QString str, bool& ok) {
   tidyRelease(tdoc);
 #endif
 
-  return res;
+  return res.trimmed();
 }
 
 //------------------------------------------------------------------------------
@@ -323,8 +323,8 @@ QString addTextMarkup(QString text, bool useMarkdown) {
   }
 
 #ifdef DEBUG_MARKUP
-  qDebug() << "\n[DEBUG] MARKUP (apply "
-           << (useMarkdown?"Markdown":"text conversion") <<  ")\n" << text;
+  qDebug() << "\n[DEBUG] MARKUP (apply"
+           << (useMarkdown?"Markdown)":"text conversion)") << "\n" << text;
 #endif
 
 #ifdef USE_TIDY
