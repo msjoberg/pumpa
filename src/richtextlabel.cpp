@@ -41,7 +41,8 @@ RichTextLabel::RichTextLabel(QWidget* parent, bool singleLine) :
 
   setLineWidth(2);
   setMargin(0);
-  setFocusPolicy(Qt::NoFocus);
+  //setFocusPolicy(Qt::NoFocus);
+  setFocusPolicy(Qt::ClickFocus);
 }
 
 //------------------------------------------------------------------------------
