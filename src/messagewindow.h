@@ -29,6 +29,8 @@
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QScrollArea>
+#include <QSplitter>
 
 #include "messageedit.h"
 #include "qactivitystreams.h"
@@ -99,6 +101,8 @@ private:
   QLabel* m_ccLabel;
 
   RichTextLabel* m_previewLabel;
+  QScrollArea* m_previewArea;
+  QSplitter* m_splitter;
 
   QLabel* m_pictureLabel;
   QLineEdit* m_title;

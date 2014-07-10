@@ -106,16 +106,25 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
   connect(m_title, SIGNAL(textChanged(const QString&)),
 	  this, SLOT(updatePreview()));
 
-  m_previewLabel = new RichTextLabel(this);
-  m_previewLabel->setLineWidth(1);
-  m_previewLabel->setFocusPolicy(Qt::NoFocus);
-  m_previewLabel->setFrameStyle(QFrame::Box);
-
   m_textEdit = new MessageEdit(m_s, this);
   connect(m_textEdit, SIGNAL(ready()), this, SLOT(accept()));
   connect(m_textEdit, SIGNAL(textChanged()), this, SLOT(updatePreview()));
   connect(m_textEdit, SIGNAL(addRecipient(QASActor*)),
           this, SLOT(onAddRecipient(QASActor*)));
+
+  m_previewLabel = new RichTextLabel;
+  m_previewLabel->setSizePolicy(QSizePolicy::Ignored,
+				QSizePolicy::Maximum);
+  m_previewArea = new QScrollArea(this);
+  m_previewArea->setWidget(m_previewLabel);
+
+  m_previewArea->setWidgetResizable(true);
+  m_previewArea->setMinimumHeight(m_previewLabel->sizeHint().height()+2);
+
+  m_splitter = new QSplitter(Qt::Vertical, this);
+  m_splitter->addWidget(m_textEdit);
+  m_splitter->addWidget(m_previewArea);
+  m_splitter->setChildrenCollapsible(false);
 
   m_layout = new QVBoxLayout;
   m_layout->addLayout(m_infoLayout);
@@ -123,8 +132,7 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
   m_layout->addLayout(m_pictureButtonLayout);
   m_layout->addWidget(m_pictureLabel, 0, Qt::AlignHCenter);
   m_layout->addWidget(m_title);
-  m_layout->addWidget(m_textEdit);
-  m_layout->addWidget(m_previewLabel);
+  m_layout->addWidget(m_splitter);
 
   m_cancelButton = new QPushButton(tr("Ca&ncel"));
   connect(m_cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
@@ -234,7 +242,7 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
 
   m_markdownCheckBox->setChecked(m_s->useMarkdown());
 
-  m_previewLabel->setVisible(m_s->showPreview());
+  m_previewArea->setVisible(m_s->showPreview());
   updatePreview();
 
   m_recipientList.clear();
@@ -400,21 +408,25 @@ void MessageWindow::updateAddPicture() {
 //------------------------------------------------------------------------------
 
 void MessageWindow::updatePreview() {
-  if (m_previewLabel->isVisible()) {
+  if (m_previewArea->isVisible()) {
     QString previewText = addTextMarkup(m_textEdit->toPlainText(),
 					m_s->useMarkdown());
     QString titleText = m_title->text();
     if (!titleText.isEmpty())
-      previewText = "<b>" + m_title->text() + "</b></p>" + previewText;
+      previewText = "<p><b>" + m_title->text() + "</b></p>" + previewText;
     m_previewLabel->setText(previewText);
+
+    int a_msh = m_previewArea->minimumSizeHint().height();
+    int l_sh = m_previewLabel->sizeHint().height()+2;
+    m_previewArea->setMinimumHeight(l_sh < a_msh ? l_sh : a_msh);
   }
 }
 
 //------------------------------------------------------------------------------
 
 void MessageWindow::togglePreview() {
-  bool visible = !m_previewLabel->isVisible();
-  m_previewLabel->setVisible(visible);
+  bool visible = !m_previewArea->isVisible();
+  m_previewArea->setVisible(visible);
   m_s->showPreview(visible);
   updatePreview();
   m_textEdit->setFocus(Qt::OtherFocusReason);
