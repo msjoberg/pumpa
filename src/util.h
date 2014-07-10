@@ -62,7 +62,7 @@ QString siteUrlToAccountId(QString username, QString url);
 
 QString markDown(QString text);
 
-QString relativeFuzzyTime(QDateTime sTime);
+QString relativeFuzzyTime(QDateTime sTime, bool longTime=false);
 
 bool splitWebfingerId(QString accountId, QString& username, QString& server);
 

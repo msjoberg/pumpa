@@ -314,6 +314,9 @@ void FullObjectWidget::updateInfoText() {
     QString location = m_actor->location();
     if (!location.isEmpty())
       infoStr += " " + QString(tr("at %1")).arg(location);
+    if (m_actor->updatedDate().isValid())
+      infoStr += ".<br/>" + QString(tr("Profile last updated %1")).
+	arg(relativeFuzzyTime(m_actor->updatedDate(), true));
   } else {
     infoStr = QString("<a href=\"%2\">%1</a>").
       arg(relativeFuzzyTime(m_object->published())).

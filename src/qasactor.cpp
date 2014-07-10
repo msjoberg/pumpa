@@ -60,6 +60,9 @@ void QASActor::update(QVariantMap json) {
   updateVar(json, m_objectType, "objectType", ch);
   updateVar(json, m_preferredUsername, "preferredUsername", ch);
 
+  updateVar(json, m_published, "published", ch);
+  updateVar(json, m_updated, "updated", ch);
+
   m_webFinger = m_id;
   if (m_webFinger.startsWith("http://") || m_webFinger.startsWith("https://"))
     m_webFinger = m_preferredUsername;

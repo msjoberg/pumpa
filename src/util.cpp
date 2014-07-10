@@ -137,23 +137,48 @@ QString siteUrlToAccountId(QString username, QString url) {
 
 //------------------------------------------------------------------------------
 
-QString relativeFuzzyTime(QDateTime sTime) {
+QString relativeFuzzyTime(QDateTime sTime, bool longTime) {
   QString dateStr = sTime.toString("ddd d MMMM yyyy");
 
   int secs = sTime.secsTo(QDateTime::currentDateTime().toUTC());
   if (secs < 0)
     secs = 0;
-  int mins = qRound((float)secs/60);
-  int hours = qRound((float)secs/60/60);
-    
+  float t = (float)secs;
+  t /= 60; int mins = qRound(t);
+  t /= 60; int hours = qRound(t);
+  t /= 24; int days = qRound(t);
+  t /= 7;  int weeks = qRound(t);
+  t /= 4.33; int months = qRound(t);
+  t /= 12; int years = qRound(t);
+  
   if (secs < 60) { 
     dateStr = QObject::tr("a few seconds ago");
   } else if (mins == 1) {
     dateStr = QObject::tr("one minute ago");
-  } else if (mins < 60) {
-    dateStr = QObject::tr("%n minute(s) ago", 0, mins);
-  } else if (hours >= 1 && hours < 24) {
-    dateStr = QObject::tr("%n hour(s) ago", 0, hours);
+  } else if (hours < 1) {
+    dateStr = QObject::tr("%n minutes ago", 0, mins);
+  } else if (hours == 1) {
+    dateStr = QObject::tr("one hour ago", 0, hours);
+  } else if (days < 1) {
+    dateStr = QObject::tr("%n hours ago", 0, hours);
+  } else if (longTime) {
+    if (days == 1) {
+      dateStr = QObject::tr("one day ago", 0, days);
+    } else if (weeks < 1) {
+      dateStr = QObject::tr("%n days ago", 0, days);
+    } else if (weeks == 1) {
+      dateStr = QObject::tr("one week ago", 0, weeks);
+    } else if (months < 1) {
+      dateStr = QObject::tr("%n weeks ago", 0, weeks);
+    } else if (months == 1) {
+      dateStr = QObject::tr("one month ago", 0, months);
+    } else if (years < 1) {
+      dateStr = QObject::tr("%n months ago", 0, months);
+    } else if (years == 1) {
+      dateStr = QObject::tr("one year ago", 0, years);
+    } else {
+      dateStr = QObject::tr("%n years ago", 0, years);
+    }
   }
   return dateStr;
 }

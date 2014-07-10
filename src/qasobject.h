@@ -85,6 +85,7 @@ public:
   QASActor* asActor();
 
   qint64 sortInt() const { return sortIntByDateTime(m_updated); }
+  QDateTime updatedDate() const { return m_updated; }
   
   QString id() const { return m_id; }
   QString content() const;
