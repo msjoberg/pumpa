@@ -41,6 +41,21 @@
 
 //------------------------------------------------------------------------------
 
+class PictureLabel : public QLabel {
+  Q_OBJECT
+
+ public:
+  PictureLabel(QWidget* parent);
+  void setOriginalPixmap(QPixmap);
+  
+ protected:
+  virtual void resizeEvent(QResizeEvent* event);
+  
+  QPixmap m_originalPixmap;
+};
+
+//------------------------------------------------------------------------------
+
 class MessageWindow : public QDialog {
   Q_OBJECT
 
@@ -104,7 +119,7 @@ private:
   QScrollArea* m_previewArea;
   QSplitter* m_splitter;
 
-  QLabel* m_pictureLabel;
+  PictureLabel* m_pictureLabel;
   QLineEdit* m_title;
 
   QPushButton* m_cancelButton;

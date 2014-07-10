@@ -32,6 +32,27 @@ const int max_picture_size = 160;
 
 //------------------------------------------------------------------------------
 
+PictureLabel::PictureLabel(QWidget* parent) : QLabel(parent) {}
+
+//------------------------------------------------------------------------------
+
+void PictureLabel::setOriginalPixmap(QPixmap p) {
+  m_originalPixmap = p;
+  setPixmap(p);
+}
+
+//------------------------------------------------------------------------------
+  
+void PictureLabel::resizeEvent(QResizeEvent* event) {
+  if (m_originalPixmap.isNull())
+    return;
+  
+  QSize size = event->size();
+  setPixmap(m_originalPixmap.scaled(size, Qt::KeepAspectRatio));
+}
+
+//------------------------------------------------------------------------------
+
 MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
                              QWidget* parent) :
   QDialog(parent),
@@ -93,8 +114,8 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
   m_pictureButtonLayout->addWidget(m_addToButton, 0, Qt::AlignTop);
   m_pictureButtonLayout->addWidget(m_addCcButton, 0, Qt::AlignTop);
 
-  m_pictureLabel = new QLabel(this);
-  m_pictureLabel->setScaledContents(true);
+  m_pictureLabel = new PictureLabel(this);
+  // m_pictureLabel->setScaledContents(true);
   m_pictureLabel->setMaximumSize(max_picture_size, max_picture_size);
   m_pictureLabel->setFocusPolicy(Qt::NoFocus);
   m_pictureLabel->setFrameStyle(QFrame::Panel | QFrame::Sunken);
@@ -398,7 +419,10 @@ void MessageWindow::updateAddPicture() {
     m_removePictureButton->setVisible(false);
     m_pictureLabel->setVisible(false);
   } else {
-    m_pictureLabel->setPixmap(p);
+    QPixmap scaledPixmap = p.scaled(max_picture_size,
+				    max_picture_size,
+				    Qt::KeepAspectRatio);
+    m_pictureLabel->setOriginalPixmap(scaledPixmap);
     m_addPictureButton->setText(tr("&Change picture"));
     m_removePictureButton->setVisible(true);
     m_pictureLabel->setVisible(true);
