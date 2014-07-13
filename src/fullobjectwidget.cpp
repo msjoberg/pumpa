@@ -554,9 +554,8 @@ void FullObjectWidget::addObjectList(QASObjectList* ol) {
 
 //------------------------------------------------------------------------------
 
-void FullObjectWidget::addHasMoreButton(QASObjectList* ol, int li) {
-  QString buttonText = QString(tr("Show all replies")).
-    arg(ol->totalItems());
+void FullObjectWidget::addHasMoreButton(QASObjectList*, int li) {
+  QString buttonText = tr("Show all replies");
   if (m_hasMoreButton == NULL) {
     m_hasMoreButton = new QPushButton(this);
     m_hasMoreButton->setFocusPolicy(Qt::NoFocus);
