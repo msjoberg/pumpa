@@ -91,7 +91,7 @@ void QASAbstractObject::updateVar(QVariantMap obj, bool& var, QString name,
 
 void QASAbstractObject::updateVar(QVariantMap obj, double& var, QString name,
                                   bool& changed) {
-  bool oldVar = var;
+  double oldVar = var;
   if (obj.contains(name))
     var = obj[name].toDouble();
   if (oldVar != var) changed = true;

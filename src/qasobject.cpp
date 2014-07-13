@@ -65,7 +65,9 @@ int QASObject::connections() const {
 
 QASLocation::QASLocation(QObject* parent) :
   QObject(parent),
-  m_hasPosition(true) {}
+  m_latitude(-1.0),
+  m_longitude(-1.0),
+  m_hasPosition(false) {}
 
 //------------------------------------------------------------------------------
 
