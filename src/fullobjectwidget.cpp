@@ -349,6 +349,10 @@ void FullObjectWidget::updateInfoText() {
       arg(relativeFuzzyTime(m_object->published())).
       arg(m_object->url());
 
+    if (m_object->published() != m_object->updatedDate())
+      infoStr += ", " + QString(tr("updated %1")).
+	arg(relativeFuzzyTime(m_object->updatedDate()));
+
     QASActor* author = m_object->author();
     if (author)
       infoStr = QString("<a href=\"%2\">%1</a>").
