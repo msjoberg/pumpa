@@ -25,6 +25,10 @@ OBJECTS_DIR = obj
 
 QT += core gui network
 
+# libtidy is now a requirement
+LIBS += -ltidy
+DEFINES += USE_TIDY
+
 #
 # To enable debug mode, run as:
 # qmake CONFIG+=debug
@@ -76,12 +80,6 @@ exists( /usr/include/aspell.h ) {
   message("Using aspell")
   LIBS += -laspell
   DEFINES += USE_ASPELL
-}
-
-!macx:exists( /usr/include/tidy/tidy.h ) {
-  message("Using tidy")
-  LIBS += -ltidy
-  DEFINES += USE_TIDY
 }
 
 # Optionally use etags
