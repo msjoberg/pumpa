@@ -76,6 +76,11 @@ private slots:
   void updateFollowAuthorButton(bool wait = false);
   void onDeleteClicked();
 
+#ifdef DEBUG_BUTTONS
+  void onLoadRepliesClicked();
+  void onDumpJsonClicked();
+#endif
+
 private:
   QString typeName() const;
   QString textExcerpt() const;
@@ -122,6 +127,11 @@ private:
   TextToolButton* m_deleteButton;
 
   TextToolButton* m_lessButton;
+
+#ifdef DEBUG_BUTTONS
+  TextToolButton* m_loadRepliesButton;
+  TextToolButton* m_dumpJsonButton;
+#endif
 
   QVBoxLayout* m_contentLayout;
   QHBoxLayout* m_buttonLayout;

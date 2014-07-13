@@ -41,6 +41,8 @@ public:
   QDateTime lastRefreshed() const { return m_lastRefreshed; }
   void lastRefreshed(QDateTime dt) { m_lastRefreshed = dt; }
 
+  QVariantMap json() const { return m_json; }
+
 signals:
   void changed();
   // void request(QString, int);
@@ -70,6 +72,7 @@ public:
 protected:
   QDateTime m_lastRefreshed;
   int m_asType;
+  QVariantMap m_json;
 };
 
 #endif /* _QASABSTRACTOBJECT_H_ */

@@ -45,6 +45,7 @@ CONFIG(release, debug|release) {
   DEFINES += DEBUG_MEMORY
   DEFINES += DEBUG_MARKUP
 #  DEFINES += DEBUG_WIDGETS
+  DEFINES += DEBUG_BUTTONS
 }
 
 unix:!macx {

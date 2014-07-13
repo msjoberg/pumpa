@@ -113,6 +113,18 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
 
   m_buttonLayout->addStretch();
 
+#ifdef DEBUG_BUTTONS
+  m_loadRepliesButton = new TextToolButton("R", this);
+  connect(m_loadRepliesButton, SIGNAL(clicked()),
+	  this, SLOT(onLoadRepliesClicked()));
+  m_buttonLayout->addWidget(m_loadRepliesButton, 0, Qt::AlignTop);
+
+  m_dumpJsonButton = new TextToolButton("J", this);
+  connect(m_dumpJsonButton, SIGNAL(clicked()),
+	  this, SLOT(onDumpJsonClicked()));
+  m_buttonLayout->addWidget(m_dumpJsonButton, 0, Qt::AlignTop);
+#endif
+
   m_commentsLayout = new QVBoxLayout;
 
   rightLayout->addLayout(m_contentLayout);
@@ -224,7 +236,6 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
   }
   
   updateFollowAuthorButton();
-  //m_followAuthorButton->setVisible(m_commentable && notFollowingFOO);
 
   m_followButton->setVisible(objType == "person");
 
@@ -674,6 +685,24 @@ void FullObjectWidget::onFollowAuthor() {
   if (isFollowable(m_author))
     emit follow(m_author->id(), doFollow);
 }
+
+//------------------------------------------------------------------------------
+
+#ifdef DEBUG_BUTTONS
+
+void FullObjectWidget::onLoadRepliesClicked() {
+  if (m_object)
+    refreshObject(m_object->replies());
+}
+
+//------------------------------------------------------------------------------
+
+void FullObjectWidget::onDumpJsonClicked() {
+  if (m_object)
+    qDebug() << debugDumpJson(m_object->json(), "JSON");
+}
+
+#endif
 
 //------------------------------------------------------------------------------
 
