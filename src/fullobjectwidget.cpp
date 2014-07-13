@@ -44,6 +44,7 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_commentButton(NULL),
   m_followButton(NULL),
   m_deleteButton(NULL),
+  m_editButton(NULL),
   m_object(NULL),
   m_actor(NULL),
   m_author(NULL),
@@ -102,6 +103,10 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   m_deleteButton = new TextToolButton(tr("delete"), this);
   connect(m_deleteButton, SIGNAL(clicked()), this, SLOT(onDeleteClicked()));
   m_buttonLayout->addWidget(m_deleteButton, 0, Qt::AlignTop);
+
+  m_editButton = new TextToolButton(tr("edit"), this);
+  connect(m_editButton, SIGNAL(clicked()), this, SLOT(onEditClicked()));
+  m_buttonLayout->addWidget(m_editButton, 0, Qt::AlignTop);
 
   m_commentButton = new TextToolButton(tr("comment"), this);
   connect(m_commentButton, SIGNAL(clicked()), this, SLOT(reply()));
@@ -198,12 +203,7 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
     m_lessButton->setVisible(true);
   }
 
-  if (!m_object->displayName().isEmpty()) {
-    m_titleLabel->setText("<b>" + m_object->displayName() + "</b>");
-    m_titleLabel->setVisible(true);
-  } else {
-    m_titleLabel->setVisible(false);
-  }
+  updateTitle();
 
   if (objType == "image") {
     m_imageLabel->setVisible(true);
@@ -249,6 +249,17 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
 
 //------------------------------------------------------------------------------
 
+void FullObjectWidget::updateTitle() {
+  if (!m_object->displayName().isEmpty()) {
+    m_titleLabel->setText("<b>" + m_object->displayName() + "</b>");
+    m_titleLabel->setVisible(true);
+  } else {
+    m_titleLabel->setVisible(false);
+  }
+}
+
+//------------------------------------------------------------------------------
+
 bool FullObjectWidget::hasValidIrtObject() {
   QASObject* irtObj = m_object->inReplyTo();
   return irtObj && !irtObj->id().isEmpty();
@@ -262,14 +273,18 @@ void FullObjectWidget::onChanged() {
 
   m_commentable = m_object->type() != "person" && !m_object->isDeleted();
   if (m_commentable) {
+    bool isYours = m_author && m_author->isYou();
+
     m_favourButton->setVisible(true);
     m_shareButton->setVisible(true);
-    m_deleteButton->setVisible(m_author && m_author->isYou());
+    m_deleteButton->setVisible(isYours);
+    m_editButton->setVisible(isYours);
     m_commentButton->setVisible(true);
   } else {
     m_favourButton->setVisible(false);
     m_shareButton->setVisible(false);
     m_deleteButton->setVisible(false);
+    m_editButton->setVisible(false);
     m_commentButton->setVisible(false);
   }
 
@@ -295,6 +310,8 @@ void FullObjectWidget::onChanged() {
   setText(processText(text, true));
 
   updateInfoText();
+
+  updateTitle();
 
   QASObjectList* ol = m_object->replies();
   if (ol) {
@@ -646,6 +663,13 @@ void FullObjectWidget::onDeleteClicked() {
                                  QMessageBox::Cancel);
   if (ret == QMessageBox::Yes)
     emit deleteObject(m_object);
+}
+
+//------------------------------------------------------------------------------
+
+void FullObjectWidget::onEditClicked() {
+  if (m_author && m_author->isYou())
+    emit editObject(m_object);
 }
 
 //------------------------------------------------------------------------------

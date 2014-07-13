@@ -57,6 +57,8 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
                              QWidget* parent) :
   QDialog(parent),
   m_addressLayout(NULL),
+  m_editing(false),
+  m_isReply(false),
   m_obj(NULL),
   m_s(s),
   m_rl(rl)
@@ -246,24 +248,48 @@ void MessageWindow::onAddRecipient(QASActor* actor) {
 
 //------------------------------------------------------------------------------
 
-void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
-                               QASObjectList* cc) {
-  QASObject* origObj = obj;
-  if (obj && !m_s->commentOnComments() && obj->inReplyTo())
-    obj = obj->inReplyTo();
-
-  bool isReply = (obj != NULL);
-  m_obj = obj;
-
-  QString title = isReply ? tr("Post a reply") : tr("Post a note");
+void MessageWindow::initWindow(QString title, QString buttonText,
+			       bool showRecipients) {
   setWindowTitle(QString(CLIENT_FANCY_NAME) + " - " + title);
+  m_infoLabel->setText(title);
 
-  m_sendButton->setText(isReply ? tr("&Send comment") : tr("&Send post"));
+  m_sendButton->setText(buttonText);
 
   m_markdownCheckBox->setChecked(m_s->useMarkdown());
 
   m_previewArea->setVisible(m_s->showPreview());
-  updatePreview();
+
+  m_toRecipients->setVisible(showRecipients);
+  m_ccRecipients->setVisible(showRecipients);
+  m_toLabel->setVisible(showRecipients);
+  m_ccLabel->setVisible(showRecipients);
+  m_addToButton->setVisible(showRecipients);
+  m_addCcButton->setVisible(showRecipients);
+
+  updatePreview(true);
+  updateAddPicture();
+}
+
+//------------------------------------------------------------------------------
+
+void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
+                               QASObjectList* cc) {
+  if (m_editing)
+    clear();
+
+  m_editing = false;
+
+  QASObject* origObj = obj;
+  if (obj && !m_s->commentOnComments() && obj->inReplyTo())
+    obj = obj->inReplyTo();
+
+  m_isReply = (obj != NULL);
+  m_obj = obj;
+
+  QString title = m_isReply ? tr("Post a reply") : tr("Post a note");
+  QString buttonText = m_isReply ? tr("&Send comment") : tr("&Send post");
+
+  initWindow(title, buttonText, true);
 
   m_recipientList.clear();
   for (int i=0; i<m_rl->size(); ++i) {
@@ -276,9 +302,7 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
   for (; it != completions->constEnd(); ++it)
     addToRecipientList(it.key(), it.value());
 
-  m_infoLabel->setText(title);
-
-  if (!isReply) {
+  if (!m_isReply) {
     // A new post, use default recipients
     setDefaultRecipients(m_toRecipients, m_s->defaultToAddress());
     setDefaultRecipients(m_ccRecipients, m_s->defaultCcAddress());
@@ -296,8 +320,39 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
     if (origObj != obj && origObj->author() && !origObj->author()->isYou())
       m_toRecipients->addRecipient(origObj->author());
   }
+}
 
-  updateAddPicture();
+//------------------------------------------------------------------------------
+
+void MessageWindow::editMessage(QASObject* obj) {
+  m_editing = true;
+  m_obj = obj;
+
+  QString type = obj->type();
+  m_isReply = type == "comment";
+
+  QString title = tr("Edit object");
+  // we do this for the sake of easier translation
+  if (type == "note")
+    title = tr("Edit post");
+  else if (type == "comment")
+    title = tr("Edit comment");
+  else if (type == "image")
+    title = tr("Edit image post");
+
+  QString buttonText = tr("&Update object");
+  // we do this for the sake of easier translation
+  if (type == "note")
+    buttonText = tr("&Update post");
+  else if (type == "comment")
+    buttonText = tr("&Update comment");
+  else if (type == "image")
+    buttonText = tr("&Update image post");
+
+  m_textEdit->setPlainText(obj->content());
+  m_title->setText(obj->displayName());
+
+  initWindow(title, buttonText, false);
 }
 
 //------------------------------------------------------------------------------
@@ -353,18 +408,19 @@ void MessageWindow::accept() {
   RecipientList to = m_toRecipients->recipients();
   RecipientList cc = m_ccRecipients->recipients();
 
-  if (m_obj == NULL) {
-    QString title = m_title->text();
+  QString title = m_title->text();
 
+  if (m_editing) {
+    emit sendEdit(m_obj, msg, title);
+  } else if (m_isReply) {
+    emit sendReply(m_obj, msg, to, cc);
+  } else {
     if (m_imageFileName.isEmpty()) {
       emit sendMessage(msg, title, to, cc);
     } else {
       emit sendImage(msg, title, m_imageFileName, to, cc);
     }
-  } else {
-    emit sendReply(m_obj, msg, to, cc);
   }
-
   QDialog::accept();
 }
 
@@ -392,11 +448,11 @@ void MessageWindow::onRemovePicture() {
 //------------------------------------------------------------------------------
 
 void MessageWindow::updateAddPicture() {
-  if (m_obj != NULL) { // if reply just hide everything
+  if (m_isReply || m_editing) {
     m_addPictureButton->setVisible(false);
     m_removePictureButton->setVisible(false);
     m_pictureLabel->setVisible(false);
-    m_title->setVisible(false);
+    m_title->setVisible(!m_isReply);
     m_removePictureButton->setVisible(false);
     return;
   }
@@ -430,8 +486,8 @@ void MessageWindow::updateAddPicture() {
 
 //------------------------------------------------------------------------------
 
-void MessageWindow::updatePreview() {
-  if (m_previewArea->isVisible()) {
+void MessageWindow::updatePreview(bool force) {
+  if (m_previewArea->isVisible() || force) {
     QString previewText = addTextMarkup(m_textEdit->toPlainText(),
 					m_s->useMarkdown());
     QString titleText = m_title->text();

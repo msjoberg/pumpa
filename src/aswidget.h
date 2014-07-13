@@ -60,6 +60,7 @@ signals:
   void showContext(QASObject*);
   void follow(QString, bool);
   void deleteObject(QASObject*);
+  void editObject(QASObject*);
 
 protected slots:
   virtual void update();

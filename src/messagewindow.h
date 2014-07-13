@@ -64,6 +64,7 @@ public:
   virtual void accept();
 
   void newMessage(QASObject* obj, QASObjectList* to, QASObjectList* cc);
+  void editMessage(QASObject* obj);
   void clear();
   void setCompletions(const MessageEdit::completion_t* completions);
 
@@ -74,18 +75,20 @@ signals:
   void sendMessage(QString, QString, RecipientList, RecipientList);
   void sendImage(QString, QString, QString, RecipientList, RecipientList);
   void sendReply(QASObject*, QString, RecipientList, RecipientList);
+  void sendEdit(QASObject*, QString, QString);
 
 private slots:
   void onAddPicture();
   void onRemovePicture();
   void togglePreview();
-  void updatePreview();
+  void updatePreview(bool force=false);
   void onAddRecipient(QASActor*);
   void onAddTo();
   void onAddCc();
   void onMarkdownChecked(int);
 
 private:
+  void initWindow(QString title, QString buttonText, bool showRecipients);
   void addRecipientWindow(MessageRecipients*, QString);
   void updateAddPicture();
 
@@ -133,6 +136,9 @@ private:
 
   QMap<QString, QASObject*> m_recipientSelection;
   QStringList m_recipientList;
+
+  bool m_editing;
+  bool m_isReply;
 
   QASObject* m_obj;
   PumpaSettings* m_s;

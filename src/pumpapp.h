@@ -83,8 +83,10 @@ private slots:
                  RecipientList to, RecipientList cc);
   void postReply(QASObject* replyToObj, QString content,
                  RecipientList to, RecipientList cc);
+  void postEdit(QASObject* obj, QString content, QString title);
   void follow(QString acctId, bool follow);
   void onDeleteObject(QASObject* obj);
+  void onEditObject(QASObject* obj);
 
   void errorMessage(QString msg);
   void notifyMessage(QString msg);
@@ -107,7 +109,7 @@ private slots:
   void about();
   void preferences();
   void newNote(QASObject* obj = NULL, QASObjectList* to = NULL,
-               QASObjectList* cc = NULL);
+               QASObjectList* cc = NULL, bool edit = false);
   void reload();
   void loadOlder();
 

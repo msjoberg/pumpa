@@ -75,6 +75,7 @@ private slots:
   void onFollowAuthor();
   void updateFollowAuthorButton(bool wait = false);
   void onDeleteClicked();
+  void onEditClicked();
 
 #ifdef DEBUG_BUTTONS
   void onLoadRepliesClicked();
@@ -91,6 +92,7 @@ private:
 
   void updateLikes();
   void updateShares();
+  void updateTitle();
 
   QString recipientsToString(QASObjectList* rec);
   QString processText(QString old_text, bool getImages=false);
@@ -125,6 +127,7 @@ private:
   TextToolButton* m_followButton;
   TextToolButton* m_followAuthorButton;
   TextToolButton* m_deleteButton;
+  TextToolButton* m_editButton;
 
   TextToolButton* m_lessButton;
 

@@ -70,10 +70,14 @@ void QASAbstractObjectList::update(QVariantMap json, bool older,
       m_nextLink = ""; // it's left as empty if it doesn't exist in the
                        // json
       updateVar(json, m_nextLink, "links", "next", "href", dummy);
+      // if (m_url.contains("/inbox/"))
+      // 	qDebug() << "***" << m_url << "next" << m_nextLink;
     } 
     if (!older || m_firstTime) {
       // updateVar doesn't touch it if it is empty in the json
       updateVar(json, m_prevLink, "links", "prev", "href", dummy);
+      // if (m_url.contains("/inbox/"))
+      // 	qDebug() << "***" << m_url << "prev" << m_prevLink;
     }
   }
 

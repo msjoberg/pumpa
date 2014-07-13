@@ -330,6 +330,8 @@ void PumpApp::connectCollection(ASWidget* w, bool highlight) {
   connect(w, SIGNAL(follow(QString, bool)), this, SLOT(follow(QString, bool)));
   connect(w, SIGNAL(deleteObject(QASObject*)),
           this, SLOT(onDeleteObject(QASObject*)));
+  connect(w, SIGNAL(editObject(QASObject*)),
+	  this, SLOT(onEditObject(QASObject*)));
 }
 
 //------------------------------------------------------------------------------
@@ -797,7 +799,8 @@ void PumpApp::about() {
 
 //------------------------------------------------------------------------------
 
-void PumpApp::newNote(QASObject* obj, QASObjectList* to, QASObjectList* cc) {
+void PumpApp::newNote(QASObject* obj, QASObjectList* to, QASObjectList* cc,
+		      bool edit) {
   if (!m_messageWindow) {
     m_messageWindow = new MessageWindow(m_s, &m_recipientLists, this);
     connect(m_messageWindow,
@@ -812,10 +815,14 @@ void PumpApp::newNote(QASObject* obj, QASObjectList* to, QASObjectList* cc) {
                                               RecipientList, RecipientList)),
             this, SLOT(postReply(QASObject*, QString,
                                  RecipientList, RecipientList)));
+    connect(m_messageWindow, SIGNAL(sendEdit(QASObject*, QString, QString)),
+	    this, SLOT(postEdit(QASObject*, QString, QString)));
     m_messageWindow->setCompletions(&m_completions);
   }
-
-  m_messageWindow->newMessage(obj, to, cc);
+  if (edit)
+    m_messageWindow->editMessage(obj);
+  else
+    m_messageWindow->newMessage(obj, to, cc);
   m_messageWindow->show();
 }
 
@@ -1108,6 +1115,19 @@ void PumpApp::postNote(QString content, QString title,
 
 //------------------------------------------------------------------------------
 
+void PumpApp::postEdit(QASObject* obj, QString content, QString title) {
+  QVariantMap json;
+  json["id"] = obj->id();
+  json["objectType"] = obj->type();
+  json["content"] = addTextMarkup(content, m_s->useMarkdown());
+  if (!title.isEmpty())
+    json["displayName"] = processTitle(title);
+
+  feed("update", json, QAS_OBJECT | QAS_REFRESH | QAS_POST);
+}
+
+//------------------------------------------------------------------------------
+
 void PumpApp::postImage(QString msg,
                         QString title,
                         QString imageFile,
@@ -1244,6 +1264,12 @@ void PumpApp::onDeleteObject(QASObject* obj) {
   json["objectType"] = obj->type();
 
   feed("delete", json, QAS_ACTIVITY);
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::onEditObject(QASObject* obj) {
+  newNote(obj, NULL, NULL, true);
 }
 
 //------------------------------------------------------------------------------
@@ -1513,7 +1539,7 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     postImageActivity(json);
   }
 
-  if ((id & QAS_POST) && m_messageWindow)
+  if ((id & QAS_POST) && m_messageWindow && !m_messageWindow->isVisible())
     m_messageWindow->clear();
 
   if (id & QAS_REFRESH) { 

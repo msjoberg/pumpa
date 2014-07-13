@@ -48,6 +48,7 @@ signals:
   void newReply(QASObject*, QASObjectList*, QASObjectList*);
   void follow(QString, bool);
   void deleteObject(QASObject*);
+  void editObject(QASObject*);
   void request(QString, int);
 
 protected:

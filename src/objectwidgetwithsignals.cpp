@@ -43,6 +43,8 @@ void ObjectWidgetWithSignals::connectSignals(ObjectWidgetWithSignals* ow,
           w, SIGNAL(follow(QString, bool)));
   connect(ow, SIGNAL(deleteObject(QASObject*)),
           w, SIGNAL(deleteObject(QASObject*)));
+  connect(ow, SIGNAL(editObject(QASObject*)),
+          w, SIGNAL(editObject(QASObject*)));
   connect(ow, SIGNAL(request(QString, int)),
           w, SIGNAL(request(QString, int)));
 }
@@ -64,6 +66,8 @@ void ObjectWidgetWithSignals::disconnectSignals(ObjectWidgetWithSignals* ow,
              w, SIGNAL(follow(QString, bool)));
   disconnect(ow, SIGNAL(deleteObject(QASObject*)),
              w, SIGNAL(deleteObject(QASObject*)));
+  disconnect(ow, SIGNAL(editObject(QASObject*)),
+             w, SIGNAL(editObject(QASObject*)));
   disconnect(ow, SIGNAL(request(QString, int)),
              w, SIGNAL(request(QString, int)));
 }
