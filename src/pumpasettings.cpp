@@ -23,6 +23,8 @@
 #include "pumpa_defines.h"
 #include "util.h"
 
+PumpaSettings* PumpaSettings::s_settings = NULL;
+
 //------------------------------------------------------------------------------
 
 PumpaSettings::PumpaSettings(QString filename, QObject* parent) :
@@ -36,6 +38,16 @@ PumpaSettings::PumpaSettings(QString filename, QObject* parent) :
 
   QFile::setPermissions(m_s->fileName(),
                         QFile::ReadOwner | QFile::WriteOwner);
+}
+
+//------------------------------------------------------------------------------
+
+PumpaSettings* PumpaSettings::getSettings(bool create, QString filename,
+					  QObject* parent) {
+  if (s_settings == NULL && create)
+    s_settings = new PumpaSettings(filename, parent);
+
+  return s_settings;
 }
 
 //------------------------------------------------------------------------------

@@ -107,8 +107,10 @@ int main(int argc, char** argv) {
       return 0;
     }
   }
-  PumpaSettings settings(settingsFile);
-  QString sLocale = settings.locale();
+
+  PumpaSettings* settings =
+    PumpaSettings::getSettings(true, settingsFile, &app);
+  QString sLocale = settings->locale();
   if (!sLocale.isEmpty())
     locale = sLocale;
 
@@ -127,6 +129,6 @@ int main(int argc, char** argv) {
   if (ok) 
     qDebug() << "Successfully loaded translation";
 
-  PumpApp papp(&settings, locale);
+  PumpApp papp(settings, locale);
   return app.exec();
 }

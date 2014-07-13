@@ -21,6 +21,7 @@
 #include "pumpa_defines.h"
 #include "util.h"
 #include "shortobjectwidget.h"
+#include "pumpasettings.h"
 
 #include <QDesktopServices>
 #include <QMessageBox>
@@ -575,7 +576,12 @@ void FullObjectWidget::addObjectList(QASObjectList* ol) {
     m_repliesMap.insert(replyId);
   }
 
-  if (ol->hasMore() && (qulonglong)m_repliesList.size() < ol->totalItems()) {
+  PumpaSettings* settings = PumpaSettings::getSettings();
+
+  if (ol->hasMore() && 
+      ((qulonglong)m_repliesList.size() < ol->totalItems()) &&
+      (settings && 
+       m_object->replies()->apiLink().startsWith(settings->siteUrl()))) {
     addHasMoreButton(ol, li_before);
   } else if (m_hasMoreButton != NULL) {
     m_commentsLayout->removeWidget(m_hasMoreButton);

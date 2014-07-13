@@ -32,8 +32,11 @@
 class PumpaSettings : public QObject {
   Q_OBJECT
 
-public:
   PumpaSettings(QString filename="", QObject* parent=0);
+
+public:
+  static PumpaSettings* getSettings(bool create=false, QString filename="",
+				    QObject* parent=0);
 
   bool firstStart() const { return m_firstStart; }
 
@@ -169,6 +172,8 @@ private:
   bool m_firstStart;
 
   QSettings* m_s;
+
+  static PumpaSettings* s_settings;
 };
 
 #endif /* _PUMPASETTINGS_H_ */
