@@ -289,8 +289,7 @@ void FullObjectWidget::onChanged() {
   if (ol) {
     connect(ol, SIGNAL(changed()), this, SLOT(onChanged()),
             Qt::UniqueConnection);
-    if (ol->size() > 0)
-      addObjectList(ol);
+    addObjectList(ol);
   }
 }
 
@@ -556,7 +555,7 @@ void FullObjectWidget::addObjectList(QASObjectList* ol) {
 //------------------------------------------------------------------------------
 
 void FullObjectWidget::addHasMoreButton(QASObjectList* ol, int li) {
-  QString buttonText = QString(tr("Show all %1 replies")).
+  QString buttonText = QString(tr("Show all replies")).
     arg(ol->totalItems());
   if (m_hasMoreButton == NULL) {
     m_hasMoreButton = new QPushButton(this);
