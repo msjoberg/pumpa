@@ -81,7 +81,10 @@ void ASWidget::setEndpoint(QString endpoint, QObject* parent, int asMode) {
 //------------------------------------------------------------------------------
 
 void ASWidget::refresh() {
-  emit request(QString("%1?count=%2").arg(m_list->url()).arg(count()),
+  int c = count();
+  if (c > 200) c = 200; // Count must be between 0 and 200
+
+  emit request(QString("%1?count=%2").arg(m_list->url()).arg(c),
 	       m_asMode | QAS_UPDATE_ONLY);
 }
 
