@@ -53,6 +53,8 @@ void QASActor::update(QVariantMap json) {
   bool ch = false;
   bool dummy = false;
 
+  m_json = json;
+
   m_author = NULL;
 
   updateVar(json, m_url, "url", ch); 

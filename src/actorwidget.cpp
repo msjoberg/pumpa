@@ -91,9 +91,11 @@ void ActorWidget::updatePixmap() {
   if (fdm->hasFile(m_url)) {
     setIcon(QIcon(fdm->pixmap(m_url, ":/images/image_broken.png")));
   } else {
-    setIcon(QIcon(":/images/image_downloading.png"));
 
-    if (!m_url.isEmpty()) {
+    if (m_url.isEmpty()) {
+      setIcon(QIcon(":/images/default.png"));
+    } else {
+      setIcon(QIcon(":/images/image_downloading.png"));
       FileDownloader* fd = fdm->download(m_url);
       connect(fd, SIGNAL(fileReady()), this, SLOT(updatePixmap()),
 	      Qt::UniqueConnection);

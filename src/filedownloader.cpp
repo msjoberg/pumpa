@@ -111,8 +111,7 @@ QPixmap FileDownloadManager::pixmap(QString url, QString brokenImage) {
   if (pix.isNull())
     pix.load(fn, "GIF");
 
-  // OK, we give up and return a broken image icon.
-  if (pix.isNull())  
+  if (pix.isNull() && !brokenImage.isEmpty())
     pix.load(brokenImage);
 
   return pix;
@@ -309,29 +308,29 @@ void FileDownloader::requestReady(QByteArray response, KQOAuthRequest* oar) {
   fp->write(response);
   fp->close();
 
-  // QPixmap pix = pixmap(fn);
-  // resizeImage(pix, fn);
-  
-  // emit fileReady(fn);
+  QPixmap pix = m_fdm->pixmap(m_url);
+
+  resizeImage(pix, fn);
+
   emit fileReady();
 }
 
 //------------------------------------------------------------------------------
 
-// void FileDownloader::resizeImage(QPixmap pix, QString fn) {
-//   if (pix.isNull())
-//     return;
+void FileDownloader::resizeImage(QPixmap pix, QString fn) {
+  if (pix.isNull())
+    return;
 
-//   int w = pix.width();
-//   int h = pix.height();
+  int w = pix.width();
+  int h = pix.height();
   
-//   if (w < IMAGE_MAX_WIDTH && h < IMAGE_MAX_HEIGHT)
-//     return;
+  if (w <= IMAGE_MAX_WIDTH && h <= IMAGE_MAX_HEIGHT)
+    return;
 
-//   QPixmap newPix;
-//   if (w > h) 
-//     newPix = pix.scaledToWidth(IMAGE_MAX_WIDTH);
-//   else
-//     newPix = pix.scaledToHeight(IMAGE_MAX_HEIGHT);
-//   newPix.save(fn);
-// }
+  QPixmap newPix;
+  if (w > h) 
+    newPix = pix.scaledToWidth(IMAGE_MAX_WIDTH);
+  else
+    newPix = pix.scaledToHeight(IMAGE_MAX_HEIGHT);
+  newPix.save(fn);
+}

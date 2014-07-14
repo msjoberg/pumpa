@@ -43,7 +43,7 @@ class FileDownloadManager : public QObject {
 
   QString fileName(QString url);
 
-  QPixmap pixmap(QString url, QString brokenImage);
+  QPixmap pixmap(QString url, QString brokenImage = "");
   QMovie* movie(QString url);
   bool supportsAnimation(QString url);
 
@@ -95,9 +95,8 @@ class FileDownloader : public QObject {
     void replyFinished();
   
  private:
-  /* static void resizeImage(QPixmap pix, QString fn); */
-
   void requestReady(QByteArray response, KQOAuthRequest* oar);
+  static void resizeImage(QPixmap pix, QString fn);
 
   QString m_url;
   KQOAuthRequest* m_oar;
