@@ -48,11 +48,13 @@ class FileDownloadManager : public QObject {
   bool supportsAnimation(QString url);
 
   FileDownloader* download(QString url);
+
+  void dumpStats();
   
  private slots:
   void onSslErrors(QNetworkReply*, QList<QSslError>);
   void onAuthorizedRequestReady(QByteArray response, int id);
-  void onFileReady();
+  void onFileReady(QString = "");
 
  private:
   void executeAuthorizedRequest(KQOAuthRequest*, FileDownloader*);

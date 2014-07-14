@@ -410,6 +410,8 @@ void PumpApp::debugAction() {
   qDebug() << "inbox" << m_inboxWidget->count();
   qDebug() << "meanwhile" << m_inboxMinorWidget->count();
   qDebug() << "firehose" << m_firehoseWidget->count();
+
+  m_fdm->dumpStats();
 }
 
 //------------------------------------------------------------------------------

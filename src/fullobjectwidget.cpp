@@ -453,9 +453,11 @@ void FullObjectWidget::updateImage() {
   } else {
     m_imageLabel->setPixmap(QPixmap(":/images/image_downloading.png"));
 
-    FileDownloader* fd = fdm->download(m_imageUrl);
-    connect(fd, SIGNAL(fileReady()), this, SLOT(updateImage()),
-	    Qt::UniqueConnection);
+    if (!m_imageUrl.isEmpty()) {
+      FileDownloader* fd = fdm->download(m_imageUrl);
+      connect(fd, SIGNAL(fileReady()), this, SLOT(updateImage()),
+	      Qt::UniqueConnection);
+    }
   }
 
 }    
@@ -806,7 +808,7 @@ QString FullObjectWidget::processText(QString old_text, bool getImages) {
             imagePlaceholder = 
               QString("<a href=\"%2\"><img border=\"0\" src=\"%1\" /></a>").
               arg(fdm->fileName(imgSrc)).arg(imgSrc);
-	  } else {
+	  } else if (!imgSrc.isEmpty()) {
 	    FileDownloader* fd = fdm->download(imgSrc);
 	    connect(fd, SIGNAL(fileReady()), this, SLOT(onChanged()),
 		    Qt::UniqueConnection);

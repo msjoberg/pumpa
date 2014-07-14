@@ -61,6 +61,25 @@ FileDownloadManager* FileDownloadManager::getManager(QObject* parent) {
 
 //------------------------------------------------------------------------------
 
+void FileDownloadManager::dumpStats() {
+  // QMap<QString, FileDownloader*> m_inProgress;
+  QMapIterator<QString, FileDownloader*> it(m_inProgress);
+  while (it.hasNext()) {
+    it.next();
+    qDebug() << "[FILEDOWNLOADMANAGER] in progress" << it.key();
+  }
+
+  // QMap<QString, QString> m_urlMap;
+  // QMap<int, requestData_t> m_requestMap;
+  QMapIterator<int, requestData_t> itt(m_requestMap);
+  while (itt.hasNext()) {
+    itt.next();
+    qDebug() << "[FILEDOWNLOADMANAGER] requests" << itt.key();
+  }
+}
+
+//------------------------------------------------------------------------------
+
 bool FileDownloadManager::hasFile(QString url) {
   return !fileName(url).isEmpty();
 }
@@ -175,6 +194,7 @@ FileDownloader* FileDownloadManager::download(QString url) {
   FileDownloader* fd = new FileDownloader(url, this);
   m_inProgress.insert(url, fd);
   connect(fd, SIGNAL(fileReady()), this, SLOT(onFileReady()));
+  connect(fd, SIGNAL(networkError(QString)), this, SLOT(onFileReady(QString)));
 
   return fd;
 }
@@ -215,14 +235,13 @@ void FileDownloadManager::onAuthorizedRequestReady(QByteArray response,
 
 //------------------------------------------------------------------------------
 
-void FileDownloadManager::onFileReady() {
-  FileDownloader *fd = qobject_cast<FileDownloader*>(sender());  
+void FileDownloadManager::onFileReady(QString) {
+  FileDownloader *fd = qobject_cast<FileDownloader*>(sender());
 
-  if (!fd || !m_inProgress.contains(fd->url())) {
-    qDebug() << "ERROR: file downloader returning with non-existing request.";
+  if (!fd)
     return;
-  }
 
+  m_inProgress.remove(fd->url());
   fd->deleteLater();
 }
 

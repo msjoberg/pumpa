@@ -93,9 +93,11 @@ void ActorWidget::updatePixmap() {
   } else {
     setIcon(QIcon(":/images/image_downloading.png"));
 
-    FileDownloader* fd = fdm->download(m_url);
-    connect(fd, SIGNAL(fileReady()), this, SLOT(updatePixmap()),
-	    Qt::UniqueConnection);
+    if (!m_url.isEmpty()) {
+      FileDownloader* fd = fdm->download(m_url);
+      connect(fd, SIGNAL(fileReady()), this, SLOT(updatePixmap()),
+	      Qt::UniqueConnection);
+    }
   }
 }
 
