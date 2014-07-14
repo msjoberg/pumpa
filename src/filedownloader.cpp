@@ -19,6 +19,8 @@
 
 #include "filedownloader.h"
 #include "pumpa_defines.h"
+#include "pumpasettings.h"
+#include "util.h"
 
 #ifdef QT5
 #include <QStandardPaths>
@@ -30,224 +32,99 @@
 
 //------------------------------------------------------------------------------
 
-QString FileDownloader::m_cacheDir;
-QMap<QString, FileDownloader*> FileDownloader::m_downloading;
-
-QString FileDownloader::s_siteUrl;
-QString FileDownloader::s_clientId;
-QString FileDownloader::s_clientSecret;
-QString FileDownloader::s_token;
-QString FileDownloader::s_tokenSecret;
+FileDownloadManager* FileDownloadManager::s_instance = NULL;
 
 //------------------------------------------------------------------------------
 
-QString slashify(const QString& url) {
-  QString ret = url;
-  if (!ret.endsWith('/'))
-    ret.append('/');
-  return ret;
+FileDownloadManager::FileDownloadManager(QObject* parent) : QObject(parent) {
+  m_nextRequestId = 0;
+
+  m_nam = new QNetworkAccessManager(this);
+  // connect(m_nam, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)), 
+  //         this, SLOT(onSslErrors(QNetworkReply*, QList<QSslError>)));
+
+  m_oam = new KQOAuthManager(this);
+  connect(m_oam, SIGNAL(authorizedRequestReady(QByteArray, int)),
+          this, SLOT(onAuthorizedRequestReady(QByteArray, int)));
+  connect(m_oam, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)), 
+          this, SLOT(onSslErrors(QNetworkReply*, QList<QSslError>)));
 }
 
 //------------------------------------------------------------------------------
 
-void FileDownloader::setOAuthInfo(QString siteUrl,
-                                  QString clientId,
-                                  QString clientSecret,
-                                  QString token,
-                                  QString tokenSecret) {
-  s_siteUrl = siteUrl;
-  s_clientId = clientId;
-  s_clientSecret = clientSecret;
-  s_token = token;
-  s_tokenSecret = tokenSecret;
-}
+FileDownloadManager* FileDownloadManager::getManager(QObject* parent) {
+  if (s_instance == NULL && parent != 0)
+    s_instance = new FileDownloadManager(parent);
 
-//------------------------------------------------------------------------------
-FileDownloader::FileDownloader(const QString& url) :
-  m_downloadingUrl(url),
-  m_downloadStarted(false)
-{
-  QString fn = urlToPath(m_downloadingUrl);
-
-  if (QFile::exists(fn)) {
-    m_cachedFile = fn;
-  } else {
-    m_cachedFile = "";
-    m_downloading.insert(m_downloadingUrl, this);
-
-    oaRequest = new KQOAuthRequest(this);
-    oaManager = new KQOAuthManager(this);
-    connect(oaManager, SIGNAL(authorizedRequestReady(QByteArray, int)),
-            this, SLOT(onAuthorizedRequestReady(QByteArray, int)));
-    connect(oaManager, SIGNAL(errorMessage(QString)),
-            this, SIGNAL(networkError(QString)));
-
-    m_nam = new QNetworkAccessManager(this);
-    connect(m_nam, SIGNAL(finished(QNetworkReply*)),
-            this, SLOT(replyFinished(QNetworkReply*)));
-    connect(m_nam, SIGNAL(sslErrors(QNetworkReply*, const QList<QSslError>&)),
-            this, SLOT(onSslErrors(QNetworkReply*, const QList<QSslError>&)));
-  }
+  return s_instance;
 }
 
 //------------------------------------------------------------------------------
 
-FileDownloader* FileDownloader::get(const QString& url, bool download) {
-  if (m_downloading.contains(url))
-    return m_downloading[url];
-
-  FileDownloader* fd = new FileDownloader(url);
-  if (download && !fd->ready())
-    fd->download();
-  return fd;
+bool FileDownloadManager::hasFile(QString url) {
+  return !fileName(url).isEmpty();
 }
 
 //------------------------------------------------------------------------------
 
-void FileDownloader::download() {
-  if (m_downloadStarted)
-    return;
-
-  if (m_downloadingUrl.startsWith(s_siteUrl)) {
-    oaRequest->initRequest(KQOAuthRequest::AuthorizedRequest,
-                           QUrl(m_downloadingUrl));
-
-    oaRequest->setConsumerKey(s_clientId);
-    oaRequest->setConsumerSecretKey(s_clientSecret);
-
-    oaRequest->setToken(s_token);
-    oaRequest->setTokenSecret(s_tokenSecret);
-
-    oaRequest->setHttpMethod(KQOAuthRequest::GET); 
-
-    oaManager->executeAuthorizedRequest(oaRequest, 0);
-  } else {
-    m_nam->get(QNetworkRequest(QUrl(m_downloadingUrl)));
-  }
-  
-  m_downloadStarted = true;
+QString FileDownloadManager::fileName(QString url) {
+  QString fn = urlToPath(url);
+  return QFile::exists(fn) ? fn : "";
 }
 
 //------------------------------------------------------------------------------
 
-QString FileDownloader::fileName() const {
-  return ready() ? m_cachedFile : urlToPath(m_downloadingUrl);
-}
+QPixmap FileDownloadManager::pixmap(QString url, QString brokenImage) {
+  QString fn = urlToPath(url);
 
-//------------------------------------------------------------------------------
-
-QString FileDownloader::fileName(QString defaultImage) const {
-  return ready() ? m_cachedFile : defaultImage;
-}
-
-//------------------------------------------------------------------------------
-
-QPixmap FileDownloader::pixmap(QString defaultImage) const {
-  QString fn = fileName(defaultImage);
   QPixmap pix(fn);
 
-  if (pix.isNull())
-    pix.load(fn,"JPEG");
+  // Sometimes files are given with the wrong file ending, or Qt is
+  // unable to guess the format so we try to force them into popular
+  // formats.
+
+  if (pix.isNull()) 
+    pix.load(fn, "JPEG");
 
   if (pix.isNull())
-    pix.load(fn,"PNG");
+    pix.load(fn, "PNG");
 
   if (pix.isNull())
-    pix.load(defaultImage);
+    pix.load(fn, "GIF");
+
+  // OK, we give up and return a broken image icon.
+  if (pix.isNull())  
+    pix.load(brokenImage);
 
   return pix;
 }
 
 //------------------------------------------------------------------------------
 
-QMovie* FileDownloader::movie(QString defaultImage) {
-  QString fn = fileName(defaultImage);
+QMovie* FileDownloadManager::movie(QString url) {
+  QString fn = urlToPath(url);
+
   QMovie* mov = new QMovie(fn, QByteArray(), this);
   mov->setCacheMode(QMovie::CacheAll);  
+
   return mov;
 }
 
 //------------------------------------------------------------------------------
 
-bool FileDownloader::supportsAnimation() const {
-  if (!ready())
-    return false;
+bool FileDownloadManager::supportsAnimation(QString url) {
+  QString fn = urlToPath(url);
 
-  QString fn = fileName();
   QImageReader r(fn);
   return r.supportsAnimation();
 }
 
 //------------------------------------------------------------------------------
 
-void FileDownloader::onSslErrors(QNetworkReply* reply,
-                                 const QList<QSslError>&) {
-  reply->ignoreSslErrors();
-}
+QString FileDownloadManager::urlToPath(QString url) {
+  if (m_urlMap.contains(url))
+    return m_urlMap[url];
 
-//------------------------------------------------------------------------------
-
-void FileDownloader::replyFinished(QNetworkReply* nr) {
-  if (nr->error()) {
-    emit networkError(tr("Network error: ")+nr->errorString());
-    return;
-  }
-  onAuthorizedRequestReady(nr->readAll(), 0);
-  nr->deleteLater();
-}
-
-//------------------------------------------------------------------------------
-
-void FileDownloader::onAuthorizedRequestReady(QByteArray response, int) {
-  m_downloading.remove(m_downloadingUrl);
-
-  if (oaManager->lastError()) {
-    emit networkError(QString(tr("Unable to download %1 (Error #%2)."))
-                      .arg(m_downloadingUrl)
-                      .arg(oaManager->lastError()));
-    return;
-  }
-
-  QString fn = urlToPath(m_downloadingUrl);
-  QFile* fp = new QFile(fn);
-  if (!fp->open(QIODevice::WriteOnly)) {
-    emit networkError(QString(tr("Could not open file %1 for writing: ")).
-                      arg(fn) + fp->errorString());
-    return;
-  }
-  fp->write(response);
-  fp->close();
-
-  QPixmap pix = pixmap(fn);
-  resizeImage(pix, fn);
-  
-  emit fileReady(fn);
-  emit fileReady();
-}
-
-//------------------------------------------------------------------------------
-
-void FileDownloader::resizeImage(QPixmap pix, QString fn) {
-  if (pix.isNull())
-    return;
-
-  int w = pix.width();
-  int h = pix.height();
-  
-  if (w < IMAGE_MAX_WIDTH && h < IMAGE_MAX_HEIGHT)
-    return;
-
-  QPixmap newPix;
-  if (w > h) 
-    newPix = pix.scaledToWidth(IMAGE_MAX_WIDTH);
-  else
-    newPix = pix.scaledToHeight(IMAGE_MAX_HEIGHT);
-  newPix.save(fn);
-}
-
-//------------------------------------------------------------------------------
-
-QString FileDownloader::urlToPath(const QString& url) {
   static QCryptographicHash hash(QCryptographicHash::Md5);
   static QStringList knownEndings;
   if (knownEndings.isEmpty())
@@ -282,5 +159,160 @@ QString FileDownloader::urlToPath(const QString& url) {
 
   QString hashStr = hash.result().toHex();
 
-  return path + hashStr + ending;
+  QString ret = path + hashStr + ending;
+  m_urlMap.insert(url, ret);
+  return ret;
 }
+
+//------------------------------------------------------------------------------
+
+FileDownloader* FileDownloadManager::download(QString url) {
+  if (m_inProgress.contains(url))
+    return m_inProgress[url];
+
+  qDebug() << "[DOWNLOAD]" << url;
+
+  FileDownloader* fd = new FileDownloader(url, this);
+  m_inProgress.insert(url, fd);
+  connect(fd, SIGNAL(fileReady()), this, SLOT(onFileReady()));
+
+  return fd;
+}
+
+//------------------------------------------------------------------------------
+
+void FileDownloadManager::executeAuthorizedRequest(KQOAuthRequest* oar,
+						   FileDownloader* fd) {
+  int id = m_nextRequestId++;
+
+  if (m_nextRequestId > 32000) { // bound to be smaller than any MAX_INT
+    m_nextRequestId = 0;
+    while (m_requestMap.contains(m_nextRequestId))
+      m_nextRequestId++;
+  }
+
+  m_requestMap.insert(id, qMakePair(oar, fd));
+  m_oam->executeAuthorizedRequest(oar, id);
+}
+
+
+//------------------------------------------------------------------------------
+
+void FileDownloadManager::onSslErrors(QNetworkReply* nr, QList<QSslError>) {
+  qDebug() << "FileDownloadManager SSL ERROR" << nr->url();
+}
+
+//------------------------------------------------------------------------------
+
+void FileDownloadManager::onAuthorizedRequestReady(QByteArray response,
+						   int id) {
+  QPair<KQOAuthRequest*, FileDownloader*> rp = m_requestMap.take(id);
+  KQOAuthRequest* oar = rp.first;
+  FileDownloader* fd = rp.second;
+
+  fd->requestReady(response, oar);
+}
+
+//------------------------------------------------------------------------------
+
+void FileDownloadManager::onFileReady() {
+  FileDownloader *fd = qobject_cast<FileDownloader*>(sender());  
+
+  if (!fd || !m_inProgress.contains(fd->url())) {
+    qDebug() << "ERROR: file downloader returning with non-existing request.";
+    return;
+  }
+
+  fd->deleteLater();
+}
+
+//------------------------------------------------------------------------------
+
+FileDownloader::FileDownloader(QString url, FileDownloadManager* fdm) :
+  QObject(fdm),
+  m_url(url),
+  m_oar(NULL),
+  m_fdm(fdm)
+{
+  PumpaSettings* ps = PumpaSettings::getSettings();
+
+  if (ps && m_url.startsWith(ps->siteUrl())) {
+    m_oar = new KQOAuthRequest(this);
+    m_oar->initRequest(KQOAuthRequest::AuthorizedRequest, QUrl(m_url));
+
+    m_oar->setConsumerKey(ps->clientId());
+    m_oar->setConsumerSecretKey(ps->clientSecret());
+    m_oar->setToken(ps->token());
+    m_oar->setTokenSecret(ps->tokenSecret());
+
+    m_oar->setHttpMethod(KQOAuthRequest::GET); 
+    m_oar->setTimeout(60000); // one minute time-out
+
+    m_fdm->executeAuthorizedRequest(m_oar, this);
+  } else {
+    QNetworkReply* nr = m_fdm->m_nam->get(QNetworkRequest(QUrl(m_url)));
+    connect(nr, SIGNAL(finished()), this, SLOT(replyFinished()));
+  }
+}
+
+//------------------------------------------------------------------------------
+
+void FileDownloader::replyFinished() {
+  QNetworkReply *nr = qobject_cast<QNetworkReply *>(sender());  
+
+  if (nr->error()) {
+    emit networkError(tr("Network error: ")+nr->errorString());
+    return;
+  }
+
+  requestReady(nr->readAll(), NULL);
+  nr->deleteLater();
+}
+
+//------------------------------------------------------------------------------
+
+void FileDownloader::requestReady(QByteArray response, KQOAuthRequest* oar) {
+  if (oar != NULL && m_fdm->m_oam->lastError()) {
+    emit networkError(QString(tr("Unable to download %1 (Error #%2)."))
+                      .arg(m_url)
+                      .arg(m_fdm->m_oam->lastError()));
+    return;
+  }
+
+  QString fn = m_fdm->urlToPath(m_url);
+
+  QFile* fp = new QFile(fn);
+  if (!fp->open(QIODevice::WriteOnly)) {
+    emit networkError(QString(tr("Could not open file %1 for writing: ")).
+                      arg(fn) + fp->errorString());
+    return;
+  }
+  fp->write(response);
+  fp->close();
+
+  // QPixmap pix = pixmap(fn);
+  // resizeImage(pix, fn);
+  
+  // emit fileReady(fn);
+  emit fileReady();
+}
+
+//------------------------------------------------------------------------------
+
+// void FileDownloader::resizeImage(QPixmap pix, QString fn) {
+//   if (pix.isNull())
+//     return;
+
+//   int w = pix.width();
+//   int h = pix.height();
+  
+//   if (w < IMAGE_MAX_WIDTH && h < IMAGE_MAX_HEIGHT)
+//     return;
+
+//   QPixmap newPix;
+//   if (w > h) 
+//     newPix = pix.scaledToWidth(IMAGE_MAX_WIDTH);
+//   else
+//     newPix = pix.scaledToHeight(IMAGE_MAX_HEIGHT);
+//   newPix.save(fn);
+// }

@@ -86,15 +86,17 @@ void ActorWidget::onImageChanged() {
 //------------------------------------------------------------------------------
 
 void ActorWidget::updatePixmap() {
-  if (m_url.isEmpty()) {
-    setIcon(QIcon(":/images/default.png"));
-    return;
-  }
+  FileDownloadManager* fdm = FileDownloadManager::getManager();
 
-  FileDownloader* fd = FileDownloader::get(m_url, true);
-  connect(fd, SIGNAL(fileReady()), this, SLOT(updatePixmap()),
-          Qt::UniqueConnection);
-  setIcon(QIcon(fd->pixmap(":/images/default.png")));
+  if (fdm->hasFile(m_url)) {
+    setIcon(QIcon(fdm->pixmap(m_url, ":/images/image_broken.png")));
+  } else {
+    setIcon(QIcon(":/images/image_downloading.png"));
+
+    FileDownloader* fd = fdm->download(m_url);
+    connect(fd, SIGNAL(fileReady()), this, SLOT(updatePixmap()),
+	    Qt::UniqueConnection);
+  }
 }
 
 //------------------------------------------------------------------------------

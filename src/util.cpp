@@ -372,3 +372,12 @@ QString processTitle(QString text) {
   text.replace("\n", " ");
   return text;
 }
+
+//------------------------------------------------------------------------------
+
+QString slashify(QString path) {
+  QString ret = path;
+  if (!ret.endsWith('/'))
+    ret.append('/');
+  return ret;
+}

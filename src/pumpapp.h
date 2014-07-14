@@ -50,6 +50,7 @@
 #include "contextwidget.h"
 #include "objectlistwidget.h"
 #include "messagewindow.h"
+#include "filedownloader.h"
 
 //------------------------------------------------------------------------------
 
@@ -186,8 +187,6 @@ private:
 
   void refreshTimeLabels();
 
-  void syncOAuthInfo();
-
   void fetchAll(bool);
   QString inboxEndpoint(QString path);
 
@@ -230,6 +229,8 @@ private:
   QAction* m_debugAction;
 
   KQOAuthManager *m_oam;
+
+  FileDownloadManager* m_fdm;
 
   TabWidget* m_tabWidget;
   CollectionWidget* m_inboxWidget;

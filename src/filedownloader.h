@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2014 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -27,65 +27,82 @@
 
 #include "QtKOAuth"
 
+//------------------------------------------------------------------------------
+
+class FileDownloader;  // forward declaration
+
+class FileDownloadManager : public QObject {
+  Q_OBJECT
+
+  FileDownloadManager(QObject*);
+ public:
+
+  static FileDownloadManager* getManager(QObject* = 0);
+
+  bool hasFile(QString url);
+
+  QString fileName(QString url);
+
+  QPixmap pixmap(QString url, QString brokenImage);
+  QMovie* movie(QString url);
+  bool supportsAnimation(QString url);
+
+  FileDownloader* download(QString url);
+  
+ private slots:
+  void onSslErrors(QNetworkReply*, QList<QSslError>);
+  void onAuthorizedRequestReady(QByteArray response, int id);
+  void onFileReady();
+
+ private:
+  void executeAuthorizedRequest(KQOAuthRequest*, FileDownloader*);
+  QString urlToPath(QString url);
+ 
+  QNetworkAccessManager* m_nam;
+  KQOAuthManager* m_oam;
+
+  QMap<QString, FileDownloader*> m_inProgress;
+  QMap<QString, QString> m_urlMap;
+  QString m_cacheDir;
+
+  int m_nextRequestId;
+
+  typedef QPair<KQOAuthRequest*, FileDownloader*> requestData_t;
+  QMap<int, requestData_t> m_requestMap;
+
+  static FileDownloadManager* s_instance;
+
+  friend class FileDownloader;
+};
+  
+//------------------------------------------------------------------------------
+
 class FileDownloader : public QObject {
   Q_OBJECT
 
-public:
-  static void setOAuthInfo(QString siteUrl,
-                           QString clientId, QString clientSecret,
-                           QString token, QString tokenSecret);
+ public:
+  FileDownloader(QString url, FileDownloadManager* fdm);
 
-  static FileDownloader* get(const QString& url, bool download=false);
-
-  void download();
-
-  bool downloading() const { return m_downloadStarted; }
-
-  bool ready() const { return !m_cachedFile.isEmpty(); }
-  QString fileName() const;
-  QString fileName(QString defaultImage) const;
-
-  bool supportsAnimation() const;
-  QPixmap pixmap(QString defaultImage=":/images/broken_image.png") const;
-  QMovie* movie(QString defaultImage=":/images/broken_image.png");
-
-  static QString getCacheDir() { return m_cacheDir; }
+  QString url() const { return m_url; }
   
-  static QString urlToPath(const QString& url);
-  
-signals:
-  void networkError(const QString&);
-  void fileReady(const QString&);
+ signals:
+  void networkError(QString);
   void fileReady();
+  
+ private slots:
+    void replyFinished();
+  
+ private:
+  /* static void resizeImage(QPixmap pix, QString fn); */
 
-private slots:
-  void onAuthorizedRequestReady(QByteArray response, int id);
-  void onSslErrors(QNetworkReply* reply, const QList<QSslError>&);
-  void replyFinished(QNetworkReply* nr);
+  void requestReady(QByteArray response, KQOAuthRequest* oar);
 
-private:
-  FileDownloader();
-  FileDownloader(const QString&);
+  QString m_url;
+  KQOAuthRequest* m_oar;
 
-  static void resizeImage(QPixmap pix, QString fn);
+  FileDownloadManager* m_fdm;
 
-  KQOAuthManager *oaManager;
-  KQOAuthRequest *oaRequest;
-  QNetworkAccessManager* m_nam;
-
-  QString m_downloadingUrl;
-  QString m_cachedFile;
-
-  bool m_downloadStarted;
-
-  static QString m_cacheDir;
-  static QMap<QString, FileDownloader*> m_downloading;
-
-  static QString s_siteUrl;
-  static QString s_clientId;
-  static QString s_clientSecret;
-  static QString s_token;
-  static QString s_tokenSecret;
+  friend class FileDownloadManager;
 };
 
 #endif

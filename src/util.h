@@ -79,6 +79,8 @@ QString addTextMarkup(QString content, bool useMarkdown);
 
 QString processTitle(QString text);
 
+QString slashify(QString path);
+
 //------------------------------------------------------------------------------
 
 #endif /* _UTIL_H_ */

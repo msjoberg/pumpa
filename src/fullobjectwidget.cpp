@@ -439,18 +439,25 @@ void FullObjectWidget::updateFollowAuthorButton(bool /*wait*/) {
 //------------------------------------------------------------------------------
 
 void FullObjectWidget::updateImage() {
-  FileDownloader* fd = FileDownloader::get(m_imageUrl, true);
-  connect(fd, SIGNAL(fileReady()), this, SLOT(updateImage()),
-          Qt::UniqueConnection);
+  FileDownloadManager* fdm = FileDownloadManager::getManager();
 
-  if (fd->ready() && fd->supportsAnimation()) {
-    QMovie* mov = fd->movie();
-    m_imageLabel->setMovie(mov);
-    qDebug() << "Animated GIF" << fd->fileName();
-    mov->start();
+  if (fdm->hasFile(m_imageUrl)) {
+    if (fdm->supportsAnimation(m_imageUrl)) {
+      QMovie* mov = fdm->movie(m_imageUrl);
+      m_imageLabel->setMovie(mov);
+      mov->start();
+    } else {
+      m_imageLabel->setPixmap(fdm->pixmap(m_imageUrl,
+					  ":/images/image_broken.png"));
+    }
   } else {
-    m_imageLabel->setPixmap(fd->pixmap(":/images/broken_image.png"));
+    m_imageLabel->setPixmap(QPixmap(":/images/image_downloading.png"));
+
+    FileDownloader* fd = fdm->download(m_imageUrl);
+    connect(fd, SIGNAL(fileReady()), this, SLOT(updateImage()),
+	    Qt::UniqueConnection);
   }
+
 }    
 
 //------------------------------------------------------------------------------
@@ -793,13 +800,17 @@ QString FullObjectWidget::processText(QString old_text, bool getImages) {
           QString imgSrc = rxi.cap(1);
           // qDebug() << "[DEBUG] processText: img" << imgSrc;
           
-          FileDownloader* fd = FileDownloader::get(imgSrc, true);
-          connect(fd, SIGNAL(fileReady()), this, SLOT(onChanged()),
-                  Qt::UniqueConnection);
-          if (fd->ready())
+	  FileDownloadManager* fdm = FileDownloadManager::getManager();
+
+	  if (fdm->hasFile(imgSrc)) {
             imagePlaceholder = 
               QString("<a href=\"%2\"><img border=\"0\" src=\"%1\" /></a>").
-              arg(fd->fileName()).arg(imgSrc);
+              arg(fdm->fileName(imgSrc)).arg(imgSrc);
+	  } else {
+	    FileDownloader* fd = fdm->download(imgSrc);
+	    connect(fd, SIGNAL(fileReady()), this, SLOT(onChanged()),
+		    Qt::UniqueConnection);
+	  }
         }
       }
       text.replace(pos, len, imagePlaceholder);

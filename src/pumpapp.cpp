@@ -87,6 +87,8 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   connect(m_oam, SIGNAL(sslErrors(QNetworkReply*, QList<QSslError>)), 
           this, SLOT(onSslErrors(QNetworkReply*, QList<QSslError>)));
 
+  m_fdm = FileDownloadManager::getManager(this);
+
   createActions();
   createMenu();
 
@@ -175,7 +177,7 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   setCentralWidget(m_tabWidget);
 
   // oaRequest->setEnableDebugOutput(true);
-  syncOAuthInfo();
+  // syncOAuthInfo();
 
   m_timerId = -1;
 
@@ -236,6 +238,9 @@ void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
   }
 
   QString infoText;
+  if (reply)
+    infoText += "URL: " + reply->url().toString() + "\n";
+
   for (int i=0; i<errors.size(); i++) {
     infoText += tr("SSL Error: ") + errors[i].errorString() + ".\n";
   }
@@ -255,6 +260,9 @@ void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
       tr("Expires: ") + cert.expiryDate().toString() + "\n" +
       tr("MD5 digest: ") + cert.digest().toHex() + "\n";
   }
+
+  qDebug() << infoText;
+  qDebug() << detailText;
 
   QMessageBox msgBox;
   msgBox.setText(tr("<b>Untrusted SSL connection!</b>"));
@@ -349,7 +357,7 @@ void PumpApp::onClientRegistered(QString userName, QString siteUrl,
 void PumpApp::onAccessTokenReceived(QString token, QString tokenSecret) {
   m_s->token(token);
   m_s->tokenSecret(tokenSecret);
-  syncOAuthInfo();
+  // syncOAuthInfo();
 
   startPumping();
 }
@@ -414,14 +422,6 @@ void PumpApp::refreshTimeLabels() {
   m_firehoseWidget->refreshTimeLabels();
   if (m_contextWidget)
     m_contextWidget->refreshTimeLabels();
-}
-
-//------------------------------------------------------------------------------
-
-void PumpApp::syncOAuthInfo() {
-  FileDownloader::setOAuthInfo(m_s->siteUrl(), m_s->clientId(),
-                               m_s->clientSecret(),
-                               m_s->token(), m_s->tokenSecret());
 }
 
 //------------------------------------------------------------------------------
