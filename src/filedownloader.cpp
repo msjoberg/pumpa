@@ -188,7 +188,9 @@ FileDownloader* FileDownloadManager::download(QString url) {
   if (m_inProgress.contains(url))
     return m_inProgress[url];
 
+#ifdef DEBUG_NET
   qDebug() << "[DOWNLOAD]" << url;
+#endif
 
   FileDownloader* fd = new FileDownloader(url, this);
   m_inProgress.insert(url, fd);
@@ -218,7 +220,9 @@ void FileDownloadManager::executeAuthorizedRequest(KQOAuthRequest* oar,
 //------------------------------------------------------------------------------
 
 void FileDownloadManager::onSslErrors(QNetworkReply* nr, QList<QSslError>) {
+#ifdef DEBUG_NET
   qDebug() << "FileDownloadManager SSL ERROR" << nr->url();
+#endif
 }
 
 //------------------------------------------------------------------------------
