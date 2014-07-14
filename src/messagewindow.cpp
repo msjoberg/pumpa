@@ -286,6 +286,9 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
   m_isReply = (obj != NULL);
   m_obj = obj;
 
+  if (m_isReply)
+    m_title->clear();
+
   QString title = m_isReply ? tr("Post a reply") : tr("Post a note");
   QString buttonText = m_isReply ? tr("&Send comment") : tr("&Send post");
 
