@@ -317,7 +317,7 @@ QString tidyHtml(QString str, bool& ok) {
     tidyBufFree(&errbuf);
   tidyRelease(tdoc);
 
-  return res.trimmed();
+  return res.trimmed().replace('\n', ' ');
 }
 
 //------------------------------------------------------------------------------
