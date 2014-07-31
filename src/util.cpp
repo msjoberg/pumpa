@@ -290,6 +290,7 @@ QString tidyHtml(QString str, bool& ok) {
     tidyOptSetBool(tdoc, TidyForceOutput, yes) &&
     tidyOptSetBool(tdoc, TidyMark, no) &&
     tidyOptSetInt(tdoc, TidyBodyOnly, yes) &&
+    tidyOptSetInt(tdoc, TidyWrapLen, 0) &&
     tidyOptSetInt(tdoc, TidyDoctypeMode, TidyDoctypeOmit);
     
   if (configOk &&
@@ -317,7 +318,7 @@ QString tidyHtml(QString str, bool& ok) {
     tidyBufFree(&errbuf);
   tidyRelease(tdoc);
 
-  return res.trimmed().replace('\n', ' ');
+  return res.trimmed();
 }
 
 //------------------------------------------------------------------------------
