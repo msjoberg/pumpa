@@ -35,9 +35,14 @@
 #include "sundown/html.h"
 #include "sundown/buffer.h"
 
-#ifdef USE_TIDY
+#ifdef USE_TIDY_TIDY
 #include <tidy/tidy.h>
 #include <tidy/buffio.h>
+#endif
+
+#ifdef USE_TIDY
+#include <tidy.h>
+#include <buffio.h>
 #endif
 
 //------------------------------------------------------------------------------
@@ -276,7 +281,6 @@ QString tidyHtml(QString str, bool& ok) {
   QString res = str;
   ok = false;
 
-#ifdef USE_TIDY
   TidyDoc tdoc = tidyCreate();
   TidyBuffer output = {0, 0, 0, 0, 0};
   TidyBuffer errbuf = {0, 0, 0, 0, 0};
@@ -312,7 +316,6 @@ QString tidyHtml(QString str, bool& ok) {
   if (errbuf.bp != 0)
     tidyBufFree(&errbuf);
   tidyRelease(tdoc);
-#endif
 
   return res.trimmed();
 }
@@ -326,11 +329,9 @@ QString addTextMarkup(QString text, bool useMarkdown) {
   qDebug() << "\n[DEBUG] MARKUP\n" << text;
 #endif
 
-#ifndef USE_TIDY
   text = removeHtml(text);
-# ifdef DEBUG_MARKUP
+#ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
-# endif
 #endif
 
   // linkify plain URLs
@@ -352,14 +353,11 @@ QString addTextMarkup(QString text, bool useMarkdown) {
            << (useMarkdown?"Markdown)":"text conversion)") << "\n" << text;
 #endif
 
-#ifdef USE_TIDY
   bool tidyOk = false;
   text = tidyHtml(text, tidyOk);
 
-# ifdef DEBUG_MARKUP
+#ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (libtidy)\n" << text;
-# endif
-
 #endif
 
   return text;

@@ -25,10 +25,6 @@ OBJECTS_DIR = obj
 
 QT += core gui network
 
-# libtidy is now a requirement
-LIBS += -ltidy
-DEFINES += USE_TIDY
-
 #
 # To enable debug mode, run as:
 # qmake CONFIG+=debug
@@ -75,11 +71,24 @@ greaterThan(QT_MAJOR_VERSION, 4) {
   DEFINES += QT5
 }
 
+# libtidy is now a requirement
+LIBS += -ltidy
+
+exists( /usr/include/tidy/tidy.h ) {
+  DEFINES += USE_TIDY_TIDY
+} else:exists( /usr/include/tidy.h ) {
+  DEFINES += USE_TIDY
+} else {
+  error("Unable to find libtidy header files for compiling! Install libtidy-dev (Debian, Ubuntu) or libtidy-devel (Fedora).")
+}
+
 # Optional spell checking support with libaspell
 exists( /usr/include/aspell.h ) {
   message("Using aspell")
   LIBS += -laspell
   DEFINES += USE_ASPELL
+} else {
+  warning("Unable to find libaspell header files for compiling. Install libaspell-dev (Debian, Ubuntu) if you want to enable spell-checking.")
 }
 
 # Optionally use etags
