@@ -329,10 +329,11 @@ QString addTextMarkup(QString text, bool useMarkdown) {
   qDebug() << "\n[DEBUG] MARKUP\n" << text;
 #endif
 
-  text = removeHtml(text);
-#ifdef DEBUG_MARKUP
-  qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
-#endif
+  // no longer needed with libtidy
+  //   text = removeHtml(text);
+  // #ifdef DEBUG_MARKUP
+  //   qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
+  // #endif
 
   // linkify plain URLs
   text = linkifyUrls(text, useMarkdown);
