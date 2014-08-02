@@ -220,6 +220,7 @@ void FileDownloadManager::executeAuthorizedRequest(KQOAuthRequest* oar,
 //------------------------------------------------------------------------------
 
 void FileDownloadManager::onSslErrors(QNetworkReply* nr, QList<QSslError>) {
+  (void) nr; // suppress unused warning
 #ifdef DEBUG_NET
   qDebug() << "FileDownloadManager SSL ERROR" << nr->url();
 #endif

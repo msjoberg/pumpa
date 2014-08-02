@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Pumpa
+Exec=/usr/local/bin/pumpa
+Icon=/usr/local/share/icons/hicolor/32x32/apps/pumpa.png
+Terminal=false
+Type=Application
+Categories=Network;
+Keywords=pump.io;social network;microblog;

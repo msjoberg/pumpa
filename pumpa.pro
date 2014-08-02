@@ -179,29 +179,30 @@ SOURCES += \
 # Install target
 ######################################################################
 
-# unix {
-#   isEmpty(PREFIX) {
-#     PREFIX = /usr
-#   }
-#   BINDIR = $$PREFIX/bin
-#   DATADIR =$$PREFIX/share
+unix {
+  isEmpty(PREFIX) {
+    PREFIX = /usr/local
+  }
+  BINDIR = $$PREFIX/bin
+  DATADIR =$$PREFIX/share
 
-#   #DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
+  #DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
 
-#   #MAKE INSTALL
+  #MAKE INSTALL
 
-#   INSTALLS += target desktop icon32
+  INSTALLS += target desktop icon32
 
-#   target.path =$$BINDIR
+  target.path =$$BINDIR
 
-#   desktop.path = $$DATADIR/applications
-#   desktop.files += $${TARGET}.desktop
+  desktop.path = $$DATADIR/applications
+  desktop.files += local/$${TARGET}.desktop
 
-#   icon32.path = $$DATADIR/icons/hicolor/32x32/apps
-#   icon32.files += images/$${TARGET}.png
-# }
-target.path = /usr/bin
-INSTALLS += target
+  icon32.path = $$DATADIR/icons/hicolor/32x32/apps
+  icon32.files += images/$${TARGET}.png
+}
+
+# target.path = /usr/bin
+# INSTALLS += target
 
 ######################################################################
 # Generate documentation
