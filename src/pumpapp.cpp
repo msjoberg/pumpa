@@ -1423,7 +1423,7 @@ QNetworkReply* PumpApp::executeRequest(KQOAuthRequest* request,
 void PumpApp::followActor(QASActor* actor, bool doFollow) {
   actor->setFollowed(doFollow);
 
-  QString from = QString("%2 (%1)").arg(actor->displayName()).
+  QString from = QString("%1 (%2)").arg(actor->displayName()).
     arg(actor->webFinger());
 
   if (from.isEmpty() || from.startsWith("http://") ||
