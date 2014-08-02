@@ -289,6 +289,9 @@ void FullObjectWidget::onChanged() {
     m_commentButton->setVisible(false);
   }
 
+  if (m_object->isDeleted())
+    m_imageLabel->setVisible(false);
+
   updateLikes();
   updateShares();
 
