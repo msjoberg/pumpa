@@ -195,7 +195,7 @@ unix {
   target.path =$$BINDIR
 
   desktop.path = $$DATADIR/applications
-  desktop.files += $${TARGET}.desktop
+  desktop.files += local/$${TARGET}.desktop
 
   icon32.path = $$DATADIR/icons/hicolor/32x32/apps
   icon32.files += images/$${TARGET}.png
