@@ -63,17 +63,17 @@
 <context>
     <name>FileDownloader</name>
     <message>
-        <location filename="../src/filedownloader.cpp" line="286"/>
+        <location filename="../src/filedownloader.cpp" line="287"/>
         <source>Network error: </source>
         <translation>Erreur de connexion:</translation>
     </message>
     <message>
-        <location filename="../src/filedownloader.cpp" line="298"/>
+        <location filename="../src/filedownloader.cpp" line="299"/>
         <source>Unable to download %1 (Error #%2).</source>
         <translation>Incapable de télécharger %1 (Erreur #%2).</translation>
     </message>
     <message>
-        <location filename="../src/filedownloader.cpp" line="308"/>
+        <location filename="../src/filedownloader.cpp" line="309"/>
         <source>Could not open file %1 for writing: </source>
         <translation>Échec de l&apos;ouverture du fichier %1 en écriture:</translation>
     </message>
@@ -92,68 +92,68 @@
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="112"/>
-        <location filename="../src/fullobjectwidget.cpp" line="654"/>
+        <location filename="../src/fullobjectwidget.cpp" line="657"/>
         <source>comment</source>
         <translation>commenter</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="308"/>
+        <location filename="../src/fullobjectwidget.cpp" line="311"/>
         <source>[No description]</source>
         <translation>[Pas de déscription]</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="344"/>
-        <location filename="../src/fullobjectwidget.cpp" line="361"/>
+        <location filename="../src/fullobjectwidget.cpp" line="347"/>
+        <location filename="../src/fullobjectwidget.cpp" line="364"/>
         <source>at %1</source>
         <translation>à %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="346"/>
+        <location filename="../src/fullobjectwidget.cpp" line="349"/>
         <source>Profile last updated %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="354"/>
+        <location filename="../src/fullobjectwidget.cpp" line="357"/>
         <source>updated %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="381"/>
+        <location filename="../src/fullobjectwidget.cpp" line="384"/>
         <source>unlike</source>
         <translation>ne plus aimer</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="381"/>
+        <location filename="../src/fullobjectwidget.cpp" line="384"/>
         <source>like</source>
         <translation>aimer</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="393"/>
+        <location filename="../src/fullobjectwidget.cpp" line="396"/>
         <source>share</source>
         <translation>partager</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="418"/>
+        <location filename="../src/fullobjectwidget.cpp" line="421"/>
         <source>stop following</source>
         <translation>arrêter de suivre</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="419"/>
+        <location filename="../src/fullobjectwidget.cpp" line="422"/>
         <source>follow</source>
         <translation>suivre</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="435"/>
+        <location filename="../src/fullobjectwidget.cpp" line="438"/>
         <source>follow %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="491"/>
+        <location filename="../src/fullobjectwidget.cpp" line="494"/>
         <source>You like this.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="524"/>
+        <location filename="../src/fullobjectwidget.cpp" line="527"/>
         <source>and %Ln other person(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -161,7 +161,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="528"/>
+        <location filename="../src/fullobjectwidget.cpp" line="531"/>
         <source>%Ln person(s) shared this.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -169,18 +169,18 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="605"/>
+        <location filename="../src/fullobjectwidget.cpp" line="608"/>
         <source>Show all replies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="495"/>
+        <location filename="../src/fullobjectwidget.cpp" line="498"/>
         <source>%1 like this.</source>
         <translatorcomment>aime ou aiment ? comment faire la disctinction entre likes-&gt;onlyYou() et nl &gt; 1 ?</translatorcomment>
         <translation type="unfinished">%1 aime.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="493"/>
+        <location filename="../src/fullobjectwidget.cpp" line="496"/>
         <source>%1 likes this.</source>
         <translation type="unfinished">%1 aime.</translation>
     </message>
@@ -193,7 +193,7 @@
         <translation type="obsolete">et %1 autres personnes</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="525"/>
+        <location filename="../src/fullobjectwidget.cpp" line="528"/>
         <source>shared this.</source>
         <translation>a partagé ceci.</translation>
     </message>
@@ -210,27 +210,27 @@
         <translation type="obsolete">Afficher les %1 réponses</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="649"/>
+        <location filename="../src/fullobjectwidget.cpp" line="652"/>
         <source>post</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="652"/>
+        <location filename="../src/fullobjectwidget.cpp" line="655"/>
         <source>note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="656"/>
+        <location filename="../src/fullobjectwidget.cpp" line="659"/>
         <source>image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="677"/>
+        <location filename="../src/fullobjectwidget.cpp" line="680"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation>Êtes vous sûr de vouloir supprimer ce %1 ?</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="697"/>
+        <location filename="../src/fullobjectwidget.cpp" line="700"/>
         <source>Share this %1 by %2?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -865,22 +865,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1400"/>
+        <location filename="../src/pumpapp.cpp" line="1404"/>
         <source>Loading ...</source>
         <translation>Chargement...</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1461"/>
+        <location filename="../src/pumpapp.cpp" line="1465"/>
         <source>Ready!</source>
         <translation>Prêt!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1479"/>
+        <location filename="../src/pumpapp.cpp" line="1483"/>
         <source>Unable to post message!</source>
         <translation>Incapable d&apos;envoyer un message!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1484"/>
+        <location filename="../src/pumpapp.cpp" line="1488"/>
         <source>Network or authorisation error [%1/%2] %3.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -889,12 +889,12 @@
         <translation type="obsolete">Erreur réseau ou d&apos;autorisation [%1/%2].</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1511"/>
+        <location filename="../src/pumpapp.cpp" line="1515"/>
         <source>Successfully followed </source>
         <translation>Demande d&apos;abonnement réussie</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1512"/>
+        <location filename="../src/pumpapp.cpp" line="1516"/>
         <source>Successfully unfollowed </source>
         <translation>Demande de désabonnement réussie</translation>
     </message>

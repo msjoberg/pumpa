@@ -63,17 +63,17 @@
 <context>
     <name>FileDownloader</name>
     <message>
-        <location filename="../src/filedownloader.cpp" line="286"/>
+        <location filename="../src/filedownloader.cpp" line="287"/>
         <source>Network error: </source>
         <translation>Tìngäzìk apuslltxe: </translation>
     </message>
     <message>
-        <location filename="../src/filedownloader.cpp" line="298"/>
+        <location filename="../src/filedownloader.cpp" line="299"/>
         <source>Unable to download %1 (Error #%2).</source>
         <translation>Ke tsun mivunge %1it (Tìngäzìk #%2).</translation>
     </message>
     <message>
-        <location filename="../src/filedownloader.cpp" line="308"/>
+        <location filename="../src/filedownloader.cpp" line="309"/>
         <source>Could not open file %1 for writing: </source>
         <translation>Pamrelìri oel ke tsun Tsive&apos;a %1it:</translation>
     </message>
@@ -92,69 +92,69 @@
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="112"/>
-        <location filename="../src/fullobjectwidget.cpp" line="654"/>
+        <location filename="../src/fullobjectwidget.cpp" line="657"/>
         <source>comment</source>
         <translation>säplltxevi</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="308"/>
+        <location filename="../src/fullobjectwidget.cpp" line="311"/>
         <source>[No description]</source>
         <translation>[Kea tìsla&apos;tsu]</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="344"/>
-        <location filename="../src/fullobjectwidget.cpp" line="361"/>
+        <location filename="../src/fullobjectwidget.cpp" line="347"/>
+        <location filename="../src/fullobjectwidget.cpp" line="364"/>
         <source>at %1</source>
         <oldsource>at</oldsource>
         <translation>ro %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="346"/>
+        <location filename="../src/fullobjectwidget.cpp" line="349"/>
         <source>Profile last updated %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="354"/>
+        <location filename="../src/fullobjectwidget.cpp" line="357"/>
         <source>updated %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="381"/>
+        <location filename="../src/fullobjectwidget.cpp" line="384"/>
         <source>unlike</source>
         <translation>ke sunu</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="381"/>
+        <location filename="../src/fullobjectwidget.cpp" line="384"/>
         <source>like</source>
         <translation>sunu</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="393"/>
+        <location filename="../src/fullobjectwidget.cpp" line="396"/>
         <source>share</source>
         <translation>käsrin</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="418"/>
+        <location filename="../src/fullobjectwidget.cpp" line="421"/>
         <source>stop following</source>
         <translation>ke &apos;eylan si</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="419"/>
+        <location filename="../src/fullobjectwidget.cpp" line="422"/>
         <source>follow</source>
         <translation>&apos;eylan si</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="435"/>
+        <location filename="../src/fullobjectwidget.cpp" line="438"/>
         <source>follow %1</source>
         <translation>&apos;eylan si hu %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="491"/>
+        <location filename="../src/fullobjectwidget.cpp" line="494"/>
         <source>You like this.</source>
         <translation>Nga sunu fì&apos;uru.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="524"/>
+        <location filename="../src/fullobjectwidget.cpp" line="527"/>
         <source>and %Ln other person(s)</source>
         <translation>
             <numerusform>sì %n tute</numerusform>
@@ -162,7 +162,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="528"/>
+        <location filename="../src/fullobjectwidget.cpp" line="531"/>
         <source>%Ln person(s) shared this.</source>
         <translation>
             <numerusform>%n tute kamäsrin fì&apos;uti.</numerusform>
@@ -170,7 +170,7 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="605"/>
+        <location filename="../src/fullobjectwidget.cpp" line="608"/>
         <source>Show all replies</source>
         <translation type="unfinished"></translation>
     </message>
@@ -179,13 +179,13 @@
         <translation type="obsolete">marcó «me gusta».</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="495"/>
+        <location filename="../src/fullobjectwidget.cpp" line="498"/>
         <source>%1 like this.</source>
         <oldsource>like this.</oldsource>
         <translation>fì&apos;u sunu %1ur.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="493"/>
+        <location filename="../src/fullobjectwidget.cpp" line="496"/>
         <source>%1 likes this.</source>
         <translation>fì&apos;u sunu %1ur.</translation>
     </message>
@@ -198,7 +198,7 @@
         <translation type="obsolete">sì  %1 suteti alahe</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="525"/>
+        <location filename="../src/fullobjectwidget.cpp" line="528"/>
         <source>shared this.</source>
         <translation>kamäsrin fì&apos;uti.</translation>
     </message>
@@ -215,27 +215,27 @@
         <translation type="obsolete">Wìntxu &apos;upxareti a%1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="649"/>
+        <location filename="../src/fullobjectwidget.cpp" line="652"/>
         <source>post</source>
         <translation>&apos;upxare</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="652"/>
+        <location filename="../src/fullobjectwidget.cpp" line="655"/>
         <source>note</source>
         <translation>&apos;upxare</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="656"/>
+        <location filename="../src/fullobjectwidget.cpp" line="659"/>
         <source>image</source>
         <translation>rel</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="677"/>
+        <location filename="../src/fullobjectwidget.cpp" line="680"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation>Srake nga new &apos;ivaku %1it?</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="697"/>
+        <location filename="../src/fullobjectwidget.cpp" line="700"/>
         <source>Share this %1 by %2?</source>
         <translation>käsrin fì%1 ìlä %2?</translation>
     </message>
@@ -872,22 +872,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1400"/>
+        <location filename="../src/pumpapp.cpp" line="1404"/>
         <source>Loading ...</source>
         <translation>Nerìn ...</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1461"/>
+        <location filename="../src/pumpapp.cpp" line="1465"/>
         <source>Ready!</source>
         <translation>Tam!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1479"/>
+        <location filename="../src/pumpapp.cpp" line="1483"/>
         <source>Unable to post message!</source>
         <translation>Ke tsun fpe&apos; &apos;upxareti!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1484"/>
+        <location filename="../src/pumpapp.cpp" line="1488"/>
         <source>Network or authorisation error [%1/%2] %3.</source>
         <translation>Oel ke tsun pivängkxo hu pump fu pumpìl ke omum ngati [%1/%2] %3.</translation>
     </message>
@@ -896,12 +896,12 @@
         <translation type="obsolete">puslltxe fu steftxaw tìngäzìk [%1/%2].</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1511"/>
+        <location filename="../src/pumpapp.cpp" line="1515"/>
         <source>Successfully followed </source>
         <translation>&apos;eylan soli </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1512"/>
+        <location filename="../src/pumpapp.cpp" line="1516"/>
         <source>Successfully unfollowed </source>
         <translation>Ke &apos;eylan seri  set</translation>
     </message>
