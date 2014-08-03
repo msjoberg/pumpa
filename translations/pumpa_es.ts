@@ -88,7 +88,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="108"/>
         <source>edit</source>
-        <translation type="unfinished"></translation>
+        <translation>editar</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="112"/>
@@ -111,12 +111,12 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="346"/>
         <source>Profile last updated %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Última actualización del perfil: %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="354"/>
         <source>updated %1</source>
-        <translation type="unfinished"></translation>
+        <translation>actualizado: %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="381"/>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="605"/>
         <source>Show all replies</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar todas las respuestas</translation>
     </message>
     <message>
         <source>stop following %1</source>
@@ -365,67 +365,67 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="159"/>
         <source>Ca&amp;ncel</source>
-        <translation type="unfinished"></translation>
+        <translation>Ca&amp;ncelar</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="162"/>
         <source>&amp;Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Previsualizar</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="165"/>
         <source>&amp;Send message</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Enviar mensaje</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="293"/>
         <source>&amp;Send comment</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Enviar comentario</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="293"/>
         <source>&amp;Send post</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Enviar</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="337"/>
         <source>Edit object</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar objeto</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="340"/>
         <source>Edit post</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="342"/>
         <source>Edit comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar comentario</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="344"/>
         <source>Edit image post</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar imagen</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="346"/>
         <source>&amp;Update object</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Actualizar objeto</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="349"/>
         <source>&amp;Update post</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Actualizar envío</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="351"/>
         <source>&amp;Update comment</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Actualizar comentario</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="353"/>
         <source>&amp;Update image post</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Actualizar imagen</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="434"/>
@@ -763,7 +763,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="687"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="691"/>
@@ -1026,7 +1026,7 @@
     <message>
         <location filename="../src/qasobject.cpp" line="314"/>
         <source>Deleted %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrado %1</translation>
     </message>
 </context>
 <context>
@@ -1044,89 +1044,89 @@
     <message numerus="yes">
         <location filename="../src/util.cpp" line="164"/>
         <source>%n minutes ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace %n minuto</numerusform>
+            <numerusform>hace %n minutos</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="166"/>
         <source>one hour ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace una hora</numerusform>
+            <numerusform>hace %n horas</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="168"/>
         <source>%n hours ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace %n hora</numerusform>
+            <numerusform>hace %n horas</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="171"/>
         <source>one day ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace un día</numerusform>
+            <numerusform>hace %n días</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="173"/>
         <source>%n days ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace %n día</numerusform>
+            <numerusform>hace %n días</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="175"/>
         <source>one week ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace una semana</numerusform>
+            <numerusform>hace %n semanas</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="177"/>
         <source>%n weeks ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace %n semana</numerusform>
+            <numerusform>hace %n semanas</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="179"/>
         <source>one month ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace un mes</numerusform>
+            <numerusform>hace %n meses</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="181"/>
         <source>%n months ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace %n mes</numerusform>
+            <numerusform>hace %n meses</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="183"/>
         <source>one year ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace un año</numerusform>
+            <numerusform>hace %n años</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="185"/>
         <source>%n years ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>hace %n años</numerusform>
+            <numerusform>hace %n años</numerusform>
         </translation>
     </message>
     <message numerus="yes">
