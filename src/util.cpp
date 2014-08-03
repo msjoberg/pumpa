@@ -370,7 +370,7 @@ QString addTextMarkup(QString text, bool useMarkdown) {
 QString processTitle(QString text) {
   text = removeHtml(text);
   text.replace("\n", " ");
-  return text;
+  return text.trimmed();
 }
 
 //------------------------------------------------------------------------------

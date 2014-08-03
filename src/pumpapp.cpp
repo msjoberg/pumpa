@@ -1109,8 +1109,10 @@ void PumpApp::postNote(QString content, QString title,
   QVariantMap obj;
   obj["objectType"] = "note";
   obj["content"] = addTextMarkup(content, m_s->useMarkdown());
-  if (!title.isEmpty())
-    obj["displayName"] = processTitle(title);
+
+  QString ptitle = processTitle(title);
+  if (!ptitle.isEmpty())
+    obj["displayName"] = ptitle;
 
   feed("post", obj, QAS_OBJECT | QAS_REFRESH | QAS_POST, to, cc);
 }
@@ -1122,8 +1124,10 @@ void PumpApp::postEdit(QASObject* obj, QString content, QString title) {
   json["id"] = obj->id();
   json["objectType"] = obj->type();
   json["content"] = addTextMarkup(content, m_s->useMarkdown());
-  if (!title.isEmpty())
-    json["displayName"] = processTitle(title);
+
+  QString ptitle = processTitle(title);
+  if (!ptitle.isEmpty())
+    json["displayName"] = ptitle;
 
   feed("update", json, QAS_OBJECT | QAS_REFRESH | QAS_POST);
 }
