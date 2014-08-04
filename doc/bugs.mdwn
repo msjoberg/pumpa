@@ -1,7 +1,7 @@
 This is Pumpa's bug tracker. Please report any bugs or feature
 requests here.  
 
-Also see bugs filed against the
+Also see bugs filed against
 [Pumpa in Debian](https://bugs.debian.org/cgi-bin/pkgreport.cgi?package=pumpa).
 
 Please also check the
