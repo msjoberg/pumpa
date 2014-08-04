@@ -1,0 +1,10 @@
+jpope: I'd **love** to be able to trigger a new post (specifically with an image) via the command line.
+
+The goal of this would be to add a custom action in Thunar or a service .desktop file (for Dolphin, maybe others) to trigger a right click action in the file manager. Right click an image->'Post with Pumpa'.
+
+Sazius: 
+I'm a bit conflicted about giving a GUI program a lot of CLI functionality. OTOH, Pumpa already has you account set up so it would be a waste not to use that :-)
+
+One idea I had was to create another binary, e.g. "pumpa_cli" or whatever and just link the pump.io-API bits in there. It would use the same conf file as Pumpa but wouldn't open up a GUI window at all. Of course you'd need to setup the conf file first with Pumpa's OAauth Wizard thingie...
+
+[[!tag feature]]
