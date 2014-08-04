@@ -1,0 +1,6 @@
+David Marsden: Tab for user timeline, i.e., when you click on a user's name it shows their timeline in a new tab (a bit like Heybuddy does). Useful for deciding wheter to follow someone. I think current behaviour opens up a web page instead.
+
+Sazius: 
+This is definitely on my todo list, but I need to first make tabs that can be closed. The Qt toolkit that I'm using makes that a bit difficult, I need to investigate this.
+
+[[!tag feature]
