@@ -1,0 +1,7 @@
+[[!img images/pumpa.png link=no]]
+
+* [[install]]
+* [[configuration]]
+* [[debug_mode]]
+* [[translations]]
+* [[license.mdwn]]

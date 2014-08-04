@@ -1,1 +1,53 @@
-Pumpa coming soon... (this is read from doc/).
+Pumpa is a simple [pump.io](http://pump.io) client written in C++ and
+Qt. Pumpa is [[Free_Software|license]].
+
+"Pumpa" is a Swedish word that means either "to pump" (as a verb) or
+"pumpkin" (as a noun) :-)
+
+Pumpa was mentioned on [LWN: "Searching for a pump.io
+client"](https://lwn.net/Articles/575691/).
+
+Pumpa running under Gnome 3 even though it's a Qt application:
+
+![Pumpa screen shot](images/pumpa_screen.png)
+
+[[!sidebar content="""
+[[!inline feeds=no template=bare pages=sidebar]]
+
+
+## Running
+
+On Linux you can start pumpa by running its binary:
+
+    ./pumpa
+
+On Mac OS X a regular clickable application file (pumpa.app) should be
+created.
+
+At first launch an OAuth wizard will pop-up, just enter your pump.io
+account id, and click Next. Then a the authentication page with your
+pump.io server will be opened in the web browser, just follow the
+instructions there. Finally a pair of codes (token, verifier) will
+appear that you need to copy & paste back into pumpa.
+
+## Markdown
+
+When you are posting a new note or comment you can use [Markdown
+syntax][7]. Since Pumpa version v0.8.4 inline HTML is also allowed as
+in standard Markdown.
+
+For example:
+
+- \*stars\* make the word emphasised, typically *italics*
+- \*\*double stars\*\*  strong emphasis, typically **bold**
+- surround links with < and > like so: &lt;http://example.com/&gt;
+- link text \[like this\]\(http://example.com/\)
+- a hash (#) at the start of the line makes an H1 heading, so be
+  careful with hash tags :-)
+
+Enable the Preview below the text editing window to see what the
+output will be before posting it to pump.io.
+
+For the [full Markdown syntax see John Gruber's page][7].
+
+[7]: http://daringfireball.net/projects/markdown/syntax

@@ -1,0 +1,32 @@
+Pumpa is [Free Software](https://www.gnu.org/philosophy/free-sw.html),
+and all of the source code is licenced under the [GPL, version 3 or
+higher](http://www.gnu.org/licenses/gpl.html).
+
+The Pumpa source code includes codes and graphics from other people:
+
+- The [kQOAuth library][2] is copyrighted by [Johan Paul][3] and
+  licensed under LGPL 2.1.
+
+- The current (temporary?) Pumpa logo is from the
+  ["Fruit and Veggie Inventory"][4] entry to the
+  [Liberated Pixel Cup][5] by Joshua Taylor.  The logo is copyrighted
+  by the artist and is dual licensed under the CC-BY-SA 3.0 license
+  and the GNU GPL 3.0.
+
+- The [sundown Markdown library][8] is copyrighted by Natacha
+  Port&eacute;, Vicent Marti and others, and
+  [permissively licensed][9].
+
+- [Tim Schumacher][16] contributed several improvements and installer
+  code for Microsoft Windows systems.
+
+- Spanish translation by [Laura Arjona](https://identi.ca/larjona),
+  Italian by ["Metal Biker"](https://microca.st/howcanuhavemyusername)
+  and German by [Mathias Gebbe](https://pumpity.net/matzeihnsein)
+
+[2]: https://github.com/kypeli/kQOAuth
+[3]: http://www.johanpaul.com/
+[4]: http://opengameart.org/content/fruit-and-veggie-inventory
+[5]: http://lpc.opengameart.org/
+[8]: https://github.com/vmg/sundown
+[9]: https://github.com/vmg/sundown#license

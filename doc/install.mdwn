@@ -1,0 +1,82 @@
+Pumpa is packaged in [Debian jessie and
+sid](https://packages.debian.org/search?keywords=pumpa) and [Ubuntu
+trusty](http://packages.ubuntu.com/trusty/pumpa), so if you are using
+one of those, you can simply install it with your favourite package
+manager or by typing (as root or using `sudo`):
+
+    apt-get install pumpa
+
+In addition, some third parties have provided packages or installers
+for other platforms listed below. Please note, that I have no control
+over these, so please report any problems with them to the respective
+packagers/authors.  Alternatively you can download the source code and
+compile it yourself, it's pretty easy (see the following sections).
+
+### Fedora 
+
+By [Matt Molyneaux](https://microca.st/moggers87): <http://moggers.co.uk/~moggers87/repo/pumpa/>
+
+["Metal Biker"](https://microca.st/howcanuhavemyusername) has a Fedora
+Copr repo for Pumpa and [Dianara][18]: <http://sylke.altervista.org/repo/>
+
+[18]: https://jancoding.wordpress.com/category/projects/dianara/
+
+### Debian (Spanish)
+
+By [Fabián Bonetti](https://identi.ca/mamafree) configured for Spanish: <http://mamalibre.no-ip.org/>
+
+### openSUSE 
+
+By ["XRevan86"](https://microca.st/xrevan86): <http://software.opensuse.org/package/pumpa>
+
+### Archlinux AUR
+
+By ["speps"](https://aur.archlinux.org/packages/?K=speps&SeB=m): <https://aur.archlinux.org/packages/?K=pumpa>
+
+### Microsoft Windows
+
+By [Tim Schumacher][16]: <http://bandenkrieg.hacked.jp/~tim/pumpa/>
+
+[16]: https://fmrl.me/0xAFFE
+
+### Mac OS X
+
+By [Al aka chunder@identi.ca](https://identi.ca/chunder): <http://juu.st/pumpa/>
+
+
+## Build dependencies
+  
+Pumpa should build with Qt 4.8 or Qt 5.0 or newer. If you are using Qt
+4, you will also need the [QJson library][6].
+
+For example on Debian 7.0 "wheezy" the following command should
+install everything needed to build the code:
+
+    aptitude install qt4-qmake libqt4-dev libqjson-dev libtidy-dev
+
+If you want spell checking install the aspell library as well:
+
+    aptitude install libaspell-dev
+
+On Fedora this should install what you need (courtesy of [Dick Turpin][10]):
+
+    yum install gcc-c++ qt-devel qt-config qjson-devel libtidy-devel
+
+[6]: http://qjson.sourceforge.net/
+[10]: https://microca.st/dick_turpin/note/toJY8CHTQlqinra0Hr6lFA
+
+## Building
+
+To download and build, type the following:
+
+    git clone git://gitorious.org/pumpa/pumpa.git
+    cd pumpa
+    qmake-qt4     # or just "qmake" on some systems
+    make
+
+The procedure on Mac OS X is the same, but getting the dependencies is
+a bit different, David Haberth&uuml;r has made a detailed guide for
+building on Mac OS X here:
+<https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X>
+
+Axel has a blog post about compiling for Windows here: <https://axel668.wordpress.com/2013/07/18/how-to-build-pumpa-qt-based-pump-io-client-for-windows/>
