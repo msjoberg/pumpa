@@ -4,4 +4,4 @@
 * [[configuration]]
 * [[debug_mode]]
 * [[translations]]
-* [[license.mdwn]]
+* [[license]]
