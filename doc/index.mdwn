@@ -7,10 +7,6 @@ Qt. Pumpa is [[Free_Software|license]].
 Pumpa was mentioned on [LWN: "Searching for a pump.io
 client"](https://lwn.net/Articles/575691/).
 
-Pumpa running under Gnome 3 even though it's a Qt application:
-
-![Pumpa screen shot](images/pumpa_screen.png)
-
 [[!sidebar content="""
 [[!inline feeds=no template=bare pages=sidebar]]
 """]]
@@ -51,3 +47,9 @@ output will be before posting it to pump.io.
 For the [full Markdown syntax see John Gruber's page][7].
 
 [7]: http://daringfireball.net/projects/markdown/syntax
+
+## Obligatory screenshot
+
+Pumpa runs fine Gnome 3 even though it's a Qt application:
+
+![Pumpa screen shot](images/pumpa_screen.png)
