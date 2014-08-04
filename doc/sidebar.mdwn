@@ -1,3 +1,5 @@
+[[!flattr url=http://saz.im/software/pumpa.html]]
+
 [[!img images/pumpa.png link=no]]
 
 * [[install]]
