@@ -3,4 +3,4 @@ David Marsden: Tab for user timeline, i.e., when you click on a user's name it s
 Sazius: 
 This is definitely on my todo list, but I need to first make tabs that can be closed. The Qt toolkit that I'm using makes that a bit difficult, I need to investigate this.
 
-[[!tag feature]
+[[!tag feature]]
