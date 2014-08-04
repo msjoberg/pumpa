@@ -1,0 +1,16 @@
+This is Pumpa's bug tracker. Please report any bugs or feature
+requests here.  
+
+Also see bugs filed against the
+[Pumpa in Debian](https://bugs.debian.org/cgi-bin/pkgreport.cgi?package=pumpa).
+
+Please also check the
+[old bug tracker](https://gitorious.org/projects/pumpa/issues) until
+I've had time to move the bugs over here.
+
+Resolved bugs can be found in [[resolved]].
+
+[[!inline pages="./bugs/* and !./bugs/*/* and !./bugs/resolved and !link(resolved) 
+and !*/Discussion" actions=yes postform=yes show=0 archive=yes template=buglist]]
+
+[[!edittemplate template=templates/bugtemplate match="bugs/*" silent=yes]]
