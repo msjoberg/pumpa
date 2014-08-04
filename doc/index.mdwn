@@ -12,8 +12,8 @@ Pumpa running under Gnome 3 even though it's a Qt application:
 ![Pumpa screen shot](images/pumpa_screen.png)
 
 [[!sidebar content="""
-[[!inline feeds=no template=bare pages=sidebar]]
-
+[[!inline feeds=no template= pages=sidebar]]
+"""]]
 
 ## Running
 
