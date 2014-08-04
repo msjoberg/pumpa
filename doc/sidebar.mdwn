@@ -1,5 +1,3 @@
-[[!flattr url=http://saz.im/software/pumpa.html button=compact]]
-
 [[!img images/pumpa.png link=no]]
 
 * [[install]]
@@ -7,3 +5,5 @@
 * [[debug_mode]]
 * [[translations]]
 * [[license]]
+
+[[!flattr url=http://saz.im/software/pumpa.html button=compact]]
