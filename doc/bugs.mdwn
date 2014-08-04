@@ -1,8 +1,9 @@
 This is Pumpa's bug tracker. Please report any bugs or feature
-requests here. If you there's something preventing you from reporting
-a bug here you can email me at <mats@sjoberg.fi>.
+requests here. If there's something preventing you from reporting a
+bug here you can email me at <mats@sjoberg.fi>.
 
 Also see:
+
 - Bugs filed against
 [Pumpa in Debian](https://bugs.debian.org/cgi-bin/pkgreport.cgi?package=pumpa).
 
