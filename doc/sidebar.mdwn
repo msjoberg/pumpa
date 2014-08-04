@@ -1,4 +1,4 @@
-[[!flattr url=http://saz.im/software/pumpa.html]]
+[[!flattr url=http://saz.im/software/pumpa.html button=compact]]
 
 [[!img images/pumpa.png link=no]]
 
