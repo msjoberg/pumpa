@@ -1,6 +1,7 @@
 [[!img images/pumpa.png link=no]]
 
 * [[install]]
+* [[bugs]]
 * [[configuration]]
 * [[debug_mode]]
 * [[translations]]
