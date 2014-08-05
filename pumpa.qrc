@@ -1,0 +1,18 @@
+<RCC>
+<qresource>
+  <file>images/pumpa.png</file>
+  <file>images/pumpa_glow.png</file>
+  <file>images/default.png</file>
+  <file>images/loader.gif</file>
+  <file>images/empty.gif</file>
+  <file alias="images/image_broken.png">images/glyphicons_197_remove.png</file>
+  <file alias="images/image_noaccess.png">images/glyphicons_199_ban.png</file>
+  <file alias="images/image_downloading.png">images/glyphicons_200_download.png</file>
+  <file>translations/pumpa_en.qm</file>
+  <file>translations/pumpa_es.qm</file>
+  <file>translations/pumpa_fr.qm</file>
+  <file>translations/pumpa_nvi.qm</file>
+  <file>translations/pumpa_it.qm</file>
+  <file>translations/pumpa_de.qm</file>
+</qresource>
+</RCC>

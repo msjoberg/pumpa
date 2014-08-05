@@ -1,0 +1,28 @@
+pumpa (0.8.4-1) unstable; urgency=low
+
+  * Avatar-menu with new auto-minimise feature that automatically
+    collapses posts of e.g. noisy users.
+  * To/Cc now editable on replies.
+  * Inline HTML now allowed using libtidy.
+  * Updated German, Spanish, Italian and Na'vi translations.
+  * Various bug fixes
+
+ -- Mats Sjöberg <mats@sjoberg.fi>  Sun, 08 Jun 2014 18:27:01 +0300
+
+pumpa (0.8.3-1) unstable; urgency=low
+
+  * Added German translation.
+  * Preliminary support for animated GIFs. (Closes: #734494)
+  * Fixed bug where replies in context view would only go to original author.
+  * Validate SSL certificate on every connection. Don't fall back to non-SSL.
+  * Ability to minimise posts in stream.
+  * Improvements to fetching replies from people not being followed.
+  * Various minor bug fixes.
+
+ -- Mats Sjöberg <mats@sjoberg.fi>  Sun, 23 Mar 2014 20:37:45 +0200
+
+pumpa (0.8.2-1) unstable; urgency=low
+
+  * Initial release. (Closes: #732653)
+
+ -- Mats Sjöberg <mats@sjoberg.fi>  Sun, 29 Dec 2013 11:34:27 +0200
