@@ -1,0 +1,3 @@
+~/.cache/Pumpa/pumpa/
+
+can get pretty big after a while
