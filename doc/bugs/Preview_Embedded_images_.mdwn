@@ -1,0 +1,3 @@
+jpope: It would be nice if when embedding images in a post, the embedded image could be seen in the preview.
+
+Sazius: The problem is I'm using Qt's QLabel for the preview (and for showing posts as well) to keep Pumpa relatively light weight. It can show images, but note load them remotely. Embedded images in posts work because Pumpa actually downloads them to a local cache (~/.cache/Pumpa/pumpa/) and then updates the link to a local one.
