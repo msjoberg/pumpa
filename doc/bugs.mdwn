@@ -11,16 +11,9 @@ Also see:
 [old bug tracker](https://gitorious.org/projects/pumpa/issues) until
 I've had time to move the bugs over here.
 
-Resolved bugs can be found in [[resolved]].
-
-High priority bugs:
+Common tags for bugs reports: [[high]] [[feature]] [[resolved]].
 
 [[!inline pages="./bugs/* and !./bugs/*/* and !./bugs/resolved and !link(resolved) 
-and !*/Discussion" and link(high) actions=yes postform=yes show=0 archive=yes template=buglist]]
-
-Normal bugs:
-
-[[!inline pages="./bugs/* and !./bugs/*/* and !./bugs/resolved and !link(resolved) 
-and !*/Discussion"  and !link(high) actions=yes postform=yes show=0 archive=yes template=buglist]]
+and !*/Discussion" actions=yes postform=yes show=0 archive=yes template=buglist]]
 
 [[!edittemplate template=templates/bugtemplate match="bugs/*" silent=yes]]
