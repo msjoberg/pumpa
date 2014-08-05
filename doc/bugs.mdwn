@@ -13,7 +13,14 @@ I've had time to move the bugs over here.
 
 Resolved bugs can be found in [[resolved]].
 
+High priority bugs:
+
 [[!inline pages="./bugs/* and !./bugs/*/* and !./bugs/resolved and !link(resolved) 
-and !*/Discussion" actions=yes postform=yes show=0 archive=yes template=buglist]]
+and !*/Discussion" and link(high) actions=yes postform=yes show=0 archive=yes template=buglist]]
+
+Normal bugs:
+
+[[!inline pages="./bugs/* and !./bugs/*/* and !./bugs/resolved and !link(resolved) 
+and !*/Discussion"  and !link(high) actions=yes postform=yes show=0 archive=yes template=buglist]]
 
 [[!edittemplate template=templates/bugtemplate match="bugs/*" silent=yes]]
