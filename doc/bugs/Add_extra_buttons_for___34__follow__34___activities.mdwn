@@ -1,0 +1,18 @@
+usr_share: Right now, if someone follows you, the only way to follow the person back is to use the browser.
+
+I think that "follow" (or "unfollow") activities should have the following buttons available:
+
+[see profile] -- quickly see the person's profile, similar to the [+] button to the right of all posts. (
+
+[follow / unfollow] -- to, obviously enough, follow the person back, or to unfollow if already following.
+
+[see activities] -- if possible, to see the activities of that specific user like one's own in the "Activities" tab.
+
+Sazius: 
+Actually there's a work around for the first problem: open your "followers" tab, the recent follower will be at the top. Press "follow" :-)
+
+But yeah, ideally you should be able to do that directly from the "X has followed you" item.
+
+Right now it shows your own profile, which is "technically" correct, because that is the object in the pump feed. But not very useful in this case :)
+
+[[!tag feature]]
