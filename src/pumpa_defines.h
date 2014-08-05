@@ -25,8 +25,8 @@
 #define CLIENT_VERSION        "0.8.4+git"
 #define CLIENT_ICON           ":/images/pumpa.png"
 
-#define WEBSITE_URL           "http://saz.im/software/pumpa.html"
-#define MARKUP_DOC_URL        "http://saz.im/software/pumpa.html#markdown"
+#define WEBSITE_URL           "https://pumpa.branchable.com/"
+#define MARKUP_DOC_URL        "https://pumpa.branchable.com/markdown/"
 #define BUGTRACKER_URL        "https://gitorious.org/projects/pumpa/issues"
 
 #define IMAGE_MAX_WIDTH       320

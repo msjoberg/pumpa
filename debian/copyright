@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: pumpa
-Source: http://saz.im/software/pumpa.html
+Source: https://pumpa.branchable.com/
 
 Files: *
 Copyright: 2013, Mats Sjöberg <mats@sjoberg.fi>
