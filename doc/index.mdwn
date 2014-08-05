@@ -4,8 +4,8 @@ Qt. Pumpa is [[Free_Software|license]].
 For installation instructions check the [[install]] page, to report an
 issue or submit a feature request go to the [[bugs]] page.
 
-- "Pumpa" is a Swedish word that means either "to pump" (as a verb) or
-"pumpkin" (as a noun) :-)
+[[!template  id=note text=""" "Pumpa" is a Swedish word that means either "to pump" (as a verb) or
+"pumpkin" (as a noun) :-)"""]]
 
 - Pumpa was mentioned on [LWN: "Searching for a pump.io
 client"](https://lwn.net/Articles/575691/).
@@ -14,9 +14,10 @@ client"](https://lwn.net/Articles/575691/).
 [[!inline feeds=no template=bare pages=sidebar]]
 """]]
 
+<br />
 
 ## Obligatory screenshot
 
-*Pumpa running on Gnome 3:*
-
 ![Pumpa screen shot](images/pumpa_screen.png)
+
+*Pumpa running on Gnome 3.*
