@@ -1,0 +1,4 @@
+E.g. for people that regularly write different languages. 
+This would also be an option in the config file.
+
+[[!tag feature]]
