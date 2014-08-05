@@ -87,7 +87,7 @@ exists( /usr/include/tidy/tidy.h ) {
 LIBS += -ltidy
 
 # Optional spell checking support with libaspell
-exists( /usr/include/aspell.h ) {
+exists( /usr/include/aspell.h )|exists( /usr/local/include/aspell.h ) {
   message("Using aspell")
   LIBS += -laspell
   DEFINES += USE_ASPELL
