@@ -1,0 +1,16 @@
+Bernhard E. Reiter: When "sharing" a message, it only goes to followers by default.
+It would be nice to have an option or button to share for Public
+or other recipients as well.
+
+Sazius: 
+I should look into that. I remember seeing a discussion somewhere on pump about if sharing publicly was a good idea, but I can't remember the outcome of that discussion :-)
+
+Bernhard:  I believe there are two distinct questions:
+a) should the interface be made more complex by adding an option to share
+publically or even more to select all target lists.
+b) What should the default be. Or how the user interface should look like.
+
+I believe that a more non-public default is good,
+but for a) the answer is clearly yes, we need at least the followers+public extra functionality.
+I'd say that even a full blown to: and cc: dialog would be warranted with an option
+that public is filled in as default together with Followers.
