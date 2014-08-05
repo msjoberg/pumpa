@@ -1,0 +1,24 @@
+Sometimes I just want my message to be seen in twitter directly without being hidden behind a link. Thus it would be nice to see how many characters my new message is made off while typing. Ideally the counting should be twitter compatible, but this may be too much to ask.
+Just a little counter may already help me to get a feel for how long my message has already become. 
+
+I believe this is a success factor of twitter, people really have to think about shorting their message. Of course it is nice to be able to post more character, if you really must, but the pressure itself probably raises the quality.  So some visual reminder in pumpa or other pump.io client could help quality. :)
+
+Sazius: Character count should be easy in theory, in fact I’ve just implemented it in a local branch. The problem is that Pumpa generates HTML, not plain text, so should it count also the HTML tags?
+
+In this case it looks very counter-intuitive, when you type e.g. a letter “a” it shows a count of 8, because the markdown parser I’m using generates a paragraph <p>a</p> and so on…
+
+I guess the question is what would make most sense for Twitter? What does the bridge do with the HTML when it posts to Twitter?
+
+bernhard: Hi Sazius,
+
+yes, it woud be best if the counting would assume how twitter could count.
+But, because there could be several bridges, this is cannot be prediced perfectly.
+Each bridge could use a slightly different algorithm. In the pumpiverse we currently have at least
+two twitter bridges (pumpbridge and pump2rss). I don’t now how they work in this regard.
+
+My conclusion is: Unless the bridging gets standardized, any form of counting can help. :)
+
+Best,
+Bernhard
+
+[[!tag feature]]
