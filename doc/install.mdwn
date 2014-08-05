@@ -37,7 +37,6 @@ By ["speps"](https://aur.archlinux.org/packages/?K=speps&SeB=m): <https://aur.ar
 
 By [Al aka chunder@identi.ca](https://identi.ca/chunder): <http://juu.st/pumpa/>
 
-[HowTo for building Pumpa on OS X](https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X) by [habi@fmrl.me](http://fmrl.me/habi).
 
 ## Build dependencies
   
@@ -70,8 +69,6 @@ To download and build, type the following:
     make
 
 The procedure on Mac OS X is the same, but getting the dependencies is
-a bit different, David Haberth&uuml;r has made a detailed guide for
-building on Mac OS X here:
-<https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X>
+a bit different, see the [HowTo for building Pumpa on OS X](https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X) by [habi@fmrl.me](http://fmrl.me/habi).
 
 Axel has a blog post about compiling for Windows here: <https://axel668.wordpress.com/2013/07/18/how-to-build-pumpa-qt-based-pump-io-client-for-windows/>
