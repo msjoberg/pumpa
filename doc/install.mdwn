@@ -12,7 +12,7 @@ over these, so please report any problems with them to the respective
 packagers/authors.  Alternatively you can download the source code and
 compile it yourself, it's pretty easy (see the following sections).
 
-### Fedora 
+### Fedora Linux
 
 By [Matt Molyneaux](https://microca.st/moggers87): <http://moggers.co.uk/~moggers87/repo/pumpa/>
 
@@ -21,11 +21,11 @@ Copr repo for Pumpa and [Dianara][18]: <http://sylke.altervista.org/repo/>
 
 [18]: https://jancoding.wordpress.com/category/projects/dianara/
 
-### Debian (Spanish)
+### Debian GNU/Linux (Spanish variant)
 
 By [Fabián Bonetti](https://identi.ca/mamafree) configured for Spanish: <http://mamalibre.no-ip.org/>
 
-### openSUSE 
+### openSUSE Linux
 
 By ["XRevan86"](https://microca.st/xrevan86): <http://software.opensuse.org/package/pumpa>
 
@@ -37,6 +37,7 @@ By ["speps"](https://aur.archlinux.org/packages/?K=speps&SeB=m): <https://aur.ar
 
 By [Al aka chunder@identi.ca](https://identi.ca/chunder): <http://juu.st/pumpa/>
 
+[HowTo for building Pumpa on OS X](https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X) by [habi@fmrl.me](http://fmrl.me/habi).
 
 ## Build dependencies
   
@@ -46,7 +47,7 @@ Pumpa should build with Qt 4.8 or Qt 5.0 or newer. If you are using Qt
 For example on Debian 7.0 "wheezy" the following command should
 install everything needed to build the code:
 
-    aptitude install qt4-qmake libqt4-dev libqjson-dev libtidy-dev
+    aptitude install build-essential qt4-qmake libqt4-dev libqjson-dev libtidy-dev
 
 If you want spell checking install the aspell library as well:
 
