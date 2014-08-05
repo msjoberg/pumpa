@@ -1,0 +1,4 @@
+tioeze: The thing is when you want to unfollow a user or only to search him is very problematic when you have more than 250..
+I don't think about a tab or so, only a shorcut like FF with ctrl+f or something like that.
+
+[[!tag feature]]
