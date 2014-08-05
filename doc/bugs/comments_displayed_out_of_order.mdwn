@@ -1,0 +1,13 @@
+i've noticed this problem on the web interface as well. i've noticed it after clicking the "load more comments" button.
+
+someday it might be good for pumpa to sort comments by time, unless they are intentionally being sorted some other way. :-)
+
+...
+
+i looked at an old thread in pumpa and saw that two comments in an older thread were swapped. it ought to be in your meanwhile feed in pumpa.
+
+i restarted pumpa to see if that would resolve the issue, but now pumpa doesn’t display the first message, and doesn’t show a button to load more comments. the original 2nd and 3rd posts are still swapped.
+
+Sazius: Yeah, unfortunately Pumpa is unable to fetch the rest of the conversation if only a reply is in the meanwhile feed. There’s a bug report about this: <https://github.com/e14n/pump.io/issues/873>. Pumpa does its best to collect what it sees in the feeds to the conversation. In my case I see only the original post (because it was included as inReplyTo object to cwebber’s comment (which was in my feed). Then I see your “It’s a joke” reply, since cwebber favourited it causing it to show up in the feed.
+
+With regard to the ordering, I’m wondering if people liking the posts later might be confuse it? Not sure…
