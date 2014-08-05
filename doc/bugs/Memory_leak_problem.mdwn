@@ -1,0 +1,12 @@
+See <https://microca.st/dper/note/irBD0VcITBigVUdVjJQl7g>
+and <https://identi.ca/jankusanagi/comment/pyCtOoHVT0G364xu6bTvlw>
+
+bernhard: Does it make sense to run pumpa in some profiling tool like valgrind or compiled with -g1 -g3, it may provide some insights
+if memory or cyclers are lost. I’ve noticed some issues when running pumpa for several hours and loaded a lot of of lot messages.
+(I usually do not run pumpa longer than 8 hours and then shut down my workspace machine.)
+
+Running it even longer with profiling or memory checking could give some ideas where to debug further.
+
+sazius: I ran with valgrind and found the FileDownloader to be a big problem. I think the situation is now improved after a rewrite to FileDownloader, however it is still not good.
+
+
