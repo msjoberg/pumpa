@@ -1,0 +1,5 @@
+jpope: It'd be handy for the tin-foil-hatters if you could either manually set proxy settings (say for use with tor+privoxy) within the settings or if Pumpa could look at system-wide set proxy settings. The latter is likely not feasible as it'd be WM/DE dependent I imagine.
+
+Otherwise, running Pumpa via torify works just as well.
+
+[[!tag features]]
