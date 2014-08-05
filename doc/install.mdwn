@@ -33,12 +33,6 @@ By ["XRevan86"](https://microca.st/xrevan86): <http://software.opensuse.org/pack
 
 By ["speps"](https://aur.archlinux.org/packages/?K=speps&SeB=m): <https://aur.archlinux.org/packages/?K=pumpa>
 
-### Microsoft Windows
-
-By [Tim Schumacher][16]: <http://bandenkrieg.hacked.jp/~tim/pumpa/>
-
-[16]: https://fmrl.me/0xAFFE
-
 ### Mac OS X
 
 By [Al aka chunder@identi.ca](https://identi.ca/chunder): <http://juu.st/pumpa/>
