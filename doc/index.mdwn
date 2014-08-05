@@ -2,13 +2,12 @@ Pumpa is a simple [pump.io](http://pump.io) client written in C++ and
 Qt. Pumpa is [[Free_Software|license]].
 
 For installation instructions check the [[install]] page, to report an
-issue or submit a feature request go to the [[bugs]] page. For other
-pages check the right hand sidebar.
+issue or submit a feature request go to the [[bugs]] page.
 
-"Pumpa" is a Swedish word that means either "to pump" (as a verb) or
+- "Pumpa" is a Swedish word that means either "to pump" (as a verb) or
 "pumpkin" (as a noun) :-)
 
-Pumpa was mentioned on [LWN: "Searching for a pump.io
+- Pumpa was mentioned on [LWN: "Searching for a pump.io
 client"](https://lwn.net/Articles/575691/).
 
 [[!sidebar content="""
@@ -18,6 +17,6 @@ client"](https://lwn.net/Articles/575691/).
 
 ## Obligatory screenshot
 
-Pumpa runs fine Gnome 3 even though it's a Qt application.
+*Pumpa running on Gnome 3:*
 
 ![Pumpa screen shot](images/pumpa_screen.png)
