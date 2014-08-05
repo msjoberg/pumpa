@@ -1,3 +1,4 @@
 Move stuff from there <https://gitorious.org/projects/pumpa/issues> to here.
 
 [[!tag high]]
+[[!tag resolved]]
