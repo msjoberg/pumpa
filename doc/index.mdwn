@@ -1,13 +1,16 @@
+[[!template  id=note text=""" "Pumpa" is a Swedish word that means either "to pump" (as a verb) or
+"pumpkin" (as a noun) :-)"""]]
 Pumpa is a simple [pump.io](http://pump.io) client written in C++ and
 Qt. Pumpa is [[Free_Software|license]].
 
 For installation instructions check the [[install]] page, to report an
 issue or submit a feature request go to the [[bugs]] page.
 
-[[!template  id=note text=""" "Pumpa" is a Swedish word that means either "to pump" (as a verb) or
-"pumpkin" (as a noun) :-)"""]]
+## News
 
-- Pumpa was mentioned on [LWN: "Searching for a pump.io
+- **June 8, 2014,** version 0.8.4 released.
+
+- **December 5, 2013, ** Pumpa was mentioned on [LWN: "Searching for a pump.io
 client"](https://lwn.net/Articles/575691/).
 
 [[!sidebar content="""
