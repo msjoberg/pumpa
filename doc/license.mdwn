@@ -21,8 +21,10 @@ The Pumpa source code includes codes and graphics from other people:
   code for Microsoft Windows systems.
 
 - Spanish translation by [Laura Arjona](https://identi.ca/larjona),
-  Italian by ["Metal Biker"](https://microca.st/howcanuhavemyusername)
-  and German by [Mathias Gebbe](https://pumpity.net/matzeihnsein)
+  Italian by
+  ["Metal Biker"](https://microca.st/howcanuhavemyusername), German by
+  [Mathias Gebbe](https://pumpity.net/matzeihnsein), and Na'vi by
+  [Jessica Tallon](https://microca.st/Tsyesika).
 
 [2]: https://github.com/kypeli/kQOAuth
 [3]: http://www.johanpaul.com/
