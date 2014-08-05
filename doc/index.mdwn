@@ -1,6 +1,10 @@
 Pumpa is a simple [pump.io](http://pump.io) client written in C++ and
 Qt. Pumpa is [[Free_Software|license]].
 
+For installation instructions check the [[install]] page, to report an
+issue or submit a feature request go to the [[bugs]] page. For other
+pages check the right hand sidebar.
+
 "Pumpa" is a Swedish word that means either "to pump" (as a verb) or
 "pumpkin" (as a noun) :-)
 
@@ -11,23 +15,9 @@ client"](https://lwn.net/Articles/575691/).
 [[!inline feeds=no template=bare pages=sidebar]]
 """]]
 
-## Running
-
-On Linux you can start pumpa by running its binary:
-
-    ./pumpa
-
-On Mac OS X a regular clickable application file (pumpa.app) should be
-created.
-
-At first launch an OAuth wizard will pop-up, just enter your pump.io
-account id, and click Next. Then a the authentication page with your
-pump.io server will be opened in the web browser, just follow the
-instructions there. Finally a pair of codes (token, verifier) will
-appear that you need to copy & paste back into pumpa.
 
 ## Obligatory screenshot
 
-Pumpa runs fine Gnome 3 even though it's a Qt application:
+Pumpa runs fine Gnome 3 even though it's a Qt application.
 
 ![Pumpa screen shot](images/pumpa_screen.png)

@@ -3,6 +3,7 @@
 * [[install]]
 * [[bugs]]
 * [[configuration]]
+* [[markdown]]
 * [[debug_mode]]
 * [[translations]]
 * [[license]]
