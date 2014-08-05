@@ -7,6 +7,8 @@ Also check bugs filed against
 
 Common tags for bugs reports: [[high]] [[feature]] [[resolved]].
 
+To report a bug just type a descriptive title below and click "edit".
+
 [[!inline pages="./bugs/* and !./bugs/*/* and !./bugs/resolved and !link(resolved) 
 and !*/Discussion" actions=yes postform=yes show=0 archive=yes template=buglist]]
 
