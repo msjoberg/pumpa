@@ -71,16 +71,20 @@ greaterThan(QT_MAJOR_VERSION, 4) {
   DEFINES += QT5
 }
 
-# libtidy is now a requirement
-LIBS += -ltidy
-
 exists( /usr/include/tidy/tidy.h ) {
   DEFINES += USE_TIDY_TIDY
 } else:exists( /usr/include/tidy.h ) {
   DEFINES += USE_TIDY
+} else:exists( /usr/local/include/tidy.h ) {
+  DEFINES += USE_TIDY
+} else:exists( /usr/local/include/tidy/tidy.h ) {
+  DEFINES += USE_TIDY_TIDY
 } else {
   error("Unable to find libtidy header files for compiling! Install libtidy-dev (Debian, Ubuntu) or libtidy-devel (Fedora).")
 }
+
+# libtidy is now a requirement
+LIBS += -ltidy
 
 # Optional spell checking support with libaspell
 exists( /usr/include/aspell.h ) {
