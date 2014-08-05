@@ -1,0 +1,6 @@
+jrobb: Would it be possible to highlight certain strings in posts?
+for instance, I could add "jrobb" to my highlight list, and this would be highlighted in posts where mentioned (like IRC).
+
+Also, maybe if this happens in the "meanwhile" tab the header could get a "*" or different highlight color instead of red.
+
+[[!tag feature]]
