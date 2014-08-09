@@ -25,12 +25,15 @@ OBJECTS_DIR = obj
 
 QT += core gui network
 
-#
 # To enable debug mode, run as:
 # qmake CONFIG+=debug
 # or uncomment this:
 # CONFIG+=debug
-#
+
+# To disable libtidy (not recommended), run as:
+# qmake CONFIG+=notidy
+# or uncomment this line:
+# CONFIG += notidy
 
 CONFIG(release, debug|release) {
   message("Release mode on")
@@ -71,20 +74,24 @@ greaterThan(QT_MAJOR_VERSION, 4) {
   DEFINES += QT5
 }
 
-exists( /usr/include/tidy/tidy.h ) {
-  DEFINES += USE_TIDY_TIDY
-} else:exists( /usr/include/tidy.h ) {
-  DEFINES += USE_TIDY
-} else:exists( /usr/local/include/tidy.h ) {
-  DEFINES += USE_TIDY
-} else:exists( /usr/local/include/tidy/tidy.h ) {
-  DEFINES += USE_TIDY_TIDY
+notidy {
+  message("Disabling libtidy")
+  DEFINES += NO_TIDY
 } else {
-  error("Unable to find libtidy header files for compiling! Install libtidy-dev (Debian, Ubuntu) or libtidy-devel (Fedora).")
+  message("Using libtidy")
+  LIBS += -ltidy
+  exists( /usr/include/tidy/tidy.h ) {
+    DEFINES += USE_TIDY_TIDY
+  } else:exists( /usr/include/tidy.h ) {
+    DEFINES += USE_TIDY
+  } else:exists( /usr/local/include/tidy.h ) {
+    DEFINES += USE_TIDY
+  } else:exists( /usr/local/include/tidy/tidy.h ) {
+    DEFINES += USE_TIDY_TIDY
+  } else {
+    error("Unable to find libtidy header files for compiling! Install libtidy-dev (Debian, Ubuntu) or libtidy-devel (Fedora).")
+  }
 }
-
-# libtidy is now a requirement
-LIBS += -ltidy
 
 # Optional spell checking support with libaspell
 exists( /usr/include/aspell.h )|exists( /usr/local/include/aspell.h ) {

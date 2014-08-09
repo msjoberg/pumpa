@@ -278,6 +278,10 @@ QString removeHtml(QString origText) {
 //------------------------------------------------------------------------------
 
 QString tidyHtml(QString str, bool& ok) {
+#ifdef NO_TIDY
+  ok = true;
+  return str;
+#else
   QString res = str;
   ok = false;
 
@@ -319,6 +323,7 @@ QString tidyHtml(QString str, bool& ok) {
   tidyRelease(tdoc);
 
   return res.trimmed();
+#endif
 }
 
 //------------------------------------------------------------------------------
@@ -330,11 +335,12 @@ QString addTextMarkup(QString text, bool useMarkdown) {
   qDebug() << "\n[DEBUG] MARKUP\n" << text;
 #endif
 
-  // no longer needed with libtidy
-  //   text = removeHtml(text);
-  // #ifdef DEBUG_MARKUP
-  //   qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
-  // #endif
+#ifdef NO_TIDY
+  text = removeHtml(text);
+# ifdef DEBUG_MARKUP
+  qDebug() << "\n[DEBUG] MARKUP (clean inline HTML)\n" << text;
+# endif
+#endif
 
   // linkify plain URLs
   text = linkifyUrls(text, useMarkdown);
@@ -347,6 +353,7 @@ QString addTextMarkup(QString text, bool useMarkdown) {
     // apply markdown
     text = markDown(text);
   } else {
+    // text.replace("\n\n", "<p>");
     text.replace("\n", "<br/>");
   }
 
@@ -355,8 +362,10 @@ QString addTextMarkup(QString text, bool useMarkdown) {
            << (useMarkdown?"Markdown)":"text conversion)") << "\n" << text;
 #endif
 
+#ifndef NO_TIDY
   bool tidyOk = false;
   text = tidyHtml(text, tidyOk);
+#endif
 
 #ifdef DEBUG_MARKUP
   qDebug() << "\n[DEBUG] MARKUP (libtidy)\n" << text;
