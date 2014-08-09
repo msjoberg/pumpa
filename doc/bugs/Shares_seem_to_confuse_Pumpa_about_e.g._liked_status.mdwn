@@ -1,3 +1,4 @@
 My theory: main item has liked: false, but it gets set to true by someone else sharing it as liked (by them).
 
+Edit: OK, I'm unable to reproduce this on my test instance, so perhaps my theory is wrong.
 [[!tag high]]
