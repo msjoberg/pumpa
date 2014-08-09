@@ -1,0 +1,10 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ ip="62.78.213.233"
+ subject="comment 2"
+ date="2014-08-09T09:43:46Z"
+ content="""
+OK, commit [162e76f](https://gitorious.org/pumpa/pumpa/commit/162e76ff79bf9aaddded0c08349d29f4c90541a2) is a hack that disables the newlines-to-breaks conversion if it detects \"more advanced\" HTML tags.
+
+
+"""]]
