@@ -101,6 +101,7 @@ private slots:
   void onAuthorizedRequestReady(QByteArray response, int id);
 
   void uploadProgress(qint64 bytesSent, qint64 bytesTotal);
+  void uploadCanceled(bool abortRequest=true);
   
   void request(QString endpoint, int response_id,
                KQOAuthRequest::RequestHttpMethod method = KQOAuthRequest::GET,
@@ -272,6 +273,7 @@ private:
   MessageEdit::completion_t m_completions;
 
   QProgressDialog* m_uploadDialog;
+  QNetworkReply* m_uploadRequest;
 
   QNetworkAccessManager* m_nam;
 
