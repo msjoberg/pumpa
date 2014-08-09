@@ -6,6 +6,8 @@ Qt. Pumpa is [[Free_Software|license]].
 For installation instructions check the [[install]] page, to report an
 issue or submit a feature request go to the [[bugs]] page.
 
+Pumpa's [source code is hosted on gitorious](https://gitorious.org/pumpa).
+
 ## News
 
 - **June 8, 2014,** version 0.8.4 released.

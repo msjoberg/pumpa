@@ -1,0 +1,19 @@
+See discussion: <https://hub.polari.us/steve/note/nZwTcxqRQH6tJmA2p70NDA>
+
+Example:
+
+    <p>OK, so based on discussions with <a href="https://fmrl.me/habi">@habi@fmrl.me</a> and <a href="https://pump.saz.im/sazius">@sazius</a>, the trick now to building Pumpa on Mac OS X (in addition to the steps already listed on <a href="https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X">https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X</a>) are:</p>
+    <br />
+    <br />
+    <br />
+    <ul>
+    <li style="list-style: none"><br /></li>
+    <li>brew install homebrew/dupes/tidy</li>
+    <li style="list-style: none"><br /></li>
+    <li>brew install aspell</li>
+    <li style="list-style: none"><br /></li>
+    <li>Set the following environment variable (e.g. in .bashrc or .profile): export LIBRARY_PATH=/usr/local/lib/</li>
+    <li style="list-style: none"><br /></li>
+    </ul>
+
+[[!tag high]]
