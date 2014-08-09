@@ -353,8 +353,12 @@ QString addTextMarkup(QString text, bool useMarkdown) {
     // apply markdown
     text = markDown(text);
   } else {
-    // text.replace("\n\n", "<p>");
-    text.replace("\n", "<br/>");
+    // This is a bit of a hack: if the text doesn't certain tags we
+    // replace newlines with breaks.
+
+    QRegExp rx("<p>|<ul>", Qt::CaseInsensitive);
+    if (rx.indexIn(text) == -1)
+      text.replace("\n", "<br/>");
   }
 
 #ifdef DEBUG_MARKUP
