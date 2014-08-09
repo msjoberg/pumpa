@@ -16,4 +16,4 @@ Example:
     <li style="list-style: none"><br /></li>
     </ul>
 
-[[!tag high]]
+[[!tag resolved]]
