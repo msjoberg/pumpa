@@ -2,6 +2,7 @@
 
 * [[install]]
 * [[bugs]]
+* [[news]]
 * [[configuration]]
 * [[markdown]]
 * [[debug_mode]]
