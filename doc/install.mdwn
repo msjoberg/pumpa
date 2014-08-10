@@ -1,10 +1,12 @@
-Pumpa is packaged in [Debian jessie and
-sid](https://packages.debian.org/search?keywords=pumpa) and [Ubuntu
-trusty](http://packages.ubuntu.com/trusty/pumpa), so if you are using
+# Official packages
+
+Pumpa is packaged in [Debian](https://packages.debian.org/search?keywords=pumpa) and [Ubuntu](http://packages.ubuntu.com/search?keywords=pumpa&searchon=names), so if you are using
 one of those, you can simply install it with your favourite package
 manager or by typing (as root or using `sudo`):
 
     apt-get install pumpa
+
+# Third party packages
 
 In addition, some third parties have provided packages or installers
 for other platforms listed below. Please note, that I have no control
@@ -12,7 +14,7 @@ over these, so please report any problems with them to the respective
 packagers/authors.  Alternatively you can download the source code and
 compile it yourself, it's pretty easy (see the following sections).
 
-### Fedora Linux
+## Fedora Linux
 
 By [Matt Molyneaux](https://microca.st/moggers87): <http://moggers.co.uk/~moggers87/repo/pumpa/>
 
@@ -21,22 +23,24 @@ Copr repo for Pumpa and [Dianara][18]: <http://sylke.altervista.org/repo/>
 
 [18]: https://jancoding.wordpress.com/category/projects/dianara/
 
-### Debian GNU/Linux (Spanish variant)
+## Debian GNU/Linux (Spanish variant)
 
 By [Fabián Bonetti](https://identi.ca/mamafree) configured for Spanish: <http://mamalibre.no-ip.org/>
 
-### openSUSE Linux
+## openSUSE Linux
 
 By ["XRevan86"](https://microca.st/xrevan86): <http://software.opensuse.org/package/pumpa>
 
-### Archlinux AUR
+## Archlinux AUR
 
 By ["speps"](https://aur.archlinux.org/packages/?K=speps&SeB=m): <https://aur.archlinux.org/packages/?K=pumpa>
 
-### Mac OS X
+## Mac OS X
 
 By [Al aka chunder@identi.ca](https://identi.ca/chunder): <http://juu.st/pumpa/>
 
+
+# Compiling yourself
 
 ## Build dependencies
   
