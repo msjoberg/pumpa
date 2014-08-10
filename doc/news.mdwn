@@ -1,0 +1,22 @@
+# 2014
+- **June 8,** version 0.8.4 released.
+- **March 23,** version 0.8.3 released.
+
+# 2013
+- **December 30,** [Pumpa package accepted into Debian](https://packages.qa.debian.org/p/pumpa/news/20131230T060010Z.html).
+- **December 29,** version 0.8.2 released.
+- **December 19,** version 0.8.1 released.
+- **December 5,** Pumpa was mentioned on [LWN: "Searching for a pump.io
+client"](https://lwn.net/Articles/575691/).
+- **November 18,** version 0.8 released.
+- **October 6,** version 0.7.4 released.
+- **August 17,** version 0.7.3 released.
+- **August 16,** version 0.7.2 released.
+- **July 29,** version 0.7 released.
+- **July 16,** version 0.6 released.
+- **July 11,** version 0.5 released.
+- **July 3,** version 0.4 released.
+- **June 15,** version 0.3 released.
+- **June 11,** version 0.2 released.
+- **June 4,** version 0.1 released.
+- **May 22,** [Pumpa development starts](https://gitorious.org/pumpa/pumpa/commit/58a0e8cfd64bf5afeb67797c9ab5c1ec15835b0b).

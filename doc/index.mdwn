@@ -10,10 +10,16 @@ Pumpa's [source code is hosted on gitorious](https://gitorious.org/pumpa).
 
 ## News
 
-- **June 8, 2014,** version 0.8.4 released.
+### 2014
+- **June 8,** version 0.8.4 released.
+- **March 23,** version 0.8.3 released.
 
-- **December 5, 2013, ** Pumpa was mentioned on [LWN: "Searching for a pump.io
+### 2013
+- **December 30,** [Pumpa package accepted into Debian](https://packages.qa.debian.org/p/pumpa/news/20131230T060010Z.html).
+- **December 5,** Pumpa was mentioned on [LWN: "Searching for a pump.io
 client"](https://lwn.net/Articles/575691/).
+
+[[All news|news]]
 
 [[!sidebar content="""
 [[!inline feeds=no template=bare pages=sidebar]]
