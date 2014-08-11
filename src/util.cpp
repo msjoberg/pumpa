@@ -294,8 +294,9 @@ QString tidyHtml(QString str, bool& ok) {
     tidyOptSetInt(tdoc, TidyDoctypeMode, TidyDoctypeOmit);
     
   if (configOk &&
+      (tidySetCharEncoding(tdoc, "utf8") >= 0) &&
       (tidySetErrorBuffer(tdoc, &errbuf) >= 0) &&
-      (tidyParseString(tdoc, str.toLatin1().data()) >= 0) &&
+      (tidyParseString(tdoc, str.toUtf8().data()) >= 0) &&
       (tidyCleanAndRepair(tdoc) >= 0) &&
       (tidyRunDiagnostics(tdoc) >= 0) &&
       (tidySaveBuffer(tdoc, &output) >= 0) &&
