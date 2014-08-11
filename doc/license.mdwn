@@ -17,6 +17,8 @@ The Pumpa source code includes codes and graphics from other people:
   Port&eacute;, Vicent Marti and others, and
   [permissively licensed][9].
 
+# Other acknowledgements
+
 - [Tim Schumacher][16] contributed several improvements and installer
   code for Microsoft Windows systems.
 

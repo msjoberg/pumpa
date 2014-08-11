@@ -7,11 +7,15 @@ following steps:
     qmake CONFIG+=debug
     make
     
-To run in the debugger (you need to have `gdb` installed):
+In addition to adding debugger support to the executable, using debug mode will also cause Pumpa
+to display a lot more output to the terminal (stdout), e.g. when it is making HTTP requests, 
+and other information potentially useful when debugging.
+
+To run Pumpa in the debugger (you need to have `gdb` installed) type:
 
     gdb ./pumpa
 
-Inside gdb you then start Pumpa with the command `run`, when it has
+Inside gdb you then start Pumpa with the command `run`. If it has
 crashed you'll be thrown back to the debugger, then type `where`,
 which will tell you where it crashed. This information can be very
 useful (in particular the first 10-20 lines), please include it if you

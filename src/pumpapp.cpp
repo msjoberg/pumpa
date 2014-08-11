@@ -42,7 +42,8 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   m_messageWindow(NULL),
   m_trayIcon(NULL),
   m_locale(locale),
-  m_uploadDialog(NULL)
+  m_uploadDialog(NULL),
+  m_uploadRequest(NULL)
 {
   if (m_locale.isEmpty())
     m_locale = "en_US";
@@ -1183,12 +1184,15 @@ void PumpApp::uploadFile(QString filename) {
     m_uploadDialog = new QProgressDialog("Uploading image...", "Abort", 0, 100,
                                          this);
     m_uploadDialog->setWindowModality(Qt::WindowModal);
+    connect(m_uploadDialog, SIGNAL(canceled()), this, SLOT(uploadCanceled()));
+  } else {
+    m_uploadDialog->reset();
   }
   m_uploadDialog->setValue(0);
   m_uploadDialog->show();
 
-  const QNetworkReply* nr = executeRequest(oaRequest, QAS_IMAGE_UPLOAD);
-  connect(nr, SIGNAL(uploadProgress(qint64, qint64)),
+  m_uploadRequest = executeRequest(oaRequest, QAS_IMAGE_UPLOAD);
+  connect(m_uploadRequest, SIGNAL(uploadProgress(qint64, qint64)),
           this, SLOT(uploadProgress(qint64, qint64)));
 }
 
@@ -1218,13 +1222,22 @@ void PumpApp::uploadProgress(qint64 bytesSent, qint64 bytesTotal) {
   if (!m_uploadDialog || bytesTotal <= 0)
     return;
 
-  QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-
   m_uploadDialog->setValue((100*bytesSent)/bytesTotal);
-  if (m_uploadDialog->wasCanceled() && reply) {
-    reply->abort();
-    m_uploadDialog->hide();
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::uploadCanceled(bool abortRequest) {
+  if (m_uploadRequest && abortRequest) {
+#ifdef DEBUG_NET
+    qDebug() << "[DEBUG] aborting upload...";
+#endif
+    m_uploadRequest->abort();
   }
+  m_uploadRequest = NULL;
+
+  m_imageObject.clear();
+  m_uploadDialog->reset();
 }
 
 //------------------------------------------------------------------------------
@@ -1482,6 +1495,9 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     if (id & QAS_POST) {
       errorMessage(tr("Unable to post message!"));
       m_messageWindow->show();
+    } else if (sid == QAS_IMAGE_UPLOAD) {
+      uploadCanceled(false);
+      errorMessage(tr("Unable to upload image!"));
     } else if (sid == QAS_OBJECT) {
       qDebug() << "[WARNING] unable to fetch context for object.";
     } else {
@@ -1539,7 +1555,7 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
       m_recipientLists.append(lists->at(i));
     }
   } else if (sid == QAS_IMAGE_UPLOAD) {
-    m_uploadDialog->hide();
+    m_uploadDialog->reset();
     updatePostedImage(json);
   } else if (sid == QAS_IMAGE_UPDATE) {
     postImageActivity(json);
