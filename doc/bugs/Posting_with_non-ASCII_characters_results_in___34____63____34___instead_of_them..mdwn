@@ -1,0 +1,3 @@
+Pumpa 0.8.4 on Debian jessie/sid.
+
+Post, for example, "тест…", as a post or as a comment, and the post will be "?????".
