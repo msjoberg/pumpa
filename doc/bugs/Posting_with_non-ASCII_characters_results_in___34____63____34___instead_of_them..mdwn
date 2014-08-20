@@ -1,3 +1,8 @@
 Pumpa 0.8.4 on Debian jessie/sid.
 
 Post, for example, "тест…", as a post or as a comment, and the post will be "?????".
+
+
+[sazius at 2014-08-11T20:10:58Z](https://pump.saz.im/sazius/note/4I2HDTSrSaanLUXPIMug8Q):
+
+There was a nasty bug in Pumpa v0.8.4 which caused basically any special characters to be messed up (I think those that aren't in latin1 or in different places in UTF8). Ironically I didn't notice this even though my last name contains such a character :-) It's fixed now in git master, and a new release is coming within ~1 week.
