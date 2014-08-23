@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2014 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -785,7 +785,7 @@ void PumpApp::about() {
   
   QString mainText = 
     QString("<p><b>%1 %2</b> - %3<br/><a href=\"%4\">%4</a><br/>"
-            + tr("Copyright &copy; 2013 Mats Sj&ouml;berg")
+            + tr("Copyright &copy; 2014 Mats Sj&ouml;berg")
             + " - <a href=\"https://pump.saz.im/sazius\">sazius@pump.saz.im</a>."
             "</p>"
             + tr("<p>Report bugs and feature requests at "
