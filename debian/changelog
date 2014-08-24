@@ -1,9 +1,11 @@
 pumpa (0.9-1) unstable; urgency=low
 
   * Fixed UTF-8 bug introduced in v0.8.4.
-  * Fixed bug where image upload consistently fails after an aborted upload. (Closes: #734477)
+  * Fixed bug where image upload consistently fails after an aborted upload.
+    (Closes: #734477)
   * Complete @-tagging with display name instead of nick name.
-  * More aggressive about reloading inbox to better get missing replies. (Closes: #737081)
+  * More aggressive about reloading inbox to better get missing replies. 
+    (Closes: #737081)
   * Fixed download manager memory leaks.
   * Support for editing posts (in HTML only).
   * Fixed bug where copy by Ctrl-C didn't work in text widgets.
