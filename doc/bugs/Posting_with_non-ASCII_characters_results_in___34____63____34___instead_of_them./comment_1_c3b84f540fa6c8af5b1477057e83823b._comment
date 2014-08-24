@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ ip="62.78.213.233"
+ subject="comment 1"
+ date="2014-08-23T18:03:44Z"
+ content="""
+Yes, this bug should be fixed now in git master. A new release is coming to Debian soon :-) [[!tag resolved]]
+"""]]

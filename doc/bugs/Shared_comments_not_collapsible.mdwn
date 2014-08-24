@@ -1,0 +1,1 @@
+Shared comments do not have a collapse "-" button. (Shared posts do.)
