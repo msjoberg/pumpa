@@ -11,7 +11,7 @@ Pumpa's [source code is hosted on gitorious](https://gitorious.org/pumpa).
 ## News
 
 ### 2014
-- **Aug 25,** version 0.9 released.
+- **Aug 25,** [version 0.9 released](https://pump.saz.im/sazius/note/jMFNndYwT6OWUheKkAiuyg).
 - **June 8,** version 0.8.4 released.
 - **March 23,** version 0.8.3 released.
 
