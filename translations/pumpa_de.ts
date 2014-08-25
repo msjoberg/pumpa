@@ -29,27 +29,27 @@
     <message>
         <location filename="../src/actorwidget.cpp" line="137"/>
         <source>stop following</source>
-        <translation type="unfinished">entfolge</translation>
+        <translation>Nicht mehr folgen</translation>
     </message>
     <message>
         <location filename="../src/actorwidget.cpp" line="138"/>
         <source>follow</source>
-        <translation type="unfinished">folge</translation>
+        <translation>Folgen</translation>
     </message>
     <message>
         <location filename="../src/actorwidget.cpp" line="140"/>
         <source>stop minimising posts</source>
-        <translation type="unfinished"></translation>
+        <translation>Beiträge minimieren ausschalten</translation>
     </message>
     <message>
         <location filename="../src/actorwidget.cpp" line="141"/>
         <source>auto-minimise posts</source>
-        <translation type="unfinished"></translation>
+        <translation>Beiträge automatisch minimieren</translation>
     </message>
     <message>
         <location filename="../src/actorwidget.cpp" line="149"/>
         <source>Are you sure you want to stop following %1?</source>
-        <translation type="unfinished">Sind Sie sicher, dass Sie %1 nicht mehr folgen wollen?</translation>
+        <translation>Sind Sie sicher, dass Sie %1 nicht mehr folgen wollen?</translation>
     </message>
 </context>
 <context>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../src/collectionwidget.cpp" line="69"/>
         <source>Load older</source>
-        <translation>ältere Beiträge laden</translation>
+        <translation>Ältere Beiträge laden</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="108"/>
         <source>edit</source>
-        <translation type="unfinished"></translation>
+        <translation>bearbeiten</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="112"/>
@@ -110,22 +110,22 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="349"/>
         <source>Profile last updated %1</source>
-        <translation type="unfinished"></translation>
+        <translation>letzte Profiländerung am %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="357"/>
         <source>updated %1</source>
-        <translation type="unfinished"></translation>
+        <translation>geändert %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="384"/>
         <source>unlike</source>
-        <translation></translation>
+        <translation>unlike</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="384"/>
         <source>like</source>
-        <translation>liken</translation>
+        <translation>like</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="396"/>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="608"/>
         <source>Show all replies</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Kommentare anzeigen</translation>
     </message>
     <message>
         <source>stop following %1</source>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="438"/>
         <source>follow %1</source>
-        <translation type="unfinished">%1 folgen</translation>
+        <translation>%1 folgen</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="494"/>
@@ -279,7 +279,7 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="102"/>
         <source>&amp;Remove picture</source>
-        <translation>Bild löschen</translation>
+        <translation>Bild &amp;löschen</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="106"/>
@@ -299,67 +299,67 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="159"/>
         <source>Ca&amp;ncel</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbreche&amp;n</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="162"/>
         <source>&amp;Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vorschau</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="165"/>
         <source>&amp;Send message</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachricht &amp;senden</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="293"/>
         <source>&amp;Send comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar &amp;senden</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="293"/>
         <source>&amp;Send post</source>
-        <translation type="unfinished"></translation>
+        <translation>Beitrag &amp;senden</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="337"/>
         <source>Edit object</source>
-        <translation type="unfinished"></translation>
+        <translation>Objekt bearbeiten</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="340"/>
         <source>Edit post</source>
-        <translation type="unfinished"></translation>
+        <translation>Beitrag bearbeiten</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="342"/>
         <source>Edit comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar bearbeiten</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="344"/>
         <source>Edit image post</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildnachricht bearbeiten</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="346"/>
         <source>&amp;Update object</source>
-        <translation type="unfinished"></translation>
+        <translation>Objekt akt&amp;ualisieren</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="349"/>
         <source>&amp;Update post</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachricht akt&amp;ualisieren</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="351"/>
         <source>&amp;Update comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar akt&amp;ualisieren</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="353"/>
         <source>&amp;Update image post</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildnachricht akt&amp;ualisieren</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -386,7 +386,7 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="292"/>
         <source>Post a note</source>
-        <translation>neue Mitteilung</translation>
+        <translation>Neue Mitteilung</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="292"/>
@@ -420,12 +420,12 @@
     <message>
         <location filename="../src/messagewindow.cpp" line="476"/>
         <source>&amp;Add picture</source>
-        <translation>Bild einfügen</translation>
+        <translation>&amp;Bild einfügen</translation>
     </message>
     <message>
         <location filename="../src/messagewindow.cpp" line="484"/>
         <source>&amp;Change picture</source>
-        <translation>Bild ändern</translation>
+        <translation>Bild &amp;ändern</translation>
     </message>
 </context>
 <context>
@@ -519,7 +519,7 @@
     <message>
         <location filename="../src/objectwidget.cpp" line="179"/>
         <source>show context</source>
-        <translation>Kontext zeigen</translation>
+        <translation>Kontext anzeigen</translation>
     </message>
 </context>
 <context>
@@ -547,7 +547,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="1062"/>
         <source>Fi&amp;rehose</source>
-        <translation></translation>
+        <translation>Fi&amp;rehose</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="578"/>
@@ -597,7 +597,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="664"/>
         <source>Load older in timeline</source>
-        <translation>Ältere Beiträge &amp;laden</translation>
+        <translation>Ältere Beiträge laden</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="665"/>
@@ -622,7 +622,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="675"/>
         <source>About &amp;Qt</source>
-        <translation>Über Qt</translation>
+        <translation>Über &amp;Qt</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="678"/>
@@ -643,7 +643,7 @@
         <location filename="../src/pumpapp.cpp" line="313"/>
         <location filename="../src/pumpapp.cpp" line="695"/>
         <source>Followers</source>
-        <translation></translation>
+        <translation>Followers</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="246"/>
@@ -717,7 +717,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="688"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="692"/>
@@ -757,12 +757,12 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="759"/>
         <source>&lt;p&gt;Pumpa is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.&lt;/p&gt;&lt;p&gt;Pumpa is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.&lt;/p&gt;&lt;p&gt;You should have received a copy of the GNU General Public License along with Pumpa.  If not, see &lt;a href=&quot;http://www.gnu.org/licenses/&quot;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.&lt;/p&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="772"/>
         <source>&lt;p&gt;The &lt;a href=&quot;https://github.com/kypeli/kQOAuth&quot;&gt;kQOAuth library&lt;/a&gt; is copyrighted by &lt;a href=&quot;http://www.johanpaul.com/&quot;&gt;Johan Paul&lt;/a&gt; and licensed under LGPL 2.1.&lt;/p&gt;&lt;p&gt;The &lt;a href=&quot;https://github.com/vmg/sundown&quot;&gt;sundown Markdown library&lt;/a&gt; is copyrighted by Natacha Port&amp;eacute;, Vicent Marti and others, and &lt;a href=&quot;https://github.com/vmg/sundown#license&quot;&gt;permissively licensed&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;The Pumpa logo was &lt;a href=&quot;http://opengameart.org/content/fruit-and-veggie-inventory&quot;&gt;created by Joshua Taylor&lt;/a&gt; for the &lt;a href=&quot;http://lpc.opengameart.org/&quot;&gt;Liberated Pixel Cup&lt;/a&gt;.The logo is copyrighted by the artist and is dual licensed under the CC-BY-SA 3.0 license and the GNU GPL 3.0.</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="788"/>
@@ -862,7 +862,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="1500"/>
         <source>Unable to upload image!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild kann nicht hochgeladen werden!</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="1504"/>
@@ -872,12 +872,12 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="1531"/>
         <source>Successfully followed </source>
-        <translation>Folgen erfolgreich</translation>
+        <translation>Du folgst jetzt </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="1532"/>
         <source>Successfully unfollowed </source>
-        <translation>Entfolgen erfolgreich</translation>
+        <translation>Entfolgen erfolgreich </translation>
     </message>
 </context>
 <context>
@@ -980,7 +980,7 @@
     <message>
         <location filename="../src/pumpasettingsdialog.cpp" line="160"/>
         <source>Currently logged in as %1.</source>
-        <translation>Zur Zeit eingeloggt als: %1</translation>
+        <translation>Zur Zeit eingeloggt als: %1.</translation>
     </message>
 </context>
 <context>
@@ -988,7 +988,7 @@
     <message>
         <location filename="../src/qasobject.cpp" line="314"/>
         <source>Deleted %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelöscht am %1</translation>
     </message>
 </context>
 <context>
@@ -1006,89 +1006,89 @@
     <message numerus="yes">
         <location filename="../src/util.cpp" line="164"/>
         <source>%n minutes ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor %n Minute</numerusform>
+            <numerusform>vor %n Minuten</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="166"/>
         <source>one hour ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor einer Stunde</numerusform>
+            <numerusform>vor einer Stunde</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="168"/>
         <source>%n hours ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor %n Stunden</numerusform>
+            <numerusform>vor %n Stunden</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="171"/>
         <source>one day ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor einem Tag</numerusform>
+            <numerusform>vor einem Tag</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="173"/>
         <source>%n days ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor %n Tagen</numerusform>
+            <numerusform>vor %n Tagen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="175"/>
         <source>one week ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor einer Woche</numerusform>
+            <numerusform>vor einer Woche</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="177"/>
         <source>%n weeks ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor %n Wochen</numerusform>
+            <numerusform>vor %n Wochen</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="179"/>
         <source>one month ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor einem Monat</numerusform>
+            <numerusform>vor einem Monat</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="181"/>
         <source>%n months ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor %n Monaten</numerusform>
+            <numerusform>vor %n Monaten</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="183"/>
         <source>one year ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor einem Jahr</numerusform>
+            <numerusform>vor einem Jahr</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../src/util.cpp" line="185"/>
         <source>%n years ago</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>vor %n Jahren</numerusform>
+            <numerusform>vor %n Jahren</numerusform>
         </translation>
     </message>
     <message numerus="yes">
