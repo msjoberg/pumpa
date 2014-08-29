@@ -22,12 +22,12 @@
 
 #define CLIENT_NAME           "pumpa"
 #define CLIENT_FANCY_NAME     "Pumpa"
-#define CLIENT_VERSION        "0.9"
+#define CLIENT_VERSION        "0.9+git"
 #define CLIENT_ICON           ":/images/pumpa.png"
 
 #define WEBSITE_URL           "https://pumpa.branchable.com/"
 #define MARKUP_DOC_URL        "https://pumpa.branchable.com/markdown/"
-#define BUGTRACKER_URL        "https://gitorious.org/projects/pumpa/issues"
+#define BUGTRACKER_URL        "https://pumpa.branchable.com/bugs/"
 
 #define IMAGE_MAX_WIDTH       320
 #define IMAGE_MAX_HEIGHT      320
