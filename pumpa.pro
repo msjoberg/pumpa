@@ -61,6 +61,9 @@ win32 {
   RC_FILE = win32/pumpa.rc
 }
 
+macx {
+  ICON = $${PWD}/images/pumpa.icns
+}
 # Additions for Qt 4
 lessThan(QT_MAJOR_VERSION, 5) {
   message("Configuring for Qt 4")
