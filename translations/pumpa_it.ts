@@ -1025,7 +1025,7 @@
         <location filename="../src/util.cpp" line="164"/>
         <source>%n minutes ago</source>
         <translation>
-            <numerusform>%n minuto fa</numerusform>
+            <numerusform>%n minuti fa</numerusform>
             <numerusform>%n minuti fa</numerusform>
         </translation>
     </message>
@@ -1041,7 +1041,7 @@
         <location filename="../src/util.cpp" line="168"/>
         <source>%n hours ago</source>
         <translation>
-            <numerusform>un&apos;ora fa</numerusform>
+            <numerusform>%n ore fa</numerusform>
             <numerusform>%n ore fa</numerusform>
         </translation>
     </message>
@@ -1057,7 +1057,7 @@
         <location filename="../src/util.cpp" line="173"/>
         <source>%n days ago</source>
         <translation>
-            <numerusform>un giorno fa</numerusform>
+            <numerusform>%n giorni fa</numerusform>
             <numerusform>%n giorni fa</numerusform>
         </translation>
     </message>
@@ -1073,7 +1073,7 @@
         <location filename="../src/util.cpp" line="177"/>
         <source>%n weeks ago</source>
         <translation>
-            <numerusform>una settimana fa</numerusform>
+            <numerusform>%n settimane fa</numerusform>
             <numerusform>%n settimane fa</numerusform>
         </translation>
     </message>
@@ -1089,7 +1089,7 @@
         <location filename="../src/util.cpp" line="181"/>
         <source>%n months ago</source>
         <translation>
-            <numerusform>un mese fa</numerusform>
+            <numerusform>%n mesi fa</numerusform>
             <numerusform>%n mesi fa</numerusform>
         </translation>
     </message>
@@ -1105,7 +1105,7 @@
         <location filename="../src/util.cpp" line="185"/>
         <source>%n years ago</source>
         <translation>
-            <numerusform>un anno fa</numerusform>
+            <numerusform>%n anni fa</numerusform>
             <numerusform>%n anni fa</numerusform>
         </translation>
     </message>
