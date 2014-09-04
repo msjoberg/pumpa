@@ -1,0 +1,58 @@
+For some reason [this post](https://pump.libernil.net/api/image/NzNkfOU6RQ-peBhzYvPhAQ) appears in pumpa without the text content. [Proxy URL.](https://pump.saz.im/api/proxy/fBY3_vnYTjWXfnB2cWt7vg)
+
+Dumping json shows it's missing:
+
+    {
+      fullImage: {
+        height: 960
+        pump_io: {
+          proxyURL: https://pump.saz.im/api/proxy/OQaOJfmlTzahT1OPeCiepg
+        } // end of pump_io
+        url: https://pump.libernil.net/uploads/cmhobbs/2014/9/4/zyOrzg.jpg
+        width: 1280
+      } // end of fullImage
+      id: https://pump.libernil.net/api/image/NzNkfOU6RQ-peBhzYvPhAQ
+      image: {
+        height: 240
+        pump_io: {
+          proxyURL: https://pump.saz.im/api/proxy/abq1J90hQ9mTaZsnf5n4pg
+        } // end of pump_io
+        url: https://pump.libernil.net/uploads/cmhobbs/2014/9/4/zyOrzg_th ... 
+        width: 320
+      } // end of image
+      liked: false
+      likes: {
+        pump_io: {
+          proxyURL: https://pump.saz.im/api/proxy/ZReWoOIDThGUCSgQ4Dullg
+        } // end of pump_io
+        totalItems: 0
+        url: https://pump.libernil.net/api/image/NzNkfOU6RQ-peBhzYvPhAQ/likes
+      } // end of likes
+      links: {
+        self: {
+          href: https://pump.libernil.net/api/image/NzNkfOU6RQ-peBhzYvPhAQ
+        } // end of self
+      } // end of links
+      objectType: image
+      published: 2014-09-04T18:21:36Z
+      pump_io: {
+        proxyURL: https://pump.saz.im/api/proxy/fBY3_vnYTjWXfnB2cWt7vg
+        shared: false
+      } // end of pump_io
+      replies: {
+        pump_io: {
+          proxyURL: https://pump.saz.im/api/proxy/mwsRFCeHTKyI3Us_j2AABg
+        } // end of pump_io
+        totalItems: 0
+        url: https://pump.libernil.net/api/image/NzNkfOU6RQ-peBhzYvPhAQ/r ... 
+      } // end of replies
+      shares: {
+        pump_io: {
+          proxyURL: https://pump.saz.im/api/proxy/JKgd8S03QXSVaTjioqr31Q
+        } // end of pump_io
+        totalItems: 0
+        url: https://pump.libernil.net/api/image/NzNkfOU6RQ-peBhzYvPhAQ/shares
+      } // end of shares
+      updated: 2014-09-04T18:21:36Z
+      url: https://pump.libernil.net/cmhobbs/image/NzNkfOU6RQ-peBhzYvPhAQ
+    } // end of JSON
