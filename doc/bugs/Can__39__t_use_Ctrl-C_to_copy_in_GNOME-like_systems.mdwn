@@ -1,0 +1,9 @@
+Reproduce:
+* Select text in Pumpa
+* Hit Ctrl-C
+
+Expected: Text copied to clipboard, Ctrl-V will paste.
+
+Actual: Text not copied, Ctrl-V pastes whatever I copied last.
+
+I'm on Pumpa 0.8.2, using MATE on Linux Mint.
