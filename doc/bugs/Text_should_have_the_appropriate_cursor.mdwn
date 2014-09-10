@@ -1,0 +1,7 @@
+Reproduce: Hover your mouse over text in Pumpa.
+
+Expected: Text-select cursor
+
+Actual: Pointer cursor remains (no change).
+
+Pumpa 0.8.2, on Linux Mint with MATE (GNOME-like).
