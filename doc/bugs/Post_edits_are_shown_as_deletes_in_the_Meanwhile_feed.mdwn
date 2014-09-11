@@ -1,7 +1,12 @@
-Pumpa 0.9 shows its own edits in the Meanwhile feed as
+Pumpa 0.9 shows **some** of its own post edits in the Meanwhile feed as
 
 "Aleksej: [Deleted Thu Sep 11 12:42:34 2014]"
 
 but Dianara shows
 
 "Aleksej updated [post name]"
+
+
+Works: https://identi.ca/aleksejrs/note/OMTOXbZyRu2RCHqjftuIlg
+
+Broken: https://identi.ca/aleksejrs/note/3VvUeO6bQ2a84DJs9S9bqA
