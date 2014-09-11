@@ -1,4 +1,4 @@
-Pumpa 0.9 shows its own edits in Meanwhile as
+Pumpa 0.9 shows its own edits in the Meanwhile feed as
 
 "Aleksej: [Deleted Thu Sep 11 12:42:34 2014]"
 
