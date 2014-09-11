@@ -1,8 +1,0 @@
-[[!comment format=mdwn
- username="http://openid.yandex.ru/aleksejrs/"
- nickname="aleksejrs"
- subject="Repeated editing"
- date="2014-09-11T12:39:53Z"
- content="""
-Repeated editing of a non-Markdown post duplicates the line-breaks.
-"""]]
