@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="http://openid.yandex.ru/aleksejrs/"
+ nickname="aleksejrs"
+ subject="comment 5"
+ date="2014-09-11T12:41:55Z"
+ content="""
+ Repeated editing of a non-Markdown post duplicates the line-breaks, which are br.  Markdown uses p elements, which have no such problem.
+"""]]
