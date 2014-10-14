@@ -1,3 +1,5 @@
 Pumpa 0.9
 
 When I have a "Context" tab open, and click another "show context" button, the tab is overwritten with a new context.  But I might be wanting to peek at a different context while reading the current one.
+
+[[!tag feature]]
