@@ -1,0 +1,3 @@
+I just ugraded from version 0.5 to 0.9, and now Pumpa doesn't respect KDE4 colourscheme. That is, I am using a dark colours scheme, but Pumpa has the usual greyish background that is default for QT apps.
+
+I am using ArchLinux, and installed the package using AUR.
