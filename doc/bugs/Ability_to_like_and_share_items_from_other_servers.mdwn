@@ -1,1 +1,1 @@
-I see an interesting item at a server other than I am using, and can do nothing about it but follow the user?
+I see an interesting item using the Web UI of a server other than the one I am using, and can do nothing about it but follow the user?
