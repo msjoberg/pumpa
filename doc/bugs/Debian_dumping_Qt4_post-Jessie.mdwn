@@ -1,0 +1,7 @@
+An early announcement was made that Qt4 is going to be removed from 
+Stretch, otherwise known as Jessie + 1.  pumpa is currently based on 
+Qt4.  While it is not necessary or appropriate to break Jessie's current 
+freeze to switch to Qt5 it is necessary to begin re-factoring code to 
+prepare for this coming switch.  The full early announcement can be read 
+at 
+http://perezmeyer.blogspot.com/2014/11/early-announce-qt4-removal-in-jessie1.html
