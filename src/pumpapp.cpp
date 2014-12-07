@@ -1518,6 +1518,8 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     QASCollection::getCollection(json, this, id);
   } else if (sid == QAS_ACTIVITY) {
     QASActivity* act = QASActivity::getActivity(json, this);
+    if (!act) // just bail out on broken activities
+      return;
     QASObject* obj = act->object();
 
     if ((id & QAS_TOGGLE_LIKE) && obj)

@@ -204,8 +204,14 @@ QASObject* QASObject::getObject(QVariantMap json, QObject* parent,
                                 bool ignoreLike) {
   QString id = json["id"].toString();
 
-  if (id.isEmpty())
+  if (id.isEmpty()) // some objects from Mediagoblin seem to be without "id"
+    id = json["url"].toString();
+
+  if (id.isEmpty()) {
+    qDebug() << "WARNING: null object";
+    qDebug() << debugDumpJson(json, "object");
     return NULL;
+  }
 
   if (json["objectType"] == "person")
     return QASActor::getActor(json, parent);
