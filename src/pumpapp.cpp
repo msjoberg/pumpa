@@ -1518,21 +1518,21 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     QASCollection::getCollection(json, this, id);
   } else if (sid == QAS_ACTIVITY) {
     QASActivity* act = QASActivity::getActivity(json, this);
-    if (!act) // just bail out on broken activities
-      return;
-    QASObject* obj = act->object();
+    if (act) { // if not a broken activity
+      QASObject* obj = act->object();
 
-    if ((id & QAS_TOGGLE_LIKE) && obj)
-      obj->toggleLiked();
+      if ((id & QAS_TOGGLE_LIKE) && obj)
+	obj->toggleLiked();
 
-    if ((id & QAS_FOLLOW) || (id & QAS_UNFOLLOW)) {
-      QASActor* actor = obj ? obj->asActor() : NULL;
-      if (actor) {
-        bool doFollow = (id & QAS_FOLLOW);
-        followActor(actor, doFollow);
-        notifyMessage(QString(doFollow ? tr("Successfully followed ") :
-                              tr("Successfully unfollowed ")) +
-                      actor->displayNameOrWebFinger());
+      if ((id & QAS_FOLLOW) || (id & QAS_UNFOLLOW)) {
+	QASActor* actor = obj ? obj->asActor() : NULL;
+	if (actor) {
+	  bool doFollow = (id & QAS_FOLLOW);
+	  followActor(actor, doFollow);
+	  notifyMessage(QString(doFollow ? tr("Successfully followed ") :
+				tr("Successfully unfollowed ")) +
+			actor->displayNameOrWebFinger());
+	}
       }
     }
   } else if (sid == QAS_OBJECTLIST) {
