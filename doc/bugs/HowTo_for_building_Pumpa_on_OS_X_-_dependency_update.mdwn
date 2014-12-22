@@ -1,0 +1,24 @@
+I followed these OSX instructions on a new iMac (OSX 10.10.1) (https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X))
+
+and encountered the following build error:
+
+    In file included from src/main.cpp:25:
+    In file included from src/pumpapp.h:52:
+    In file included from src/messagewindow.h:35:
+    In file included from src/messageedit.h:29:
+    src/qaspell.h:32:10: fatal error: 'aspell.h' file not found
+    #include <aspell.h>
+                       ^
+    1 error generated.
+    make: *** [obj/main.o] Error 1
+
+homebrew installs aspell.h into /usr/local/include.
+
+I edited the pumpa Makefile and added
+
+    -I/usr/local/include
+
+
+to the "INCPATH" and executed a successful build.
+
+Perhaps adding /usr/local/include to the pumpa Makefile INCPATH a good enough solution.
