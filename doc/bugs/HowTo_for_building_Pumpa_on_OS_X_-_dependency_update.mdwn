@@ -22,3 +22,5 @@ I edited the pumpa Makefile and added
 to the "INCPATH" and executed a successful build.
 
 Perhaps adding /usr/local/include to the pumpa Makefile INCPATH a good enough solution.
+
+[[!tag resolved]]
