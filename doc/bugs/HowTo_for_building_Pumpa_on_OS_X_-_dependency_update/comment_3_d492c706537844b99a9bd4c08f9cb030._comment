@@ -1,0 +1,11 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ subject="comment 3"
+ date="2014-12-23T16:32:00Z"
+ content="""
+Hmm, strange what about using `CPLUS_INCLUDE_PATH` instead? :-)
+
+The thing is I'd rather not add include paths for every possibility. If you compile something in an environment it should already be configured so that the C++ compiler will find the headers needed. It shouldn't be the responsibility of each application to do that. 
+
+Sorry for being difficult :-)
+"""]]
