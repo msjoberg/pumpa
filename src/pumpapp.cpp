@@ -205,8 +205,8 @@ void PumpApp::launchOAuthWizard() {
             this, SLOT(onClientRegistered(QString, QString, QString, QString)));
     connect(m_wiz, SIGNAL(accessTokenReceived(QString, QString)),
             this, SLOT(onAccessTokenReceived(QString, QString)));
-    connect(m_wiz, SIGNAL(rejected()), this, SLOT(exit()));
     connect(m_wiz, SIGNAL(accepted()), this, SLOT(show()));
+    connect(m_wiz, SIGNAL(rejected()), this, SLOT(wizardCancelled()));
   }
   m_wiz->restart();
   m_wiz->show();
@@ -748,7 +748,14 @@ void PumpApp::preferences() {
 
 //------------------------------------------------------------------------------
 
-void PumpApp::exit() { 
+void PumpApp::wizardCancelled() {
+  if (!haveOAuth())
+    exit();
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::exit() {
   qApp->exit();
 }
 
