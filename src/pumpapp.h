@@ -118,6 +118,7 @@ private slots:
   void startPumping();
 
   void launchOAuthWizard();
+  void wizardCancelled();
 
   void debugAction();
 
