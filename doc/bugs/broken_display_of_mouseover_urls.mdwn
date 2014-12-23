@@ -1,0 +1,16 @@
+Expected behavior: I move the mouse over an link in pumpa,
+and the full url is displayed at the bottom of the window.
+
+Actual behavior: Works sometimes but other times the displayed url is
+not the one the mouse is over.
+
+Analysis: There are two kinds of links; links inside posts and links that
+pumpa makes to eg, people's names. If I first mouse over someone's name,
+and then move the mouse to be over a link inside a post, this is when
+pumpa keeps displaying the old url, rather than showing the new url I
+moved the mouse over.
+
+Certain mouse movements clear the previously displayed url, and then
+the problem doesn't happen.
+
+Originally reported as [bug #769456 in Debian](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=769456).

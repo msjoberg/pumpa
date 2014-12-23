@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ ip="62.78.213.233"
+ subject="comment 3"
+ date="2014-09-04T19:43:29Z"
+ content="""
+Yes, that is unfortunately harder to fix. Pumpa uses Markdown for formatting, and posts are stored as HTML in pump.io. I would need to convert back from HTML to Markdown in order to do that, and that's more or less impossible or at least extremely error prone.
+"""]]

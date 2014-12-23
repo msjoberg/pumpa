@@ -1,0 +1,5 @@
+pumpa still presents a link to a "Firehose" tab even though 
+ofirehose.com is gone.  This is a minor issue as the rest of the package 
+works.  Within the pump.io network we've been de-emphasizing people 
+directly accessing the firehose.  Removal of the tab would be a nice 
+safety measure to avoid presenting errors to users as time goes by.

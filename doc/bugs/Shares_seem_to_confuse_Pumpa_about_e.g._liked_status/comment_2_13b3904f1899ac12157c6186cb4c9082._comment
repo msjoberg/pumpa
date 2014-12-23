@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="http://openid.yandex.ru/aleksejrs/"
+ nickname="aleksejrs"
+ subject="Web UI"
+ date="2014-09-25T20:07:59Z"
+ content="""
+I just went to https://identi.ca/jankusanagi and clicked \"Like\" at some posts.  They then got \"Unlike\" buttons, but all their comments got \"Unlike\" buttons, too, until I reloaded the page, when only the liked posts kept the \"Unlike\" buttons.
+"""]]

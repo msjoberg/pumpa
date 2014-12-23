@@ -1,0 +1,12 @@
+I pasted this url into a note:
+
+https://vote.debian.org/~secretary/gr_initcoupling/tally.txt
+
+On cicking on the preview link, I was taken to this url instead, which
+in this case didn't work:
+
+https://www.debian.org/%257Esecretary/gr_initcoupling/tally.txt
+
+Originally reported as [bug #770145 in Debian](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770145).
+
+[[!tag high]]
