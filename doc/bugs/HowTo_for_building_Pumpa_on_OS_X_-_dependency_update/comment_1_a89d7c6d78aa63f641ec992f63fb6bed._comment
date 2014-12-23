@@ -1,0 +1,9 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ subject="comment 1"
+ date="2014-12-23T13:24:18Z"
+ content="""
+I'm unsure about this.  If you are using homebrew and expect to compile programs against it you could also have the include path in a global setting, e.g. by adding this to your `.bashrc`:
+
+    export C_INCLUDE_PATH=/usr/local/include
+"""]]
