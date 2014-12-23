@@ -43,6 +43,8 @@ RichTextLabel::RichTextLabel(QWidget* parent, bool singleLine) :
   setMargin(0);
   //setFocusPolicy(Qt::NoFocus);
   setFocusPolicy(Qt::ClickFocus);
+
+  setCursor(Qt::IBeamCursor);
 }
 
 //------------------------------------------------------------------------------
