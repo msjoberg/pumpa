@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ subject="comment 2"
+ date="2014-12-23T17:06:31Z"
+ content="""
+I was not able to find any pattern here. It seems various statusbar messages can conflict with each other, even though I'm using [`QStatusBar::showMessage()`](http://qt-project.org/doc/qt-4.8/qstatusbar.html#showMessage) with `timeout=0` which means it should be shown until a new message is to be shown. Unfortunately I have little control over the mouseover detection mechanism, I rely on Qt's linkHovered signal from each widget...
+"""]]
