@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ subject="comment 2"
+ date="2014-12-23T13:58:49Z"
+ content="""
+A funny thing is that this bug disappears if you compile Pumpa against Qt5 instead of Qt4.
+"""]]
