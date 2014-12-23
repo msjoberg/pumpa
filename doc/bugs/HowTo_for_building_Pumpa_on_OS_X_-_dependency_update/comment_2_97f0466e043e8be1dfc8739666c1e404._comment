@@ -1,0 +1,17 @@
+[[!comment format=mdwn
+ username="http://band.pip.verisignlabs.com/"
+ nickname="Bill"
+ subject="comment 2"
+ date="2014-12-23T14:56:01Z"
+ content="""
+Sazius, I just tried rebuilding with C_INCLUDE_PATH=/usr/local/include in the environment and had the same error:
+
+    src/qaspell.h:32:10: fatal error: 'aspell.h' file not found
+    #include <aspell.h>
+                  ^
+    1 error generated.
+    make: *** [obj/main.o] Error 1
+
+Maybe include C_INCLUDE_PATH in INCPATH in Makefile?
+
+"""]]
