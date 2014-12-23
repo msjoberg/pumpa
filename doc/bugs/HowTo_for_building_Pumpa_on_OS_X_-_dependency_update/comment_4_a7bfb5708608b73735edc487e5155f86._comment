@@ -1,0 +1,17 @@
+[[!comment format=mdwn
+ username="http://band.pip.verisignlabs.com/"
+ nickname="Bill"
+ subject="comment 4"
+ date="2014-12-23T17:56:31Z"
+ content="""
+First, you are not being difficult. Less code == less maintenance.
+
+Second, thanks for the suggestion; CPLUS_INCLUDE_PATH worked. I have been away from C/C++ programming for some time.
+
+I will work on getting the pump.io/wiki page updated to include specifying this environment variable.
+
+Thanks, and have a great new year.
+
+Bill A
+
+"""]]
