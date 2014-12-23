@@ -343,17 +343,17 @@ QString addTextMarkup(QString text, bool useMarkdown) {
 # endif
 #endif
 
-  // linkify plain URLs
-  text = linkifyUrls(text, useMarkdown);
-
-#ifdef DEBUG_MARKUP
-  qDebug() << "\n[DEBUG] MARKUP (linkify plain URLs)\n" << text;
-#endif
-
   if (useMarkdown) {
     // apply markdown
     text = markDown(text);
   } else {
+    // linkify plain URLs
+    text = linkifyUrls(text, useMarkdown);
+
+#ifdef DEBUG_MARKUP
+    qDebug() << "\n[DEBUG] MARKUP (linkify plain URLs)\n" << text;
+#endif
+
     // This is a bit of a hack: if the text doesn't certain tags we
     // replace newlines with breaks.
 
