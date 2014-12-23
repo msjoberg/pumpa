@@ -121,7 +121,7 @@ public:
   }
 
   bool showPreview() const {
-    return getValue("show_preview", false).toBool();
+    return getValue("show_preview", true).toBool();
   }
 
   // setters
