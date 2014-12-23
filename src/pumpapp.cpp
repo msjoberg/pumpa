@@ -1413,8 +1413,9 @@ void PumpApp::request(QString endpoint, int response_id,
 
   executeRequest(oaRequest, response_id);
 
+  if (!m_isLoading)
+    notifyMessage(tr("Loading ..."));
   setLoading(true);
-  notifyMessage(tr("Loading ..."));
 }
 
 //------------------------------------------------------------------------------
