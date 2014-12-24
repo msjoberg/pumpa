@@ -5,3 +5,5 @@ freeze to switch to Qt5 it is necessary to begin re-factoring code to
 prepare for this coming switch.  The full early announcement can be read 
 at 
 http://perezmeyer.blogspot.com/2014/11/early-announce-qt4-removal-in-jessie1.html
+
+[[!tag waiting]]
