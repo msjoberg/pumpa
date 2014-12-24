@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2014 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -184,10 +184,12 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
 //------------------------------------------------------------------------------
 
 void MessageWindow::onMarkdownChecked(int state) {
-  if (state == Qt::Unchecked) {
-    m_s->useMarkdown(false);
-  } else {
-    m_s->useMarkdown(true);
+  if (!m_editing) {
+    if (state == Qt::Unchecked) {
+      m_s->useMarkdown(false);
+    } else {
+      m_s->useMarkdown(true);
+    }
   }
   updatePreview();
 }
@@ -255,7 +257,7 @@ void MessageWindow::initWindow(QString title, QString buttonText,
 
   m_sendButton->setText(buttonText);
 
-  m_markdownCheckBox->setChecked(m_s->useMarkdown());
+  m_markdownCheckBox->setChecked(m_s->useMarkdown() || m_editing);
 
   m_previewArea->setVisible(m_s->showPreview());
 
@@ -299,6 +301,8 @@ void MessageWindow::newMessage(QASObject* obj, QASObjectList* to,
     QASObject* obj = m_rl->at(i);
     addToRecipientList(obj->displayName() + " (list)", obj);
   }
+
+  m_markdownCheckBox->setEnabled(true);
 
   const MessageEdit::completion_t* completions = m_textEdit->getCompletions();
   MessageEdit::completion_t::const_iterator it = completions->constBegin();
@@ -351,6 +355,8 @@ void MessageWindow::editMessage(QASObject* obj) {
     buttonText = tr("&Update comment");
   else if (type == "image")
     buttonText = tr("&Update image post");
+
+  m_markdownCheckBox->setEnabled(false);
 
   m_textEdit->setPlainText(obj->content());
   m_title->setText(obj->displayName());
@@ -492,7 +498,7 @@ void MessageWindow::updateAddPicture() {
 void MessageWindow::updatePreview(bool force) {
   if (m_previewArea->isVisible() || force) {
     QString previewText = addTextMarkup(m_textEdit->toPlainText(),
-					m_s->useMarkdown());
+					m_s->useMarkdown() || m_editing);
     QString titleText = m_title->text();
     if (!titleText.isEmpty())
       previewText = "<p><b>" + m_title->text() + "</b></p>" + previewText;
