@@ -177,6 +177,8 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
                  m_actorWidget, SLOT(updateMenu()));
       disconnect(m_author, SIGNAL(changed()),
                  this, SLOT(updateFollowAuthorButton()));
+      disconnect(m_author, SIGNAL(changed()),
+		 this, SLOT(updateDeleteEditButtons()));
     }
 
     QASObjectList* ol = m_object->replies();
@@ -234,10 +236,13 @@ void FullObjectWidget::changeObject(QASAbstractObject* obj) {
             m_actorWidget, SLOT(updateMenu()));
     connect(m_author, SIGNAL(changed()),
             this, SLOT(updateFollowAuthorButton()));
+    connect(m_author, SIGNAL(changed()),
+	    this, SLOT(updateDeleteEditButtons()));
   }
   
   updateFollowAuthorButton();
-
+  updateDeleteEditButtons();
+  
   m_followButton->setVisible(objType == "person");
 
   m_actor = m_object->asActor();
@@ -268,26 +273,20 @@ bool FullObjectWidget::hasValidIrtObject() {
 
 //------------------------------------------------------------------------------
 
+bool FullObjectWidget::isCommentable() const {
+  return m_object && m_object->type() != "person" && !m_object->isDeleted();
+}
+
+//------------------------------------------------------------------------------
+
 void FullObjectWidget::onChanged() {
   if (!m_object)
     return;
 
-  m_commentable = m_object->type() != "person" && !m_object->isDeleted();
-  if (m_commentable) {
-    bool isYours = m_author && m_author->isYou();
-
-    m_favourButton->setVisible(true);
-    m_shareButton->setVisible(true);
-    m_deleteButton->setVisible(isYours);
-    m_editButton->setVisible(isYours);
-    m_commentButton->setVisible(true);
-  } else {
-    m_favourButton->setVisible(false);
-    m_shareButton->setVisible(false);
-    m_deleteButton->setVisible(false);
-    m_editButton->setVisible(false);
-    m_commentButton->setVisible(false);
-  }
+  m_commentable = isCommentable();
+  m_favourButton->setVisible(m_commentable);
+  m_shareButton->setVisible(m_commentable);
+  m_commentButton->setVisible(m_commentable);
 
   if (m_object->isDeleted())
     m_imageLabel->setVisible(false);
@@ -302,6 +301,8 @@ void FullObjectWidget::onChanged() {
                                hasValidIrtObject()));
   updateFollowButton();
   updateFollowAuthorButton();
+  updateDeleteEditButtons();
+  
   m_actorWidget->updateMenu();
 
   QString text = m_object->content();
@@ -437,6 +438,20 @@ void FullObjectWidget::updateFollowAuthorButton(bool /*wait*/) {
 
   QString text = QString(tr("follow %1")).arg(m_author->preferredUsername());
   m_followAuthorButton->setText(text);
+}
+
+//------------------------------------------------------------------------------
+
+void FullObjectWidget::updateDeleteEditButtons() {
+  bool isYours = m_author && m_author->isYou();
+
+  if (isCommentable()) {
+    m_deleteButton->setVisible(isYours);
+    m_editButton->setVisible(isYours);
+  } else {
+    m_deleteButton->setVisible(false);
+    m_editButton->setVisible(false);
+  }
 }
 
 //------------------------------------------------------------------------------

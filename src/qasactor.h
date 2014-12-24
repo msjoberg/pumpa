@@ -45,7 +45,7 @@ public:
 
   QString displayNameOrYou() const { return isYou() ? "You" : displayName(); }
   bool isYou() const { return m_isYou; }
-  void setYou() { m_isYou = true; }
+  void setYou();
 
   bool followed() const { return m_followed; }
   bool followedJson() const { return m_followed_json; }

@@ -143,3 +143,10 @@ void QASActor::setHidden(bool b) {
 void QASActor::setHiddenAuthors(QStringList sl) { 
   s_hiddenAuthors = sl.toSet(); 
 }
+
+//------------------------------------------------------------------------------
+
+void QASActor::setYou() {
+  m_isYou = true;
+  emit changed();
+}
