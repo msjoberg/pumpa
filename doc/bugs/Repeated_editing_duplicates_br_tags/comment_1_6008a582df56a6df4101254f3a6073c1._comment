@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ subject="comment 1"
+ date="2014-12-24T12:25:47Z"
+ content="""
+The problem is that editing a post has to be done in HTML. The non-Markdown mode doesn't handle this very well. The fix is to temporarily force Markdown mode when editing. Not elegant, but...
+"""]]
