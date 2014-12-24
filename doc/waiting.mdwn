@@ -1,0 +1,4 @@
+[[!meta title="pages tagged waiting"]]
+
+[[!inline pages="tagged(waiting)" actions="no" archive="yes"
+feedshow=10]]
