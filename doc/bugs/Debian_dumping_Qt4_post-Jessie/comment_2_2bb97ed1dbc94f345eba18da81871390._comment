@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ subject="comment 2"
+ date="2014-12-24T10:21:13Z"
+ content="""
+I've now moved to Qt5 as the main development environment, but will try to keep Qt4 compatibility. The next Debian package will likely have Qt5 as dependency.
+"""]]
