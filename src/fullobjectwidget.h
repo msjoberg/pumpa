@@ -74,6 +74,7 @@ private slots:
   void onFollow();
   void onFollowAuthor();
   void updateFollowAuthorButton(bool wait = false);
+  void updateDeleteEditButtons();
   void onDeleteClicked();
   void onEditClicked();
 
@@ -83,6 +84,7 @@ private slots:
 #endif
 
 private:
+  bool isCommentable() const;
   QString typeName() const;
   QString textExcerpt() const;
 
