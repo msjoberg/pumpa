@@ -9,4 +9,4 @@ https://www.debian.org/%257Esecretary/gr_initcoupling/tally.txt
 
 Originally reported as [bug #770145 in Debian](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770145).
 
-[[!tag high]]
+[[!tag waiting]]
