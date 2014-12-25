@@ -1118,7 +1118,7 @@ void PumpApp::postNote(QString content, QString title,
   obj["objectType"] = "note";
   obj["content"] = addTextMarkup(content, m_s->useMarkdown());
 
-  QString ptitle = processTitle(title);
+  QString ptitle = processTitle(title, false);
   if (!ptitle.isEmpty())
     obj["displayName"] = ptitle;
 
@@ -1133,7 +1133,7 @@ void PumpApp::postEdit(QASObject* obj, QString content, QString title) {
   json["objectType"] = obj->type();
   json["content"] = addTextMarkup(content, m_s->useMarkdown());
 
-  QString ptitle = processTitle(title);
+  QString ptitle = processTitle(title, false);
   if (!ptitle.isEmpty())
     json["displayName"] = ptitle;
 
@@ -1149,7 +1149,7 @@ void PumpApp::postImage(QString msg,
                         RecipientList cc) {
   m_imageObject.clear();
   m_imageObject["content"] = addTextMarkup(msg, m_s->useMarkdown());
-  m_imageObject["displayName"] = processTitle(title);
+  m_imageObject["displayName"] = processTitle(title, false);
 
   m_imageTo = to;
   m_imageCc = cc;

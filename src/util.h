@@ -77,7 +77,7 @@ void checkMemory(QString desc="");
 
 QString addTextMarkup(QString content, bool useMarkdown);
 
-QString processTitle(QString text);
+QString processTitle(QString text, bool removeLtgt);
 
 QString slashify(QString path);
 
