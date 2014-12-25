@@ -100,6 +100,7 @@ class FileDownloader : public QObject {
 
   QString m_url;
   KQOAuthRequest* m_oar;
+  int m_redirs;
 
   FileDownloadManager* m_fdm;
 
