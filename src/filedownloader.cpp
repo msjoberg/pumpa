@@ -255,6 +255,7 @@ FileDownloader::FileDownloader(QString url, FileDownloadManager* fdm) :
   QObject(fdm),
   m_url(url),
   m_oar(NULL),
+  m_redirs(0),
   m_fdm(fdm)
 {
   PumpaSettings* ps = PumpaSettings::getSettings();
@@ -281,10 +282,30 @@ FileDownloader::FileDownloader(QString url, FileDownloadManager* fdm) :
 //------------------------------------------------------------------------------
 
 void FileDownloader::replyFinished() {
-  QNetworkReply *nr = qobject_cast<QNetworkReply *>(sender());  
+  QNetworkReply *nr = qobject_cast<QNetworkReply *>(sender());
+  QString url = nr->url().toString();
+
+  int status = nr->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
 
   if (nr->error()) {
     emit networkError(tr("Network error: ")+nr->errorString());
+    nr->deleteLater();
+    return;
+  }
+
+  if (status >= 301 && status <= 399) {
+    if (m_redirs > 5) {
+      emit networkError(tr("Network error: too many redirections!"));
+      nr->deleteLater();
+      return;
+    }
+    
+    QUrl newUrl = nr->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
+    m_redirs++;
+
+    QNetworkReply* nr2 = m_fdm->m_nam->get(QNetworkRequest(nr->url().resolved(newUrl)));
+    connect(nr2, SIGNAL(finished()), this, SLOT(replyFinished()));
+    nr->deleteLater();
     return;
   }
 
