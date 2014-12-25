@@ -499,9 +499,9 @@ void MessageWindow::updatePreview(bool force) {
   if (m_previewArea->isVisible() || force) {
     QString previewText = addTextMarkup(m_textEdit->toPlainText(),
 					m_s->useMarkdown() || m_editing);
-    QString titleText = m_title->text();
+    QString titleText = processTitle(m_title->text(), true);
     if (!titleText.isEmpty())
-      previewText = "<p><b>" + m_title->text() + "</b></p>" + previewText;
+      previewText = "<p><b>" + titleText + "</b></p>" + previewText;
     m_previewLabel->setText(previewText);
   }
 }

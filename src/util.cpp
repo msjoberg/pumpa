@@ -381,8 +381,12 @@ QString addTextMarkup(QString text, bool useMarkdown) {
 
 //------------------------------------------------------------------------------
 
-QString processTitle(QString text) {
-  text = removeHtml(text);
+QString processTitle(QString text, bool removeLtgt) {
+  // text = removeHtml(text);
+  if (removeLtgt) {
+    text.replace("<", "&lt;");
+    text.replace(">", "&gt;");
+  }
   text.replace("\n", " ");
   return text.trimmed();
 }
