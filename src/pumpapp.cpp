@@ -170,7 +170,7 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
           this, SLOT(timelineHighlighted(int)));
 
   m_loadIcon = new QLabel(this);
-  m_loadMovie = new QMovie(":/images/loader.gif");
+  m_loadMovie = new QMovie(":/images/loader.gif", QByteArray(), this);
   statusBar()->addPermanentWidget(m_loadIcon);
 
   setWindowTitle(CLIENT_FANCY_NAME);

@@ -329,11 +329,13 @@ void FileDownloader::requestReady(QByteArray response, KQOAuthRequest* oar) {
   if (!fp->open(QIODevice::WriteOnly)) {
     emit networkError(QString(tr("Could not open file %1 for writing: ")).
                       arg(fn) + fp->errorString());
+    delete fp;
     return;
   }
   fp->write(response);
   fp->close();
-
+  delete fp;
+  
   QPixmap pix = m_fdm->pixmap(m_url);
 
   resizeImage(pix, fn);
