@@ -8,7 +8,7 @@ Also check bugs filed against
 Common tags for bugs reports: [[high]] [[feature]] [[waiting]] [[resolved]].  
 (The tag "waiting" just means it's waiting for something, e.g. a upstream update, this is mostly information for the maintainer.)
 
-To report a bug just type a descriptive title below and click "edit".
+**To report a bug just type a descriptive title below and click "edit".**
 
 [[!inline pages="./bugs/* and !./bugs/*/* and !./bugs/resolved and !link(resolved) 
 and !*/Discussion" actions=yes postform=yes show=0 archive=yes template=buglist]]
