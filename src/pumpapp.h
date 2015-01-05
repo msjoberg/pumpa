@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -240,7 +240,7 @@ private:
   CollectionWidget* m_directMinorWidget;
   CollectionWidget* m_inboxMinorWidget;
   CollectionWidget* m_firehoseWidget;
-  ContextWidget* m_contextWidget;
+  QList<ContextWidget*> m_contextWidgets;
   ObjectListWidget* m_followersWidget;
   ObjectListWidget* m_followingWidget;
   ObjectListWidget* m_favouritesWidget;

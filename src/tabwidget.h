@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -38,7 +38,7 @@ public:
 
   bool closable(int index) const { return m_okToClose.contains(index); }
   
-  void closeCurrentTab();
+  QWidget* closeCurrentTab();
 
 public slots:
   void highlightTab(int index=-1);

@@ -3,7 +3,7 @@ Upstream-Name: pumpa
 Source: https://pumpa.branchable.com/
 
 Files: *
-Copyright: 2013, Mats Sjöberg <mats@sjoberg.fi>
+Copyright: 2013-2015, Mats Sjöberg <mats@sjoberg.fi>
 License: GPL-3.0+
 
 Files: src/kQOAuth/*

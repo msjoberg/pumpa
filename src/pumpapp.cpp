@@ -1,5 +1,5 @@
 /*
-  Copyright 2014 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -36,7 +36,6 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   QMainWindow(parent),
   m_nextRequestId(0),
   m_s(settings),
-  m_contextWidget(NULL),
   m_isLoading(false),
   m_wiz(NULL),
   m_messageWindow(NULL),
@@ -423,8 +422,8 @@ void PumpApp::refreshTimeLabels() {
   m_directMajorWidget->refreshTimeLabels();
   m_inboxMinorWidget->refreshTimeLabels();
   m_firehoseWidget->refreshTimeLabels();
-  if (m_contextWidget)
-    m_contextWidget->refreshTimeLabels();
+  for (int i=0; i<m_contextWidgets.size(); ++i)
+    m_contextWidgets[i]->refreshTimeLabels();
 }
 
 //------------------------------------------------------------------------------
@@ -792,7 +791,7 @@ void PumpApp::about() {
   
   QString mainText = 
     QString("<p><b>%1 %2</b> - %3<br/><a href=\"%4\">%4</a><br/>"
-            + tr("Copyright &copy; 2014 Mats Sj&ouml;berg")
+            + tr("Copyright &copy; 2013-2015 Mats Sj&ouml;berg")
             + " - <a href=\"https://pump.saz.im/sazius\">sazius@pump.saz.im</a>."
             "</p>"
             + tr("<p>Report bugs and feature requests at "
@@ -855,8 +854,9 @@ void PumpApp::fetchAll(bool all) {
 
   if (tabShown(m_firehoseWidget))
     m_firehoseWidget->fetchNewer();
-  if (tabShown(m_contextWidget))
-    m_contextWidget->fetchNewer();
+
+  for (int i=0; i<m_contextWidgets.size(); ++i)
+    m_contextWidgets[i]->fetchNewer();
 
   // These will be reloaded even if not shown, if all=true
   if (all || tabShown(m_followersWidget))
@@ -881,12 +881,17 @@ void PumpApp::loadOlder() {
 //------------------------------------------------------------------------------
 
 bool PumpApp::isShown(QASAbstractObject* obj) {
+  // check context widgets first
+  for (int i=0; i<m_contextWidgets.size(); ++i)
+    if (m_contextWidgets[i]->hasObject(obj))
+      return true;
+
+  // check all other tab widgets
   return m_inboxWidget->hasObject(obj) ||
     m_directMinorWidget->hasObject(obj) ||
     m_directMajorWidget->hasObject(obj) ||
     m_inboxMinorWidget->hasObject(obj) ||
     (tabShown(m_firehoseWidget) && m_firehoseWidget->hasObject(obj)) ||
-    (tabShown(m_contextWidget) && m_contextWidget->hasObject(obj)) ||
     (tabShown(m_followersWidget) && m_followersWidget->hasObject(obj)) ||
     (tabShown(m_followingWidget) && m_followingWidget->hasObject(obj)) ||
     (tabShown(m_favouritesWidget) && m_favouritesWidget->hasObject(obj)) ||
@@ -1045,21 +1050,27 @@ bool PumpApp::tabShown(ASWidget* aw) const {
 //------------------------------------------------------------------------------
 
 void PumpApp::onShowContext(QASObject* obj) {
-  if (!m_contextWidget) {
-    m_contextWidget = new ContextWidget(this);
-    connectCollection(m_contextWidget);
-  }
-  if (!tabShown(m_contextWidget))
-    m_tabWidget->addTab(m_contextWidget, tr("&Context"), true, true);
+  ContextWidget* cw = new ContextWidget(this);
+  connectCollection(cw);
 
-  m_contextWidget->setObject(obj);
-  m_tabWidget->setCurrentWidget(m_contextWidget);
+  m_tabWidget->addTab(cw, tr("&Context"), true, true);
+  cw->setObject(obj);
+  m_tabWidget->setCurrentWidget(cw);
+
+  m_contextWidgets.append(cw);
 }
 
 //------------------------------------------------------------------------------
 
 void PumpApp::closeTab() {
-  m_tabWidget->closeCurrentTab();
+  ContextWidget* cw = 
+    qobject_cast<ContextWidget*>(m_tabWidget->closeCurrentTab());
+  if (cw) {
+    int i = m_contextWidgets.indexOf(cw);
+    if (i != -1)
+      m_contextWidgets.removeAt(i);
+    delete cw;
+  }
 }
 
 //------------------------------------------------------------------------------

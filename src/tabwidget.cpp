@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
 
   This file is part of the Pumpa programme.
 
@@ -53,8 +53,10 @@ int TabWidget::addTab(QWidget* page, const QString& label,
 
 //------------------------------------------------------------------------------
 
-void TabWidget::closeCurrentTab() {
+QWidget* TabWidget::closeCurrentTab() {
+  QWidget* w = currentWidget();
   closeTab(currentIndex());
+  return w;
 }
 
 //------------------------------------------------------------------------------
