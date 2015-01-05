@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="http://sjoberg.fi/"
+ subject="comment 1"
+ date="2015-01-05T18:41:30Z"
+ content="""
+OK, this feature is now implemented in [git master](https://gitorious.org/pumpa/pumpa/commit/792f8fd831ff15551f23fa3a9b1b9735127a6064). Seems to work, but needs some testing still :-)
+"""]]
