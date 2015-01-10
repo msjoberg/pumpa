@@ -145,9 +145,15 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
 
   m_charCountLabel = new QLabel(this);
 
+  QWidget* qw = new QWidget(this);
+  QVBoxLayout* qwLayout = new QVBoxLayout;
+  qwLayout->addWidget(m_textEdit);
+  qwLayout->addWidget(m_charCountLabel);
+  qwLayout->setMargin(0);
+  qw->setLayout(qwLayout);
+  
   m_splitter = new QSplitter(Qt::Vertical, this);
-  m_splitter->addWidget(m_textEdit);
-  m_splitter->addWidget(m_charCountLabel);
+  m_splitter->addWidget(qw);
   m_splitter->addWidget(m_previewArea);
   m_splitter->setChildrenCollapsible(false);
 
