@@ -504,7 +504,8 @@ void MessageWindow::updatePreview(bool force) {
   QString previewText = addTextMarkup(m_textEdit->toPlainText(),
 				      m_s->useMarkdown() || m_editing);
   if (m_charCountLabel->isVisible() || force) {
-    QString strippedText = previewText.replace(QRegExp(HTML_TAG_REGEX), "");
+    QString strippedText = previewText;
+    strippedText.remove(QRegExp(HTML_TAG_REGEX));
     qDebug() << "STRIPPEDTEXT" << strippedText;
     QString ccText = QString(tr("Characters: %1")).arg(strippedText.count());
     m_charCountLabel->setText(ccText);
