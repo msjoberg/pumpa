@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -124,6 +124,10 @@ public:
     return getValue("show_preview", true).toBool();
   }
 
+  bool showCharCount() const {
+    return getValue("show_charcount", false).toBool();
+  }
+
   // setters
   void siteUrl(QString s) { setValue("site_url", s, "Account"); }
   void userName(QString s) { setValue("username", s, "Account"); }
@@ -158,6 +162,8 @@ public:
   void hideAuthors(QStringList sl) { setValue("minimise_authors", sl); }
 
   void showPreview(bool b) { setValue("show_preview", b); }
+
+  void showCharCount(bool b) { setValue("show_charcount", b); }
 
 signals:
   void trayIconChanged();

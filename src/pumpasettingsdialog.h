@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -67,6 +67,7 @@ private:
   QPushButton* m_authButton;
   QSpinBox* m_updateTimeSpinBox;
   QCheckBox* m_useIconCheckBox;
+  QCheckBox* m_showCharCountCheckBox;
   QDialogButtonBox* m_buttonBox;
   QComboBox* m_highlightComboBox;
   QComboBox* m_popupComboBox;
