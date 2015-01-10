@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -78,6 +78,9 @@ PumpaSettingsDialog::PumpaSettingsDialog(PumpaSettings* settings,
 
   m_useIconCheckBox = new QCheckBox(tr("Use icon in system tray"), this);
   uiLayout->addRow(m_useIconCheckBox);
+
+  m_showCharCountCheckBox = new QCheckBox(tr("Show message character count"), this);
+  uiLayout->addRow(m_showCharCountCheckBox);
 
   uiGroupBox->setLayout(uiLayout);
   
@@ -163,6 +166,7 @@ void PumpaSettingsDialog::updateUI() {
   m_updateTimeSpinBox->setValue(s->reloadTime());
 
   m_useIconCheckBox->setChecked(s->useTrayIcon());
+  m_showCharCountCheckBox->setChecked(s->showCharCount());
 
   m_highlightComboBox->
     setCurrentIndex(feedIntToComboIndex(s->highlightFeeds()));
@@ -179,6 +183,7 @@ void PumpaSettingsDialog::updateUI() {
 void PumpaSettingsDialog::onOKClicked() {
   s->reloadTime(m_updateTimeSpinBox->value());
   s->useTrayIcon(m_useIconCheckBox->isChecked());
+  s->showCharCount(m_showCharCountCheckBox->isChecked());
 
   s->highlightFeeds(comboIndexToFeedInt(m_highlightComboBox->currentIndex()));
   s->popupFeeds(comboIndexToFeedInt(m_popupComboBox->currentIndex()));

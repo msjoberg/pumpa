@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -74,6 +74,8 @@ template <class T> void deleteMap(QMap<QString, T>& map) {
 }
 
 void checkMemory(QString desc="");
+
+QString removeHtml(QString);
 
 QString addTextMarkup(QString content, bool useMarkdown);
 

@@ -88,8 +88,8 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
   m_toRecipients = new MessageRecipients(this);
   m_ccRecipients = new MessageRecipients(this);
 
-  m_toLabel = new QLabel(tr("To:"));
-  m_ccLabel = new QLabel(tr("Cc:"));
+  m_toLabel = new QLabel(tr("To:"), this);
+  m_ccLabel = new QLabel(tr("Cc:"), this);
 
   m_addressLayout = new QFormLayout;
   m_addressLayout->addRow(m_toLabel, m_toRecipients);
@@ -143,8 +143,11 @@ MessageWindow::MessageWindow(PumpaSettings* s, const RecipientList* rl,
 
   m_previewArea->setWidgetResizable(true);
 
+  m_charCountLabel = new QLabel(this);
+
   m_splitter = new QSplitter(Qt::Vertical, this);
   m_splitter->addWidget(m_textEdit);
+  m_splitter->addWidget(m_charCountLabel);
   m_splitter->addWidget(m_previewArea);
   m_splitter->setChildrenCollapsible(false);
 
@@ -267,6 +270,8 @@ void MessageWindow::initWindow(QString title, QString buttonText,
   m_ccLabel->setVisible(showRecipients);
   m_addToButton->setVisible(showRecipients);
   m_addCcButton->setVisible(showRecipients);
+
+  m_charCountLabel->setVisible(m_s->showCharCount());
 
   updatePreview(true);
   updateAddPicture();
@@ -496,9 +501,16 @@ void MessageWindow::updateAddPicture() {
 //------------------------------------------------------------------------------
 
 void MessageWindow::updatePreview(bool force) {
+  QString previewText = addTextMarkup(m_textEdit->toPlainText(),
+				      m_s->useMarkdown() || m_editing);
+  if (m_charCountLabel->isVisible() || force) {
+    QString strippedText = previewText.replace(QRegExp(HTML_TAG_REGEX), "");
+    qDebug() << "STRIPPEDTEXT" << strippedText;
+    QString ccText = QString(tr("Characters: %1")).arg(strippedText.count());
+    m_charCountLabel->setText(ccText);
+  }
+  
   if (m_previewArea->isVisible() || force) {
-    QString previewText = addTextMarkup(m_textEdit->toPlainText(),
-					m_s->useMarkdown() || m_editing);
     QString titleText = processTitle(m_title->text(), true);
     if (!titleText.isEmpty())
       previewText = "<p><b>" + titleText + "</b></p>" + previewText;

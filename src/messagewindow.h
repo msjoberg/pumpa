@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -118,6 +118,7 @@ private:
   QLabel* m_toLabel;
   QLabel* m_ccLabel;
 
+  QLabel* m_charCountLabel;
   RichTextLabel* m_previewLabel;
   QScrollArea* m_previewArea;
   QSplitter* m_splitter;
