@@ -1,0 +1,17 @@
+Direct links to public images in ownCloud servers have several parameters, and will fail with a HTTP 400 if some of them are wrong.
+
+Take this image, for instance, that should load correctly on a browser: https://cloud.openmailbox.org/index.php/apps/files_sharing/ajax/publicpreview.php?x=1440&y=801&a=true&file=/bicinueva.JPG&t=4b267cd7510c0317681088a4b9a87588&scalingup=0
+
+If you create a post in Pumpa with, say:
+
+! [some alt text] (https://cloud.openmailbox.org/index.php/apps/files_sharing/ajax/publicpreview.php?x=1440&y=801&a=true&file=/bicinueva.JPG&t=4b267cd7510c0317681088a4b9a87588&scalingup=0)
+(added spaces so the bugtracker won't parse the example as Markdown)
+
+the image won't load, because upon posting, the &'s in the URL have been turned to & amp ;, probably in Pump.io's processing.
+I've fixed loading this kind of URL in Dianara by simply replacing & amp ; in the extracted URL's list, with just the "&", but probably other HTML entities should be reverted back to pure symbols just in case.
+The sample URL I mentioned works fine just with the &, though.
+
+This other URL, for instance, could fail for the same reason, but somehow works: http://www.filmotecamurcia.es/servlet/integra.servlets.Imagenes?METHOD=VERIMAGEN_143144&nombre=ambel_res_300.jpg 
+I guess that server is less picky, but I imagine others, like ownCloud, could have trouble with the "& amp ;" thing.
+
+Cheers! o/
