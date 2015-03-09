@@ -1,6 +1,6 @@
 # -*- mode: makefile -*-
 ######################################################################
-#  Copyright 2013 Mats Sjöberg
+#  Copyright 2015 Mats Sjöberg
 #  
 #  This file is part of the Pumpa programme.
 #
@@ -200,19 +200,38 @@ unix {
   BINDIR = $$PREFIX/bin
   DATADIR =$$PREFIX/share
 
-  #DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
-
-  #MAKE INSTALL
-
-  INSTALLS += target desktop icon32
+  INSTALLS += target desktop icon16 icon24 icon32 icon64 icon96 \
+	icon128 icon256 icon512
 
   target.path =$$BINDIR
 
   desktop.path = $$DATADIR/applications
-  desktop.files += local/$${TARGET}.desktop
+  desktop.files += $${TARGET}.desktop
+
+  icon16.path = $$DATADIR/icons/hicolor/16x16/apps
+  icon16.files += icons/16x16/$${TARGET}.png
+
+  icon24.path = $$DATADIR/icons/hicolor/24x24/apps
+  icon24.files += icons/24x24/$${TARGET}.png
 
   icon32.path = $$DATADIR/icons/hicolor/32x32/apps
-  icon32.files += images/$${TARGET}.png
+  icon32.files += icons/32x32/$${TARGET}.png
+
+  icon64.path = $$DATADIR/icons/hicolor/64x64/apps
+  icon64.files += icons/64x64/$${TARGET}.png
+
+  icon96.path = $$DATADIR/icons/hicolor/96x96/apps
+  icon96.files += icons/96x96/$${TARGET}.png
+
+  icon128.path = $$DATADIR/icons/hicolor/128x128/apps
+  icon128.files += icons/128x128/$${TARGET}.png
+
+  icon256.path = $$DATADIR/icons/hicolor/256x256/apps
+  icon256.files += icons/256x256/$${TARGET}.png
+
+  icon512.path = $$DATADIR/icons/hicolor/512x512/apps
+  icon512.files += icons/512x512/$${TARGET}.png
+
 }
 
 # target.path = /usr/bin
