@@ -3,4 +3,4 @@
    section="Applications/Network/Communication" \
    title="Pumpa" \
    command="/usr/bin/pumpa" \
-   icon="/usr/share/icons/hicolor/32x32/apps/pumpa.xpm"
+   icon="/usr/share/pixmaps/pumpa.xpm"
