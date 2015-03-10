@@ -66,7 +66,7 @@ On Fedora I believe this should install what you need:
 
 To download and build, type the following in your directory of choice:
 
-    git clone git://gitorious.org/pumpa/pumpa.git
+    git clone git://pumpa.branchable.com/
     cd pumpa
     qmake-qt4     # or just "qmake" on some systems
     make
