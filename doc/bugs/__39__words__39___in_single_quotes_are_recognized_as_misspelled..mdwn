@@ -1,0 +1,17 @@
+When composing posts in pumpa, the first and last word in single quotes are recognized as misspelled.
+
+For example, in
+
+```
+'first second last'
+```
+
+`'first` and `last'` are recognized as misspelled.
+
+Words in double quotes are fine.
+
+(My locale is `en_US.utf8`.)
+
+
+
+
