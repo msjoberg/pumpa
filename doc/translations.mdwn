@@ -18,7 +18,7 @@ steps:
       git pull
     
   (alternatively you could just grab the .ts file directly from the
-  [gitorious web site](https://gitorious.org/pumpa/pumpa/trees/master/translations)).
+  [web site](http://source.pumpa.branchable.com/?p=source.git;a=tree;f=translations;hb=HEAD)).
 
 - In Pumpa there should be a `translations` directory with several .ts
   files, called e.g. `pumpa_es.ts` for Spanish, `pumpa_de.ts` for
@@ -37,7 +37,7 @@ steps:
   is OK to change the shortcut when translating, but make sure that
   you do not have the same shortcut for many things :-)
   
-- Once you are done you can make your own clone on gitorious and make
+- Once you are done you can make your own clone of the git repository and make
   a pull request, or just email me the .ts file if that's easier.
   
 - If you want to try it on Pumpa right away, you need to run the command:

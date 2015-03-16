@@ -6,9 +6,13 @@ Qt. Pumpa is [[Free_Software|license]].
 For installation instructions check the [[install]] page, to report an
 issue or submit a feature request go to the [[bugs]] page.
 
-Pumpa's [source code is hosted on gitorious](https://gitorious.org/pumpa).
-
 ## News
+
+### 2015
+
+- **March 16,** due to [gitorious' imminent shutdown](https://about.gitlab.com/2015/03/03/gitlab-acquires-gitorious/) source code hosting was officially moved to branchable.com.  If you already have the repository cloned this command should switch the `origin` branch to the new location:
+
+    git remote set-url origin git://pumpa.branchable.com/
 
 ### 2014
 - **Aug 25,** [version 0.9 released](https://pump.saz.im/sazius/note/jMFNndYwT6OWUheKkAiuyg).
