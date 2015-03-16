@@ -6,6 +6,10 @@ Qt. Pumpa is [[Free_Software|license]].
 For installation instructions check the [[install]] page, to report an
 issue or submit a feature request go to the [[bugs]] page.
 
+The source code is [hosted here on branchable](http://source.pumpa.branchable.com/?p=source.git;a=summary):
+
+    git clone git://pumpa.branchable.com/ pumpa
+
 ## News
 
 ### 2015
