@@ -66,9 +66,9 @@ On Fedora I believe this should install what you need:
 
 To download and build, type the following in your directory of choice:
 
-    git clone git://pumpa.branchable.com/
+    git clone git://pumpa.branchable.com/ pumpa
     cd pumpa
-    qmake-qt4     # or just "qmake" on some systems
+    qmake     # or qmake-qt4 or qmake-qt5 in some systems
     make
 
 The procedure on Mac OS X is the same, but getting the dependencies is
