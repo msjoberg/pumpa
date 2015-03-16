@@ -10,8 +10,8 @@ Build-Depends: debhelper (>= 9),
                libtidy-dev
 Standards-Version: 3.9.5
 Homepage: https://pumpa.branchable.com/
-Vcs-Git: git://git@gitorious.org:pumpa/pumpa.git
-Vcs-Browser: https://gitorious.org/pumpa/pumpa
+Vcs-Git: git://pumpa.branchable.com/
+Vcs-Browser: http://source.pumpa.branchable.com/?p=source.git;a=summary
 
 Package: pumpa
 Architecture: any
