@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -173,7 +173,6 @@ void MessageEdit::contextMenuEvent(QContextMenuEvent* event) {
   m_contextCursor = cursorForPosition(event->pos());
   m_contextCursor.select(QTextCursor::WordUnderCursor);
 
-
   QTextDocument* doc = m_contextCursor.document();
 
   QRegExp rx("[\\w']");
@@ -184,6 +183,8 @@ void MessageEdit::contextMenuEvent(QContextMenuEvent* event) {
   }
 
   QString word = m_contextCursor.selectedText();
+  if (word.endsWith("'"))
+    word.remove(word.size()-1, 1);
 
   if (!word.isEmpty() && m_checker && !m_checker->checkWord(word)) {
     QStringList suggestions = m_checker->suggestions(word);

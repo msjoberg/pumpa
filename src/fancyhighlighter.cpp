@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -40,7 +40,7 @@ void FancyHighlighter::highlightBlock(const QString& text) {
   spellErrorFormat.setUnderlineColor(Qt::red);
   spellErrorFormat.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
 
-  QRegExp rxa("(^|\\s)([\\w']+)");
+  QRegExp rxa("(^|\\s)(\\w[\\w']*\\w)");
 
   index = text.indexOf(rxa);
   while (index >= 0) {
