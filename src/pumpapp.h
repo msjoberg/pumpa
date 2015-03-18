@@ -109,6 +109,7 @@ private slots:
 
   void exit();
   void about();
+  void reportBug();
   void preferences();
   void newNote(QASObject* obj = NULL, QASObjectList* to = NULL,
                QASObjectList* cc = NULL, bool edit = false);
@@ -218,6 +219,7 @@ private:
 
   QAction* aboutAction;
   QAction* aboutQtAction;
+  QAction* reportBugAction;
   QMenu* helpMenu;
 
   QAction* m_followersAction;

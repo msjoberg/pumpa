@@ -22,6 +22,7 @@
 #include <QInputDialog>
 #include <QLineEdit>
 #include <QClipboard>
+#include <QDesktopServices>
 
 #include "pumpapp.h"
 
@@ -674,6 +675,9 @@ void PumpApp::createActions() {
   aboutQtAction = new QAction(tr("About &Qt"), this);
   connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
+  reportBugAction = new QAction(tr("Report &bug online"), this);
+  connect(reportBugAction, SIGNAL(triggered()), this, SLOT(reportBug()));
+
   newNoteAction = new QAction(tr("New &Note"), this);
   newNoteAction->setShortcut(tr("Ctrl+N"));
   connect(newNoteAction, SIGNAL(triggered()), this, SLOT(newNote()));
@@ -736,6 +740,8 @@ void PumpApp::createMenu() {
   helpMenu = new QMenu(tr("&Help"), this);
   helpMenu->addAction(aboutAction);
   helpMenu->addAction(aboutQtAction);
+  helpMenu->addSeparator();
+  helpMenu->addAction(reportBugAction);
   menuBar()->addMenu(helpMenu);
 }
 
@@ -804,6 +810,12 @@ void PumpApp::about() {
   
   QMessageBox::about(this, QString(tr("About %1")).arg(CLIENT_FANCY_NAME),
                      mainText + GPL + credits);
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::reportBug() {
+  QDesktopServices::openUrl(QString(BUGTRACKER_URL));
 }
 
 //------------------------------------------------------------------------------
