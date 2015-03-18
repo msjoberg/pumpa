@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="http://sjoberg.fi/"
+ subject="comment 1"
+ date="2015-03-18T18:52:36Z"
+ content="""
+Thanks for the bug report! It should be [fixed now in the git master branch](http://source.pumpa.branchable.com/?p=source.git;a=commit;h=8c1eb31d83a2261d774fb5645449a01d13f0d327).
+"""]]
