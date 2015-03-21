@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="http://sjoberg.fi/"
+ subject="comment 1"
+ date="2015-03-21T17:44:06Z"
+ content="""
+Thanks for the bug report! In fact the problem is not that Pumpa encodes the ampersands in the URL as \&amp; - in fact this is the correct behaviour. The problem was that Pumpa did not decode them when rendering the post. This should now be [fixed in this commit](http://source.pumpa.branchable.com/?p=source.git;a=commit;h=28b3b6c4f7840895d18c3891c3b2f9974ea553e5).
+"""]]
