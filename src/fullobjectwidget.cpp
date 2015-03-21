@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -25,6 +25,7 @@
 
 #include <QDesktopServices>
 #include <QMessageBox>
+#include <QTextDocument>
 
 //------------------------------------------------------------------------------
 
@@ -822,6 +823,11 @@ QString FullObjectWidget::processText(QString old_text, bool getImages) {
           
 	  FileDownloadManager* fdm = FileDownloadManager::getManager();
 
+	  // only way in Qt to decode html entities in URL
+	  QTextDocument doc;
+	  doc.setHtml(imgSrc);
+	  imgSrc = doc.toPlainText();
+  	  
 	  if (fdm->hasFile(imgSrc)) {
             imagePlaceholder = 
               QString("<a href=\"%2\"><img border=\"0\" src=\"%1\" /></a>").

@@ -1,5 +1,5 @@
 /*
-  Copyright 2013 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -36,11 +36,13 @@ int testMarkup(QString str) {
   if (str.isEmpty()) 
     // str = "Hello *world*, [Some Url](http://www.foo.bar/baz). Some\n"
     //   "> block quoted text\n\n"
-    str = "markdowned [url](http://saz.im)\n\n"
-      "url on line http://saz.im and http://foo.bar\n"
-      "http://saz.im\n\n"
-      "with underlines: http://saz.im/foo_bar_baz.html ...\n"
-      "<b>bold</b> and <i>broken html\n";
+    // str = "markdowned [url](http://saz.im)\n\n"
+    //   "url on line http://saz.im and http://foo.bar\n"
+    //   "http://saz.im\n\n"
+    //   "with underlines: http://saz.im/foo_bar_baz.html ...\n"
+    //   "<b>bold</b> and <i>broken html\n";
+    str = "![piktur](https://cloud.openmailbox.org/index.php/apps/files_sharing/ajax/publicpreview.php?x=1440&y=801&a=true&file=/bicinueva.JPG&t=4b267cd7510c0317681088a4b9a87588&scalingup=0)";
+    
   addTextMarkup(str, true);
   return 0;
 }
