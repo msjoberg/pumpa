@@ -15,3 +15,5 @@ This other URL, for instance, could fail for the same reason, but somehow works:
 I guess that server is less picky, but I imagine others, like ownCloud, could have trouble with the "& amp ;" thing.
 
 Cheers! o/
+
+[[!tag resolved]]
