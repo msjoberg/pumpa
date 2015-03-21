@@ -86,69 +86,69 @@
 <context>
     <name>FullObjectWidget</name>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="104"/>
+        <location filename="../src/fullobjectwidget.cpp" line="105"/>
         <source>delete</source>
         <translation>elimina</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="108"/>
+        <location filename="../src/fullobjectwidget.cpp" line="109"/>
         <source>edit</source>
         <translation>modifica</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="112"/>
-        <location filename="../src/fullobjectwidget.cpp" line="672"/>
+        <location filename="../src/fullobjectwidget.cpp" line="113"/>
+        <location filename="../src/fullobjectwidget.cpp" line="673"/>
         <source>comment</source>
         <translation>commenta</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="312"/>
+        <location filename="../src/fullobjectwidget.cpp" line="313"/>
         <source>[No description]</source>
         <translation>[Nessuna descrizione]</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="348"/>
-        <location filename="../src/fullobjectwidget.cpp" line="365"/>
+        <location filename="../src/fullobjectwidget.cpp" line="349"/>
+        <location filename="../src/fullobjectwidget.cpp" line="366"/>
         <source>at %1</source>
         <translation>in %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="350"/>
+        <location filename="../src/fullobjectwidget.cpp" line="351"/>
         <source>Profile last updated %1</source>
         <translation>Ultimo aggiornamento profilo %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="358"/>
+        <location filename="../src/fullobjectwidget.cpp" line="359"/>
         <source>updated %1</source>
         <translation>aggiornato %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="385"/>
+        <location filename="../src/fullobjectwidget.cpp" line="386"/>
         <source>unlike</source>
         <translation>non mi piace</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="385"/>
+        <location filename="../src/fullobjectwidget.cpp" line="386"/>
         <source>like</source>
         <translation>mi piace</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="397"/>
+        <location filename="../src/fullobjectwidget.cpp" line="398"/>
         <source>share</source>
         <translation>condividi</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="422"/>
+        <location filename="../src/fullobjectwidget.cpp" line="423"/>
         <source>stop following</source>
         <translation>smetti di seguire</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="423"/>
+        <location filename="../src/fullobjectwidget.cpp" line="424"/>
         <source>follow</source>
         <translation>segui</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="623"/>
+        <location filename="../src/fullobjectwidget.cpp" line="624"/>
         <source>Show all replies</source>
         <translation>Mostra tutte le risposte</translation>
     </message>
@@ -157,27 +157,27 @@
         <translation type="obsolete">smette di seguire %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="439"/>
+        <location filename="../src/fullobjectwidget.cpp" line="440"/>
         <source>follow %1</source>
         <translation>segue %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="509"/>
+        <location filename="../src/fullobjectwidget.cpp" line="510"/>
         <source>You like this.</source>
         <translation>Ti piace.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="511"/>
+        <location filename="../src/fullobjectwidget.cpp" line="512"/>
         <source>%1 likes this.</source>
         <translation>A %1 piace questo elemento.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="513"/>
+        <location filename="../src/fullobjectwidget.cpp" line="514"/>
         <source>%1 like this.</source>
         <translation>A %1 piace questo elemento.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="542"/>
+        <location filename="../src/fullobjectwidget.cpp" line="543"/>
         <source>and %Ln other person(s)</source>
         <translation>
             <numerusform>e %n un&apos;altra persona</numerusform>
@@ -196,12 +196,12 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="543"/>
+        <location filename="../src/fullobjectwidget.cpp" line="544"/>
         <source>shared this.</source>
         <translation>condiviso questo elemento.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="546"/>
+        <location filename="../src/fullobjectwidget.cpp" line="547"/>
         <source>%Ln person(s) shared this.</source>
         <translation>
             <numerusform>%n persona ha condiviso questo elemento.</numerusform>
@@ -213,27 +213,27 @@
         <translation type="obsolete">Mostra tutte le %1 risposte</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="667"/>
+        <location filename="../src/fullobjectwidget.cpp" line="668"/>
         <source>post</source>
         <translation>messaggio</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="670"/>
+        <location filename="../src/fullobjectwidget.cpp" line="671"/>
         <source>note</source>
         <translation>nota</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="674"/>
+        <location filename="../src/fullobjectwidget.cpp" line="675"/>
         <source>image</source>
         <translation>immagine</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="695"/>
+        <location filename="../src/fullobjectwidget.cpp" line="696"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation>Sei sicure di volere eliminare questo %1?</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="715"/>
+        <location filename="../src/fullobjectwidget.cpp" line="716"/>
         <source>Share this %1 by %2?</source>
         <translation>Condividi questo %1 via %2?</translation>
     </message>
