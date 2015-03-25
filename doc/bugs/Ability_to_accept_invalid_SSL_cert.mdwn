@@ -1,0 +1,3 @@
+Some people want the ability to accept an invalid SSL cert. At the moment Pumpa doesn't allow that.
+
+[[!tag feature]]
