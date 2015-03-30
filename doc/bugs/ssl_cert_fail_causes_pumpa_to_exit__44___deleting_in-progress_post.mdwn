@@ -1,0 +1,16 @@
+If I have a note I'm trying to post, and the current wifi network is a
+typical horrible gatewayed public wifi network, the post may fail a
+couple of times. I'll then go do something else. In the meantime, pumpa
+will try to refresh the timeline. Then pumpa will complain that it got a
+bad ssl cert. Then it will exit. This causes the words I was trying to
+post to get lost.
+
+I suggest pumpa not exit in this situation, but instead just fail
+whatever network operation is being blocked by the MITM.
+
+(Not filing at grave bug severity because meh, it's just words. How
+important can words be? ...)
+
+Originally reported as bug [#781352 in Debian](https://bugs.debian.org/781352).
+
+[[!tag high]]
