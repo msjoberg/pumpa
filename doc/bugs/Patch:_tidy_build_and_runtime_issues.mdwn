@@ -1,0 +1,7 @@
+Hello,
+
+Please review my patch. Branchable does not accept patches so I stored it in [the gist](https://gist.github.com/theirix/926b7ffcc99eb01174e0).
+
+It fixes build error by replacing explicit TidyBuffer init with proper function call. Also it prevents a runtime error at tidyOptSetInt.
+
+I successfully compiled and used tidy-enabled Pumpa with this patch.
