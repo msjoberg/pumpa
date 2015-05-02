@@ -41,7 +41,7 @@ steps:
 - Once you are done you can make your own clone of the git repository and make
   a pull request, or just email me the .ts file if that's easier.
   
-- If you want to try it on Pumpa right away, you need to run the command:
+- If you want to try it on Pumpa right away, you need to add it to the `pumpa.qrc` file, and run the command:
 
       lrelease pumpa.pro
 
