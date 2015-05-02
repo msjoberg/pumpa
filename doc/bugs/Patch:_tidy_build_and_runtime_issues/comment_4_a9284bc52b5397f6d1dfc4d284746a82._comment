@@ -1,0 +1,18 @@
+[[!comment format=mdwn
+ username="http://sjoberg.fi/"
+ subject="comment 4"
+ date="2015-05-02T07:52:34Z"
+ content="""
+I added the patch, but this change doesn't go over well with the libtidy in Debian jessie (stable):
+
+    -    tidyOptSetInt(tdoc, TidyBodyOnly, yes) &&
+    +    tidyOptSetBool(tdoc, TidyBodyOnly, yes) &&
+
+It crashes on this error:
+
+    pumpa: config.c:397: prvTidySetOptionBool: Assertion `option_defs[ optId ].type == TidyBoolean' failed.
+    Aborted
+
+I suspect it's a problem due to different versions of the library.  Do you have any suggestion? Is adding an #ifdef the only solution?
+
+"""]]

@@ -8,7 +8,8 @@ will use the [Linguist tool][15] that comes with Qt. Here are the
 steps:
 
 - Download and install Qt development tools, e.g. in Debian you need
-  the `qt4-dev-tools` package.  You can also just install the full Qt
+  the `qttools5-dev-tools` package (or `qt4-dev-tools` for older versions).  
+  You can also just install the full Qt
   system from the [Qt Project web site][14] (Linux, Mac and Windows).
 
 - Pull the most recent version of Pumpa from git. If you have cloned
@@ -44,7 +45,7 @@ steps:
 
       lrelease pumpa.pro
 
-  (You need to use `lrelease-qt4` on some systems, e.g. Fedora.)
+  (You need to use `lrelease-qt5` on some systems, e.g. Fedora.)
 
   Pumpa should detect your systems locale setting and use the correct
   language.  If that doesn't work, or your locale is different, you
