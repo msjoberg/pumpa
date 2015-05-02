@@ -199,6 +199,8 @@ PumpApp::~PumpApp() {
 //------------------------------------------------------------------------------
 
 void PumpApp::launchOAuthWizard() {
+  qApp->setQuitOnLastWindowClosed(false);
+
   if (!m_wiz) {
     m_wiz = new OAuthWizard(m_nam, m_oam, this);
     connect(m_wiz, SIGNAL(clientRegistered(QString, QString, QString, QString)),
@@ -271,12 +273,13 @@ void PumpApp::onSslErrors(QNetworkReply* reply, QList<QSslError> errors) {
   msgBox.setInformativeText(infoText);
   if (!detailText.isEmpty())
     msgBox.setDetailedText(detailText);
-  msgBox.setStandardButtons(QMessageBox::Abort);
+  msgBox.setStandardButtons(QMessageBox::Ignore | QMessageBox::Abort);
   msgBox.setDefaultButton(QMessageBox::Abort);
 
-  msgBox.exec();
-
-  QApplication::quit();
+  if (msgBox.exec() == QMessageBox::Ignore) {
+    reply->ignoreSslErrors();
+    return;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -754,6 +757,7 @@ void PumpApp::preferences() {
 //------------------------------------------------------------------------------
 
 void PumpApp::wizardCancelled() {
+  qApp->setQuitOnLastWindowClosed(true);
   if (!haveOAuth())
     exit();
 }
