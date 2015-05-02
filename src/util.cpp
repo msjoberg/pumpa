@@ -296,7 +296,7 @@ QString tidyHtml(QString str, bool& ok) {
     tidyOptSetBool(tdoc, TidyXhtmlOut, yes) && 
     tidyOptSetBool(tdoc, TidyForceOutput, yes) &&
     tidyOptSetBool(tdoc, TidyMark, no) &&
-    tidyOptSetBool(tdoc, TidyBodyOnly, yes) &&
+    tidyOptSetInt(tdoc, TidyBodyOnly, yes) &&
     tidyOptSetInt(tdoc, TidyWrapLen, 0) &&
     tidyOptSetInt(tdoc, TidyDoctypeMode, TidyDoctypeOmit);
     
