@@ -286,14 +286,17 @@ QString tidyHtml(QString str, bool& ok) {
   ok = false;
 
   TidyDoc tdoc = tidyCreate();
-  TidyBuffer output = {0, 0, 0, 0, 0};
-  TidyBuffer errbuf = {0, 0, 0, 0, 0};
+  TidyBuffer output;
+  TidyBuffer errbuf;
+
+  tidyBufInit(&output);
+  tidyBufInit(&errbuf);
 
   bool configOk = 
     tidyOptSetBool(tdoc, TidyXhtmlOut, yes) && 
     tidyOptSetBool(tdoc, TidyForceOutput, yes) &&
     tidyOptSetBool(tdoc, TidyMark, no) &&
-    tidyOptSetInt(tdoc, TidyBodyOnly, yes) &&
+    tidyOptSetBool(tdoc, TidyBodyOnly, yes) &&
     tidyOptSetInt(tdoc, TidyWrapLen, 0) &&
     tidyOptSetInt(tdoc, TidyDoctypeMode, TidyDoctypeOmit);
     
