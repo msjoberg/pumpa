@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it_IT">
+<TS version="2.1" language="it_IT">
 <context>
     <name>ActivityWidget</name>
     <message>
@@ -724,9 +724,8 @@
         <translation>Pubblico</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="493"/>
         <source>You have %1 new notifications.</source>
-        <translation>Hai %1 nuove notifiche.</translation>
+        <translation type="vanished">Hai %1 nuove notifiche.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="503"/>
@@ -805,6 +804,14 @@
     <message>
         <source>Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg.&lt;/p&gt;</source>
         <translation type="obsolete">Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg.&lt;/p&gt;</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/pumpapp.cpp" line="493"/>
+        <source>You have %n new notification(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="803"/>

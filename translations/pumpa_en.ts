@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>ActivityWidget</name>
     <message>
@@ -534,6 +534,14 @@
         <source>Error: </source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <location filename="../src/pumpapp.cpp" line="493"/>
+        <source>You have %n new notification(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="637"/>
         <source>%1 &amp;Window</source>
@@ -676,11 +684,6 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="307"/>
         <source>Public</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/pumpapp.cpp" line="493"/>
-        <source>You have %1 new notifications.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

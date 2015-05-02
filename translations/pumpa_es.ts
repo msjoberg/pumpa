@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="es_ES">
+<TS version="2.1" language="es_ES">
 <context>
     <name>ActivityWidget</name>
     <message>
@@ -605,6 +605,14 @@
         <source>You have new messages.</source>
         <translation type="obsolete">Tienes nuevos mensajes.</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../src/pumpapp.cpp" line="493"/>
+        <source>You have %n new notification(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="578"/>
         <source>Error: </source>
@@ -755,9 +763,8 @@
         <translation>Público</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="493"/>
         <source>You have %1 new notifications.</source>
-        <translation>Tienes %1 notificaciones nuevas.</translation>
+        <translation type="vanished">Tienes %1 notificaciones nuevas.</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="503"/>
