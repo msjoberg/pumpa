@@ -1,0 +1,11 @@
+[[!comment format=mdwn
+ username="https://me.yahoo.com/a/B8EeBAoiuexrn9Y8d7XdueElzUY-#042da"
+ nickname="theirix"
+ subject="comment 5"
+ date="2015-05-03T16:44:07Z"
+ content="""
+You are right. I checked tidy versions and found a breaking change between Debian (20091223) and OS X (20061031, very old) versions.
+An affected parameter TidyBodyOnly changed its type to integer on Debian. Unfortunately libtidy does not provide version numbers so it was needed to parse a release date to distinguish these versions. So the following patch solves an error on Debian by choosing a needed type automatically at runtime.
+
+Please check the [patch](https://gist.github.com/theirix/d7a9472db48bcc81a6b8).
+"""]]
