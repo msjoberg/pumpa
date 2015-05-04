@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="http://sjoberg.fi/"
+ subject="comment 6"
+ date="2015-05-04T17:20:59Z"
+ content="""
+OK, thanks! I applied this patch now, with a tiny change in that it checks the date only once. Hopefully it now works correctly for you as well!
+"""]]
