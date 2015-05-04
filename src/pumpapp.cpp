@@ -493,7 +493,7 @@ void PumpApp::timelineHighlighted(int feed) {
       return;
 
     QString msg =
-      QString(tr("You have %n new notification(s).", "", actsCount));
+      QString(tr("You have %Ln new notification(s).", 0, actsCount));
 
     // If there's only a single post activity we'll make the
     // notification more informative.

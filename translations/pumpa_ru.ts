@@ -523,12 +523,12 @@
         <translation>&amp;Между тем</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="246"/>
+        <location filename="../src/pumpapp.cpp" line="248"/>
         <source>SSL Error: </source>
         <translation>Ошибка SSL:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="249"/>
+        <location filename="../src/pumpapp.cpp" line="251"/>
         <source>
 %1 is unable to verify the identity of the server. This error could mean that someone is trying to impersonate the server, or that the server&apos;s administrator has made an error.
 </source>
@@ -537,7 +537,7 @@
 </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="257"/>
+        <location filename="../src/pumpapp.cpp" line="259"/>
         <source>SSL Server certificate.
 </source>
         <translatorcomment>Я не знаю правильного перевода для терминов внутри сертификата, так что переведу по смыслу. К этим местам нужно отнестись внимательно</translatorcomment>
@@ -545,328 +545,336 @@
 </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="258"/>
+        <location filename="../src/pumpapp.cpp" line="260"/>
         <source>Issued to: </source>
         <translation>Кому выдан: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="259"/>
+        <location filename="../src/pumpapp.cpp" line="261"/>
         <source>Issued by: </source>
         <translation>Кем выдан: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="260"/>
+        <location filename="../src/pumpapp.cpp" line="262"/>
         <source>Effective: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="261"/>
+        <location filename="../src/pumpapp.cpp" line="263"/>
         <source>Expires: </source>
         <translation>Истекает: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="262"/>
+        <location filename="../src/pumpapp.cpp" line="264"/>
         <source>MD5 digest: </source>
         <translation>MD5 сумма: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="269"/>
+        <location filename="../src/pumpapp.cpp" line="271"/>
         <source>&lt;b&gt;Untrusted SSL connection!&lt;/b&gt;</source>
         <translation>&lt;b&gt;Небезопасное SSL соединение!&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="307"/>
+        <location filename="../src/pumpapp.cpp" line="310"/>
         <source>Public</source>
         <translation>Публично</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="313"/>
-        <location filename="../src/pumpapp.cpp" line="698"/>
+        <location filename="../src/pumpapp.cpp" line="316"/>
+        <location filename="../src/pumpapp.cpp" line="701"/>
         <source>Followers</source>
         <translation>Подписчики</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/pumpapp.cpp" line="493"/>
         <source>You have %n new notification(s).</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>У вас %n новое уведомление.</numerusform>
             <numerusform>У вас %n новых уведомлений.</numerusform>
             <numerusform>У вас %n новых уведомлений.</numerusform>
         </translation>
     </message>
+    <message numerus="yes">
+        <location filename="../src/pumpapp.cpp" line="496"/>
+        <source>You have %Ln new notification(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="503"/>
+        <location filename="../src/pumpapp.cpp" line="506"/>
         <source>%1 commented: </source>
         <translation>%1 откомментировал: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="505"/>
+        <location filename="../src/pumpapp.cpp" line="508"/>
         <source>%1 wrote: </source>
         <translation>%1 написал: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="578"/>
+        <location filename="../src/pumpapp.cpp" line="581"/>
         <source>Error: </source>
         <translation>Ошибка: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="637"/>
+        <location filename="../src/pumpapp.cpp" line="640"/>
         <source>%1 &amp;Window</source>
         <translation>%1 &amp;Окно</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="637"/>
+        <location filename="../src/pumpapp.cpp" line="640"/>
         <source>Hide</source>
         <translation>Спрятать</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="637"/>
+        <location filename="../src/pumpapp.cpp" line="640"/>
         <source>Show</source>
         <translation>Показать</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="652"/>
+        <location filename="../src/pumpapp.cpp" line="655"/>
         <source>E&amp;xit</source>
         <translation>В&amp;ыход</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="653"/>
+        <location filename="../src/pumpapp.cpp" line="656"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="656"/>
+        <location filename="../src/pumpapp.cpp" line="659"/>
         <source>Preferences</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="659"/>
+        <location filename="../src/pumpapp.cpp" line="662"/>
         <source>&amp;Reload timeline</source>
         <translation>Переза&amp;грузить сообщения</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="660"/>
+        <location filename="../src/pumpapp.cpp" line="663"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="664"/>
+        <location filename="../src/pumpapp.cpp" line="667"/>
         <source>Load older in timeline</source>
         <translation>Загрузить более старые сообщения</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="665"/>
+        <location filename="../src/pumpapp.cpp" line="668"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="668"/>
+        <location filename="../src/pumpapp.cpp" line="671"/>
         <source>F&amp;ollow an account</source>
         <translation>&amp;Подписаться на пользователя</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="669"/>
+        <location filename="../src/pumpapp.cpp" line="672"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="672"/>
+        <location filename="../src/pumpapp.cpp" line="675"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="675"/>
+        <location filename="../src/pumpapp.cpp" line="678"/>
         <source>About &amp;Qt</source>
         <translation>О &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="678"/>
+        <location filename="../src/pumpapp.cpp" line="681"/>
         <source>Report &amp;bug online</source>
         <translation>&amp;Сообщить об ошибке</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="681"/>
+        <location filename="../src/pumpapp.cpp" line="684"/>
         <source>New &amp;Note</source>
         <translation>Новое &amp;Сообщение</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="682"/>
+        <location filename="../src/pumpapp.cpp" line="685"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="686"/>
+        <location filename="../src/pumpapp.cpp" line="689"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="691"/>
+        <location filename="../src/pumpapp.cpp" line="694"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="695"/>
+        <location filename="../src/pumpapp.cpp" line="698"/>
         <source>Firehose</source>
         <translation>Firehose</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="701"/>
+        <location filename="../src/pumpapp.cpp" line="704"/>
         <source>Following</source>
         <translatorcomment>Возможно тут нужно использовать слово, которое сильнее визуально отличается от &quot;подписчиков&quot;</translatorcomment>
         <translation>Подписки</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="704"/>
+        <location filename="../src/pumpapp.cpp" line="707"/>
         <source>Favorites</source>
         <translation>Избранное</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="708"/>
+        <location filename="../src/pumpapp.cpp" line="711"/>
         <source>Activities</source>
         <translation>Активность</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="719"/>
+        <location filename="../src/pumpapp.cpp" line="722"/>
         <source>&amp;Pumpa</source>
         <translation>&amp;Pumpa</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="731"/>
+        <location filename="../src/pumpapp.cpp" line="734"/>
         <source>&amp;Tabs</source>
         <translation>&amp;Вкладки</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="740"/>
+        <location filename="../src/pumpapp.cpp" line="743"/>
         <source>&amp;Help</source>
         <translation>&amp;Помощь</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="771"/>
+        <location filename="../src/pumpapp.cpp" line="775"/>
         <source>&lt;p&gt;Pumpa is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.&lt;/p&gt;&lt;p&gt;Pumpa is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.&lt;/p&gt;&lt;p&gt;You should have received a copy of the GNU General Public License along with Pumpa.  If not, see &lt;a href=&quot;http://www.gnu.org/licenses/&quot;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="784"/>
+        <location filename="../src/pumpapp.cpp" line="788"/>
         <source>&lt;p&gt;The &lt;a href=&quot;https://github.com/kypeli/kQOAuth&quot;&gt;kQOAuth library&lt;/a&gt; is copyrighted by &lt;a href=&quot;http://www.johanpaul.com/&quot;&gt;Johan Paul&lt;/a&gt; and licensed under LGPL 2.1.&lt;/p&gt;&lt;p&gt;The &lt;a href=&quot;https://github.com/vmg/sundown&quot;&gt;sundown Markdown library&lt;/a&gt; is copyrighted by Natacha Port&amp;eacute;, Vicent Marti and others, and &lt;a href=&quot;https://github.com/vmg/sundown#license&quot;&gt;permissively licensed&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;The Pumpa logo was &lt;a href=&quot;http://opengameart.org/content/fruit-and-veggie-inventory&quot;&gt;created by Joshua Taylor&lt;/a&gt; for the &lt;a href=&quot;http://lpc.opengameart.org/&quot;&gt;Liberated Pixel Cup&lt;/a&gt;.The logo is copyrighted by the artist and is dual licensed under the CC-BY-SA 3.0 license and the GNU GPL 3.0.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="800"/>
+        <location filename="../src/pumpapp.cpp" line="804"/>
         <source>Copyright &amp;copy; 2013-2015 Mats Sj&amp;ouml;berg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="803"/>
+        <location filename="../src/pumpapp.cpp" line="807"/>
         <source>&lt;p&gt;Report bugs and feature requests at &lt;a href=&quot;%5&quot;&gt;%5&lt;/a&gt;.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Сообщайте об ошибках и запрашивайте новые возможности по адресу &lt;a href=&quot;%5&quot;&gt;%5&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="807"/>
+        <location filename="../src/pumpapp.cpp" line="811"/>
         <source>A simple Qt-based pump.io client.</source>
         <translation>Простой pump.io клиент на основе Qt</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="811"/>
+        <location filename="../src/pumpapp.cpp" line="815"/>
         <source>About %1</source>
         <translation>О %1</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="918"/>
+        <location filename="../src/pumpapp.cpp" line="922"/>
         <source>Site not configured yet!</source>
         <translation>Сайт ещё не настроен!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="968"/>
+        <location filename="../src/pumpapp.cpp" line="972"/>
         <source>Follow pump.io user</source>
         <translation>Подписка на pump.io пользователя</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="969"/>
+        <location filename="../src/pumpapp.cpp" line="973"/>
         <source>Enter webfinger ID of person to follow: </source>
         <translation>Введите webfinger ID человека, на которого хотите подписаться: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="979"/>
+        <location filename="../src/pumpapp.cpp" line="983"/>
         <source>Sorry, that doesn&apos;t even look like a webfinger ID!</source>
         <translation>Простите, это даже не похоже на webfinger ID!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="984"/>
+        <location filename="../src/pumpapp.cpp" line="988"/>
         <source>Sorry, you are already following that person!</source>
         <translation>Простите, вы уже подписаны на этого человека!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1036"/>
+        <location filename="../src/pumpapp.cpp" line="1040"/>
         <source>Invalid user: </source>
         <translation>Некорректный пользователь: </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1043"/>
+        <location filename="../src/pumpapp.cpp" line="1047"/>
         <source>Invalid user (cannot check site): </source>
         <translation>Некорректный пользователь (не могу проверить сайт): </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1068"/>
+        <location filename="../src/pumpapp.cpp" line="1072"/>
         <source>&amp;Context</source>
         <translation>&amp;Контекст</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1092"/>
+        <location filename="../src/pumpapp.cpp" line="1096"/>
         <source>Fi&amp;rehose</source>
         <translation>Fi&amp;rehose</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1101"/>
+        <location filename="../src/pumpapp.cpp" line="1105"/>
         <source>&amp;Followers</source>
         <translation>&amp;Подписчики</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1110"/>
+        <location filename="../src/pumpapp.cpp" line="1114"/>
         <source>F&amp;ollowing</source>
         <translation>П&amp;одписки</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1119"/>
+        <location filename="../src/pumpapp.cpp" line="1123"/>
         <source>F&amp;avorites</source>
         <translation>&amp;Избранное</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1128"/>
+        <location filename="../src/pumpapp.cpp" line="1132"/>
         <source>A&amp;ctivities</source>
         <translation>&amp;Активность</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1447"/>
+        <location filename="../src/pumpapp.cpp" line="1451"/>
         <source>Loading ...</source>
         <translation>Загрузка ...</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1509"/>
+        <location filename="../src/pumpapp.cpp" line="1513"/>
         <source>Ready!</source>
         <translation>Готово!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1527"/>
+        <location filename="../src/pumpapp.cpp" line="1531"/>
         <source>Unable to post message!</source>
         <translation>Не могу опубликовать сообщение!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1531"/>
+        <location filename="../src/pumpapp.cpp" line="1535"/>
         <source>Unable to upload image!</source>
         <translation>Не могу загрузить изображение!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1535"/>
+        <location filename="../src/pumpapp.cpp" line="1539"/>
         <source>Network or authorisation error [%1/%2] %3.</source>
         <translation>Ошибка сети или авторизации [%1/%2] %3.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1563"/>
+        <location filename="../src/pumpapp.cpp" line="1567"/>
         <source>Successfully followed </source>
         <translation>Успешно подписался на </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1564"/>
+        <location filename="../src/pumpapp.cpp" line="1568"/>
         <source>Successfully unfollowed </source>
         <translation>Успешно отписался от </translation>
     </message>
