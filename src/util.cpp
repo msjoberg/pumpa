@@ -277,6 +277,29 @@ QString removeHtml(QString origText) {
 
 //------------------------------------------------------------------------------
 
+#ifndef NO_TIDY
+// Tidy changed TidyBodyOnly type from bool to int at 2007-05-24.
+// Returns true when a new version (int) is found
+bool isTidyWithIntBodyOnlyCheck() {
+  QString releaseDateStr(tidyReleaseDate());
+  int yearPos = releaseDateStr.indexOf(QRegExp(" [0-9]{4}"));
+  if (yearPos != -1)
+    releaseDateStr = releaseDateStr.left(yearPos + 5);
+  QDate releaseDate = QLocale::c().toDate(releaseDateStr, "d MMMM yyyy");
+  QDate changeDate = QLocale::c().toDate("24 May 2007", "d MMMM yyyy");
+  bool isNewer = releaseDate > changeDate;
+
+#ifdef DEBUG_MARKUP
+  qDebug() << "\n[DEBUG] tidy release date:" << releaseDate.toString(Qt::ISODate);
+  qDebug() << "\n[DEBUG] use API with new TidyBodyOnly as int :" << isNewer;
+#endif
+
+  return isNewer;
+}
+#endif
+
+//------------------------------------------------------------------------------
+
 QString tidyHtml(QString str, bool& ok) {
 #ifdef NO_TIDY
   ok = true;
@@ -285,6 +308,8 @@ QString tidyHtml(QString str, bool& ok) {
   QString res = str;
   ok = false;
 
+  static bool isTidyWithIntBodyOnly = isTidyWithIntBodyOnlyCheck();
+  
   TidyDoc tdoc = tidyCreate();
   TidyBuffer output;
   TidyBuffer errbuf;
@@ -296,7 +321,9 @@ QString tidyHtml(QString str, bool& ok) {
     tidyOptSetBool(tdoc, TidyXhtmlOut, yes) && 
     tidyOptSetBool(tdoc, TidyForceOutput, yes) &&
     tidyOptSetBool(tdoc, TidyMark, no) &&
-    tidyOptSetInt(tdoc, TidyBodyOnly, yes) &&
+    (isTidyWithIntBodyOnly
+     ? tidyOptSetInt(tdoc, TidyBodyOnly, 1)
+     : tidyOptSetBool(tdoc, TidyBodyOnly, yes)) &&
     tidyOptSetInt(tdoc, TidyWrapLen, 0) &&
     tidyOptSetInt(tdoc, TidyDoctypeMode, TidyDoctypeOmit);
     
