@@ -62,7 +62,7 @@ win32 {
 }
 
 macx {
-  ICON = $${PWD}/images/pumpa.icns
+  ICON = $${PWD}/icons/pumpa.icns
 }
 # Additions for Qt 4
 lessThan(QT_MAJOR_VERSION, 5) {
