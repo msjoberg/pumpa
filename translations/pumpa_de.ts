@@ -367,7 +367,7 @@
         <translation>Bildnachricht akt&amp;ualisieren</translation>
     </message>
     <message>
-        <location filename="../src/messagewindow.cpp" line="516"/>
+        <location filename="../src/messagewindow.cpp" line="518"/>
         <source>Characters: %1</source>
         <translation type="unfinished"></translation>
     </message>
