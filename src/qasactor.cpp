@@ -37,6 +37,7 @@ QASActor::QASActor(QString id, QObject* parent) :
   QASObject(id, parent),
   m_followed(false),
   m_followed_json(false),
+  m_followed_set(false),
   m_isYou(false)
 {
 #ifdef DEBUG_QAS
@@ -107,8 +108,18 @@ QASActor* QASActor::getActor(QVariantMap json, QObject* parent) {
 
 //------------------------------------------------------------------------------
 
+bool QASActor::followed() const {
+  /* If followed has been set explicitly use that, otherwise use the
+     followed value in the original json - which is unreliable, but
+     better than nothing. */
+  return m_followed_set ? m_followed : m_followed_json;
+}
+
+//------------------------------------------------------------------------------
+
 void QASActor::setFollowed(bool b) { 
   if (b != m_followed) {
+    m_followed_set = true;
     m_followed = b;
     emit changed();
   }
