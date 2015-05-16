@@ -13,4 +13,4 @@ important can words be? ...)
 
 Originally reported as bug [#781352 in Debian](https://bugs.debian.org/781352).
 
-[[!tag high resolved]]
+[[!tag resolved]]
