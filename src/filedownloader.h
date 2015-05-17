@@ -1,5 +1,5 @@
 /*
-  Copyright 2014 Mats Sjöberg
+  Copyright 2013-2015 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
