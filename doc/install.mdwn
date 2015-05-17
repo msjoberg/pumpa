@@ -16,7 +16,7 @@ compile it yourself, it's pretty easy, [[see instructions below|install#Compilin
 
 ## Fedora Linux
 
-By [Matt Molyneaux](https://microca.st/moggers87): <http://moggers.co.uk/~moggers87/repo/pumpa/>
+By [Matt Molyneaux](https://microca.st/moggers87): <https://copr.fedoraproject.org/coprs/moggers87/pumpa/>
 
 ["Metal Biker"](https://microca.st/howcanuhavemyusername) has a Fedora
 Copr repo for Pumpa and [Dianara][18]: <http://sylke.altervista.org/repo/>
@@ -35,10 +35,6 @@ By ["XRevan86"](https://microca.st/xrevan86): <http://software.opensuse.org/pack
 
 By ["speps"](https://aur.archlinux.org/packages/?K=speps&SeB=m): <https://aur.archlinux.org/packages/?K=pumpa>
 
-## Mac OS X
-
-By [Al aka chunder@identi.ca](https://identi.ca/chunder): <http://juu.st/pumpa/>
-
 
 # Compiling yourself
 
@@ -47,10 +43,10 @@ By [Al aka chunder@identi.ca](https://identi.ca/chunder): <http://juu.st/pumpa/>
 Pumpa should build with Qt 4.8 or Qt 5.0 or newer. If you are using Qt
 4, you will also need the [QJson library][6].
 
-For example on Debian 7.0 "wheezy" the following command should
-install everything needed to build the code:
+For example on Debian 8 "jessie" the following command should install
+everything needed to build the code:
 
-    aptitude install build-essential qt4-qmake libqt4-dev libqjson-dev libtidy-dev
+    aptitude install build-essential qt5-qmake qtbase5-dev libtidy-dev
 
 If you want spell checking install the aspell library as well:
 
@@ -72,9 +68,14 @@ To download and build, type the following in your directory of choice:
     make
 
 The procedure on Mac OS X is the same, but getting the dependencies is
-a bit different, see the [HowTo for building Pumpa on OS X](https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X) by [habi@fmrl.me](http://fmrl.me/habi).
+a bit different, see the
+[HowTo for building Pumpa on OS X](https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X)
+by [habi@fmrl.me](http://fmrl.me/habi).
 
-Even though it isn't recommended, if you have problems with the libtidy dependency it is possible to compile Pumpa without it by running qmake as `qmake CONFIG+=notidy`. This will also disable the use of raw HTML, however Markdown syntax will still work.
+Even though it isn't recommended, if you have problems with the
+libtidy dependency it is possible to compile Pumpa without it by
+running qmake as `qmake CONFIG+=notidy`. This will also disable the
+use of raw HTML, however Markdown syntax will still work.
 
-Axel has a blog post about [
-How to build “Pumpa” QT-based pump.io client for Windows](https://axel668.wordpress.com/2013/07/18/how-to-build-pumpa-qt-based-pump-io-client-for-windows/).
+Axel has a blog post about
+[ How to build “Pumpa” QT-based pump.io client for Windows](https://axel668.wordpress.com/2013/07/18/how-to-build-pumpa-qt-based-pump-io-client-for-windows/).

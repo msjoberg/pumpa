@@ -25,8 +25,9 @@ The Pumpa source code includes codes and graphics from other people:
 - Spanish translation by [Laura Arjona](https://identi.ca/larjona),
   Italian by
   ["Metal Biker"](https://microca.st/howcanuhavemyusername), German by
-  [Mathias Gebbe](https://pumpity.net/matzeihnsein), and Na'vi by
-  [Jessica Tallon](https://microca.st/Tsyesika).
+  [Mathias Gebbe](https://pumpity.net/matzeihnsein), Na'vi by
+  [Jessica Tallon](https://microca.st/Tsyesika), and Russian
+  translation by Nikolay Merinov.
 
 [2]: https://github.com/kypeli/kQOAuth
 [3]: http://www.johanpaul.com/

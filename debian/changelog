@@ -1,3 +1,16 @@
+pumpa (0.9.1-1) unstable; urgency=low
+
+  * Auto-link urls only if we are not using Markdown-mode.
+  * Now has an optional character count for people cross-posting to
+    character limited instances.
+  * Multiple context tabs can now be opened.
+  * Now compiles against Qt 5 by default. (Closes: #770145, #771457
+  * Added Russian translation by Nikolay Merinov.
+  * Now presents an option to abort or ignore when confronted with
+    an SSL cert error. (Closes: #781352)
+
+ -- Mats Sjöberg <mats@sjoberg.fi>  Sun, 17 May 2015 20:23:37 +0300
+
 pumpa (0.9-1) unstable; urgency=low
 
   * Fixed UTF-8 bug introduced in v0.8.4.

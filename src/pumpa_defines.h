@@ -22,7 +22,7 @@
 
 #define CLIENT_NAME           "pumpa"
 #define CLIENT_FANCY_NAME     "Pumpa"
-#define CLIENT_VERSION        "0.9+git"
+#define CLIENT_VERSION        "0.9.1"
 #define CLIENT_ICON           ":/images/pumpa.png"
 
 #define WEBSITE_URL           "https://pumpa.branchable.com/"
