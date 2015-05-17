@@ -36,7 +36,7 @@ void QASActor::clearCache() { deleteMap<QASActor*>(s_actors); }
 QASActor::QASActor(QString id, QObject* parent) :
   QASObject(id, parent),
   m_followed(false),
-  m_followed_json(false),
+  m_followed_json(true),
   m_followed_set(false),
   m_isYou(false)
 {
