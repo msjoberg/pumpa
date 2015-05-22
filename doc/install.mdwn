@@ -67,15 +67,24 @@ To download and build, type the following in your directory of choice:
     qmake     # or qmake-qt4 or qmake-qt5 in some systems
     make
 
-The procedure on Mac OS X is the same, but getting the dependencies is
-a bit different, see the
-[HowTo for building Pumpa on OS X](https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X)
-by [habi@fmrl.me](http://fmrl.me/habi).
+On Mac OS X (Version 10.10.3) the procedures is similar; getting the dependencies and setting the build environment is different. (These notes are derived from [HowTo for building Pumpa on OS X](https://github.com/e14n/pump.io/wiki/HowTo-for-building-Pumpa-on-OS-X) by [habi@fmrl.me](http://fmrl.me/habi).)
 
-Even though it isn't recommended, if you have problems with the
-libtidy dependency it is possible to compile Pumpa without it by
-running qmake as `qmake CONFIG+=notidy`. This will also disable the
-use of raw HTML, however Markdown syntax will still work.
+[Homebrew](http://mxcl.github.io/homebrew/) can be used to install Pumpa dependencies:
+
+	brew install qt qjson aspell
+
+To download and build pumpa, type the following in your directory of choice:
+
+    export LIBRARY_PATH=/usr/local/lib
+    export CPLUS_INCLUDE_PATH=/usr/local/include
+    git clone git://pumpa.branchable.com/ pumpa
+    cd pumpa
+    qmake
+    make
+    open .
+
+You should now have a pumpa.app object (directory) in the build directory.
+Move pumpa.app to ~/Applications (or /Applications)
 
 Axel has a blog post about
 [ How to build “Pumpa” QT-based pump.io client for Windows](https://axel668.wordpress.com/2013/07/18/how-to-build-pumpa-qt-based-pump-io-client-for-windows/).
