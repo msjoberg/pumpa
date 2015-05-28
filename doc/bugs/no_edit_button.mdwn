@@ -1,0 +1,3 @@
+No longer have an edit button on posts I've just made.
+
+0.9.1 from debian
