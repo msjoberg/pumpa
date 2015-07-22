@@ -96,10 +96,14 @@
         <translation>bearbeiten</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="113"/>
-        <location filename="../src/fullobjectwidget.cpp" line="673"/>
         <source>comment</source>
-        <translation>kommentieren</translation>
+        <translation type="vanished">kommentieren</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="113"/>
+        <source>comment</source>
+        <comment>Button to comment on a post</comment>
+        <translation type="unfinished">kommentieren</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="313"/>
@@ -149,9 +153,45 @@
         <translation>folge</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="624"/>
+        <location filename="../src/fullobjectwidget.cpp" line="545"/>
+        <source>shared this.</source>
+        <comment>Many persons shared</comment>
+        <translation type="unfinished">teilten das.</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="547"/>
+        <source>shared this.</source>
+        <comment>One person shared</comment>
+        <translation type="unfinished">teilten das.</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="627"/>
         <source>Show all replies</source>
         <translation>Alle Kommentare anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="671"/>
+        <source>post</source>
+        <comment>Name of object type.</comment>
+        <translation type="unfinished">Beitrag</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="674"/>
+        <source>note</source>
+        <comment>Name of object type.</comment>
+        <translation type="unfinished">Mitteilung</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="676"/>
+        <source>comment</source>
+        <comment>Name of object type.</comment>
+        <translation type="unfinished">kommentieren</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="678"/>
+        <source>image</source>
+        <comment>Name of object type.</comment>
+        <translation type="unfinished">Bild</translation>
     </message>
     <message>
         <source>stop following %1</source>
@@ -196,13 +236,15 @@
             <numerusform>%n persons shared this.</numerusform>
         </translation>
     </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="544"/>
+    <message numerus="yes">
         <source>shared this.</source>
-        <translation>teilten das.</translation>
+        <translation type="obsolete">
+            <numerusform>teilten das.</numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="547"/>
+        <location filename="../src/fullobjectwidget.cpp" line="550"/>
         <source>%Ln person(s) shared this.</source>
         <translation>
             <numerusform>von %Ln Person geteilt</numerusform>
@@ -214,27 +256,24 @@
         <translation type="obsolete">alle %1 Antworten anzeigen</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="668"/>
         <source>post</source>
-        <translation>Beitrag</translation>
+        <translation type="vanished">Beitrag</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="671"/>
         <source>note</source>
-        <translation>Mitteilung</translation>
+        <translation type="vanished">Mitteilung</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="675"/>
         <source>image</source>
-        <translation>Bild</translation>
+        <translation type="vanished">Bild</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="696"/>
+        <location filename="../src/fullobjectwidget.cpp" line="699"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation>Sind Sie sicher das sie %1 löschen wollen?</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="716"/>
+        <location filename="../src/fullobjectwidget.cpp" line="719"/>
         <source>Share this %1 by %2?</source>
         <translation>%1 von %2 teilen?</translation>
     </message>

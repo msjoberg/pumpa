@@ -110,7 +110,7 @@ FullObjectWidget::FullObjectWidget(QASObject* obj, QWidget* parent,
   connect(m_editButton, SIGNAL(clicked()), this, SLOT(onEditClicked()));
   m_buttonLayout->addWidget(m_editButton, 0, Qt::AlignTop);
 
-  m_commentButton = new TextToolButton(tr("comment"), this);
+  m_commentButton = new TextToolButton(tr("comment", "Button to comment on a post"), this);
   connect(m_commentButton, SIGNAL(clicked()), this, SLOT(reply()));
   m_buttonLayout->addWidget(m_commentButton, 0, Qt::AlignTop);
 
@@ -541,7 +541,10 @@ void FullObjectWidget::updateShares() {
     int others = ns-m_object->shares()->size();
     if (others >= 1)
       text += QString(" ") + tr("and %Ln other person(s)", 0, others);
-    text += QString(" ") + tr("shared this.");
+    if (ns > 1)
+      text += QString(" ") + tr("shared this.", "Many persons shared");
+    else 
+      text += QString(" ") + tr("shared this.", "One person shared");
   } else {
     if (ns >= 1)
       text = tr("%Ln person(s) shared this.", 0, ns);
@@ -665,14 +668,14 @@ void FullObjectWidget::reply() {
 //------------------------------------------------------------------------------
 
 QString FullObjectWidget::typeName() const {
-  QString typeName = tr("post");
+  QString typeName = tr("post", "Name of object type.");
   QString tn = m_object->type();
   if (tn == "note")
-    typeName = tr("note");
+    typeName = tr("note", "Name of object type.");
   else if (tn == "comment")
-    typeName = tr("comment");
+    typeName = tr("comment", "Name of object type.");
   else if (tn == "image")
-    typeName = tr("image");
+    typeName = tr("image", "Name of object type.");
 
   return typeName;
 }

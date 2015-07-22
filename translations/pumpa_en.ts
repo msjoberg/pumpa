@@ -97,8 +97,8 @@
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="113"/>
-        <location filename="../src/fullobjectwidget.cpp" line="673"/>
         <source>comment</source>
+        <comment>Button to comment on a post</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -176,8 +176,44 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="624"/>
+        <location filename="../src/fullobjectwidget.cpp" line="545"/>
+        <source>shared this.</source>
+        <comment>Many persons shared</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="547"/>
+        <source>shared this.</source>
+        <comment>One person shared</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="627"/>
         <source>Show all replies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="671"/>
+        <source>post</source>
+        <comment>Name of object type.</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="674"/>
+        <source>note</source>
+        <comment>Name of object type.</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="676"/>
+        <source>comment</source>
+        <comment>Name of object type.</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="678"/>
+        <source>image</source>
+        <comment>Name of object type.</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
@@ -187,13 +223,8 @@
             <numerusform>%n persons shared this.</numerusform>
         </translation>
     </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="544"/>
-        <source>shared this.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="547"/>
+        <location filename="../src/fullobjectwidget.cpp" line="550"/>
         <source>%Ln person(s) shared this.</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -201,27 +232,12 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="668"/>
-        <source>post</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="671"/>
-        <source>note</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="675"/>
-        <source>image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/fullobjectwidget.cpp" line="696"/>
+        <location filename="../src/fullobjectwidget.cpp" line="699"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="716"/>
+        <location filename="../src/fullobjectwidget.cpp" line="719"/>
         <source>Share this %1 by %2?</source>
         <translation type="unfinished"></translation>
     </message>
