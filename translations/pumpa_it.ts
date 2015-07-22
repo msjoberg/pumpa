@@ -111,10 +111,14 @@
         <translation>[Nessuna descrizione]</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="349"/>
-        <location filename="../src/fullobjectwidget.cpp" line="366"/>
         <source>at %1</source>
-        <translation>in %1</translation>
+        <translation type="vanished">in %1</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="349"/>
+        <source>at %1</source>
+        <comment>location of person</comment>
+        <translation type="unfinished">in %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="351"/>
@@ -125,6 +129,12 @@
         <location filename="../src/fullobjectwidget.cpp" line="359"/>
         <source>updated %1</source>
         <translation>aggiornato %1</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="366"/>
+        <source>at %1</source>
+        <comment>time when post was published</comment>
+        <translation type="unfinished">in %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="386"/>

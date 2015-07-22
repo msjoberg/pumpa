@@ -111,11 +111,15 @@
         <translation>[Нет описания]</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="349"/>
-        <location filename="../src/fullobjectwidget.cpp" line="366"/>
         <source>at %1</source>
         <translatorcomment>пост написал ИМЯ в указанное ВРЕМЯ</translatorcomment>
-        <translation>@ %1</translation>
+        <translation type="vanished">@ %1</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="349"/>
+        <source>at %1</source>
+        <comment>location of person</comment>
+        <translation type="unfinished">@ %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="351"/>
@@ -127,6 +131,12 @@
         <source>updated %1</source>
         <translatorcomment>обновлено КОГДА</translatorcomment>
         <translation>обновлено %1</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="366"/>
+        <source>at %1</source>
+        <comment>time when post was published</comment>
+        <translation type="unfinished">@ %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="386"/>

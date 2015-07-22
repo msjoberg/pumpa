@@ -111,11 +111,15 @@
         <translation>[Kea tìsla&apos;tsu]</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="349"/>
-        <location filename="../src/fullobjectwidget.cpp" line="366"/>
         <source>at %1</source>
         <oldsource>at</oldsource>
-        <translation>ro %1</translation>
+        <translation type="vanished">ro %1</translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="349"/>
+        <source>at %1</source>
+        <comment>location of person</comment>
+        <translation type="unfinished">ro %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="351"/>
@@ -126,6 +130,12 @@
         <location filename="../src/fullobjectwidget.cpp" line="359"/>
         <source>updated %1</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="366"/>
+        <source>at %1</source>
+        <comment>time when post was published</comment>
+        <translation type="unfinished">ro %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="386"/>

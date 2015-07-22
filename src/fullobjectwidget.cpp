@@ -346,7 +346,7 @@ void FullObjectWidget::updateInfoText() {
     
     QString location = m_actor->location();
     if (!location.isEmpty())
-      infoStr += " " + QString(tr("at %1")).arg(location);
+      infoStr += " " + QString(tr("at %1", "location of person")).arg(location);
     if (m_actor->updatedDate().isValid())
       infoStr += ".<br/>" + QString(tr("Profile last updated %1")).
 	arg(relativeFuzzyTime(m_actor->updatedDate(), true));
@@ -363,7 +363,7 @@ void FullObjectWidget::updateInfoText() {
     if (author)
       infoStr = QString("<a href=\"%2\">%1</a>").
         arg(author->displayName()).
-        arg(author->url()) + " " + QString(tr("at %1")).arg(infoStr);
+        arg(author->url()) + " " + QString(tr("at %1", "time when post was published")).arg(infoStr);
 
     QASLocation* loc = m_object->location();
     if (!loc->isEmpty()) {

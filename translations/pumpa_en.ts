@@ -108,8 +108,8 @@
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="349"/>
-        <location filename="../src/fullobjectwidget.cpp" line="366"/>
         <source>at %1</source>
+        <comment>location of person</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -120,6 +120,12 @@
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="359"/>
         <source>updated %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/fullobjectwidget.cpp" line="366"/>
+        <source>at %1</source>
+        <comment>time when post was published</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
