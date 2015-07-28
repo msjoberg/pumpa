@@ -15,5 +15,6 @@
   <file>translations/pumpa_it.qm</file>
   <file>translations/pumpa_de.qm</file>
   <file>translations/pumpa_ru.qm</file>
+  <file>translations/pumpa_fi.qm</file>
 </qresource>
 </RCC>

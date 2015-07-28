@@ -1,6 +1,7 @@
-Pumpa currently has Spanish, French, [Na'vi][17], Italian and German
-translations. Any new translations are most welcome, but please tell
-me first (<mats@sjoberg.fi>) so that people don't do duplicate work!
+Pumpa currently has Spanish, [Na'vi][17], Italian, German, Russian and
+Finnish translations. Any new translations are most welcome, but
+please tell me first (<mats@sjoberg.fi>) so that people don't do
+duplicate work!
 
 If you want to translate Pumpa you need to edit a .ts file.  Any TS
 translation tool is probably OK, but these instructions assume you

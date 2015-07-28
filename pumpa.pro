@@ -155,8 +155,8 @@ TRANSLATIONS = \
 	translations/pumpa_en.ts \
 	translations/pumpa_it.ts \
 	translations/pumpa_de.ts \
-	translations/pumpa_ru.ts
-
+	translations/pumpa_ru.ts \
+	translations/pumpa_fi.ts 
 
 ######################################################################
 # kQOAuth sources
