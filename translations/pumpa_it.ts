@@ -863,6 +863,11 @@
         </translation>
     </message>
     <message>
+        <location filename="../src/pumpapp.cpp" line="693"/>
+        <source>Close tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/pumpapp.cpp" line="807"/>
         <source>&lt;p&gt;Report bugs and feature requests at &lt;a href=&quot;%5&quot;&gt;%5&lt;/a&gt;.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Riporta problemi e richieste di funzionalità su &lt;a href=&quot;%5&quot;&gt;%5&lt;/a&gt;.&lt;/p&gt;</translation>

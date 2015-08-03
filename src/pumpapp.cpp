@@ -690,7 +690,7 @@ void PumpApp::createActions() {
   connect(m_debugAction, SIGNAL(triggered()), this, SLOT(debugAction()));
   addAction(m_debugAction);
   
-  m_closeTabAction = new QAction("Close tab", this);
+  m_closeTabAction = new QAction(tr("Close tab"), this);
   m_closeTabAction->setShortcut(tr("Ctrl+W"));
   connect(m_closeTabAction, SIGNAL(triggered()), this, SLOT(closeTab()));
   m_closeTabAction->setEnabled(false);

@@ -514,7 +514,7 @@
         <location filename="../src/objectwidget.cpp" line="179"/>
         <source>show context</source>
         <translatorcomment>Tähän voisi yrittää keksiä kontekstia paremman suomennoksen. Ehkä keskustelu?</translatorcomment>
-        <translation>näytä konteksti</translation>
+        <translation>näytä keskustelu</translation>
     </message>
 </context>
 <context>
@@ -712,6 +712,11 @@
         <translation>Ctrl+D</translation>
     </message>
     <message>
+        <location filename="../src/pumpapp.cpp" line="693"/>
+        <source>Close tab</source>
+        <translation>Sulje välilehti</translation>
+    </message>
+    <message>
         <location filename="../src/pumpapp.cpp" line="694"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
@@ -819,7 +824,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="1072"/>
         <source>&amp;Context</source>
-        <translation>&amp;Konteksti</translation>
+        <translation>&amp;Keskustelu</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="1096"/>

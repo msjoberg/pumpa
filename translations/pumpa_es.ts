@@ -838,6 +838,11 @@
         <translation>Informar so&amp;bre un fallo</translation>
     </message>
     <message>
+        <location filename="../src/pumpapp.cpp" line="693"/>
+        <source>Close tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/pumpapp.cpp" line="694"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
