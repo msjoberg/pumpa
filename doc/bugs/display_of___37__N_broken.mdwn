@@ -1,0 +1,16 @@
+I posted a note, and entered this line of code:
+
+    r1 = 1%1 + 1%10000000
+
+Markdown was enabled. Preview was enabled, and displayed:
+
+    r1 = 1%1 + 1%10000000
+
+Once posted, the note displayed as:
+
+    r1 = 1%1 + 1000000
+
+This happened both when the code was indented as code, and when it was pasted as-is without any indentation.
+<https://identi.ca/joeyh/note/VmKK1dt0REqjXCqszkOEfg>
+
+Version: 0.9.1
