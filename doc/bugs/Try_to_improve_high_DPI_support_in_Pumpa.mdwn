@@ -1,0 +1,1 @@
+Take a look at this: <https://community.kde.org/KDE/High-dpi_issues#Tips_for_developers>
