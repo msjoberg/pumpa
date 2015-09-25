@@ -1,0 +1,7 @@
+[[!comment format=mdwn
+ username="http://sjoberg.fi/"
+ subject="comment 1"
+ date="2015-09-25T16:46:52Z"
+ content="""
+[Jan claims this is actually a bug in pump.io itself](https://github.com/e14n/pump.io/issues/1045#issuecomment-142642197), I haven't yet had time to investigate it myself.
+"""]]
