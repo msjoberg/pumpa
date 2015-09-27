@@ -1,0 +1,13 @@
+[[!comment format=mdwn
+ username="https://id.mayfirst.org/sazius"
+ subject="comment 2"
+ date="2015-09-27T06:12:36Z"
+ content="""
+I have now verified that the error is not in Pumpa. After all the processing the string sent by Pumpa is still correct (excerpt from Pumpa's output when run in debug mode):
+
+    [POST] 17412 : \"https://fmrl.me/api/user/sazius/feed\"
+    DATA \"{\n    \\"object\\": {\n        \\"content\\": \\"<p>r1 = 1%1 + 1%10000000</p>\\",\n        \\"objectType\\": \\"note\\"\n    },\n    \\"to\\": [\n        {\n            \\"id\\": \\"acct:sazius@pump.saz.im\\",\n            \\"objectType\\": \\"person\\"\n        }\n    ],\n    \\"verb\\": \\"post\\"\n}\n\"
+
+Also the same bug happens if I use the web interface.
+
+"""]]
