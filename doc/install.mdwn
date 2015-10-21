@@ -53,6 +53,10 @@ If you want spell checking install the aspell library as well:
 
     aptitude install libaspell-dev
 
+Building with Qt 4.8 on Debian Jessie - this way building with Qt 4.8 makes Pumpa use your choice of theme i.e oxygen so it fits in better with the desktop. 
+
+    aptitude install build-essential qt4-qmake qt4-default libtidy-dev libqjson-dev libaspell-dev 
+
 On Fedora I believe this should install what you need:
 
     yum install gcc-c++ qt-devel qt-config qjson-devel libtidy-devel libaspell-devel
