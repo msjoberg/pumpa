@@ -67,6 +67,10 @@ public:
             verb == "unfavorite" || verb == "unlike");
   }
 
+  static bool isShareVerb(QString verb) {
+    return (verb == "share");
+  }
+
   virtual bool isDeleted() const { 
     return m_verb == "post" && m_object && m_object->isDeleted();
   }

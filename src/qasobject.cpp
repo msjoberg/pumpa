@@ -156,7 +156,7 @@ void QASObject::update(QVariantMap json, bool ignoreLike) {
     m_location->update(json["location"].toMap());
  
   if (json.contains("inReplyTo")) {
-    m_inReplyTo = QASObject::getObject(json["inReplyTo"].toMap(), parent());
+    m_inReplyTo = QASObject::getObject(json["inReplyTo"].toMap(), parent(), true);
     //connectSignals(m_inReplyTo, true, true);
   }
 

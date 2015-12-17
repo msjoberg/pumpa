@@ -62,7 +62,7 @@ void QASActivity::update(QVariantMap json) {
 
   if (json.contains("object")) {
     m_object = QASObject::getObject(json["object"].toMap(), parent(),
-                                    isLikeVerb(m_verb));
+                                    isLikeVerb(m_verb) || isShareVerb(m_verb));
     //connectSignals(m_object);
     if (!m_object->author())
       m_object->setAuthor(m_actor);
