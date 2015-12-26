@@ -114,6 +114,9 @@ void ActivityWidget::updateText() {
   if (!generatorName.isEmpty() && (verb != "share"))
     text += QString(tr(" via %1")).arg(generatorName);
 
+  if (verb == "share")
+    text = "♻ " + text;
+
   if (verb == "post") {
     QString toStr = recipientsToString(m_activity->to());
     QString ccStr = recipientsToString(m_activity->cc());
