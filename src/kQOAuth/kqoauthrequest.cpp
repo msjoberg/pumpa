@@ -381,6 +381,9 @@ void KQOAuthRequest::setHttpMethod(KQOAuthRequest::RequestHttpMethod httpMethod)
     case KQOAuthRequest::POST:
         requestHttpMethodString = "POST";
         break;
+    case KQOAuthRequest::PUT:
+        requestHttpMethodString = "PUT";
+        break;
     default:
         qWarning() << "Invalid HTTP method set.";
         break;

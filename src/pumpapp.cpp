@@ -1416,7 +1416,8 @@ void PumpApp::request(QString endpoint, int response_id,
   }
 
 #ifdef DEBUG_NET
-  qDebug() << (method == KQOAuthRequest::GET ? "[GET]" : "[POST]") 
+  qDebug() << (method == KQOAuthRequest::GET  ? "[GET]" :
+               method == KQOAuthRequest::POST ? "[POST]" : "[PUT]") 
            << response_id << ":" << endpoint;
 #endif
 
@@ -1435,7 +1436,7 @@ void PumpApp::request(QString endpoint, int response_id,
     oaRequest->setAdditionalParameters(params);
   }
   
-  if (method == KQOAuthRequest::POST) {
+  if (method == KQOAuthRequest::POST || method == KQOAuthRequest::PUT) {
     QByteArray ba = serializeJson(data);
     oaRequest->setRawData(ba);
     oaRequest->setContentType("application/json");
@@ -1503,7 +1504,7 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
            << response.count() << "bytes";
 #endif
 #ifdef DEBUG_NET_EVEN_MOAR
-  qDebug() << response;
+  qDebug() << "[DEBUG]" << response;
 #endif
 
   request->deleteLater();

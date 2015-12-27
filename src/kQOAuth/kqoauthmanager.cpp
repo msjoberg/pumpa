@@ -239,7 +239,8 @@ void KQOAuthManager::executeRequest(KQOAuthRequest *request) {
                  this, SLOT(slotError(QNetworkReply::NetworkError)));
         d->requestMap.insert( request, reply );
 
-    } else if (request->httpMethod() == KQOAuthRequest::POST) {
+    } else if (request->httpMethod() == KQOAuthRequest::POST || 
+               request->httpMethod() == KQOAuthRequest::PUT) {
 
         networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, request->contentType());
 
@@ -355,7 +356,8 @@ void KQOAuthManager::executeAuthorizedRequest(KQOAuthRequest *request, int id) {
                  this, SLOT(requestTimeout()));
         d->requestMap.insert( request, reply );
 
-    } else if (request->httpMethod() == KQOAuthRequest::POST) {
+    } else if (request->httpMethod() == KQOAuthRequest::POST ||
+               request->httpMethod() == KQOAuthRequest::PUT) {
 
         networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, request->contentType());
 
@@ -371,10 +373,18 @@ void KQOAuthManager::executeAuthorizedRequest(KQOAuthRequest *request, int id) {
         }
 #endif
 
-        if (request->contentType() == "application/x-www-form-urlencoded") {
-          reply = d->networkManager->post(networkRequest, request->requestBody());
+        if (request->httpMethod() == KQOAuthRequest::PUT) {
+          if (request->contentType() == "application/x-www-form-urlencoded") {
+            reply = d->networkManager->put(networkRequest, request->requestBody());
+          } else {
+            reply = d->networkManager->put(networkRequest, request->rawData());
+          }
         } else {
-          reply = d->networkManager->post(networkRequest, request->rawData());
+          if (request->contentType() == "application/x-www-form-urlencoded") {
+            reply = d->networkManager->post(networkRequest, request->requestBody());
+          } else {
+            reply = d->networkManager->post(networkRequest, request->rawData());
+          }
         }
 
         connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
