@@ -44,13 +44,20 @@ public:
   QString preferredUsername() const { return m_preferredUsername; }
 
   QString displayNameOrYou() const { return isYou() ? "You" : displayName(); }
+  void setDisplayName(QString s) { m_displayName = s; }
+  
   bool isYou() const { return m_isYou; }
   void setYou();
 
   bool followed() const;
   void setFollowed(bool b);
+
   QString summary() const { return m_summary; }
+  void setSummary(QString s) { m_summary = s; }
+  
   QString location() const { return m_location; }
+  void setLocation(QString l) { m_location = l; }
+  
   bool isHidden() const;
   void setHidden(bool b);
 

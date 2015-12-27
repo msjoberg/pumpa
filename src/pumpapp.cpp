@@ -30,6 +30,7 @@
 #include "util.h"
 #include "filedownloader.h"
 #include "qaspell.h"
+#include "editprofiledialog.h"
 
 //------------------------------------------------------------------------------
 
@@ -40,6 +41,7 @@ PumpApp::PumpApp(PumpaSettings* settings, QString locale, QWidget* parent) :
   m_isLoading(false),
   m_wiz(NULL),
   m_messageWindow(NULL),
+  m_editProfileDialog(NULL),
   m_trayIcon(NULL),
   m_locale(locale),
   m_uploadDialog(NULL),
@@ -318,7 +320,7 @@ void PumpApp::startPumping() {
   followersJson["id"] = apiUrl(apiUser("followers"));
   m_recipientLists.append(QASObject::getObject(followersJson, this));
 
-  request(apiUser(""), QAS_SELF_PROFILE);
+  request(apiUser("profile"), QAS_SELF_PROFILE);
   request(apiUser("lists/person"), QAS_SELF_LISTS);
   fetchAll(true);
 
@@ -672,6 +674,9 @@ void PumpApp::createActions() {
   followAction->setShortcut(tr("Ctrl+L"));
   connect(followAction, SIGNAL(triggered()), this, SLOT(followDialog()));
 
+  profileAction = new QAction(tr("Your &profile"), this);
+  connect(profileAction, SIGNAL(triggered()), this, SLOT(editProfile()));
+
   aboutAction = new QAction(tr("&About"), this);
   connect(aboutAction, SIGNAL(triggered()), this, SLOT(about()));
 
@@ -723,6 +728,7 @@ void PumpApp::createMenu() {
   fileMenu->addAction(newNoteAction);
   fileMenu->addSeparator();
   fileMenu->addAction(followAction);
+  fileMenu->addAction(profileAction);
   fileMenu->addAction(reloadAction);
   fileMenu->addAction(loadOlderAction);
   fileMenu->addSeparator();
@@ -991,6 +997,41 @@ void PumpApp::followDialog() {
     return errorBox(error);
 
   testUserAndFollow(username, server);
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::editProfile() {
+  request(apiUser("profile"), QAS_EDIT_PROFILE);
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::editProfileDialog() {
+  if (!m_editProfileDialog) {
+    m_editProfileDialog = new EditProfileDialog(this);
+    connect(m_editProfileDialog, SIGNAL(profileEdited(QASActor*)), 
+            this, SLOT(onProfileEdited(QASActor*)));
+  }
+  m_editProfileDialog->setProfile(m_selfActor);
+  m_editProfileDialog->show();
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::onProfileEdited(QASActor* profile) {
+  QVariantMap json;
+
+  json["objectType"] = "person";
+  json["displayName"] = profile->displayName();
+  json["summary"] = profile->summary();
+  
+  QVariantMap json_loc;
+  json_loc["objectType"] = "place";
+  json_loc["displayName"] = profile->location();
+  json["location"] = json_loc;
+
+  request(apiUser("profile"), QAS_SELF_PROFILE, KQOAuthRequest::PUT, json);
 }
 
 //------------------------------------------------------------------------------
@@ -1584,9 +1625,11 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     QASObject::getObject(json, this);
   } else if (sid == QAS_ACTORLIST) {
     QASActorList::getActorList(json, this);
-  } else if (sid == QAS_SELF_PROFILE) {
-    m_selfActor = QASActor::getActor(json["profile"].toMap(), this);
+  } else if (sid == QAS_SELF_PROFILE || sid == QAS_EDIT_PROFILE) {
+    m_selfActor = QASActor::getActor(json, this);
     m_selfActor->setYou();
+    if (sid == QAS_EDIT_PROFILE)
+      editProfileDialog();
   } else if (sid == QAS_SELF_LISTS) {
     QASObjectList* lists = QASObjectList::getObjectList(json, this, id);
     for (size_t i=0; i<lists->size(); ++i) {

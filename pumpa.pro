@@ -129,7 +129,7 @@ OBJECT_HEADERS = pumpapp.h qactivitystreams.h aswidget.h		\
 	texttoolbutton.h objectwidgetwithsignals.h objectlistwidget.h	\
 	qasabstractobject.h qasobject.h qasactor.h qasactivity.h	\
 	qasobjectlist.h qasactorlist.h qascollection.h			\
-	qasabstractobjectlist.h
+	qasabstractobjectlist.h editprofiledialog.h
 
 OBJECT_SOURCES = $$replace(OBJECT_HEADERS, \\.h, .cpp)
 OBJECT_ALL = $$OBJECT_HEADERS $$OBJECT_SOURCES

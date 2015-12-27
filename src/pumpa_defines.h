@@ -60,8 +60,9 @@
 #define QAS_IMAGE_UPLOAD 8
 #define QAS_IMAGE_UPDATE 9
 #define QAS_SELF_LISTS   10
+#define QAS_EDIT_PROFILE 11
 
-// The higher bits can be used for info for the whatever method is
+// The higher bits can be used for info for the method that is
 // handling the further processing.
 #define QAS_NEWER        (1 << 8)
 #define QAS_OLDER        (1 << 9)

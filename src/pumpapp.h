@@ -51,6 +51,7 @@
 #include "objectlistwidget.h"
 #include "messagewindow.h"
 #include "filedownloader.h"
+#include "editprofiledialog.h"
 
 //------------------------------------------------------------------------------
 
@@ -76,6 +77,8 @@ private slots:
   void onNewMinorObjects();
 
   void followDialog();
+  void editProfile();
+  void editProfileDialog();
   void onLike(QASObject* obj);
   void onShare(QASObject* obj);
   void postNote(QString note, QString title,
@@ -88,6 +91,7 @@ private slots:
   void follow(QString acctId, bool follow);
   void onDeleteObject(QASObject* obj);
   void onEditObject(QASObject* obj);
+  void onProfileEdited(QASActor*);
 
   void errorMessage(QString msg);
   void notifyMessage(QString msg);
@@ -212,6 +216,7 @@ private:
   // QAction* newPictureAction;
   QAction* reloadAction;
   QAction* followAction;
+  QAction* profileAction;
   QAction* loadOlderAction;
   QAction* openPrefsAction;
   QAction* exitAction;
@@ -257,6 +262,8 @@ private:
   OAuthWizard* m_wiz;
 
   MessageWindow* m_messageWindow;
+
+  EditProfileDialog* m_editProfileDialog;
 
   QSystemTrayIcon* m_trayIcon;
   QMenu* m_trayIconMenu;
