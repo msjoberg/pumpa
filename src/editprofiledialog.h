@@ -26,8 +26,10 @@
 #include <QTextEdit>
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 
 #include "qasactor.h"
+#include "texttoolbutton.h"
 
 class EditProfileDialog : public QDialog {
   Q_OBJECT
@@ -38,12 +40,21 @@ public:
   void setProfile(QASActor* profile);
 
 signals:
-  void profileEdited(QASActor*);
+  void profileEdited(QASActor*, QString);
 
 private slots:
   void onOKClicked();
+  void updateImage();
+  void onChangeImage();
 
 private:
+  QString m_imageFileName;
+  
+  QLabel* m_imageLabel;
+  TextToolButton* m_changeImageButton;
+
+  QHBoxLayout* m_imageLayout;
+  
   QLabel* m_realNameLabel;
   QLineEdit* m_realNameEdit;
 

@@ -308,11 +308,7 @@ void PumpApp::startPumping() {
 
   m_recipientLists.clear();
 
-  QVariantMap publicJson;
-  publicJson["displayName"] = tr("Public");
-  publicJson["objectType"] = "collection";
-  publicJson["id"] = PUBLIC_RECIPIENT_ID;
-  m_recipientLists.append(QASObject::getObject(publicJson, this));
+  addPublicRecipient(m_recipientLists);
 
   QVariantMap followersJson;
   followersJson["displayName"] = tr("Followers");
@@ -830,6 +826,16 @@ void PumpApp::reportBug() {
 
 //------------------------------------------------------------------------------
 
+void PumpApp::addPublicRecipient(RecipientList rl) {
+  QVariantMap publicJson;
+  publicJson["displayName"] = tr("Public");
+  publicJson["objectType"] = "collection";
+  publicJson["id"] = PUBLIC_RECIPIENT_ID;
+  rl.append(QASObject::getObject(publicJson, this));
+}
+
+//------------------------------------------------------------------------------
+
 void PumpApp::newNote(QASObject* obj, QASObjectList* to, QASObjectList* cc,
 		      bool edit) {
   if (!m_messageWindow) {
@@ -1010,8 +1016,8 @@ void PumpApp::editProfile() {
 void PumpApp::editProfileDialog() {
   if (!m_editProfileDialog) {
     m_editProfileDialog = new EditProfileDialog(this);
-    connect(m_editProfileDialog, SIGNAL(profileEdited(QASActor*)), 
-            this, SLOT(onProfileEdited(QASActor*)));
+    connect(m_editProfileDialog, SIGNAL(profileEdited(QASActor*, QString)), 
+            this, SLOT(onProfileEdited(QASActor*, QString)));
   }
   m_editProfileDialog->setProfile(m_selfActor);
   m_editProfileDialog->show();
@@ -1019,19 +1025,30 @@ void PumpApp::editProfileDialog() {
 
 //------------------------------------------------------------------------------
 
-void PumpApp::onProfileEdited(QASActor* profile) {
-  QVariantMap json;
+void PumpApp::onProfileEdited(QASActor* profile, QString newImageFile) {
+  m_profile.clear();
 
-  json["objectType"] = "person";
-  json["displayName"] = profile->displayName();
-  json["summary"] = profile->summary();
+  m_profile["objectType"] = "person";
+  m_profile["displayName"] = profile->displayName();
+  m_profile["summary"] = profile->summary();
   
-  QVariantMap json_loc;
-  json_loc["objectType"] = "place";
-  json_loc["displayName"] = profile->location();
-  json["location"] = json_loc;
+  QVariantMap jsonLoc;
+  jsonLoc["objectType"] = "place";
+  jsonLoc["displayName"] = profile->location();
+  m_profile["location"] = jsonLoc;
 
-  request(apiUser("profile"), QAS_SELF_PROFILE, KQOAuthRequest::PUT, json);
+  if (newImageFile.isEmpty()) {
+    uploadProfile();
+  } else {
+    postAvatarImage(newImageFile);
+  }
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::uploadProfile() {
+  request(apiUser("profile"), QAS_SELF_PROFILE | QAS_REFRESH, 
+          KQOAuthRequest::PUT, m_profile);
 }
 
 //------------------------------------------------------------------------------
@@ -1227,7 +1244,20 @@ void PumpApp::postImage(QString msg,
 
 //------------------------------------------------------------------------------
 
-void PumpApp::uploadFile(QString filename) {
+void PumpApp::postAvatarImage(QString imageFile) {
+  m_imageObject.clear();
+
+  m_imageTo = RecipientList();
+  m_imageCc = RecipientList();
+
+  addPublicRecipient(m_imageCc);
+
+  uploadFile(imageFile, QAS_AVATAR_UPLOAD);
+}
+
+//------------------------------------------------------------------------------
+
+void PumpApp::uploadFile(QString filename, int flags) {
   QString lcfn = filename.toLower();
   QString mimeType;
   if (lcfn.endsWith(".jpg") || lcfn.endsWith(".jpeg"))
@@ -1266,14 +1296,15 @@ void PumpApp::uploadFile(QString filename) {
   m_uploadDialog->setValue(0);
   m_uploadDialog->show();
 
-  m_uploadRequest = executeRequest(oaRequest, QAS_IMAGE_UPLOAD);
+  flags = QAS_IMAGE_UPLOAD | flags;
+  m_uploadRequest = executeRequest(oaRequest, flags);
   connect(m_uploadRequest, SIGNAL(uploadProgress(qint64, qint64)),
           this, SLOT(uploadProgress(qint64, qint64)));
 }
 
 //------------------------------------------------------------------------------
 
-void PumpApp::updatePostedImage(QVariantMap obj) {
+void PumpApp::updatePostedImage(QVariantMap obj, int flags) {
   m_imageObject.unite(obj);
 
   // Work-around for https://github.com/e14n/pump.io/issues/885
@@ -1281,14 +1312,18 @@ void PumpApp::updatePostedImage(QVariantMap obj) {
   RecipientList to;
   to.append(m_selfActor);
 
-  feed("update", m_imageObject, QAS_IMAGE_UPDATE, to);
+  feed("update", m_imageObject, QAS_IMAGE_UPDATE | flags, to);
 }
 
 //------------------------------------------------------------------------------
 
-void PumpApp::postImageActivity(QVariantMap) {
-  feed("post", m_imageObject, QAS_ACTIVITY | QAS_REFRESH | QAS_POST,
-       m_imageTo, m_imageCc);
+void PumpApp::postImageActivity(QVariantMap, int flags) {
+  if (flags == 0)
+    flags = QAS_REFRESH;
+
+  flags |= QAS_ACTIVITY | QAS_POST;
+  
+  feed("post", m_imageObject, flags, m_imageTo, m_imageCc);
 }
 
 //------------------------------------------------------------------------------
@@ -1598,6 +1633,17 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     if (act) { // if not a broken activity
       QASObject* obj = act->object();
 
+      if ((id & QAS_AVATAR_UPLOAD) && obj) {
+
+        QVariantMap jsonImage;
+        jsonImage["url"] = obj->imageUrl();
+        jsonImage["width"] = 96;
+        jsonImage["height"] = 96;
+        m_profile["image"] = jsonImage;
+
+        uploadProfile();
+      }
+
       if ((id & QAS_TOGGLE_LIKE) && obj)
 	obj->toggleLiked();
 
@@ -1637,9 +1683,9 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
     }
   } else if (sid == QAS_IMAGE_UPLOAD) {
     m_uploadDialog->reset();
-    updatePostedImage(json);
+    updatePostedImage(json, id & QAS_AVATAR_UPLOAD);
   } else if (sid == QAS_IMAGE_UPDATE) {
-    postImageActivity(json);
+    postImageActivity(json, id & QAS_AVATAR_UPLOAD);
   }
 
   if ((id & QAS_POST) && m_messageWindow && !m_messageWindow->isVisible())

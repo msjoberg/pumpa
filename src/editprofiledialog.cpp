@@ -17,15 +17,34 @@
   along with Pumpa.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "qasactor.h"
+#include <QFileDialog>
+#include <QMessageBox>
+
 #include "editprofiledialog.h"
+#include "qasactor.h"
+#include "filedownloader.h"
 
 //------------------------------------------------------------------------------
 
 EditProfileDialog::EditProfileDialog(QWidget* parent):
-  QDialog(parent)
+  QDialog(parent),
+  m_profile(NULL)
 {
+  m_imageFileName = "";
+  
   m_layout = new QVBoxLayout;
+
+  m_imageLayout = new QHBoxLayout;
+  
+  m_imageLabel = new QLabel();
+  m_imageLayout->addWidget(m_imageLabel);
+
+  m_changeImageButton = new TextToolButton(tr("&Change picture"));
+  m_imageLayout->addWidget(m_changeImageButton);
+
+  connect(m_changeImageButton, SIGNAL(clicked()), this, SLOT(onChangeImage()));
+
+  m_layout->addLayout(m_imageLayout);
 
   m_realNameLabel = new QLabel(tr("Real name"));
   m_layout->addWidget(m_realNameLabel);
@@ -63,17 +82,73 @@ void EditProfileDialog::setProfile(QASActor* profile) {
   m_realNameEdit->setText(profile->displayName());
   m_hometownEdit->setText(profile->location());
   m_bioEdit->setText(profile->summary());
-
+  
   m_profile = profile;
+  m_imageFileName = "";
+
+  updateImage();
+}
+
+//------------------------------------------------------------------------------
+
+void EditProfileDialog::updateImage() {
+  if (m_profile == NULL)
+    return;
+
+  QPixmap pix;
+  if (!m_imageFileName.isEmpty()) {
+    pix.load(m_imageFileName);
+  } else {
+    FileDownloadManager* fdm = FileDownloadManager::getManager();
+    QString imgSrc = m_profile->imageUrl();
+
+    if (fdm->hasFile(imgSrc)) {
+      pix = fdm->pixmap(imgSrc, ":/images/image_broken.png");
+    } else if (!imgSrc.isEmpty()) {
+      FileDownloader* fd = fdm->download(imgSrc);
+      connect(fd, SIGNAL(fileReady()), this, SLOT(updateImage()), Qt::UniqueConnection);
+    }
+  }
+
+  if (!pix.isNull()) {
+    m_imageLabel->setPixmap(pix);
+    m_imageLabel->setFixedSize(pix.size());
+  }
 }
 
 //------------------------------------------------------------------------------
 
 void EditProfileDialog::onOKClicked() {
-  m_profile->setDisplayName(m_realNameEdit->text());
+  QString newRealName = m_realNameEdit->text();
+  if (newRealName.isEmpty()) // to avoid having empty real name
+    newRealName = m_profile->preferredUsername();
+  
+  m_profile->setDisplayName(newRealName);
   m_profile->setLocation(m_hometownEdit->text());
   m_profile->setSummary(m_bioEdit->toPlainText());
   
   accept();
-  emit profileEdited(m_profile);
+  emit profileEdited(m_profile, m_imageFileName);
+}
+
+//------------------------------------------------------------------------------
+
+void EditProfileDialog::onChangeImage() {
+  QString fileName =
+    QFileDialog::getOpenFileName(this, tr("Select Image"), "",
+                                 tr("Image files (*.png *.jpg *.jpeg *.gif)"
+                                    ";;All files (*.*)"));
+
+  if (!fileName.isEmpty()) {
+
+    QPixmap p;
+    p.load(fileName);
+    if (p.isNull()) {
+      QMessageBox::critical(this, tr("Sorry!"),
+                            tr("That file didn't appear to be an image."));
+    } else {
+      m_imageFileName = fileName;
+      updateImage();
+    }
+  }
 }

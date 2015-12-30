@@ -85,13 +85,14 @@ private slots:
                 RecipientList to, RecipientList cc);
   void postImage(QString msg, QString title, QString imageFile,
                  RecipientList to, RecipientList cc);
+  void postAvatarImage(QString imageFile);
   void postReply(QASObject* replyToObj, QString content,
                  RecipientList to, RecipientList cc);
   void postEdit(QASObject* obj, QString content, QString title);
   void follow(QString acctId, bool follow);
   void onDeleteObject(QASObject* obj);
   void onEditObject(QASObject* obj);
-  void onProfileEdited(QASActor*);
+  void onProfileEdited(QASActor* profile, QString newImageFile);
 
   void errorMessage(QString msg);
   void notifyMessage(QString msg);
@@ -147,6 +148,10 @@ protected:
   }
 
 private:
+  void addPublicRecipient(RecipientList rl);
+
+  void uploadProfile();
+
   bool tabShown(ASWidget* aw) const;
 
   bool isShown(QASAbstractObject* obj);
@@ -162,10 +167,10 @@ private:
   void setLoading(bool on);
   void refreshObject(QASAbstractObject* obj);
 
-  void uploadFile(QString filename);
+  void uploadFile(QString filename, int flags=0);
 
-  void updatePostedImage(QVariantMap obj);
-  void postImageActivity(QVariantMap obj);
+  void updatePostedImage(QVariantMap obj, int flags=0);
+  void postImageActivity(QVariantMap obj, int flags=0);
 
   void errorBox(QString msg);
 
@@ -277,6 +282,7 @@ private:
   QVariantMap m_imageObject;
   RecipientList m_imageTo;
   RecipientList m_imageCc;
+  QVariantMap m_profile;
 
   RecipientList m_recipientLists;
 
