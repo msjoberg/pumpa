@@ -826,7 +826,7 @@ void PumpApp::reportBug() {
 
 //------------------------------------------------------------------------------
 
-void PumpApp::addPublicRecipient(RecipientList rl) {
+void PumpApp::addPublicRecipient(RecipientList& rl) {
   QVariantMap publicJson;
   publicJson["displayName"] = tr("Public");
   publicJson["objectType"] = "collection";

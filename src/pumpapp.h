@@ -148,7 +148,7 @@ protected:
   }
 
 private:
-  void addPublicRecipient(RecipientList rl);
+  void addPublicRecipient(RecipientList& rl);
 
   void uploadProfile();
 
