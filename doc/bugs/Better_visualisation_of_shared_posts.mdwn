@@ -3,3 +3,5 @@ E.g. a "retweet" symbol as in: <http://imgur.com/TBHUVxo>
 
 
 Also, they cannot be collapsed, and are not collapsed automatically. ← maybe that applies only to shared comments, not posts!
+
+[[!tag resolved]]
