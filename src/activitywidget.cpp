@@ -115,7 +115,7 @@ void ActivityWidget::updateText() {
     text += QString(tr(" via %1")).arg(generatorName);
 
   if (verb == "share")
-    text = "♻ " + text;
+    text = QString::fromUtf8("\342\231\273") + " " + text;
 
   if (verb == "post") {
     QString toStr = recipientsToString(m_activity->to());
