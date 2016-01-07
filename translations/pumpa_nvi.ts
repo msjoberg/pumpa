@@ -9,17 +9,17 @@
         <translation> ìlä %1</translation>
     </message>
     <message>
-        <location filename="../src/activitywidget.cpp" line="121"/>
+        <location filename="../src/activitywidget.cpp" line="124"/>
         <source>To:</source>
         <translation>Ne:</translation>
     </message>
     <message>
-        <location filename="../src/activitywidget.cpp" line="124"/>
+        <location filename="../src/activitywidget.cpp" line="127"/>
         <source>CC:</source>
         <translation>Kop:</translation>
     </message>
     <message>
-        <location filename="../src/activitywidget.cpp" line="141"/>
+        <location filename="../src/activitywidget.cpp" line="144"/>
         <source>Public</source>
         <translation>Frapo</translation>
     </message>
@@ -58,6 +58,49 @@
         <location filename="../src/collectionwidget.cpp" line="69"/>
         <source>Load older</source>
         <translation>Run &apos;upxareti aham</translation>
+    </message>
+</context>
+<context>
+    <name>EditProfileDialog</name>
+    <message>
+        <location filename="../src/editprofiledialog.cpp" line="42"/>
+        <source>&amp;Change picture</source>
+        <translation type="unfinished">&amp;Latem relit</translation>
+    </message>
+    <message>
+        <location filename="../src/editprofiledialog.cpp" line="49"/>
+        <source>Real name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/editprofiledialog.cpp" line="55"/>
+        <source>Hometown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/editprofiledialog.cpp" line="61"/>
+        <source>Bio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/editprofiledialog.cpp" line="138"/>
+        <source>Select Image</source>
+        <translation type="unfinished">Ftxey relit</translation>
+    </message>
+    <message>
+        <location filename="../src/editprofiledialog.cpp" line="139"/>
+        <source>Image files (*.png *.jpg *.jpeg *.gif);;All files (*.*)</source>
+        <translation type="unfinished">ayRel (*.png *.jpg *.jpeg *.gif);; ayu (*.*)</translation>
+    </message>
+    <message>
+        <location filename="../src/editprofiledialog.cpp" line="147"/>
+        <source>Sorry!</source>
+        <translation type="unfinished">Ngaytxoa!</translation>
+    </message>
+    <message>
+        <location filename="../src/editprofiledialog.cpp" line="148"/>
+        <source>That file didn&apos;t appear to be an image.</source>
+        <translation type="unfinished">Tsa&apos;u ke lu rel.</translation>
     </message>
 </context>
 <context>
@@ -604,22 +647,22 @@
 <context>
     <name>PumpApp</name>
     <message>
-        <location filename="../src/pumpapp.cpp" line="158"/>
+        <location filename="../src/pumpapp.cpp" line="160"/>
         <source>&amp;Inbox</source>
         <translation>&amp;Payfya</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="159"/>
+        <location filename="../src/pumpapp.cpp" line="161"/>
         <source>&amp;Mentions</source>
         <translation>&amp;Oeteri</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="160"/>
+        <location filename="../src/pumpapp.cpp" line="162"/>
         <source>&amp;Direct</source>
         <translation>&amp;Oeri</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="161"/>
+        <location filename="../src/pumpapp.cpp" line="163"/>
         <source>Mean&amp;while</source>
         <translation>Lef&amp;krr</translation>
     </message>
@@ -628,17 +671,17 @@
         <translation type="obsolete">Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1096"/>
+        <location filename="../src/pumpapp.cpp" line="1154"/>
         <source>Fi&amp;rehose</source>
         <translation>&amp;Paypìpe</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1105"/>
+        <location filename="../src/pumpapp.cpp" line="1163"/>
         <source>&amp;Followers</source>
         <translation>&amp;Nga sunu Faysuteru</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1114"/>
+        <location filename="../src/pumpapp.cpp" line="1172"/>
         <source>F&amp;ollowing</source>
         <translation>&amp;Eylan</translation>
     </message>
@@ -647,7 +690,7 @@
         <translation type="obsolete">&apos;upxare amip lu ngaru.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/pumpapp.cpp" line="496"/>
+        <location filename="../src/pumpapp.cpp" line="494"/>
         <source>You have %Ln new notification(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -655,151 +698,156 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="581"/>
+        <location filename="../src/pumpapp.cpp" line="579"/>
         <source>Error: </source>
         <translation>Tìngäzìk:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="640"/>
+        <location filename="../src/pumpapp.cpp" line="638"/>
         <source>%1 &amp;Window</source>
         <translation>%1 &amp;Wìntow</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="640"/>
+        <location filename="../src/pumpapp.cpp" line="638"/>
         <source>Hide</source>
         <translation>Wan</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="640"/>
+        <location filename="../src/pumpapp.cpp" line="638"/>
         <source>Show</source>
         <translation>Wìntxu</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="655"/>
+        <location filename="../src/pumpapp.cpp" line="653"/>
         <source>E&amp;xit</source>
         <translation>&amp;Hum</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="656"/>
+        <location filename="../src/pumpapp.cpp" line="654"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="659"/>
+        <location filename="../src/pumpapp.cpp" line="657"/>
         <source>Preferences</source>
         <translation>Oeyä ayTìlatem</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="662"/>
+        <location filename="../src/pumpapp.cpp" line="660"/>
         <source>&amp;Reload timeline</source>
         <translation>&amp;Nìn payfya</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="663"/>
+        <location filename="../src/pumpapp.cpp" line="661"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="667"/>
+        <location filename="../src/pumpapp.cpp" line="665"/>
         <source>Load older in timeline</source>
         <translation>Nìn &apos;upxare aham</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="668"/>
+        <location filename="../src/pumpapp.cpp" line="666"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="671"/>
+        <location filename="../src/pumpapp.cpp" line="669"/>
         <source>F&amp;ollow an account</source>
         <translation>&amp;&apos;eylan si</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="672"/>
+        <location filename="../src/pumpapp.cpp" line="670"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="675"/>
+        <location filename="../src/pumpapp.cpp" line="673"/>
+        <source>Your &amp;profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/pumpapp.cpp" line="676"/>
         <source>&amp;About</source>
         <translation>&amp;Pumpateri</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="678"/>
+        <location filename="../src/pumpapp.cpp" line="679"/>
         <source>About &amp;Qt</source>
         <translation>&amp;Qtteri</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="684"/>
+        <location filename="../src/pumpapp.cpp" line="685"/>
         <source>New &amp;Note</source>
         <translation>&amp;Ngop &apos;upxareti</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="685"/>
+        <location filename="../src/pumpapp.cpp" line="686"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="689"/>
+        <location filename="../src/pumpapp.cpp" line="690"/>
         <source>Ctrl+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="316"/>
-        <location filename="../src/pumpapp.cpp" line="701"/>
+        <location filename="../src/pumpapp.cpp" line="314"/>
+        <location filename="../src/pumpapp.cpp" line="702"/>
         <source>Followers</source>
         <translation>Nga sunu Faysuteru</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="248"/>
+        <location filename="../src/pumpapp.cpp" line="250"/>
         <source>SSL Error: </source>
         <translation>Tìhawnu Tìngäzìk:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="251"/>
+        <location filename="../src/pumpapp.cpp" line="253"/>
         <source>
 %1 is unable to verify the identity of the server. This error could mean that someone is trying to impersonate the server, or that the server&apos;s administrator has made an error.
 </source>
         <translation>%1 ke tsun stiveftxaw pumpur. Kxawm kxutul tse&apos;a tìpängkxoti ngayä hu pump fu tìngäzìk lu latemyuru.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="259"/>
+        <location filename="../src/pumpapp.cpp" line="261"/>
         <source>SSL Server certificate.
 </source>
         <translation>Tìhawnu Tìngäzìk (SSLa certificate).</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="260"/>
+        <location filename="../src/pumpapp.cpp" line="262"/>
         <source>Issued to: </source>
         <translation>Telyu:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="261"/>
+        <location filename="../src/pumpapp.cpp" line="263"/>
         <source>Issued by: </source>
         <translation>Ngopyu:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="262"/>
+        <location filename="../src/pumpapp.cpp" line="264"/>
         <source>Effective: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="263"/>
+        <location filename="../src/pumpapp.cpp" line="265"/>
         <source>Expires: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="264"/>
+        <location filename="../src/pumpapp.cpp" line="266"/>
         <source>MD5 digest: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="271"/>
+        <location filename="../src/pumpapp.cpp" line="273"/>
         <source>&lt;b&gt;Untrusted SSL connection!&lt;/b&gt;</source>
         <translation>&lt;b&gt;Oel ke omum hawnuyuti!&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="310"/>
+        <location filename="../src/pumpapp.cpp" line="831"/>
         <source>Public</source>
         <translation>Frapo</translation>
     </message>
@@ -808,77 +856,77 @@
         <translation type="obsolete">%1a &apos;upxare amip lu ngaru.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="506"/>
+        <location filename="../src/pumpapp.cpp" line="504"/>
         <source>%1 commented: </source>
         <translation>%1 pamrel si:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="508"/>
+        <location filename="../src/pumpapp.cpp" line="506"/>
         <source>%1 wrote: </source>
         <translation>%1 pamrel si:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="681"/>
+        <location filename="../src/pumpapp.cpp" line="682"/>
         <source>Report &amp;bug online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="693"/>
+        <location filename="../src/pumpapp.cpp" line="694"/>
         <source>Close tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="694"/>
+        <location filename="../src/pumpapp.cpp" line="695"/>
         <source>Ctrl+W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="698"/>
+        <location filename="../src/pumpapp.cpp" line="699"/>
         <source>Firehose</source>
         <translation>Paypìpe</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="704"/>
+        <location filename="../src/pumpapp.cpp" line="705"/>
         <source>Following</source>
         <translation>Eylan</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="707"/>
+        <location filename="../src/pumpapp.cpp" line="708"/>
         <source>Favorites</source>
         <translation>Tsay&apos;u sunu ngaru</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="711"/>
+        <location filename="../src/pumpapp.cpp" line="712"/>
         <source>Activities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="722"/>
+        <location filename="../src/pumpapp.cpp" line="723"/>
         <source>&amp;Pumpa</source>
         <translation>&amp;Pumpa</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="734"/>
+        <location filename="../src/pumpapp.cpp" line="736"/>
         <source>&amp;Tabs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="743"/>
+        <location filename="../src/pumpapp.cpp" line="745"/>
         <source>&amp;Help</source>
         <translation>&amp;Srung</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="775"/>
+        <location filename="../src/pumpapp.cpp" line="777"/>
         <source>&lt;p&gt;Pumpa is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.&lt;/p&gt;&lt;p&gt;Pumpa is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.&lt;/p&gt;&lt;p&gt;You should have received a copy of the GNU General Public License along with Pumpa.  If not, see &lt;a href=&quot;http://www.gnu.org/licenses/&quot;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="788"/>
+        <location filename="../src/pumpapp.cpp" line="790"/>
         <source>&lt;p&gt;The &lt;a href=&quot;https://github.com/kypeli/kQOAuth&quot;&gt;kQOAuth library&lt;/a&gt; is copyrighted by &lt;a href=&quot;http://www.johanpaul.com/&quot;&gt;Johan Paul&lt;/a&gt; and licensed under LGPL 2.1.&lt;/p&gt;&lt;p&gt;The &lt;a href=&quot;https://github.com/vmg/sundown&quot;&gt;sundown Markdown library&lt;/a&gt; is copyrighted by Natacha Port&amp;eacute;, Vicent Marti and others, and &lt;a href=&quot;https://github.com/vmg/sundown#license&quot;&gt;permissively licensed&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;The Pumpa logo was &lt;a href=&quot;http://opengameart.org/content/fruit-and-veggie-inventory&quot;&gt;created by Joshua Taylor&lt;/a&gt; for the &lt;a href=&quot;http://lpc.opengameart.org/&quot;&gt;Liberated Pixel Cup&lt;/a&gt;.The logo is copyrighted by the artist and is dual licensed under the CC-BY-SA 3.0 license and the GNU GPL 3.0.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="804"/>
+        <location filename="../src/pumpapp.cpp" line="806"/>
         <source>Copyright &amp;copy; 2013-2015 Mats Sj&amp;ouml;berg</source>
         <translation type="unfinished">Copyright &amp;copy; 2013 Mats Sj&amp;ouml;berg {2014 ?} {2013-2015 ?}</translation>
     </message>
@@ -891,92 +939,92 @@
         <translation type="obsolete">Copyright &amp;copy; 3735 Mats Sj&amp;ouml;berg.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="807"/>
+        <location filename="../src/pumpapp.cpp" line="809"/>
         <source>&lt;p&gt;Report bugs and feature requests at &lt;a href=&quot;%5&quot;&gt;%5&lt;/a&gt;.&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="811"/>
+        <location filename="../src/pumpapp.cpp" line="813"/>
         <source>A simple Qt-based pump.io client.</source>
         <translation>Pumpìri pumpa fkeytok fte sar.</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="815"/>
+        <location filename="../src/pumpapp.cpp" line="817"/>
         <source>About %1</source>
         <translation>Teri %1</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="922"/>
+        <location filename="../src/pumpapp.cpp" line="934"/>
         <source>Site not configured yet!</source>
         <translation>Fìtseng ke lu alaksi mi!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="972"/>
+        <location filename="../src/pumpapp.cpp" line="984"/>
         <source>Follow pump.io user</source>
         <translation>&apos;eylan si tuteru</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="973"/>
+        <location filename="../src/pumpapp.cpp" line="985"/>
         <source>Enter webfinger ID of person to follow: </source>
         <translation>Pamrel si tstxour apump fte &apos;eylan si:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="983"/>
+        <location filename="../src/pumpapp.cpp" line="995"/>
         <source>Sorry, that doesn&apos;t even look like a webfinger ID!</source>
         <translation>Ngaytxoa, tsatstxo ke lu tstxo!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="988"/>
+        <location filename="../src/pumpapp.cpp" line="1000"/>
         <source>Sorry, you are already following that person!</source>
         <translation>Ngaytxoa, tsasute lu ngeyä &apos;eylan li!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1040"/>
+        <location filename="../src/pumpapp.cpp" line="1098"/>
         <source>Invalid user: </source>
         <translation>Tute lu eyawr:</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1047"/>
+        <location filename="../src/pumpapp.cpp" line="1105"/>
         <source>Invalid user (cannot check site): </source>
         <translation type="unfinished">Tute ke lu eyawr (ke steftxaw pumpit):</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1072"/>
+        <location filename="../src/pumpapp.cpp" line="1130"/>
         <source>&amp;Context</source>
         <translation>&amp;Upxare</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1123"/>
+        <location filename="../src/pumpapp.cpp" line="1181"/>
         <source>F&amp;avorites</source>
         <translation>&amp;Tsay&apos;u sunu ngaru</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1132"/>
+        <location filename="../src/pumpapp.cpp" line="1190"/>
         <source>A&amp;ctivities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1451"/>
+        <location filename="../src/pumpapp.cpp" line="1528"/>
         <source>Loading ...</source>
         <translation>Nerìn ...</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1513"/>
+        <location filename="../src/pumpapp.cpp" line="1590"/>
         <source>Ready!</source>
         <translation>Tam!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1531"/>
+        <location filename="../src/pumpapp.cpp" line="1608"/>
         <source>Unable to post message!</source>
         <translation>Ke tsun fpe&apos; &apos;upxareti!</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1535"/>
+        <location filename="../src/pumpapp.cpp" line="1612"/>
         <source>Unable to upload image!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1539"/>
+        <location filename="../src/pumpapp.cpp" line="1616"/>
         <source>Network or authorisation error [%1/%2] %3.</source>
         <translation>Oel ke tsun pivängkxo hu pump fu pumpìl ke omum ngati [%1/%2] %3.</translation>
     </message>
@@ -985,12 +1033,12 @@
         <translation type="obsolete">puslltxe fu steftxaw tìngäzìk [%1/%2].</translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1567"/>
+        <location filename="../src/pumpapp.cpp" line="1655"/>
         <source>Successfully followed </source>
         <translation>&apos;eylan soli </translation>
     </message>
     <message>
-        <location filename="../src/pumpapp.cpp" line="1568"/>
+        <location filename="../src/pumpapp.cpp" line="1656"/>
         <source>Successfully unfollowed </source>
         <translation>Ke &apos;eylan seri  set</translation>
     </message>
