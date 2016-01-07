@@ -65,42 +65,42 @@
     <message>
         <location filename="../src/editprofiledialog.cpp" line="42"/>
         <source>&amp;Change picture</source>
-        <translation type="unfinished">&amp;Изменить изображение</translation>
+        <translation>&amp;Изменить изображение</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="49"/>
         <source>Real name</source>
-        <translation type="unfinished"></translation>
+        <translation>Настоящее Имя</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="55"/>
         <source>Hometown</source>
-        <translation type="unfinished"></translation>
+        <translation>Родной город</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="61"/>
         <source>Bio</source>
-        <translation type="unfinished"></translation>
+        <translation>Биография</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="138"/>
         <source>Select Image</source>
-        <translation type="unfinished">Выбрать Изображение</translation>
+        <translation>Выбрать Изображение</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="139"/>
         <source>Image files (*.png *.jpg *.jpeg *.gif);;All files (*.*)</source>
-        <translation type="unfinished">Файлы изображений (*.png *.jpg *.jpeg *.gif);;Все файлы (*.*)</translation>
+        <translation>Файлы изображений (*.png *.jpg *.jpeg *.gif);;Все файлы (*.*)</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="147"/>
         <source>Sorry!</source>
-        <translation type="unfinished">Простите!</translation>
+        <translation>Простите!</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="148"/>
         <source>That file didn&apos;t appear to be an image.</source>
-        <translation type="unfinished">Этот файл не является изображением.</translation>
+        <translation>Этот файл не является изображением.</translation>
     </message>
 </context>
 <context>
@@ -139,14 +139,10 @@
         <translation>изменить</translation>
     </message>
     <message>
-        <source>comment</source>
-        <translation type="vanished">комментировать</translation>
-    </message>
-    <message>
         <location filename="../src/fullobjectwidget.cpp" line="113"/>
         <source>comment</source>
         <comment>Button to comment on a post</comment>
-        <translation type="unfinished">комментировать</translation>
+        <translation>комментировать</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="313"/>
@@ -154,15 +150,10 @@
         <translation>[Нет описания]</translation>
     </message>
     <message>
-        <source>at %1</source>
-        <translatorcomment>пост написал ИМЯ в указанное ВРЕМЯ</translatorcomment>
-        <translation type="vanished">@ %1</translation>
-    </message>
-    <message>
         <location filename="../src/fullobjectwidget.cpp" line="349"/>
         <source>at %1</source>
         <comment>location of person</comment>
-        <translation type="unfinished">@ %1</translation>
+        <translation>@ %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="351"/>
@@ -179,7 +170,7 @@
         <location filename="../src/fullobjectwidget.cpp" line="366"/>
         <source>at %1</source>
         <comment>time when post was published</comment>
-        <translation type="unfinished">@ %1</translation>
+        <translation>@ %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="386"/>
@@ -240,21 +231,13 @@
         <location filename="../src/fullobjectwidget.cpp" line="545"/>
         <source>shared this.</source>
         <comment>Many persons shared</comment>
-        <translation type="unfinished">пересказал это</translation>
+        <translation>пересказали это.</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="547"/>
         <source>shared this.</source>
         <comment>One person shared</comment>
-        <translation type="unfinished">пересказал это</translation>
-    </message>
-    <message numerus="yes">
-        <source>shared this.</source>
-        <translation type="obsolete">
-            <numerusform>пересказал это</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation>пересказал это.</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/fullobjectwidget.cpp" line="550"/>
@@ -274,38 +257,26 @@
         <location filename="../src/fullobjectwidget.cpp" line="671"/>
         <source>post</source>
         <comment>Name of object type.</comment>
-        <translation type="unfinished">сообщение</translation>
+        <translation>сообщение</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="674"/>
         <source>note</source>
         <comment>Name of object type.</comment>
-        <translation type="unfinished">сообщение</translation>
+        <translatorcomment>Здесь принято использовать слово &quot;заметка&quot;, но с ним не будут получаться согласованные сообщения, так что я использовал то же слово, что и для post</translatorcomment>
+        <translation>сообщение</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="676"/>
         <source>comment</source>
         <comment>Name of object type.</comment>
-        <translation type="unfinished">комментировать</translation>
+        <translation>комментарий</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="678"/>
         <source>image</source>
         <comment>Name of object type.</comment>
-        <translation type="unfinished">изображение</translation>
-    </message>
-    <message>
-        <source>post</source>
-        <translation type="vanished">сообщение</translation>
-    </message>
-    <message>
-        <source>note</source>
-        <translatorcomment>Здесь принято использовать слово &quot;заметка&quot;, но с ним не будут получаться согласованные сообщения, так что я использовал то же слово, что и для post</translatorcomment>
-        <translation type="vanished">сообщение</translation>
-    </message>
-    <message>
-        <source>image</source>
-        <translation type="vanished">изображение</translation>
+        <translation>изображение</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="699"/>
@@ -679,20 +650,12 @@
         <translation>Подписчики</translation>
     </message>
     <message numerus="yes">
-        <source>You have %n new notification(s).</source>
-        <translation type="obsolete">
-            <numerusform>У вас %n новое уведомление.</numerusform>
-            <numerusform>У вас %n новых уведомлений.</numerusform>
-            <numerusform>У вас %n новых уведомлений.</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
         <location filename="../src/pumpapp.cpp" line="494"/>
         <source>You have %Ln new notification(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>У вас %Ln новое уведомление.</numerusform>
+            <numerusform>У вас %Ln новых уведомления.</numerusform>
+            <numerusform>У вас %Ln новых уведомлений.</numerusform>
         </translation>
     </message>
     <message>
@@ -773,7 +736,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="673"/>
         <source>Your &amp;profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Ваш п&amp;рофиль</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="676"/>
@@ -808,7 +771,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="694"/>
         <source>Close tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Закрыть вкладку</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="695"/>
