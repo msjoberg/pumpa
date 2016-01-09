@@ -4,3 +4,5 @@ often have the "stop following" button in their avatar dropdown menu.
 Using the button returns a network error in the status bar (as you can't unfollow users you're not following)
 
 Using Pumpa compiled from git commit 7352d2be5d2ac8a9f675813b00326a8032f2342f
+
+[[!tag resolved]]
