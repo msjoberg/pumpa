@@ -113,7 +113,7 @@ void ActorWidget::createMenu() {
   
   bool isYou = m_actor->isYou();
 
-  m_menuTitleAction->setText(m_actor->displayName());
+  m_menuTitleAction->setText(m_actor->displayNameOrWebFinger());
   m_menu->clear();
   m_menu->addAction(m_menuTitleAction);
   m_menu->addSeparator();
