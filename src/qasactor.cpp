@@ -29,6 +29,8 @@
 QMap<QString, QASActor*> QASActor::s_actors;
 QSet<QString> QASActor::s_hiddenAuthors;
 
+bool QASActor::s_followed_known = false;
+
 void QASActor::clearCache() { deleteMap<QASActor*>(s_actors); }
 
 //------------------------------------------------------------------------------
@@ -36,7 +38,7 @@ void QASActor::clearCache() { deleteMap<QASActor*>(s_actors); }
 QASActor::QASActor(QString id, QObject* parent) :
   QASObject(id, parent),
   m_followed(false),
-  m_followed_json(true),
+  m_followed_json(false),
   m_followed_set(false),
   m_isYou(false)
 {
@@ -109,15 +111,12 @@ QASActor* QASActor::getActor(QVariantMap json, QObject* parent) {
 //------------------------------------------------------------------------------
 
 bool QASActor::followed() const {
-  /* If followed has been set explicitly use that, otherwise use the
-     followed value in the original json - which is unreliable, but
-     better than nothing. */
-  return m_followed_set ? m_followed : m_followed_json;
+  return m_followed;
 }
 
 //------------------------------------------------------------------------------
 
-void QASActor::setFollowed(bool b) { 
+void QASActor::setFollowed(bool b) {
   if (b != m_followed) {
     m_followed_set = true;
     m_followed = b;
@@ -160,4 +159,22 @@ void QASActor::setHiddenAuthors(QStringList sl) {
 void QASActor::setYou() {
   m_isYou = true;
   emit changed();
+}
+
+//------------------------------------------------------------------------------
+
+void QASActor::followedIsKnown() {
+  emit changed();
+}
+
+//------------------------------------------------------------------------------
+
+void QASActor::setFollowedKnown() {
+  s_followed_known = true;
+
+  QMap<QString, QASActor*>::const_iterator it = s_actors.constBegin();
+  while (it != s_actors.constEnd()) {
+    it.value()->followedIsKnown();
+    ++it;
+  }
 }

@@ -1666,6 +1666,9 @@ void PumpApp::onAuthorizedRequestReady(QByteArray response, int rid) {
         if (actor)
           followActor(actor);
       }
+
+      if (ol->nextLink().isEmpty())
+        QASActor::setFollowedKnown();
     }
   } else if (sid == QAS_OBJECT) {
     QASObject::getObject(json, this);

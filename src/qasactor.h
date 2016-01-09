@@ -51,6 +51,9 @@ public:
 
   bool followed() const;
   void setFollowed(bool b);
+  bool followedKnown() const { return s_followed_known || m_followed_set; }
+  static void setFollowedKnown();
+  void followedIsKnown();
 
   QString summary() const { return m_summary; }
   void setSummary(QString s) { m_summary = s; }
@@ -65,6 +68,8 @@ public:
   static QStringList getHiddenAuthors() { return s_hiddenAuthors.toList(); }
 
 private:
+  static bool s_followed_known;
+  
   bool m_followed;
   bool m_followed_json;
   bool m_followed_set;

@@ -414,7 +414,7 @@ void FullObjectWidget::updateFollowButton(bool /*wait*/) {
   if (!m_followButton)
     return;
   
-  if (!isFollowable(m_object)) {
+  if (!isFollowable(m_object) || !m_actor->followedKnown()) {
     m_followButton->setVisible(false);
     return;
   }
@@ -429,9 +429,11 @@ void FullObjectWidget::updateFollowButton(bool /*wait*/) {
 void FullObjectWidget::updateFollowAuthorButton(bool /*wait*/) {
   if (!m_followAuthorButton)
     return;
-  
-  if (!m_author || !isFollowable(m_author) || m_author->followed()) {
-    m_followAuthorButton->setVisible(false);
+
+   if (!m_author || !isFollowable(m_author) || m_author->followed() ||
+      !m_author->followedKnown()) {
+
+     m_followAuthorButton->setVisible(false);
     return;
   }
 
