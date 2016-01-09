@@ -1,0 +1,8 @@
+[[!comment format=mdwn
+ username="mats@c2793ba5d5203110c85db65144025ee3a6e97728"
+ nickname="mats"
+ subject="comment 1"
+ date="2016-01-09T18:31:44Z"
+ content="""
+I believe this has been fixed with [this commit](http://source.pumpa.branchable.com/?p=source.git;a=commit;h=72debc21c2240131474f139ebe005513d275b0dc).
+"""]]
