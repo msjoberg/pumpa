@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fi_FI">
+<TS version="2.1" language="fi_FI">
 <context>
     <name>ActivityWidget</name>
     <message>
@@ -198,27 +198,27 @@
         <translation>seuraa</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="440"/>
+        <location filename="../src/fullobjectwidget.cpp" line="442"/>
         <source>follow %1</source>
         <translation>seuraa henkilöä %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="510"/>
+        <location filename="../src/fullobjectwidget.cpp" line="512"/>
         <source>You like this.</source>
         <translation>Sinä tykkäät tästä.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="512"/>
+        <location filename="../src/fullobjectwidget.cpp" line="514"/>
         <source>%1 likes this.</source>
         <translation>%1 tykkää tästä.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="514"/>
+        <location filename="../src/fullobjectwidget.cpp" line="516"/>
         <source>%1 like this.</source>
         <translation>%1 tykkäävät tästä.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="543"/>
+        <location filename="../src/fullobjectwidget.cpp" line="545"/>
         <source>and %Ln other person(s)</source>
         <translation>
             <numerusform>ja yksi muu henkilö</numerusform>
@@ -226,47 +226,47 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="545"/>
+        <location filename="../src/fullobjectwidget.cpp" line="547"/>
         <source>shared this.</source>
         <comment>Many persons shared</comment>
         <translation>jakoivat tämän.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="547"/>
+        <location filename="../src/fullobjectwidget.cpp" line="549"/>
         <source>shared this.</source>
         <comment>One person shared</comment>
         <translation>jakoi tämän.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="671"/>
+        <location filename="../src/fullobjectwidget.cpp" line="673"/>
         <source>post</source>
         <comment>Name of object type.</comment>
         <translatorcomment>Käytetään suomennoksissa &quot;jakaa/poistaa postin&quot;.</translatorcomment>
         <translation>postin</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="674"/>
+        <location filename="../src/fullobjectwidget.cpp" line="676"/>
         <source>note</source>
         <comment>Name of object type.</comment>
         <translatorcomment>Käytetään suomennoksissa &quot;jakaa/poistaa viestin&quot;.</translatorcomment>
         <translation>viestin</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="676"/>
+        <location filename="../src/fullobjectwidget.cpp" line="678"/>
         <source>comment</source>
         <comment>Name of object type.</comment>
         <translatorcomment>Käytetään suomennoksissa &quot;jakaa/poistaa kommentin&quot;.</translatorcomment>
         <translation>kommentin</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="678"/>
+        <location filename="../src/fullobjectwidget.cpp" line="680"/>
         <source>image</source>
         <comment>Name of object type.</comment>
         <translatorcomment>Käytetään suomennoksissa &quot;jakaa/poistaa kuvan&quot;.</translatorcomment>
         <translation>kuvan</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="550"/>
+        <location filename="../src/fullobjectwidget.cpp" line="552"/>
         <source>%Ln person(s) shared this.</source>
         <translation>
             <numerusform>yksi henkilö jakoi tämän.</numerusform>
@@ -274,17 +274,17 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="627"/>
+        <location filename="../src/fullobjectwidget.cpp" line="629"/>
         <source>Show all replies</source>
         <translation>Näytä kaikki vastaukset</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="699"/>
+        <location filename="../src/fullobjectwidget.cpp" line="701"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation>Haluatko poistaa tämän %1?</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="719"/>
+        <location filename="../src/fullobjectwidget.cpp" line="721"/>
         <source>Share this %1 by %2?</source>
         <translation>Haluatko jakaa henkilön %2 %1?</translation>
     </message>

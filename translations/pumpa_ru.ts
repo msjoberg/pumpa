@@ -199,27 +199,27 @@
         <translation>подписаться</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="440"/>
+        <location filename="../src/fullobjectwidget.cpp" line="442"/>
         <source>follow %1</source>
         <translation>подписаться на %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="510"/>
+        <location filename="../src/fullobjectwidget.cpp" line="512"/>
         <source>You like this.</source>
         <translation>Вам это нравится.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="512"/>
+        <location filename="../src/fullobjectwidget.cpp" line="514"/>
         <source>%1 likes this.</source>
         <translation>%1 это нравится.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="514"/>
+        <location filename="../src/fullobjectwidget.cpp" line="516"/>
         <source>%1 like this.</source>
         <translation>%1 это нравится</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="543"/>
+        <location filename="../src/fullobjectwidget.cpp" line="545"/>
         <source>and %Ln other person(s)</source>
         <translation>
             <numerusform>и %n другой человек</numerusform>
@@ -228,19 +228,19 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="545"/>
+        <location filename="../src/fullobjectwidget.cpp" line="547"/>
         <source>shared this.</source>
         <comment>Many persons shared</comment>
         <translation>пересказали это.</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="547"/>
+        <location filename="../src/fullobjectwidget.cpp" line="549"/>
         <source>shared this.</source>
         <comment>One person shared</comment>
         <translation>пересказал это.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/fullobjectwidget.cpp" line="550"/>
+        <location filename="../src/fullobjectwidget.cpp" line="552"/>
         <source>%Ln person(s) shared this.</source>
         <translation>
             <numerusform>%n человек пересказал это.</numerusform>
@@ -249,42 +249,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="627"/>
+        <location filename="../src/fullobjectwidget.cpp" line="629"/>
         <source>Show all replies</source>
         <translation>Показать все комментарии</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="671"/>
+        <location filename="../src/fullobjectwidget.cpp" line="673"/>
         <source>post</source>
         <comment>Name of object type.</comment>
         <translation>сообщение</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="674"/>
+        <location filename="../src/fullobjectwidget.cpp" line="676"/>
         <source>note</source>
         <comment>Name of object type.</comment>
         <translatorcomment>Здесь принято использовать слово &quot;заметка&quot;, но с ним не будут получаться согласованные сообщения, так что я использовал то же слово, что и для post</translatorcomment>
         <translation>сообщение</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="676"/>
+        <location filename="../src/fullobjectwidget.cpp" line="678"/>
         <source>comment</source>
         <comment>Name of object type.</comment>
         <translation>комментарий</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="678"/>
+        <location filename="../src/fullobjectwidget.cpp" line="680"/>
         <source>image</source>
         <comment>Name of object type.</comment>
         <translation>изображение</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="699"/>
+        <location filename="../src/fullobjectwidget.cpp" line="701"/>
         <source>Are you sure you want to delete this %1?</source>
         <translation>вы уверены, что хотите удалить это %1</translation>
     </message>
     <message>
-        <location filename="../src/fullobjectwidget.cpp" line="719"/>
+        <location filename="../src/fullobjectwidget.cpp" line="721"/>
         <source>Share this %1 by %2?</source>
         <translation>Поделиться этим %1м от %2?</translation>
     </message>
