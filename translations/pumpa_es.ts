@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es_ES">
+<TS version="2.0" language="es_ES">
 <context>
     <name>ActivityWidget</name>
     <message>
@@ -65,42 +65,42 @@
     <message>
         <location filename="../src/editprofiledialog.cpp" line="42"/>
         <source>&amp;Change picture</source>
-        <translation type="unfinished">&amp;Cambiar imagen</translation>
+        <translation>&amp;Cambiar imagen</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="49"/>
         <source>Real name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre real</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="55"/>
         <source>Hometown</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciudad</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="61"/>
         <source>Bio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bio</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="138"/>
         <source>Select Image</source>
-        <translation type="unfinished">Seleccionar imagen</translation>
+        <translation>Seleccionar imagen</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="139"/>
         <source>Image files (*.png *.jpg *.jpeg *.gif);;All files (*.*)</source>
-        <translation type="unfinished">Archivos de imagen (*.png *.jpg *.jpeg *.gif);;Todos los archivos (*.*)</translation>
+        <translation>Archivos de imagen (*.png *.jpg *.jpeg *.gif);;Todos los archivos (*.*)</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="147"/>
         <source>Sorry!</source>
-        <translation type="unfinished">¡Lo siento!</translation>
+        <translation>¡Lo siento!</translation>
     </message>
     <message>
         <location filename="../src/editprofiledialog.cpp" line="148"/>
         <source>That file didn&apos;t appear to be an image.</source>
-        <translation type="unfinished">Ese archivo no parece una imagen.</translation>
+        <translation>Ese archivo no parece una imagen.</translation>
     </message>
 </context>
 <context>
@@ -140,13 +140,13 @@
     </message>
     <message>
         <source>comment</source>
-        <translation type="vanished">comentar</translation>
+        <translation>comentar</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="113"/>
         <source>comment</source>
         <comment>Button to comment on a post</comment>
-        <translation type="unfinished">comentar</translation>
+        <translation>comentar</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="313"/>
@@ -156,13 +156,13 @@
     <message>
         <source>at %1</source>
         <oldsource>at</oldsource>
-        <translation type="vanished">en %1</translation>
+        <translation>en %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="349"/>
         <source>at %1</source>
         <comment>location of person</comment>
-        <translation type="unfinished">en %1</translation>
+        <translation>en %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="351"/>
@@ -178,7 +178,7 @@
         <location filename="../src/fullobjectwidget.cpp" line="366"/>
         <source>at %1</source>
         <comment>time when post was published</comment>
-        <translation type="unfinished">en %1</translation>
+        <translation>el %1</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="386"/>
@@ -209,13 +209,13 @@
         <location filename="../src/fullobjectwidget.cpp" line="545"/>
         <source>shared this.</source>
         <comment>Many persons shared</comment>
-        <translation type="unfinished">compartió/compartieron esto.</translation>
+        <translation>compartieron esto.</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="547"/>
         <source>shared this.</source>
         <comment>One person shared</comment>
-        <translation type="unfinished">compartió/compartieron esto.</translation>
+        <translation>compartió esto.</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="627"/>
@@ -226,25 +226,25 @@
         <location filename="../src/fullobjectwidget.cpp" line="671"/>
         <source>post</source>
         <comment>Name of object type.</comment>
-        <translation type="unfinished">la publicación</translation>
+        <translation>la publicación</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="674"/>
         <source>note</source>
         <comment>Name of object type.</comment>
-        <translation type="unfinished">la nota</translation>
+        <translation>la nota</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="676"/>
         <source>comment</source>
         <comment>Name of object type.</comment>
-        <translation type="unfinished">comentar</translation>
+        <translation>el comentario</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="678"/>
         <source>image</source>
         <comment>Name of object type.</comment>
-        <translation type="unfinished">la imagen</translation>
+        <translation>la imagen</translation>
     </message>
     <message>
         <source>stop following %1</source>
@@ -324,15 +324,15 @@
     </message>
     <message>
         <source>post</source>
-        <translation type="vanished">la publicación</translation>
+        <translation>la publicación</translation>
     </message>
     <message>
         <source>note</source>
-        <translation type="vanished">la nota</translation>
+        <translation>la nota</translation>
     </message>
     <message>
         <source>image</source>
-        <translation type="vanished">la imagen</translation>
+        <translation>la imagen</translation>
     </message>
     <message>
         <location filename="../src/fullobjectwidget.cpp" line="699"/>
@@ -780,7 +780,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="673"/>
         <source>Your &amp;profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Tu &amp;perfil</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="676"/>
@@ -888,7 +888,7 @@
     <message>
         <location filename="../src/pumpapp.cpp" line="694"/>
         <source>Close tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar pestaña</translation>
     </message>
     <message>
         <location filename="../src/pumpapp.cpp" line="695"/>
