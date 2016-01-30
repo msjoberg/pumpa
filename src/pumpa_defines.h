@@ -1,5 +1,5 @@
 /*
-  Copyright 2013-2015 Mats Sjöberg
+  Copyright 2013-2016 Mats Sjöberg
   
   This file is part of the Pumpa programme.
 
@@ -22,7 +22,7 @@
 
 #define CLIENT_NAME           "pumpa"
 #define CLIENT_FANCY_NAME     "Pumpa"
-#define CLIENT_VERSION        "0.9.1"
+#define CLIENT_VERSION        "0.9.2"
 #define CLIENT_ICON           ":/images/pumpa.png"
 
 #define WEBSITE_URL           "https://pumpa.branchable.com/"
