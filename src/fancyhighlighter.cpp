@@ -38,7 +38,7 @@ void FancyHighlighter::highlightBlock(const QString& text) {
   QTextCharFormat spellErrorFormat;
   spellErrorFormat.setFontUnderline(true);
   spellErrorFormat.setUnderlineColor(Qt::red);
-  spellErrorFormat.setUnderlineStyle(QTextCharFormat::SpellCheckUnderline);
+  spellErrorFormat.setUnderlineStyle(QTextCharFormat::WaveUnderline);
 
   QRegExp rxa("(^|\\s)(\\w[\\w']*\\w)");
 
