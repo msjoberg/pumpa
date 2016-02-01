@@ -1,3 +1,6 @@
+# 2016
+- **January 30** version 0.9.2 released.
+
 # 2015
 - **May 17,** version 0.9.1 released.
 - **March 16,** due to [gitorious' imminent shutdown](https://about.gitlab.com/2015/03/03/gitlab-acquires-gitorious/) source code hosting was officially moved to branchable.com.  If you already have the repository cloned this command should switch the `origin` branch to the new location:
