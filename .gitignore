@@ -23,3 +23,5 @@ object_script.pumpa.Release
 /debian/pumpa.substvars
 /debian/pumpa/DEBIAN/
 /debian/pumpa/usr/
+/packaging/pumpa-*
+/packaging/pumpa_*

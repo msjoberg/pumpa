@@ -1,0 +1,20 @@
+- Check translations!
+    lupdate pumpa.pro
+    lrelease pumpa.pro
+- Update CLIENT_VERSION in src/pumpa_defines.h
+- Run `dch` to update debian/changelog
+- Recompile and test
+- git commit
+- test Qt4, clang
+- Make debian package to test if it works:
+    cd packaging
+    mkdeb.sh 0.x.y
+- Make possible changes to make lintian happy
+- tag, e.g.: 
+    git tag -s v0.x.y -m "Version v0.x.y."
+- git push origin --tags
+- Make real debian package and dput
+- copy and sync pumpa-0.x.y.tar.xz to https://saz.im/software/downloads/pumpa/
+- Update front page and news: 
+  https://pumpa.branchable.com/
+  https://pumpa.branchable.com/news/
