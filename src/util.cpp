@@ -286,6 +286,8 @@ bool isTidyWithIntBodyOnlyCheck() {
   if (yearPos != -1)
     releaseDateStr = releaseDateStr.left(yearPos + 5);
   QDate releaseDate = QLocale::c().toDate(releaseDateStr, "d MMMM yyyy");
+  if (releaseDate.isNull())
+    releaseDate = QLocale::c().toDate(releaseDateStr, "yyyy/MM/dd");
   QDate changeDate = QLocale::c().toDate("24 May 2007", "d MMMM yyyy");
   bool isNewer = releaseDate > changeDate;
 
