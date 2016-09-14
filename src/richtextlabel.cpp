@@ -19,6 +19,10 @@
 
 #include "richtextlabel.h"
 
+#include "pumpasettings.h"
+
+#include <QFont>
+
 //------------------------------------------------------------------------------
 
 RichTextLabel::RichTextLabel(QWidget* parent, bool singleLine) :
@@ -45,6 +49,13 @@ RichTextLabel::RichTextLabel(QWidget* parent, bool singleLine) :
   setFocusPolicy(Qt::ClickFocus);
 
   setCursor(Qt::IBeamCursor);
+
+  int fontSize = PumpaSettings::getSettings()->fontSize();
+  if (fontSize != -1) {
+    QFont f(font());
+    f.setPointSize(fontSize);
+    setFont(f);
+  }
 }
 
 //------------------------------------------------------------------------------

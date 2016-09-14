@@ -128,6 +128,10 @@ public:
     return getValue("show_charcount", false).toBool();
   }
 
+  int fontSize() const {
+    return getValue("font_size", -1).toInt();
+  }
+
   // setters
   void siteUrl(QString s) { setValue("site_url", s, "Account"); }
   void userName(QString s) { setValue("username", s, "Account"); }
@@ -164,6 +168,8 @@ public:
   void showPreview(bool b) { setValue("show_preview", b); }
 
   void showCharCount(bool b) { setValue("show_charcount", b); }
+
+  void fontSize(int i) { setValue("font_size", i); }
 
 signals:
   void trayIconChanged();
